@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/02/18 20:26:23 by vgauther         ###   ########.fr        #
+#    Updated: 2018/02/19 01:07:33 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,19 +29,19 @@ INC = $(addprefix -I,$(INC_PATH))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-INC_NAME = wolf3d.h
+INC_NAME = rt.h
 
-SRC_NAME = 
+SRC_NAME = main.c 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LFT_PATH)
-	@gcc ./make_srcs/loup.c -lm -L $(LFT_PATH) -lft
+	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
 	@rm a.out
 	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft -lm -L $(MLX_PATH) -lmlx -lm -framework OpenGL -framework AppKit -lpthread
-	@echo "[✓] EXECUTABLE WOLF 3D DONE"
+	@echo "[✓] EXECUTABLE RT DONE"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)

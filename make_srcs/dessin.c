@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loup.c                                             :+:      :+:    :+:   */
+/*   dessin.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:57:02 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/02/16 11:24:10 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/02/19 01:06:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wolf3d.h"
 #include "mke_src.h"
+#include <unistd.h>
+#include "../libft/includes/libft.h"
+#include <fcntl.h>
 
 static void		fstr(char *str)
 {
@@ -20,9 +22,10 @@ static void		fstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '0')
+		if (str[i] == '_' || str[i] == '\\' || str[i] == '|' || str[i] == '~' 
+		|| str[i] == '/')
 			ft_putstr(_R);
-		if (str[i] == 'Z')
+		if (str[i] == ':')
 			ft_putstr(_G);
 		write(1, &str[i], 1);
 		i++;
@@ -37,7 +40,7 @@ int				main(void)
 	char	**tab;
 	char	buf[5000];
 
-	fd = open("Mke_src/leloup", O_RDONLY);
+	fd = open("make_srcs/dessin", O_RDONLY);
 	ret = read(fd, buf, 5000);
 	buf[ret] = 0;
 	tab = ft_strsplit(buf, '\n');
