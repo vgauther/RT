@@ -6,30 +6,42 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/26 13:57:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:12:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-const int WIDTH = 800, HEIGHT = 600;
+#define WINDOW_WIDTH 600
 
-int main(void)
-{
-	int running = 1;
+int main(void) {
 	SDL_Event event;
+	SDL_Renderer *renderer;
+	SDL_Window *window;
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window *window = SDL_CreateWindow("Hello SDL World", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
-	if (NULL == window)
-		exit (1);
-	while (running)
-		while(SDL_PollEvent(&event))
-			if((SDL_QUIT == event.type) || (SDL_KEYDOWN == event.type && SDL_SCANCODE_ESCAPE == event.key.keysym.scancode))
-				running = 0;
-
+	SDL_Init(SDL_INIT_VIDEO);
+	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0, &window, &renderer);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_RenderDrawPoint(renderer, 100, 200);
+	SDL_RenderDrawPoint(renderer, 100, 201);
+	SDL_RenderDrawPoint(renderer, 100, 202);
+	SDL_RenderDrawPoint(renderer, 100, 203);
+	SDL_RenderDrawPoint(renderer, 98, 204);
+	SDL_RenderDrawPoint(renderer, 98, 199);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+	SDL_RenderDrawPoint(renderer, 100, 199);
+	SDL_RenderDrawPoint(renderer, 100, 205);
+	SDL_RenderDrawPoint(renderer, 100, 206);
+	SDL_RenderPresent(renderer);
+	while (1)
+	{
+		if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+			break;
+	}
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-	return (0);
+	return EXIT_SUCCESS;
 }
-
