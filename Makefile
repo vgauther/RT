@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/02/19 01:07:33 by vgauther         ###   ########.fr        #
+#    Updated: 2018/02/26 13:50:29 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = rt
 
 CC = gcc
 CC_FLAGS = -Wall -Werror -Wextra
+SDL_FLG = -I ./SDL2.framework/Headers -F . -framework SDL2
 
 SRC_PATH = ./srcs/
 INC_PATH = ./includes/
@@ -40,7 +41,7 @@ $(NAME): $(OBJ)
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
 	@rm a.out
-	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft -lm -L $(MLX_PATH) -lmlx -lm -framework OpenGL -framework AppKit -lpthread
+	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) $(SDL_FLG)
 	@echo "[✓] EXECUTABLE RT DONE"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c

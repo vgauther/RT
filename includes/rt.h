@@ -6,8 +6,9 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/19 01:10:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/02/26 13:46:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "../SDL2.framework/Headers/SDL.h"
+#include <stdlib.h>
