@@ -95,6 +95,15 @@ typedef struct		s_obj
 	t_spot			spot;
 }					t_obj;
 
+typedef struct		s_sdl
+{
+	SDL_Window 		*window;
+	SDL_Renderer 	*renderer;
+	SDL_Texture 	*texture;
+	SDL_Surface 	*surface;
+	SDL_Event 		event;
+}					t_sdl;
+
 void	ft_error(char *msg, const char *error);
 
 #endif
