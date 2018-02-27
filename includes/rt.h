@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 12:45:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/02/27 18:26:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "../SDL2.framework/Headers/SDL.h"
 #include <stdlib.h>
 #include "../libft/includes/libft.h"
+#include <fcntl.h>
 
 # define SIZE_X 800;
 # define SIZE_Y 800;
