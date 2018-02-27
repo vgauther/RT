@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/26 18:27:17 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:46:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int main(void)
 	int running = 1;
 	int a;
 	int b;
+<<<<<<< HEAD
 	int	x;
 	int	y;
+=======
+	int x;
+	int y;
+>>>>>>> 3c2919bc3e04e385ad4e572c2fd792165d98d4eb
 	SDL_Event event;
 	Uint32 pixels[800 * 600];
 	SDL_Window *window;
@@ -37,7 +42,13 @@ int main(void)
 	if ((surface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0)) == NULL)
 	    ft_error("Surface error : ", SDL_GetError());
 	surface->pixels = pixels;
+<<<<<<< HEAD
 	ft_memset(pixels, 0, 800 * 600 * sizeof(Uint32));
+=======
+	memset(pixels, 0, 800 * 600 * sizeof(Uint32));
+	if (NULL == window)
+		exit(1);
+>>>>>>> 3c2919bc3e04e385ad4e572c2fd792165d98d4eb
 	a = clock();
 	x = 400;
 	while (x < 600)
@@ -50,8 +61,12 @@ int main(void)
 		}
 		x++;
 	}
+<<<<<<< HEAD
 	if ((texture = SDL_CreateTextureFromSurface(renderer, surface)) == NULL)
 		ft_error("Texture error : ", SDL_GetError());
+=======
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+>>>>>>> 3c2919bc3e04e385ad4e572c2fd792165d98d4eb
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
