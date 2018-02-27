@@ -22,8 +22,6 @@ int main(void)
 	int b;
 	int	x;
 	int	y;
-	int x;
-	int y;
 	SDL_Event event;
 	Uint32 pixels[800 * 600];
 	SDL_Window *window;
@@ -57,16 +55,17 @@ int main(void)
 	}
 	if ((texture = SDL_CreateTextureFromSurface(renderer, surface)) == NULL)
 		ft_error("Texture error : ", SDL_GetError());
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	if (SDL_RenderClear(renderer) < 0)
+		ft_error("Error clearing renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(renderer, texture, NULL, NULL) < 0)
+		ft_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(renderer);
 	b = clock();
 	printf("%d\n", b - a);
 	while (running)
 	{
 		while (SDL_PollEvent(&event))
-			if ((SDL_QUIT == event.type) || (SDL_KEYDOWN == event.type && SDL_SCANCODE_ESCAPE == event.key.keysym.scancode))
+			if ((SDL_QUIT == event.type) || (SDL_SCANCODE_ESCAPE == event.key.keysym.scancode))
 				running = 0;
 	}
 
