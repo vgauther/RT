@@ -1,15 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt.h                                               :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 12:09:43 by vgauther         ###   ########.fr       */
+/*   Created: 2018/02/27 12:05:53 by vgauther          #+#    #+#             */
+/*   Updated: 2018/02/27 12:12:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../SDL2.framework/Headers/SDL.h"
-#include <stdlib.h>
-#include "../libft/includes/libft.h"
+#include "../includes/rt.h"
+
+void	usage(void)
+{
+	ft_putstr("\nUSAGE : ./rt <scene>\n\n");
+	exit (0);
+}
