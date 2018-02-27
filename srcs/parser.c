@@ -6,8 +6,16 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 12:33:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/02/27 18:25:53 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+void parser(char *name)
+{
+	int fd;
+
+	if((fd = open(name, O_RDONLY)) == 0)
+		return (0);
+}
