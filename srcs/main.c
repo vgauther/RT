@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 12:09:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/02/27 19:48:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 #define WINDOW_WIDTH 600
 
-int main(void) {
+int main(int ac, char **av)
+{
 	SDL_Event event;
 	SDL_Renderer *renderer;
 	SDL_Window *window;
 
+	if (ac != 2)
+		exit(0);
+	parser(av[1]);
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0, &window, &renderer);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
