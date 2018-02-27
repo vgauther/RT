@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/26 18:27:17 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:46:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(void)
 	int running = 1;
 	int a;
 	int b;
+	int x;
+	int y;
 	SDL_Event event;
 	Uint32 pixels[800 * 600];
 	SDL_Window *window;
@@ -32,11 +34,22 @@ int main(void)
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	surface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0);
 	surface->pixels = pixels;
-	memset(pixels, 255, 800 * 600 * sizeof(Uint32));
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
+	memset(pixels, 0, 800 * 600 * sizeof(Uint32));
 	if (NULL == window)
 		exit(1);
 	a = clock();
+	x = 400;
+	while (x < 600)
+	{
+		y = 300;
+		while (y < 500)
+		{
+			pixels[(y * 800 + x)] = 0x0000ff;
+			y++;
+		}
+		x++;
+	}
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
