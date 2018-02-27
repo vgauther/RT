@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+#include "../libft/includes/libft.h"
 #include <stdint.h>
 #include <time.h>
 
@@ -19,6 +20,8 @@ int main(void)
 	int running = 1;
 	int a;
 	int b;
+	int	x;
+	int	y;
 	SDL_Event event;
 	Uint32 pixels[800 * 600];
 	SDL_Window *window;
@@ -29,14 +32,26 @@ int main(void)
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("Hello SDL World", 0, 0, 800, 600
 	, SDL_WINDOW_ALLOW_HIGHDPI);
-	renderer = SDL_CreateRenderer(window, -1, 0);
-	surface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0);
+	if ((renderer = SDL_CreateRenderer(window, -1, 0)) == NULL)
+		ft_error("Renderer error : ", SDL_GetError());
+	if ((surface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0)) == NULL)
+	    ft_error("Surface error : ", SDL_GetError());
 	surface->pixels = pixels;
-	memset(pixels, 255, 800 * 600 * sizeof(Uint32));
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-	if (NULL == window)
-		exit(1);
+	ft_memset(pixels, 0, 800 * 600 * sizeof(Uint32));
 	a = clock();
+	x = 400;
+	while (x < 600)
+	{
+		y = 300;
+		while (y < 500)
+		{
+			pixels[(y * 800 + x)] = 0x0000ff;
+			y++;
+		}
+		x++;
+	}
+	if ((texture = SDL_CreateTextureFromSurface(renderer, surface)) == NULL)
+		ft_error("Texture error : ", SDL_GetError());
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);

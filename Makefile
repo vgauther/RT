@@ -32,7 +32,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC_NAME = rt.h
 
-SRC_NAME = main.c 
+SRC_NAME = test2.c error.c
 
 all: $(NAME)
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJ)
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
 	@rm a.out
-	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) $(SDL_FLG)
+	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft $(SDL_FLG)
 	@echo "[✓] EXECUTABLE RT DONE"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c

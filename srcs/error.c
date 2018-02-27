@@ -17,3 +17,11 @@ void	usage(void)
 	ft_putstr("\nUSAGE : ./rt <scene>\n\n");
 	exit (0);
 }
+
+void	ft_error(char *msg, const char *error)
+{
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(error, 2);
+	ft_putchar('\n');
+	exit(1);
+}

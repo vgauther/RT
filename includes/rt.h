@@ -95,4 +95,6 @@ typedef struct		s_obj
 	t_spot			spot;
 }					t_obj;
 
+void	ft_error(char *msg, const char *error);
+
 #endif
