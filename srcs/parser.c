@@ -265,7 +265,7 @@ void	pars_cylindre(t_obj *obj, char *str)
 
 	i = 0;
 	str = ft_cap(str);
-	if(check_pipe(7, str) != 0 || only_number(str) != 0)
+	if(check_pipe(11, str) != 0 || only_number(str) != 0)
 		exit(0);
 	tmp = ft_strsplit(str, '|');
 	obj->nb.cylindre++;
@@ -324,7 +324,7 @@ void	pars_plan(t_obj *obj, char *str)
 
 	i = 0;
 	str = ft_cap(str);
-	if(check_pipe(7, str) != 0 || only_number(str) != 0)
+	if(check_pipe(11, str) != 0 || only_number(str) != 0)
 		exit(0);
 	tmp = ft_strsplit(str, '|');
 	obj->nb.plan++;
@@ -383,7 +383,7 @@ void	pars_spot(t_obj *obj, char *str)
 
 	i = 0;
 	str = ft_cap(str);
-	if(check_pipe(7, str) != 0 || only_number(str) != 0)
+	if(check_pipe(8, str) != 0 || only_number(str) != 0)
 		exit(0);
 	tmp = ft_strsplit(str, '|');
 	obj->nb.spot++;
