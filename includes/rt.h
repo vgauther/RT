@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/28 20:44:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/01 16:51:33 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "../libft/includes/libft.h"
 #include <fcntl.h>
 
-# define SIZE_X 800;
-# define SIZE_Y 800;
+# define SIZE_X 800
+# define SIZE_Y 800
 
 typedef struct	s_rot
 {

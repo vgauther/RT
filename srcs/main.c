@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/28 20:46:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/01 15:33:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int main(int ac, char **av)
 		exit(0);
 	obj = parser(av[1]);
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0, &window, &renderer);
+	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0,
+		&window, &renderer);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -43,7 +44,7 @@ int main(int ac, char **av)
 	while (1)
 	{
 		if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
-			break;
+			break ;
 	}
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
