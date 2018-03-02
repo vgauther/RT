@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 06:30:42 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/03/02 13:43:34 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,27 +103,30 @@ typedef struct		s_nbr
 
 typedef struct		s_obj
 {
-	t_nbr					nb;
-	t_sphere			*sphere;
+	t_nbr			nb;
+	t_sphere		*sphere;
 	t_cylindre		*cylindre;
-	t_cone				*cone;
-	t_plan				*plan;
+	t_cone			*cone;
+	t_plan			*plan;
 	t_pyramide		*pyramide;
-	t_spot				*spot;
+	t_spot			*spot;
 }					t_obj;
 
 typedef struct		s_sdl
 {
-	SDL_Window 		*window;
-	SDL_Renderer 	*renderer;
-	SDL_Texture 	*texture;
-	SDL_Surface 	*surface;
-	SDL_Event 		event;
+	Uint32			pixels[SIZE_Y * SIZE_X];
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*texture;
+	SDL_Surface		*surface;
+	SDL_Event		event;
 }					t_sdl;
 
 void				ft_error(char *msg, const char *error);
 void				usage(void);
 void				parser_error(int err);
 t_obj				parser(char *name);
+void				raytracing(t_obj obj, t_sdl s);
+void				display(t_sdl *s);
 
 #endif

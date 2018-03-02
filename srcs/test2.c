@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 14:46:32 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/02 13:40:43 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,22 @@ void	draw(Uint32 *pixels)
 
 int		main(void)
 {
-	int running = 1;
-	int a;
-	int b;
+	int running;
 	t_sdl s;
 	Uint32 pixels[800 * 600];
 
+	running = 1;
 	ft_init(&s);
+	free(s.surface->pixels);
 	s.surface->pixels = pixels;
 	ft_memset(pixels, 0, 800 * 600 * sizeof(Uint32));
-	memset(pixels, 0, 800 * 600 * sizeof(Uint32));
-	a = clock();
 	draw(s.surface->pixels);
 	display(&s);
-	b = clock();
-	printf("%d\n", b - a);
 	while (running)
 	{
 		while (SDL_PollEvent(&s.event))
-			if ((SDL_QUIT == s.event.type) || (SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
+			if ((SDL_QUIT == s.event.type) ||
+			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				running = 0;
 	}
 	SDL_DestroyWindow(s.window);
