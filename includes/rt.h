@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/01 16:51:33 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/02 06:30:42 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct		s_sdl
 }					t_sdl;
 
 void				ft_error(char *msg, const char *error);
+void				usage(void);
 void				parser_error(int err);
 t_obj				parser(char *name);
 

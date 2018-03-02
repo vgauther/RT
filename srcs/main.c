@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/01 15:33:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/02 06:28:38 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@
 
 int main(int ac, char **av)
 {
-	SDL_Event event;
-	SDL_Renderer *renderer;
-	SDL_Window *window;
-	t_obj		obj;
+	SDL_Event		event;
+	SDL_Renderer	*renderer;
+	SDL_Window		*window;
+	t_obj			obj;
 
 	if (ac != 2)
-		exit(0);
+		usage();
 	obj = parser(av[1]);
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0,
 		&window, &renderer);
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	SDL_RenderClear(renderer);
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_RenderDrawPoint(renderer, 100, 200);
 	SDL_RenderDrawPoint(renderer, 100, 201);
