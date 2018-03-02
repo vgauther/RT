@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 14:19:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/02 14:35:37 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,13 @@ int		main(int ac, char **av)
 {
 	int running;
 	t_sdl s;
-//	Uint32 pixels[800 * 600];
 	t_obj obj;
 
 	if (ac != 2)
 		usage();
 	running = 1;
 	ft_init(&s);
-	//free(s.surface->pixels);
+	free(s.surface->pixels);
 	s.surface->pixels = s.pixels;
 	ft_memset(s.pixels, 255, 800 * 600 * sizeof(Uint32));
 	//draw(s.surface->pixels);
