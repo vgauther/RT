@@ -6,13 +6,11 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 06:28:38 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/03/03 15:26:33 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-#define WINDOW_WIDTH 600
 
 int main(int ac, char **av)
 {
@@ -25,7 +23,7 @@ int main(int ac, char **av)
 		usage();
 	obj = parser(av[1]);
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_WIDTH, 0,
+	SDL_CreateWindowAndRenderer(SIZE_X, SIZE_Y, 0,
 		&window, &renderer);
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_RenderDrawPoint(renderer, 100, 200);

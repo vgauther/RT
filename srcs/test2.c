@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 14:35:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/03 15:28:38 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		main(int ac, char **av)
 	ft_init(&s);
 	free(s.surface->pixels);
 	s.surface->pixels = s.pixels;
-	ft_memset(s.pixels, 255, 800 * 600 * sizeof(Uint32));
+	ft_memset(s.pixels, 255, SIZE_X * SIZE_Y * sizeof(Uint32));
 	//draw(s.surface->pixels);
 	//display(&s);
 	obj = parser(av[1]);

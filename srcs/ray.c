@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 18:11:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/03 15:30:00 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	ft_put_pixel(t_sdl *sdl, int x, int y, int color)
 
 void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j)
 {
-	int a;
-	int b;
-	int c;
-	int xr;
-	int yr;
-	int zr;
+	double a;
+	double b;
+	double c;
+	double xr;
+	double yr;
+	double zr;
 	//double t1;
 	//double t2;
-	int delta;
-	int vx;
-	int vy;
-	int vz;
+	double delta;
+	double vx;
+	double vy;
+	double vz;
 
 	xr = 0;
 	yr = 0;
-	zr = 42;
+	zr = 0;
 	printf("%d|%d|%d|%d\n", obj.sphere[0].pos.x,obj.sphere[0].pos.y,obj.sphere[0].pos.z, obj.sphere[0].rayon);
 	vx = (i - SIZE_X / 2);
 	vy = (j - SIZE_Y / 2);
