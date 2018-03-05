@@ -6,21 +6,31 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 14:50:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:44:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-#include "../SDL2.framework/Headers/SDL.h"
-#include <stdlib.h>
-#include "../libft/includes/libft.h"
-#include <fcntl.h>
+# include "../SDL2.framework/Headers/SDL.h"
+# include <stdlib.h>
+# include "../libft/includes/libft.h"
+# include <fcntl.h>
 
 # define SIZE_X 800
 # define SIZE_Y 800
-# define RAD	(M_PI / 180.00)
+# define RAD (M_PI / 180.00)
+
+typedef struct	s_polynome
+{
+	double a;
+	double b;
+	double c;
+	double delta;
+	double x1;
+	double x2;
+}				t_polynome;
 
 typedef struct	s_rot
 {
@@ -41,6 +51,7 @@ typedef struct		s_sphere
 	int				rayon;
 	int				color;
 	int				mat;
+	int				rayon_pow;
 	t_pos			pos;
 }					t_sphere;
 

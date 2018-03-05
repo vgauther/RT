@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/28 20:48:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:46:59 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ void	pars_sphere(t_obj *obj, char *str)
 		obj->sphere[0].color = ft_atoi_color(only_color(tmp[3]));
 		obj->sphere[0].rayon = ft_atoi(tmp[4]);
 		obj->sphere[0].mat = ft_atoi(tmp[5]);
+		obj->sphere[0].rayon_pow = obj->sphere[0].rayon * obj->sphere[0].rayon;
 
 	}
 	else
@@ -183,6 +184,7 @@ void	pars_sphere(t_obj *obj, char *str)
 			tmp_sphere[i].color = obj->sphere[i].color;
 			tmp_sphere[i].mat = obj->sphere[i].mat;
 			tmp_sphere[i].pos = obj->sphere[i].pos;
+			tmp_sphere[i].rayon_pow = obj->sphere[0].rayon_pow;
 			i++;
 		}
 		tmp_sphere[i].pos.x = ft_atoi(tmp[0]);
@@ -190,6 +192,7 @@ void	pars_sphere(t_obj *obj, char *str)
 		tmp_sphere[i].pos.z = ft_atoi(tmp[2]);
 		tmp_sphere[i].color = ft_atoi_color(only_color(tmp[3]));
 		tmp_sphere[i].rayon = ft_atoi(tmp[4]);
+		tmp_sphere[i].rayon_pow = tmp_sphere[i].rayon_pow * tmp_sphere[i].rayon_pow;
 		tmp_sphere[i].mat = ft_atoi(tmp[5]);
 		free(obj->sphere);
 		obj->sphere = tmp_sphere;
