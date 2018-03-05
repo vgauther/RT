@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 14:59:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 17:57:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,40 +41,21 @@ void	display(t_sdl *s)
 	SDL_RenderPresent(s->renderer);
 }
 
-void	draw(Uint32 *pixels)
-{
-	int x;
-	int y;
-
-	x = 400;
-	while (x < 600)
-	{
-		y = 300;
-		while (y < 500)
-		{
-			pixels[(y * 800 + x)] = 0x0000ff;
-			y++;
-		}
-		x++;
-	}
-}
-
 void	mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
 {
-	printf("key :%ld\n", key);
+	//printf("key :%ld\n", key);
 	if (key == 79)
-		c->xr++;
-	if (key == 80)
 		c->xr--;
+	if (key == 80)
+		c->xr++;
 	if (key == 81)
-		c->yr++;
-	if (key == 82)
 		c->yr--;
+	if (key == 82)
+		c->yr++;
 	if (key == 87)
 		c->zr++;
 	if (key == 86)
 		c->zr--;
-	//printf("%f | %f | %f\n", c->xr, c->yr, c->zr);
 	raytracing(o, sdl, *c);
 }
 
@@ -101,10 +82,11 @@ int		main(int ac, char **av)
 	{
 		while (SDL_PollEvent(&s.event))
 		{
-			mouv(s.event.key.keysym.scancode, &c, obj, s);
 			if ((SDL_QUIT == s.event.type) ||
 			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				running = 0;
+			else if ((SDL_KEYDOWN == s.event.type))
+				mouv(s.event.key.keysym.scancode, &c, obj, s);
 		}
 	}
 	SDL_DestroyWindow(s.window);
