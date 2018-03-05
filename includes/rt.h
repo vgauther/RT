@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 11:52:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:50:07 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define SIZE_X 800
 # define SIZE_Y 800
+# define RAD	(M_PI / 180.00)
 
 typedef struct	s_rot
 {

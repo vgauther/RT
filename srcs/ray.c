@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 12:00:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 15:05:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,19 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca)
 	double vy;
 	double vz;
 
-	xr = (double)ca.xr;
-	yr = (double)ca.yr;
-	zr = (double)ca.zr;
+	xr = ca.xr;
+	yr = ca.yr;
+	zr = ca.zr;
 	//printf("%d|%d|%d|%d\n", obj.sphere[0].pos.x,obj.sphere[0].pos.y,obj.sphere[0].pos.z, obj.sphere[0].rayon);
 	vx = (i - SIZE_X / 2);
 	vy = (j - SIZE_Y / 2);
-	vz = (SIZE_X / 2) / tan(30);
+	vz = (SIZE_X / 2) / tan(30 * RAD);
 	a = (vx * vx) + (vy * vy) + (vz * vz);
 	b = 2 * (vx * (xr - obj.sphere[0].pos.x) + vy *
 	(yr - obj.sphere[0].pos.y) + vz * (zr - obj.sphere[0].pos.z));
 	c = ((((xr - obj.sphere[0].pos.x) * (xr - obj.sphere[0].pos.x)) +
 	((yr - obj.sphere[0].pos.y) * (yr - obj.sphere[0].pos.y)) +
-	((zr - obj.sphere[0].pos.z) *
-	(zr - obj.sphere[0].pos.z))) -
+	((zr - obj.sphere[0].pos.z) * (zr - obj.sphere[0].pos.z))) -
 	(obj.sphere[0].rayon * obj.sphere[0].rayon));
 	delta = (b * b) - 4 * a * c;
 	if (delta >= 0)
@@ -65,7 +64,6 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 	int y;
 
 	x = 0;
-	(void)obj;
 	while (x != SIZE_X)
 	{
 		y = 0;
@@ -76,6 +74,7 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 		}
 		x++;
 	}
+	ft_put_pixel(&s, SIZE_X / 2, SIZE_Y / 2, 0x00FF00);
 	s.surface->pixels = s.pixels;
 	display(&s);
 }

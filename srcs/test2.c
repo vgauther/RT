@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 12:25:47 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:59:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@
 void	ft_init(t_sdl *s)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	s->window = SDL_CreateWindow("Hello SDL World", 0, 0, 800, 600,
+	s->window = SDL_CreateWindow("RT : Ray Tracer", 0, 0, SIZE_X, SIZE_Y,
 		SDL_WINDOW_ALLOW_HIGHDPI);
 	if (s->window == NULL)
 		exit(1);
 	if ((s->renderer = SDL_CreateRenderer(s->window, -1, 0)) == NULL)
 		ft_error("Renderer error : ", SDL_GetError());
-	if ((s->surface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0))
-		== NULL)
-	    ft_error("Surface error : ", SDL_GetError());
+	if ((s->surface = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
+	== NULL)
+		ft_error("Surface error : ", SDL_GetError());
 }
 
 void	display(t_sdl *s)
 {
-	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface)) == NULL)
+	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface))
+	== NULL)
 		ft_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
 		ft_error("Error clearing renderer : ", SDL_GetError());
@@ -58,9 +59,9 @@ void	draw(Uint32 *pixels)
 	}
 }
 
-void mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
+void	mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
 {
-	printf("coucou :%ld\n", key);
+	printf("key :%ld\n", key);
 	if (key == 79)
 		c->xr++;
 	if (key == 80)
@@ -73,7 +74,7 @@ void mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
 		c->zr++;
 	if (key == 86)
 		c->zr--;
-	printf("%f | %f | %f\n", c->xr, c->yr, c->zr);
+	//printf("%f | %f | %f\n", c->xr, c->yr, c->zr);
 	raytracing(o, sdl, *c);
 }
 
@@ -94,19 +95,15 @@ int		main(int ac, char **av)
 	free(s.surface->pixels);
 	s.surface->pixels = s.pixels;
 	ft_memset(s.pixels, 255, SIZE_X * SIZE_Y * sizeof(Uint32));
-	//draw(s.surface->pixels);
-	//display(&s);
 	obj = parser(av[1]);
 	raytracing(obj, s, c);
 	while (running)
 	{
 		while (SDL_PollEvent(&s.event))
 		{
-			printf("%s\n", "dedans");
-			if(s.event.key.keysym.scancode == SDLK_MINUS)
-				(void)s;
 			mouv(s.event.key.keysym.scancode, &c, obj, s);
-			if ((SDL_QUIT == s.event.type) || (SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
+			if ((SDL_QUIT == s.event.type) ||
+			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				running = 0;
 		}
 	}
