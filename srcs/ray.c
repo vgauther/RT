@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 18:18:29 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 18:19:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 			}
 			x++;
 		}
-		//printf("%d\n", x);
 		nb++;
 	}
 	ft_put_pixel(&s, SIZE_X / 2, SIZE_Y / 2, 0x00FF00);
