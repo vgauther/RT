@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/03 15:30:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:00:14 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_put_pixel(t_sdl *sdl, int x, int y, int color)
 	sdl->pixels[(y * SIZE_X + x)] = color;
 }
 
-void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j)
+void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca)
 {
 	double a;
 	double b;
@@ -32,10 +32,10 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j)
 	double vy;
 	double vz;
 
-	xr = 0;
-	yr = 0;
-	zr = 0;
-	printf("%d|%d|%d|%d\n", obj.sphere[0].pos.x,obj.sphere[0].pos.y,obj.sphere[0].pos.z, obj.sphere[0].rayon);
+	xr = (double)ca.xr;
+	yr = (double)ca.yr;
+	zr = (double)ca.zr;
+	//printf("%d|%d|%d|%d\n", obj.sphere[0].pos.x,obj.sphere[0].pos.y,obj.sphere[0].pos.z, obj.sphere[0].rayon);
 	vx = (i - SIZE_X / 2);
 	vy = (j - SIZE_Y / 2);
 	vz = (SIZE_X / 2) / tan(30);
@@ -59,7 +59,7 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j)
 	}
 }
 
-void	raytracing(t_obj obj, t_sdl s)
+void	raytracing(t_obj obj, t_sdl s, t_cam c)
 {
 	int x;
 	int y;
@@ -71,7 +71,7 @@ void	raytracing(t_obj obj, t_sdl s)
 		y = 0;
 		while (y != SIZE_Y)
 		{
-			one_pixel(obj, &s, x, y);
+			one_pixel(obj, &s, x, y, c);
 			y++;
 		}
 		x++;

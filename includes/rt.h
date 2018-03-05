@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/02 13:43:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 11:52:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,13 @@ typedef struct		s_obj
 	t_spot			*spot;
 }					t_obj;
 
+typedef struct		s_cam
+{
+	double xr;
+	double yr;
+	double zr;
+}					t_cam;
+
 typedef struct		s_sdl
 {
 	Uint32			pixels[SIZE_Y * SIZE_X];
@@ -126,7 +133,7 @@ void				ft_error(char *msg, const char *error);
 void				usage(void);
 void				parser_error(int err);
 t_obj				parser(char *name);
-void				raytracing(t_obj obj, t_sdl s);
+void				raytracing(t_obj obj, t_sdl s, t_cam c);
 void				display(t_sdl *s);
 
 #endif

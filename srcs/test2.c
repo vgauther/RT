@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/03 15:28:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:25:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,35 @@ void	draw(Uint32 *pixels)
 	}
 }
 
+void mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
+{
+	printf("coucou :%ld\n", key);
+	if (key == 79)
+		c->xr++;
+	if (key == 80)
+		c->xr--;
+	if (key == 81)
+		c->yr++;
+	if (key == 82)
+		c->yr--;
+	if (key == 87)
+		c->zr++;
+	if (key == 86)
+		c->zr--;
+	printf("%f | %f | %f\n", c->xr, c->yr, c->zr);
+	raytracing(o, sdl, *c);
+}
+
 int		main(int ac, char **av)
 {
 	int running;
 	t_sdl s;
 	t_obj obj;
+	t_cam c;
 
+	c.xr = 0;
+	c.yr = 0;
+	c.zr = 0;
 	if (ac != 2)
 		usage();
 	running = 1;
@@ -74,13 +97,18 @@ int		main(int ac, char **av)
 	//draw(s.surface->pixels);
 	//display(&s);
 	obj = parser(av[1]);
-	raytracing(obj, s);
+	raytracing(obj, s, c);
 	while (running)
 	{
 		while (SDL_PollEvent(&s.event))
-			if ((SDL_QUIT == s.event.type) ||
-			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
+		{
+			printf("%s\n", "dedans");
+			if(s.event.key.keysym.scancode == SDLK_MINUS)
+				(void)s;
+			mouv(s.event.key.keysym.scancode, &c, obj, s);
+			if ((SDL_QUIT == s.event.type) || (SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				running = 0;
+		}
 	}
 	SDL_DestroyWindow(s.window);
 	SDL_Quit();
