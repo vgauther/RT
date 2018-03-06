@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/06 14:27:25 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/06 15:05:28 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC_NAME = rt.h
 
-SRC_NAME = test2.c error.c parser.c ray.c plan.c
+SRC_NAME = test2.c error.c parser.c ray.c plan.c lux.c
 
 all: $(NAME)
 

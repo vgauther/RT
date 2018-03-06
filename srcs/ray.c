@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/06 14:27:04 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:19:54 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	ft_put_pixel(t_sdl *sdl, int x, int y, int color)
+void	ft_put_pixel(t_sdl *sdl, int x, int y, double color)
 {
 	sdl->pixels[(y * SIZE_X + x)] = color;
 }
@@ -20,12 +20,14 @@ void	ft_put_pixel(t_sdl *sdl, int x, int y, int color)
 void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 {
 	t_polynome	p;
+	t_pos		pt;
 	double		vx;
 	double		vy;
 	double		vz;
 	double		f1;
 	double		f2;
 	double		f3;
+	double		x;
 
 	f1 = ca.xr - obj.sphere[nb].pos.x;
 	f2 = ca.yr - obj.sphere[nb].pos.y;
@@ -34,7 +36,7 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 	vy = (j - SIZE_Y / 2);
 	vz = (SIZE_X / 2) / tan(30 * RAD);
 	p.a = (vx * vx) + (vy * vy) + (vz * vz);
-	p.b = 2 * (vx * (f1) + vy * (f2) + vz * (f3));
+	p.b = 2 * (vx * f1 + vy * f2 + vz * f3);
 	p.c = (((f1 * f1) + (f2 * f2) + (f3 * f3)) - obj.sphere[nb].rayon_pow);
 	p.delta = (p.b * p.b) - 4 * p.a * p.c;
 	if (p.delta >= 0)
@@ -43,11 +45,17 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 		{
 			p.x1 = (-p.b + sqrt(p.delta)) / (2 * p.a);
 			p.x2 = (-p.b - sqrt(p.delta)) / (2 * p.a);
+			x = p.x1 < p.x2 ? p.x1 : p.x2;
 		}
 		else
-			p.x1 = -p.b / (2 * p.a);
+			x = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-			ft_put_pixel(sdl, i, j, obj.sphere[nb].color);
+		{
+			pt.x = ca.xr + vx * x;
+			pt.y = ca.yr + vy * x;
+			pt.z = ca.zr + vz * x;
+			ft_put_pixel(sdl, i, j, lux(obj, obj.sphere[nb].color, pt, ca, nb));
+		}
 	}
 }
 
