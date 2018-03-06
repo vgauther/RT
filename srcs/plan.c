@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 13:21:41 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/06 14:26:54 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/06 14:29:40 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	plan(t_obj obj, t_sdl s, t_cam c)
 {
-
+	(void)obj;
+	(void)s;
+	(void)c;
 }
