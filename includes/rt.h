@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 15:44:08 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/06 13:34:04 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,6 @@ void				parser_error(int err);
 t_obj				parser(char *name);
 void				raytracing(t_obj obj, t_sdl s, t_cam c);
 void				display(t_sdl *s);
+void				plan(t_obj obj, t_sdl s, t_cam c);
 
 #endif
