@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 18:19:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/06 09:12:03 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 		}
 		else
 			p.x1 = -p.b / (2 * p.a);
-		ft_put_pixel(sdl, i, j, obj.sphere[nb].color);
+		if (!(p.x1 < 0 && p.x2 < 0))
+			ft_put_pixel(sdl, i, j, obj.sphere[nb].color);
 	}
 }
 
