@@ -6,23 +6,19 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/07 15:29:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/07 17:15:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-double		lux(t_obj obj, int color, t_pos pt, t_cam ca, int nb)
+double		lux(t_obj obj, int color, t_inter pt, int nb)
 {
 	int i;
 	double norm;
 	double norm2;
-	double f1;
-	double f2;
-	double f3;
-	double f12;
-	double f22;
-	double f32;
+	t_3dvector vnorm;
+	t_3dvector vlux;
 	int r;
 	int g;
 	int b;
@@ -32,44 +28,27 @@ double		lux(t_obj obj, int color, t_pos pt, t_cam ca, int nb)
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
 	i = 0;
-	(void)ca;
-	(void)obj;
-	(void)nb;
 	while (1 != i)
 	{
-		f1 = (obj.sphere[nb].pos.x - pt.x);
-		f2 = (obj.sphere[nb].pos.y - pt.y);
-		f3 = (obj.sphere[nb].pos.z - pt.z);
-		f12 = (100 - pt.x);
-		f22 = (100 - pt.y);
-		f32 = (50 - pt.z);
-		norm = sqrt(f1 * f1 + f2 * f2 + f3 * f3);
-		norm2 = sqrt(f12 * f12 + f22 * f22 + f32 * f32);
+		vnorm.x = (obj.sphere[nb].pos.x - pt.x);
+		vnorm.y = (obj.sphere[nb].pos.y - pt.y);
+		vnorm.z = (obj.sphere[nb].pos.z - pt.z);
+		vlux.x = (0 - pt.x);
+		vlux.y = (0 - pt.y);
+		vlux.z = (60 - pt.z);
+		norm = sqrt(vnorm.x * vnorm.x + vnorm.y * vnorm.y + vnorm.z * vnorm.z);
+		norm2 = sqrt(vlux.x * vlux.x + vlux.y * vlux.y + vlux.z * vlux.z);
 		i++;
 	}
-	//f1 = f1 - f12;
-	f1 /= norm;
-	//f2 = f2 - f22;
-	f2 /= norm;
-	//f3 = f3 - f32;
-	f3 /= norm;
-	f12 /= norm2;
-	f22 /= norm2;
-	f32 /= norm2;
-	/*f1 = f1 - f12;
-	f2 = f2 - f22;
-	f3 = f3 - f32;*/
-//	angle = acos(f1 * f1 + f2 * f2 + f3 * f3);
-	angle = acos(f1 * f12 + f2 * f22 + f3 * f32);
-	//printf("%f\n", f1 * f12 + f2 * f22 + f3 * f32);
-	//printf("%f\n", angle / RAD);
-	angle *= 0.4;
-	r *= angle;
-	g *= angle;
-	b *= angle;
-	r  = r > 255 ? 255 : r;
-	b  = b > 255 ? 255 : b;
-	g  = g > 255 ? 255 : g;
-	return ((r * 256 * 256 + g * 256 + b));
-	//return (color *angle);
+	vnorm.x /= norm;
+	vnorm.y /= norm;
+	vnorm.z /= norm;
+	vlux.x /= norm2;
+	vlux.y /= norm2;
+	vlux.z /= norm2;
+	angle = acos(vnorm.x * vlux.x + vnorm.y * vlux.y + vnorm.z * vlux.z) * 0.42;
+	r = r * angle > 255 ? 255 : r * angle;
+	g = g * angle > 255 ? 255 : g * angle;
+	b = b * angle > 255 ? 255 : b * angle;
+	return (r * 256 * 256 + g * 256 + b);
 }

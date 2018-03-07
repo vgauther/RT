@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/06 18:14:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/07 17:03:16 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ typedef struct	s_polynome
 	double x1;
 	double x2;
 }				t_polynome;
+
+typedef struct	s_3dvector
+{
+	double		x;
+	double		y;
+	double		z;
+}				t_3dvector;
+
+typedef struct	s_inter
+{
+	int			x;
+	int			y;
+	int			z;
+	double		dist;
+	int			nb;
+}				t_inter;
 
 typedef struct	s_rot
 {
@@ -148,6 +164,6 @@ t_obj				parser(char *name);
 void				raytracing(t_obj obj, t_sdl s, t_cam c);
 void				display(t_sdl *s);
 void				plan(t_obj obj, t_sdl s, t_cam c);
-double				lux(t_obj obj, int color, t_pos pt, t_cam ca, int nb);
+double				lux(t_obj obj, int color, t_inter pt, int nb);
 
 #endif

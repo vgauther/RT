@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/07 12:39:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/07 17:00:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ void	ft_put_pixel(t_sdl *sdl, int x, int y, double color)
 	sdl->pixels[(y * SIZE_X + x)] = color;
 }
 
-void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
+t_inter		one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 {
 	t_polynome	p;
-	t_pos		pt;
+	t_inter		t;
 	double		vx;
 	double		vy;
 	double		vz;
 	double		f1;
 	double		f2;
 	double		f3;
-	double		x;
 
+	(void)sdl;
 	f1 = ca.xr - obj.sphere[nb].pos.x;
 	f2 = ca.yr - obj.sphere[nb].pos.y;
 	f3 = ca.zr - obj.sphere[nb].pos.z;
@@ -45,18 +45,20 @@ void	one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 		{
 			p.x1 = (-p.b + sqrt(p.delta)) / (2 * p.a);
 			p.x2 = (-p.b - sqrt(p.delta)) / (2 * p.a);
-			x = p.x1 < p.x2 ? p.x1 : p.x2;
+			t.dist = p.x1 < p.x2 ? p.x1 : p.x2;
 		}
 		else
-			x = -p.b / (2 * p.a);
+			t.dist = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
 		{
-			pt.x = ca.xr + vx * x;
-			pt.y = ca.yr + vy * x;
-			pt.z = ca.zr + vz * x;
-			ft_put_pixel(sdl, i, j, lux(obj, obj.sphere[nb].color, pt, ca, nb));
+			t.x = ca.xr + vx * t.dist;
+			t.y = ca.yr + vy * t.dist;
+			t.z = ca.zr + vz * t.dist;
 		}
 	}
+	else
+		t.dist = -1;
+	return (t);
 }
 
 void	raytracing(t_obj obj, t_sdl s, t_cam c)
@@ -64,24 +66,49 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 	int x;
 	int y;
 	int nb;
+	int token;
+	t_inter pt;
+	t_inter tmp;
 
-	nb = 0;
-	while (nb != obj.nb.sphere)
+	token = 42;
+	x = 0;
+	while (x != SIZE_X)
 	{
-		x = 0;
-		while (x != SIZE_X)
+		y = 0;
+		while (y != SIZE_Y)
 		{
-			y = 0;
-			while (y != SIZE_Y)
+			nb = 0;
+			token = 42;
+			while (nb != obj.nb.sphere)
 			{
-				one_pixel(obj, &s, x, y, c, nb);
-				y++;
+				tmp = one_pixel(obj, &s, x, y, c, nb);
+				if ((tmp.dist < pt.dist || pt.dist < 0) && tmp.dist >= 0)
+				{
+					pt.dist = tmp.dist;
+					pt.x = tmp.x;
+					pt.y = tmp.y;
+					pt.z = tmp.z;
+					pt.nb = nb;
+					token = 0;
+				}
+				else if (token == 42)
+				{
+					pt.dist = tmp.dist;
+					pt.nb = nb;
+					pt.x = tmp.x;
+					pt.y = tmp.y;
+					pt.z = tmp.z;
+					token = 0;
+				}
+				nb++;
 			}
-			x++;
+			if (pt.dist >= 0)
+				ft_put_pixel(&s, x, y, lux(obj, obj.sphere[pt.nb].color, pt, pt.nb));
+			y++;
 		}
-		nb++;
+		x++;
 	}
-	ft_put_pixel(&s, SIZE_X / 2, SIZE_Y / 2, 0x00FF00);
+	ft_put_pixel(&s, (int)SIZE_X / 2, (int)SIZE_Y / 2, 0x00FF00);
 	s.surface->pixels = s.pixels;
 	display(&s);
 }
