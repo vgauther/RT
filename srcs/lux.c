@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/07 17:15:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:40:20 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double		lux(t_obj obj, int color, t_inter pt, int nb)
 		vnorm.z = (obj.sphere[nb].pos.z - pt.z);
 		vlux.x = (0 - pt.x);
 		vlux.y = (0 - pt.y);
-		vlux.z = (60 - pt.z);
+		vlux.z = (150 - pt.z);
 		norm = sqrt(vnorm.x * vnorm.x + vnorm.y * vnorm.y + vnorm.z * vnorm.z);
 		norm2 = sqrt(vlux.x * vlux.x + vlux.y * vlux.y + vlux.z * vlux.z);
 		i++;

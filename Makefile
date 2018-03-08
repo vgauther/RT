@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/06 15:05:28 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/08 14:49:34 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,16 @@ NAME = rt
 
 CC = gcc
 CC_FLAGS = -Wall -Werror -Wextra
-SDL_FLG = -I ./SDL2.framework/Headers -F . -framework SDL2
 
+SDL_PATH = $(shell pwd)/lib/SDL
 SRC_PATH = ./srcs/
 INC_PATH = ./includes/
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 MLX_PATH = ./minilibx_macos/
+SDLHEADER_PATH = ./lib/SDL2.framework/Headers
 
+SDL_FLG = -I $(SDLHEADER_PATH) -L $(SDL_PATH)/lib -lSDL2
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
@@ -37,6 +39,7 @@ SRC_NAME = test2.c error.c parser.c ray.c plan.c lux.c
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	#@make sdl
 	@make -C $(LFT_PATH)
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
@@ -53,6 +56,7 @@ clean:
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
+	@rm -rf $(SDL_PATH)
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
 clean_o:
@@ -62,3 +66,8 @@ clean_o:
 re:
 	@make fclean
 	@make all
+
+sdl:
+	mkdir $(SDL_PATH); \
+	cd $(SDL_PATH); \
+	$(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
