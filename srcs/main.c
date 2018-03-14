@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/14 13:45:12 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:27:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,20 @@ void	ft_init(t_sdl *s)
 		exit(1);
 	if ((s->renderer = SDL_CreateRenderer(s->window, -1, 0)) == NULL)
 		ft_error("Renderer error : ", SDL_GetError());
-	if ((s->surface = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
+	if ((s->surface = SDL_CreateRGBSurface(0, VIEW_X, VIEW_Y, 32, 0, 0, 0, 0))
 	== NULL)
 		ft_error("Surface error : ", SDL_GetError());
 }
 
 void	display(t_sdl *s)
 {
+	SDL_Rect dstrect = { 5, 5, VIEW_X, VIEW_Y };
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface))
 	== NULL)
 		ft_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
 		ft_error("Error clearing renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texture, NULL, NULL) < 0)
+	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &dstrect) < 0)
 		ft_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/14 13:47:04 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:26:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_put_pixel(t_sdl *sdl, int x, int y, double color)
 {
-	sdl->pixels[(y * SIZE_X + x)] = color;
+	sdl->pixels[(y * VIEW_X + x)] = color;
 }
 
 t_inter		one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
@@ -32,9 +32,9 @@ t_inter		one_pixel(t_obj obj, t_sdl *sdl, int i, int j, t_cam ca, int nb)
 	f1 = ca.xr - obj.sphere[nb].pos.x;
 	f2 = ca.yr - obj.sphere[nb].pos.y;
 	f3 = ca.zr - obj.sphere[nb].pos.z;
-	vx = (i - SIZE_X / 2);
-	vy = (j - SIZE_Y / 2);
-	vz = (SIZE_X / 2) / tan(30 * RAD);
+	vx = (i - VIEW_X / 2);
+	vy = (j - VIEW_Y / 2);
+	vz = (VIEW_X / 2) / tan(30 * RAD);
 	p.a = (vx * vx) + (vy * vy) + (vz * vz);
 	p.b = 2 * (vx * f1 + vy * f2 + vz * f3);
 	p.c = (((f1 * f1) + (f2 * f2) + (f3 * f3)) - obj.sphere[nb].rayon_pow);
@@ -73,10 +73,10 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 	token = 42;
 	x = 0;
 	ft_memset(s.pixels, 255, SIZE_X * SIZE_Y * sizeof(Uint32));
-	while (x < SIZE_X)
+	while (x < VIEW_X)
 	{
 		y = 0;
-		while (y < SIZE_Y)
+		while (y < VIEW_Y)
 		{
 			nb = 0;
 			token = 42;
@@ -109,7 +109,7 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 		}
 		x++;
 	}
-	ft_put_pixel(&s, SIZE_X / 2, SIZE_Y / 2, 0x00FF00);
+	ft_put_pixel(&s, VIEW_X / 2, VIEW_Y / 2, 0x00FF00);
 	s.surface->pixels = s.pixels;
 	display(&s);
 }

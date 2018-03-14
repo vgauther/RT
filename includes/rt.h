@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/14 13:47:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/14 14:25:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 
-# define SIZE_X 800
-# define SIZE_Y 1200
+# define SIZE_X 1200
+# define SIZE_Y 800
+# define VIEW_X 500
+# define VIEW_Y 340
 # define RAD (M_PI / 180.00)
 
 typedef struct	s_polynome
