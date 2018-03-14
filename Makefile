@@ -6,11 +6,18 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 14:40:51 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 14:49:24 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, $(NAME), clean, fclean, re
+
+#color
+CL=\x1b[35m
+GREEN=\033[1;32m
+RED=\033[1;31m
+CL2=\x1b[36m
+NC=\033[0m
 
 NAME = rt
 
@@ -78,10 +85,13 @@ sdl_2:
 sdl:
 	@make -j8 sdl_2
 
+coffee:
+	@echo "warning it's hot"
+
 push:
 	@make fclean
 	@make clsdl
 	@git add *
 	@git commit -m "GIT ADD * via Makefile"
 	@git push
-	@echo "[✓] PUSH DONE"
+	@echo $(GREEN)"[✓] PUSH DONE"$(NC)
