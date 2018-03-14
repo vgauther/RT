@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 13:58:34 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 14:35:46 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,12 +70,13 @@ re:
 clsdl:
 	@rm -rf $(SDL_PATH)
 
-sdl:
+sdl_2:
 	@rm -rf $(SDL_PATH)
-	mkdir $(SDL_PATH); \
-	cd $(SDL_PATH); \
-	$(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
+	@mkdir $(SDL_PATH)
+	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
 
+sdl:
+	@make -j8 sdl_2
 push:
 	@make fclean
 	@make clsdl
