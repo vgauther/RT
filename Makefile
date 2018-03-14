@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/13 15:56:09 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 13:48:16 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC_PATH = ./includes/
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 MLX_PATH = ./minilibx_macos/
-SDLHEADER_PATH = ./lib/SDL2.framework/Headers
+SDLHEADER_PATH = ./lib/SDL/include/SDL2/
 
 SDL_FLG = -I $(SDLHEADER_PATH) -L $(SDL_PATH)/lib -lSDL2
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
@@ -39,7 +39,6 @@ SRC_NAME = main.c error.c parser.c ray.c plan.c lux.c
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	#@make sdl
 	@make -C $(LFT_PATH)
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
@@ -56,7 +55,6 @@ clean:
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@rm -rf $(SDL_PATH)
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
 clean_o:
@@ -66,8 +64,11 @@ clean_o:
 re:
 	@make fclean
 	@make all
+clsdl:
+	@rm -rf $(SDL_PATH)
 
 sdl:
+	@rm -rf $(SDL_PATH)
 	mkdir $(SDL_PATH); \
 	cd $(SDL_PATH); \
 	$(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install

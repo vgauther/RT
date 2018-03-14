@@ -6,20 +6,20 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/08 14:51:48 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/14 13:47:28 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# include "../lib/SDL2.framework/Headers/SDL.h"
+# include "../lib/SDL/include/SDL2/SDL.h"
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 
 # define SIZE_X 800
-# define SIZE_Y 800
+# define SIZE_Y 1200
 # define RAD (M_PI / 180.00)
 
 typedef struct	s_polynome
@@ -149,7 +149,7 @@ typedef struct		s_cam
 
 typedef struct		s_sdl
 {
-	Uint32			pixels[SIZE_Y * SIZE_X];
+	Uint32			*pixels;
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;

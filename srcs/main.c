@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 17:57:02 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/14 13:45:12 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	display(t_sdl *s)
 	SDL_RenderPresent(s->renderer);
 }
 
-void	mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
+void	mouv(int key, t_cam *c, t_obj *o, t_sdl *sdl)
 {
-	//printf("key :%ld\n", key);
 	if (key == 79)
 		c->xr--;
 	if (key == 80)
@@ -56,7 +55,7 @@ void	mouv(long key, t_cam *c, t_obj o, t_sdl sdl)
 		c->zr++;
 	if (key == 86)
 		c->zr--;
-	raytracing(o, sdl, *c);
+	raytracing(*o, *sdl, *c);
 }
 
 int		main(int ac, char **av)
@@ -74,6 +73,8 @@ int		main(int ac, char **av)
 	running = 1;
 	ft_init(&s);
 	free(s.surface->pixels);
+	if (!(s.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
+		return (0);
 	s.surface->pixels = s.pixels;
 	ft_memset(s.pixels, 255, SIZE_X * SIZE_Y * sizeof(Uint32));
 	obj = parser(av[1]);
@@ -86,7 +87,9 @@ int		main(int ac, char **av)
 			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				running = 0;
 			else if ((SDL_KEYDOWN == s.event.type))
-				mouv(s.event.key.keysym.scancode, &c, obj, s);
+			{
+				mouv(s.event.key.keysym.scancode, &c, &obj, &s);
+			}
 		}
 	}
 	SDL_DestroyWindow(s.window);

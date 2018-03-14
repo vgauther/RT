@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/05 18:15:16 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/14 13:23:55 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int ft_atoi_color(char *str)
 	i[0] = 0;
 	color = 0;
 	i[1] = 0;
-	printf("%s\n", str);
 	if (!(num = malloc(sizeof(long int *) * ft_strlen(str))))
 		exit(0);
 	while (str[i[1]])
@@ -69,7 +68,6 @@ int		check_pipe(int nb, char *str)
 			x++;
 		i++;
 	}
-	printf("%d\n", nb - x);
 	return (nb - x);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 16:40:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/07 17:00:18 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/14 13:47:04 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 
 	token = 42;
 	x = 0;
-	while (x != SIZE_X)
+	ft_memset(s.pixels, 255, SIZE_X * SIZE_Y * sizeof(Uint32));
+	while (x < SIZE_X)
 	{
 		y = 0;
-		while (y != SIZE_Y)
+		while (y < SIZE_Y)
 		{
 			nb = 0;
 			token = 42;
@@ -108,7 +109,7 @@ void	raytracing(t_obj obj, t_sdl s, t_cam c)
 		}
 		x++;
 	}
-	ft_put_pixel(&s, (int)SIZE_X / 2, (int)SIZE_Y / 2, 0x00FF00);
+	ft_put_pixel(&s, SIZE_X / 2, SIZE_Y / 2, 0x00FF00);
 	s.surface->pixels = s.pixels;
 	display(&s);
 }
