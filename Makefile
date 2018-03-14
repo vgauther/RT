@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 13:56:45 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 13:57:48 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,11 @@ clean:
 	@make -C $(LFT_PATH) clean
 	@rm -rf $(OBJ_PATH)
 
-fclean: clean
+fclean:
+	@make clean
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
+
 clean_o:
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_PATH)
@@ -64,6 +66,7 @@ clean_o:
 re:
 	@make fclean
 	@make all
+
 clsdl:
 	@rm -rf $(SDL_PATH)
 
@@ -72,6 +75,7 @@ sdl:
 	mkdir $(SDL_PATH); \
 	cd $(SDL_PATH); \
 	$(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
+
 push:
 	@make fclean
 	@make clsdl
