@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 13:57:48 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 13:58:18 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,3 +82,4 @@ push:
 	@git add *
 	@git commit -m "GIT ADD * via Makefile"
 	@git push
+	@echo "[✓] PUSH DONE"
