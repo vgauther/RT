@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 13:48:16 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/03/14 13:56:45 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,3 +72,9 @@ sdl:
 	mkdir $(SDL_PATH); \
 	cd $(SDL_PATH); \
 	$(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
+push:
+	@make fclean
+	@make clsdl
+	@git add *
+	@git commit -m "GIT ADD * via Makefile"
+	@git push
