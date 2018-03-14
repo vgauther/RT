@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 14:35:46 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 14:40:51 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ sdl_2:
 
 sdl:
 	@make -j8 sdl_2
+
 push:
 	@make fclean
 	@make clsdl
