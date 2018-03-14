@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 14:57:03 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 15:00:24 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ $(NAME): $(OBJ)
 	@./a.out
 	@rm a.out
 	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft $(SDL_FLG)
-	@echo "[✓] EXECUTABLE RT DONE"
+	@echo "$(GREEN)[✓] EXECUTABLE RT DONE$(NC)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
@@ -61,12 +61,13 @@ clean:
 	@make -C $(LFT_PATH) clean
 	@echo "$(RED)[-] LIBFT CLEANED$(NC)"
 	@rm -rf $(OBJ_PATH)
-		@echo "$(RED)[-] .o DELETED$(NC)"
+	@echo "$(RED)[-] .o DELETED$(NC)"
 
 fclean:
 	@make clean
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
+	@echo "$(RED)[-] EXECUTABLE RT DELETED$(NC)"
 
 clean_o:
 	@rm -f $(NAME)
