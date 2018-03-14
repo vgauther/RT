@@ -18,7 +18,7 @@
 void	ft_init(t_sdl *s)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	s->window = SDL_CreateWindow("Hello SDL World", 0, 0, SIZE_X, SIZE_Y,
+	s->window = SDL_CreateWindow("RT", 0, 0, SIZE_X, SIZE_Y,
 		SDL_WINDOW_ALLOW_HIGHDPI);
 	if (s->window == NULL)
 		exit(1);
@@ -57,6 +57,8 @@ int		main(int ac, char **av)
 	}
 	ft_init(&s);
 	free(s.surface->pixels);
+	if(!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
+		return (0);
 	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	parser(av[1], &e);
 	raytracing(&e, c, s);

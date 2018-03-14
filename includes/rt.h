@@ -63,7 +63,7 @@ typedef struct		s_env
 	t_obj			*obj;
 	t_obj			*first;
 	int				nb;
-	Uint32			pixels[SIZE_Y * SIZE_X];
+	Uint32			*pixels;
 	t_cam			ca;
 }					t_env;
 
