@@ -1,2 +1,0 @@
-# RT
-RT : raytracer 
