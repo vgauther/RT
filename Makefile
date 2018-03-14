@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/14 14:49:52 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/14 14:57:03 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,9 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 clean:
 	@make -C $(LFT_PATH) clean
+	@echo "$(RED)[-] LIBFT CLEANED$(NC)"
 	@rm -rf $(OBJ_PATH)
+		@echo "$(RED)[-] .o DELETED$(NC)"
 
 fclean:
 	@make clean
@@ -76,17 +78,19 @@ re:
 
 clsdl:
 	@rm -rf $(SDL_PATH)
+	@echo "$(RED)[-] LIB SDL 2.0 CLEANED$(NC)"
 
 sdl_2:
 	@rm -rf $(SDL_PATH)
 	@mkdir $(SDL_PATH)
 	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
+	@echo "$(GREEN)[✓] SDL 2.0 COMPILED$(NC)"
 
 sdl:
 	@make -j8 sdl_2
 
 coffee:
-	@echo "warning it's hot"
+	@echo "$(RED)warning it's hot$(NC)"
 
 push:
 	@make fclean
