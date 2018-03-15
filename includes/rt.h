@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/28 20:44:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/15 15:10:23 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define RT_H
 
 # include "../lib/SDL/include/SDL2/SDL.h"
-#include <stdlib.h>
-#include "../libft/includes/libft.h"
-#include <fcntl.h>
-#include <dirent.h>
-#include <stdio.h>
+# include <stdlib.h>
+# include "../libft/includes/libft.h"
+# include <fcntl.h>
+# include <dirent.h>
+# include <stdio.h>
 
-# define SIZE_X 800
-# define SIZE_Y 800
+# define SIZE_X 600
+# define SIZE_Y 600
 # define RAD (M_PI / 180.00)
 
 typedef struct	s_polynome
@@ -69,11 +69,11 @@ typedef struct		s_env
 
 typedef struct		s_sdl
 {
-	SDL_Window 		*window;
-	SDL_Renderer 	*renderer;
-	SDL_Texture 	*texture;
-	SDL_Surface 	*surface;
-	SDL_Event 		event;
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Texture		*texture;
+	SDL_Surface		*surface;
+	SDL_Event		event;
 }					t_sdl;
 
 typedef struct		s_inter
@@ -96,9 +96,9 @@ double				lux(t_env *e, t_inter pt);
 int					ft_tablen(void **tab);
 void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
-char 				*only_color(char *str);
-int 				ft_atoi_color(char *str);
+char				*only_color(char *str);
+int					ft_atoi_color(char *str);
 t_inter				one_pixel(t_env *e, int i, int j, t_cam ca, int nbr);
-t_vec				new_vec(int x, int y, int z);	
+t_vec				new_vec(int x, int y, int z);
 
 #endif

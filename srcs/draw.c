@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppetit <ppetit@student.42.fr>   	        +#+  +:+       +#+        */
+/*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/06 14:40:03 by ppetit           ###   ########.fr       */
+/*   Updated: 2018/03/15 12:32:08 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_inter	one_pixel(t_env *e, int i, int j, t_cam ca, int nbr)
 			p.x1 = (-p.b + sqrt(p.delta)) / (2 * p.a);
 			p.x2 = (-p.b - sqrt(p.delta)) / (2 * p.a);
 			t.dist = p.x1 < p.x2 ? p.x1 : p.x2;
-			if(t.dist < 0)
+			if (t.dist < 0)
 				t.dist = p.x1 < 0 ? p.x2 : p.x1;
 		}
 		else

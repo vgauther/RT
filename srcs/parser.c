@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/15 12:17:57 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/15 12:30:04 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void		ft_free_tab(char **tab)
 	free(tab);
 }
 
-int ft_atoi_color(char *str)
+int			ft_atoi_color(char *str)
 {
-	int i[2];
-	int color;
-	long int *num;
+	int			i[2];
+	int			color;
+	long int	*num;
 
 	i[0] = 0;
 	color = 0;
@@ -51,16 +51,16 @@ int ft_atoi_color(char *str)
 	return (color);
 }
 
-char *only_color(char *str)
+char		*only_color(char *str)
 {
-	char *ret;
-	int i;
-	int x;
+	char	*ret;
+	int		i;
+	int		x;
 
 	i = 0;
 	x = 0;
 	if (!(ret = malloc(sizeof(char) * (7))))
-		exit (0);
+		exit(0);
 	i = 2;
 	while (str[i])
 	{
@@ -72,7 +72,7 @@ char *only_color(char *str)
 	return (ret);
 }
 
-int		check_value(char *nbr)
+int			check_value(char *nbr)
 {
 	int		ret;
 	int		nb;
@@ -86,7 +86,7 @@ int		check_value(char *nbr)
 
 int			ft_tablen(void **tab)
 {
-	int				i;
+	int		i;
 
 	i = 0;
 	while (tab[i])
@@ -101,11 +101,10 @@ t_vec		new_vec(int x, int y, int z)
 	new.x = (float)x;
 	new.y = (float)y;
 	new.z = (float)z;
-
 	return (new);
 }
 
-void	add_obj(t_env *e, char *line)
+void		add_obj(t_env *e, char *line)
 {
 	char	**split;
 
@@ -126,7 +125,7 @@ void	add_obj(t_env *e, char *line)
 	ft_strdel(&line);
 }
 
-static void				check_line2(char *line, t_env *e)
+static void	check_line2(char *line, t_env *e)
 {
 	if (!ft_isalpha(line[0]) || !line[0])
 		ft_strdel(&line);
@@ -136,7 +135,7 @@ static void				check_line2(char *line, t_env *e)
 	}
 }
 
-static void				check_line1(char *line, t_env *e)
+static void	check_line1(char *line, t_env *e)
 {
 	if (!ft_isalpha(line[0]) || !line[0])
 		ft_strdel(&line);
@@ -147,7 +146,7 @@ static void				check_line1(char *line, t_env *e)
 	}
 }
 
-static int				check_file(char *argument)
+static int	check_file(char *argument)
 {
 	DIR					*test;
 	int					fd;
@@ -162,20 +161,20 @@ static int				check_file(char *argument)
 	return (fd);
 }
 
-void parser(char *name, t_env *e)
+void		parser(char *name, t_env *e)
 {
 	int		fd;
 	char	*line;
 
 	fd = check_file(name);
 	e->nb = 0;
-	while(get_next_line(fd, &line))
+	while (get_next_line(fd, &line))
 		check_line1(line, e);
 	if (!(e->obj = (t_obj*)malloc(sizeof(t_obj) * e->nb)))
 		ft_error("Error with object malloc.");
 	e->nb = 0;
 	close(fd);
 	fd = check_file(name);
-	while(get_next_line(fd, &line))
+	while (get_next_line(fd, &line))
 		check_line2(line, e);
 }

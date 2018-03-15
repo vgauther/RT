@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/27 14:46:32 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/15 14:33:44 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	display(t_sdl *s)
 
 void	mouv(long key, t_cam *c, t_env *e, t_sdl *s)
 {
-	printf("key :%ld\n", key);
 	ft_memset(e->pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	if (key == 79)
 		c->xr--;
