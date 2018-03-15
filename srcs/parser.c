@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/02/28 20:48:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/15 12:17:57 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,10 @@ static void				check_line1(char *line, t_env *e)
 	if (!ft_isalpha(line[0]) || !line[0])
 		ft_strdel(&line);
 	else
+	{
+		free(line);
 		e->nb++;
+	}
 }
 
 static int				check_file(char *argument)
