@@ -40,12 +40,30 @@ void	display(t_sdl *s)
 	SDL_RenderPresent(s->renderer);
 }
 
+void	mouv(long key, t_cam *c, t_env *e, t_sdl *s)
+{
+	printf("key :%ld\n", key);
+	ft_memset(e->pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
+	if (key == 79)
+		c->xr--;
+	if (key == 80)
+		c->xr++;
+	if (key == 81)
+		c->yr--;
+	if (key == 82)
+		c->yr++;
+	if (key == 87)
+		c->zr++;
+	if (key == 86)
+		c->zr--;
+	raytracing(e, *c, *s);
+}
 
 int		main(int ac, char **av)
 {
 	t_sdl	s;
 	t_env	e;
-	t_cam 	c;
+	t_cam c;
 
 	c.xr = 0;
 	c.yr = 0;
@@ -69,8 +87,10 @@ int		main(int ac, char **av)
 			if ((SDL_QUIT == s.event.type) ||
 			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				exit(0);
+			else if ((SDL_KEYDOWN == s.event.type))
+				mouv(s.event.key.keysym.scancode, &c, &e, &s);
 		}
-	}	
+	}
 	SDL_DestroyWindow(s.window);
 	SDL_Quit();
 	return (0);
