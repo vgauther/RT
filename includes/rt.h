@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/15 15:10:23 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/16 13:08:30 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ char				*only_color(char *str);
 int					ft_atoi_color(char *str);
 t_inter				one_pixel(t_env *e, int i, int j, t_cam ca, int nbr);
 t_vec				new_vec(int x, int y, int z);
+double				dot(t_vec v1, t_vec v2);
+t_vec				vector_init(double x, double y, double z);
 
 #endif
