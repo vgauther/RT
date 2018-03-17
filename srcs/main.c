@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/17 14:18:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/17 14:19:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_init(t_sdl *s)
 		ft_sdl_error("Renderer error : ", SDL_GetError());
 	if ((s->surface = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
 		== NULL)
-	    ft_sdl_error("Surface error : ", SDL_GetError());
+		ft_sdl_error("Surface error : ", SDL_GetError());
 }
 
 void	display(t_sdl *s)
@@ -62,7 +62,7 @@ int		main(int ac, char **av)
 {
 	t_sdl	s;
 	t_env	e;
-	t_cam c;
+	t_cam	c;
 
 	c.xr = 0;
 	c.yr = 0;
@@ -74,7 +74,7 @@ int		main(int ac, char **av)
 	}
 	ft_init(&s);
 	free(s.surface->pixels);
-	if(!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
+	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
 	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	parser(av[1], &e);
