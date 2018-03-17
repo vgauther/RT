@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/16 13:08:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/17 14:09:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct		s_vec
 	double			y;
 	double			z;
 }					t_vec;
+
+typedef struct		s_point
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_point;
 
 typedef struct		s_cam
 {
@@ -102,5 +109,6 @@ t_inter				one_pixel(t_env *e, int i, int j, t_cam ca, int nbr);
 t_vec				new_vec(int x, int y, int z);
 double				dot(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
+t_point				init_point(double x, double y, double z);
 
 #endif
