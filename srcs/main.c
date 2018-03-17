@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/15 14:33:44 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/17 14:18:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	ft_init(t_sdl *s)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	s->window = SDL_CreateWindow("RT", 0, 0, SIZE_X, SIZE_Y,
+	s->window = SDL_CreateWindow("RT : Ray Tracer", 0, 0, SIZE_X, SIZE_Y,
 		SDL_WINDOW_ALLOW_HIGHDPI);
 	if (s->window == NULL)
 		exit(1);
