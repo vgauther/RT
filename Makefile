@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/17 14:10:02 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/19 12:08:55 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_NAME = 	main.c \
 			draw.c \
 			vector_tools.c\
 			geometric_tools.c \
+			ray_cylindre.c \
 
 all: $(NAME)
 

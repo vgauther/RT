@@ -1,9 +1,3 @@
 //sphere x y z color rayon mat
 
-spot 10 20 30 0xFFFFFF 3 3 3
-
-sphere 0 0 0 0x00FF00 20 1
-
 sphere 0 0 90 0xFF0000 20 1
-
-sphere 40 0 90 0xFF0000 20 1

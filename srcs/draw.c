@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/15 12:32:08 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/19 13:18:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	raytracing(t_env *e, t_cam c, t_sdl s)
 			token = 42;
 			while (nbr != e->nb)
 			{
-				tmp = one_pixel(e, x, y, c, nbr);
+				tmp = ray_cylindre(e, x, y, c, nbr);
 				if ((tmp.dist < pt.dist || pt.dist < 0) && tmp.dist >= 0)
 				{
 					pt.dist = tmp.dist;

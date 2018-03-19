@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/17 14:09:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/19 12:11:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct		s_cam
 typedef struct		s_obj
 {
 	t_vec			pos;
-	int				rayon;
+	double			rayon;
 	int				material;
 	int				type;
 	int				color;
@@ -110,5 +110,6 @@ t_vec				new_vec(int x, int y, int z);
 double				dot(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
 t_point				init_point(double x, double y, double z);
+t_inter				ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr);
 
 #endif
