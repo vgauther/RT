@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/19 12:11:32 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:55:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # define SIZE_X 600
 # define SIZE_Y 600
 # define RAD (M_PI / 180.00)
+
+typedef struct	s_color
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_color;
 
 typedef struct	s_polynome
 {
@@ -71,6 +78,7 @@ typedef struct		s_env
 	t_obj			*first;
 	int				nb;
 	Uint32			*pixels;
+	t_cam			cam;
 	t_cam			ca;
 }					t_env;
 
@@ -92,24 +100,51 @@ typedef struct		s_inter
 	int				nb;
 }					t_inter;
 
-void				ft_sdl_error(char *msg, const char *error);
-void				ft_error(char *msg);
 int					check_value(char *nbr);
-void				parser_error(int err);
-void				parser(char *name, t_env *e);
-void				raytracing(t_env *e, t_cam c, t_sdl s);
 void				display(t_sdl *s);
 double				lux(t_env *e, t_inter pt);
 int					ft_tablen(void **tab);
-void				add_sphere(t_env *e, char **sp);
-void				add_spot(t_env *e, char **sp);
-char				*only_color(char *str);
-int					ft_atoi_color(char *str);
-t_inter				one_pixel(t_env *e, int i, int j, t_cam ca, int nbr);
-t_vec				new_vec(int x, int y, int z);
+
+/*
+** tools
+*/
+
 double				dot(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
+t_vec				normalize_vec(t_vec ret, double norm);
 t_point				init_point(double x, double y, double z);
+
+/*
+** shapes's raycasting
+*/
+
+void				raytracing(t_env *e, t_cam c, t_sdl s);
+t_inter				ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr);
 t_inter				ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr);
+
+/*
+** parser
+*/
+
+void				parser(char *name, t_env *e);
+void				add_sphere(t_env *e, char **sp);
+void				add_spot(t_env *e, char **sp);
+void				add_cylindre(t_env *e, char **sp);
+
+/*
+** color
+*/
+
+char				*only_color(char *str);
+int					ft_atoi_color(char *str);
+t_color				split_color(int full);
+
+/*
+** error
+*/
+
+void				parser_error(int err);
+void				ft_sdl_error(char *msg, const char *error);
+void				ft_error(char *msg);
 
 #endif

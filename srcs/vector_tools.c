@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:05:50 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/16 13:07:46 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:26:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,12 @@ t_vec	vector_init(double x, double y, double z)
 	v.y = y;
 	v.z = z;
 	return (v);
+}
+
+t_vec	normalize_vec(t_vec ret, double norm)
+{
+	ret.x /= norm;
+	ret.y /= norm;
+	ret.z /= norm;
+	return (ret);
 }

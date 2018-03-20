@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/17 14:19:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/20 14:25:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	ft_init(t_sdl *s)
 
 void	display(t_sdl *s)
 {
-	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface)) == NULL)
+	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface))
+	== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
 		ft_sdl_error("Error clearing renderer : ", SDL_GetError());

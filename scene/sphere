@@ -1,3 +1,5 @@
 //sphere x y z color rayon mat
 
-sphere 0 0 90 0xFF0000 20 1
+sphere -20 40 90 0xFF0000 20 1
+
+cylindre 0 0 110 0xffe0bd 20 1
