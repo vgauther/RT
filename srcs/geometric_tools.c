@@ -21,3 +21,10 @@ t_point		init_point(double x, double y, double z)
 	p.z = z;
 	return (p);
 }
+
+void	intersection_point(t_inter *pt, t_cam ca, t_vec v)
+{
+	pt->x = ca.xr + v.x * pt->dist;
+	pt->y = ca.yr + v.y * pt->dist;
+	pt->z = ca.zr + v.z * pt->dist;
+}

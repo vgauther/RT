@@ -114,6 +114,8 @@ t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret, double norm);
 
 t_point				init_point(double x, double y, double z);
+void					intersection_point(t_inter *pt, t_cam ca, t_vec v);
+
 
 void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);

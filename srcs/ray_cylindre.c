@@ -40,11 +40,7 @@ t_inter		ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr)
 		else
 			p.x1 = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-		{
-			pt.x = ca.xr + v.x * pt.dist;
-			pt.y = ca.yr + v.y * pt.dist;
-			pt.z = ca.zr + v.z * pt.dist;
-		}
+			intersection_point(&pt, ca, v);
 	}
 	else
 		pt.dist = -1;
