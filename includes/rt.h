@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/20 17:55:26 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/20 18:09:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,11 @@ int					ft_tablen(void **tab);
 double				dot(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret, double norm);
+
 t_point				init_point(double x, double y, double z);
+
+void				ft_free_tab(char **tab);
+int					ft_tablen(void **tab);
 
 /*
 ** shapes's raycasting
@@ -127,6 +131,11 @@ t_inter				ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr);
 */
 
 void				parser(char *name, t_env *e);
+void				add_obj(t_env *e, char *line);
+void				check_line1(char *line, t_env *e);
+void				check_line2(char *line, t_env *e);
+int					check_file(char *argument);
+int					check_value(char *nbr);
 void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
 void				add_cylindre(t_env *e, char **sp);

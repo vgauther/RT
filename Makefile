@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/20 17:47:51 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/20 17:59:07 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,9 @@ SRC_NAME = 	main.c \
 			ray_cylindre.c \
 			cylindre.c \
 			ray_sphere.c \
-			color_tools.c
+			color_tools.c \
+			tab_tools.c \
+			pars_check.c
 
 all: $(NAME)
 
