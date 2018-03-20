@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/20 17:59:07 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/20 18:14:08 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,14 +44,14 @@ INC_NAME = rt.h
 SRC_NAME = 	main.c \
 			error.c \
 			parser.c \
-			spot.c \
-			sphere.c \
+			pars_spot.c \
+			pars_sphere.c \
 			lux.c \
 			draw.c \
 			vector_tools.c \
 			geometric_tools.c \
 			ray_cylindre.c \
-			cylindre.c \
+			pars_cylindre.c \
 			ray_sphere.c \
 			color_tools.c \
 			tab_tools.c \
