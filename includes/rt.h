@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/20 18:09:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:10:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@
 # include <dirent.h>
 # include <stdio.h>
 
-# define SIZE_X 600
-# define SIZE_Y 600
+# define SIZE_X 1200
+# define SIZE_Y 800
 # define RAD (M_PI / 180.00)
 
-typedef struct	s_color
+typedef struct		s_color
 {
 	int			r;
 	int			g;
 	int			b;
-}				t_color;
+}					t_color;
 
-typedef struct	s_polynome
+typedef struct		s_polynome
 {
-	double			a;
-	double			b;
-	double			c;
-	double			delta;
-	double			x1;
-	double			x2;
-}				t_polynome;
+	double		a;
+	double		b;
+	double		c;
+	double		delta;
+	double		x1;
+	double		x2;
+}					t_polynome;
 
 typedef struct		s_vec
 {
@@ -74,9 +74,11 @@ typedef struct		s_obj
 
 typedef struct		s_env
 {
+	int				nb_spot;
+	int				nb;
+	t_obj			*spot;
 	t_obj			*obj;
 	t_obj			*first;
-	int				nb;
 	Uint32			*pixels;
 	t_cam			cam;
 	t_cam			ca;
@@ -114,8 +116,7 @@ t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret, double norm);
 
 t_point				init_point(double x, double y, double z);
-void					intersection_point(t_inter *pt, t_cam ca, t_vec v);
-
+void				intersection_point(t_inter *pt, t_cam ca, t_vec v);
 
 void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);
@@ -141,6 +142,8 @@ int					check_value(char *nbr);
 void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
 void				add_cylindre(t_env *e, char **sp);
+void				count_spot(char *str, t_env *e);
+void				select_add_spot(char *str, t_env *e);
 
 /*
 ** color
