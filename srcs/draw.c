@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/20 17:05:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:17:07 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void	raytracing(t_env *e, t_cam c, t_sdl s)
 				nbr++;
 			}
 			if (pt.dist >= 0)
+			{
 				ft_put_pixel(e, x, y, lux(e, pt));
+			}
 			y++;
 		}
 		x++;

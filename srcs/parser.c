@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/22 12:21:55 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:11:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void		parser(char *name, t_env *e)
 	e->nb_spot = 0;
 	while (get_next_line(fd, &line))
 		check_line1(line, e);
-	fd = check_file(name);
-	while (get_next_line(fd, &line))
-		count_spot(line, e);
 	if (!(e->obj = (t_obj*)malloc(sizeof(t_obj) * e->nb)))
 		ft_error("Error with object malloc.");
 	if (!(e->spot = (t_obj*)malloc(sizeof(t_obj) * e->nb_spot)))
@@ -58,9 +55,6 @@ void		parser(char *name, t_env *e)
 	e->nb = 0;
 	e->nb_spot = 0;
 	close(fd);
-	fd = check_file(name);
-	while (get_next_line(fd, &line))
-		check_line2(line, e);
 	fd = check_file(name);
 	while (get_next_line(fd, &line))
 		check_line2(line, e);

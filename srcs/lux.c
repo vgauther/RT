@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/20 17:50:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:05:51 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double		lux(t_env *e, t_inter pt)
 	{
 		vnorm = vector_init((e->obj[pt.nb].pos.x - pt.x),
 		(e->obj[pt.nb].pos.y - pt.y), (e->obj[pt.nb].pos.z - pt.z));
-		vlux = vector_init((-40 - pt.x), (0 - pt.y), (30 - pt.z));
+		vlux = vector_init((20 - pt.x), (0 - pt.y), (-90 - pt.z));
 		norm = sqrt(vnorm.x * vnorm.x + vnorm.y * vnorm.y + vnorm.z * vnorm.z);
 		norm2 = sqrt(vlux.x * vlux.x + vlux.y * vlux.y + vlux.z * vlux.z);
 	}

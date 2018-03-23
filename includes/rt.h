@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/22 12:10:02 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:59:46 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <dirent.h>
 # include <stdio.h>
 
-# define SIZE_X 1200
-# define SIZE_Y 800
+# define SIZE_X 600
+# define SIZE_Y 600
 # define RAD (M_PI / 180.00)
 
 typedef struct		s_color

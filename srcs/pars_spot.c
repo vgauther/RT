@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:30:47 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/22 12:19:56 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:25:57 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,9 @@ static int	check_param(char **sp)
 
 void		add_spot(t_env *e, char **sp)
 {
-	t_obj			*new;
-
 	if (!check_param(sp))
 		ft_error("Wrong spot parameters.");
-	if (!(new = (t_obj *)malloc(sizeof(t_obj))))
-		ft_error("Failed to malloc new spot.");
-	new->pos = vector_init(ft_atoi(sp[1]), ft_atoi(sp[2]), ft_atoi(sp[3]));
-	new->rot = vector_init(ft_atoi(sp[5]), ft_atoi(sp[6]), ft_atoi(sp[7]));
-	new->color = ft_atoi_color(only_color(sp[4]));
-	e->spot[e->nb_spot] = *new;
-	free(new);
+	e->spot[e->nb_spot].pos = vector_init(ft_atoi(sp[1]), ft_atoi(sp[2]), ft_atoi(sp[3]));
+	e->spot[e->nb_spot].rot = vector_init(ft_atoi(sp[5]), ft_atoi(sp[6]), ft_atoi(sp[7]));
+	e->spot[e->nb_spot].color = ft_atoi_color(only_color(sp[4]));
 }

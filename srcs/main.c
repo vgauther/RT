@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/20 18:10:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 16:58:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		main(int ac, char **av)
 
 	c.xr = 0;
 	c.yr = 0;
-	c.zr = 0;
+	c.zr = -90;
 	if (ac != 2)
 	{
 		ft_putstr_fd("Wrong number of arguments.\n", 2);

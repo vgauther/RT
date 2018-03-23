@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:57:20 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/22 12:11:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/23 14:14:02 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,15 @@ void	check_line1(char *line, t_env *e)
 {
 	if (!ft_isalpha(line[0]) || !line[0])
 		ft_strdel(&line);
+	else if (ft_strncmp(line, "spot", 4) == 0)
+	{
+		free(line);
+		e->nb_spot++;
+	}
 	else
 	{
 		free(line);
-		e->nb++;
+		e->nb_spot++;
 	}
 }
 
