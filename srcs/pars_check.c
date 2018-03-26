@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:57:20 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/23 14:14:02 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:07:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_line1(char *line, t_env *e)
 	else
 	{
 		free(line);
-		e->nb_spot++;
+		e->nb++;
 	}
 }
 

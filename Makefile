@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/23 14:40:50 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/03/26 14:57:55 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NC=\033[0m
 NAME = rt
 
 CC = gcc
-CC_FLAGS = -Wall -Werror -Wextra
+CC_FLAGS = -g3 -Wall -Werror -Wextra
 
 SDL_PATH = $(shell pwd)/lib/SDL
 SRC_PATH = ./srcs/
@@ -64,7 +64,7 @@ $(NAME): $(OBJ)
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
 	@rm a.out
-	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft $(SDL_FLG) -g3
+	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft $(SDL_FLG)
 	@echo "$(GREEN)[✓] EXECUTABLE RT DONE$(NC)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
