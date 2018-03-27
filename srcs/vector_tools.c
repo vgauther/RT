@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:05:50 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/20 17:26:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/27 15:44:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 double	dot(t_vec v1, t_vec v2)
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+	double x;
+
+	x = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	return (x);
 }
 
 t_vec	vector_init(double x, double y, double z)
@@ -27,8 +30,11 @@ t_vec	vector_init(double x, double y, double z)
 	return (v);
 }
 
-t_vec	normalize_vec(t_vec ret, double norm)
+t_vec	normalize_vec(t_vec ret)
 {
+	double norm;
+
+	norm = sqrt(dot(ret, ret));
 	ret.x /= norm;
 	ret.y /= norm;
 	ret.z /= norm;

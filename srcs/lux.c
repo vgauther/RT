@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/23 15:05:51 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/27 15:46:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ double		lux(t_env *e, t_inter pt)
 		norm = sqrt(vnorm.x * vnorm.x + vnorm.y * vnorm.y + vnorm.z * vnorm.z);
 		norm2 = sqrt(vlux.x * vlux.x + vlux.y * vlux.y + vlux.z * vlux.z);
 	}
-	vnorm = normalize_vec(vnorm, norm);
-	vlux = normalize_vec(vlux, norm2);
+	vnorm = normalize_vec(vnorm);
+	vlux = normalize_vec(vlux);
 	angle = acos(vnorm.x * vlux.x + vnorm.y * vlux.y + vnorm.z * vlux.z) * 0.42;
 	color.r = color.r * angle > 255 ? 255 : color.r * angle;
 	color.g = color.g * angle > 255 ? 255 : color.g * angle;

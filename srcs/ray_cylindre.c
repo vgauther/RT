@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 14:33:18 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/27 15:48:32 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,13 @@ t_inter		ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr)
 	(SIZE_X / 2) / tan(30 * RAD));
 	o = init_point(e->obj[nbr].pos.x, e->obj[nbr].pos.y, e->obj[nbr].pos.z);
 	x = vector_init(ca.xr - o.x, ca.yr - o.y, ca.zr - o.z);
-	v = vector_init(1, -1, 0);
-	p.a = (dot(d, d) - dot(d, v) * dot(d, v));
-	p.b = 2.0 * (dot(d, x) - (dot(d, v) * dot(x, v)));
-	p.c = (dot(x, x) - dot(x, v) * dot(x, v)) -
+	v = vector_init(-2, 10, 0);
+	v = normalize_vec(v);
+	p.a = dot(d, d) - (dot(d, v) * dot(d, v));
+	p.b = 2 * (dot(d, x) - dot(d, v) * dot(x, v));
+	p.c = (dot(x, x) - (dot(x, v) * dot(x, v))) -
 	(e->obj[nbr].rayon * e->obj[nbr].rayon);
-	p.delta = pow(p.b, 2) - (4 * p.a * p.c);
+	p.delta = (p.b * p.b) - (4 * p.a * p.c);
 	if (p.delta >= 0)
 	{
 		if (p.delta > 0)
