@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 16:59:26 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:23:33 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ t_inter		ray_cone(t_env *e, int i, int j, t_cam ca, int nbr)
 	t_point		o;
 	double		angle;
 
-	angle = tan((45 / 2) * RAD);
+	angle = tan((e->obj[nbr].angle / 2) * RAD);
 	d = vector_init((i - SIZE_X / 2), (j - SIZE_Y / 2),
 	(SIZE_X / 2) / tan(30 * RAD));
 	o = init_point(e->obj[nbr].pos.x, e->obj[nbr].pos.y, e->obj[nbr].pos.z);
 	x = vector_init(ca.xr - o.x, ca.yr - o.y, ca.zr - o.z);
-	v = vector_init(-2, 10, 0);
-	v = normalize_vec(v);
+	v = normalize_vec(e->obj[nbr].rot);
 	p.a = dot(d, d) - ((angle * angle + 1) * dot(d, v) * dot(d, v));
 	p.b = 2 * (dot(d, x) - ((angle * angle + 1) * dot(d, v) * dot(v, x)));
 	p.c = dot(x, x) - ((angle * angle + 1) * dot(x, v) * dot(x, v));

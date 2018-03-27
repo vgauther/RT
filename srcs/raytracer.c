@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/27 16:59:33 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:11:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ t_inter		shape_redirection(t_env *e, int x, int y, int nbr)
 	{
 		tmp = ray_sphere(e, x, y, e->cam, nbr);
 	}
-	else// if (e->obj[nbr].type == 2)
+	else if (e->obj[nbr].type == 2)
+	{
+		tmp = ray_cylindre(e, x, y, e->cam, nbr);
+	}
+	else//if (e->obj[nbr].type == 3)
 	{
 		tmp = ray_cone(e, x, y, e->cam, nbr);
 	}
