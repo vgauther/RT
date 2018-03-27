@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/27 16:36:04 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/27 16:50:39 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC_NAME = 	lux.c   \
 			tools_color.c     \
 			tools_vector.c     \
 			ray_cylindre.c      \
+			ray_cone.c \
 			pars_cylindre.c      \
 			tools_geometric.c     \
 
