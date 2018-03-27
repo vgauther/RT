@@ -69,6 +69,7 @@ typedef struct		s_obj
 	int				material;
 	int				type;
 	int				color;
+	int 			angle;
 	t_vec			rot;
 }					t_obj;
 
@@ -144,6 +145,7 @@ int					check_value(char *nbr);
 void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
 void				add_cylindre(t_env *e, char **sp);
+void				add_cone(t_env *e, char **sp);
 void				count_spot(char *str, t_env *e);
 void				select_add_spot(char *str, t_env *e);
 

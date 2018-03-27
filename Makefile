@@ -57,6 +57,7 @@ SRC_NAME = 	lux.c   \
 			ray_cone.c \
 			pars_cylindre.c      \
 			tools_geometric.c     \
+			pars_cone.c
 
 all: $(NAME)
 

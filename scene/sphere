@@ -2,4 +2,4 @@
 
 spot 0 0 0 0xFFFFFF 0 0 0
 
-cylindre 0 0 40 0xffe0bd 20 1
+cone 0 0 40 0xffe0bd 20 1 0 0 1
