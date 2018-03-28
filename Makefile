@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/28 12:09:30 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/28 15:43:36 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,13 @@ SRC_NAME = 	lux.c  \
 			pars_cylindre.c       \
 			tools_geometric.c      \
 
-all: $(NAME)
+ifneq ("$(wildcard $(SDL_PATH))","")
+FILE = 1
+else
+FILE = 0
+endif
+
+all: sdl_if $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LFT_PATH)
@@ -78,6 +84,11 @@ clean:
 	@echo "$(RED)[-] LIBFT CLEANED$(NC)"
 	@rm -rf $(OBJ_PATH)
 	@echo "$(RED)[-] .o DELETED$(NC)"
+
+sdl_if:
+	@if [ $(FILE) = 0 ]; then \
+	make sdl; \
+ 	fi
 
 fclean:
 	@make clean
