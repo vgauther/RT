@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 12:34:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 13:24:05 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define SIZE_X_2 300
 # define SIZE_Y_2 300
 # define RAD (M_PI / 180.00)
+# define TAN30 0.577350
 
 typedef struct		s_color
 {
@@ -68,6 +69,7 @@ typedef struct		s_obj
 {
 	t_vec			pos;
 	double			rayon;
+	double			rayon_2;
 	int				material;
 	int				type;
 	int				color;

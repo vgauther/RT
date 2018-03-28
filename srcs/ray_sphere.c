@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 17:27:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 13:24:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ t_inter		ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr)
 	t_vec		f;
 
 	f = vector_init(ca.xr - e->obj[nbr].pos.x, ca.yr - e->obj[nbr].pos.y, ca.zr - e->obj[nbr].pos.z);
-	v = vector_init((i - SIZE_X / 2), (j - SIZE_Y / 2),
-	(SIZE_X / 2) / tan(30 * RAD));
-	p.a = pow(v.x, 2) + pow(v.y, 2) + pow(v.z, 2);
-	p.b = 2 * (v.x * (f.x) + v.y * (f.y) + v.z * (f.z));
-	p.c = (pow(f.x, 2) + pow(f.y, 2) + pow(f.z, 2) - pow((e->obj[nbr].rayon), 2));
-	p.delta = pow(p.b, 2) - 4 * p.a * p.c;
+	v = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
+	p.a = v.x * v.x + v.y * v.y + v.z * v.z;
+	p.b = 2 * (v.x * f.x + v.y * f.y + v.z * f.z);
+	p.c = pow(f.x, 2) + pow(f.y, 2) + pow(f.z, 2) - e->obj[nbr].rayon_2;
+	p.delta = p.b * p.b - 4 * p.a * p.c;
 	if (p.delta >= 0)
 	{
 		if (p.delta > 0)
@@ -39,11 +38,7 @@ t_inter		ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr)
 		else
 			p.x1 = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-		{
-			t.x = ca.xr + v.x * t.dist;
-			t.y = ca.yr + v.y * t.dist;
-			t.z = ca.zr + v.z * t.dist;
-		}
+			intersection_point(&t, ca, v);
 	}
 	else
 		t.dist = -1;

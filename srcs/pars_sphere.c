@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:23 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/23 14:25:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:54:46 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		add_sphere(t_env *e, char **sp)
 		ft_error("Wrong sphere parameters.");
 	e->obj[e->nb].pos = vector_init(ft_atoi(sp[1]), ft_atoi(sp[2]), ft_atoi(sp[3]));
 	e->obj[e->nb].rayon = ft_atoi(sp[5]);
+	e->obj[e->nb].rayon_2 = e->obj[e->nb].rayon * e->obj[e->nb].rayon;
 	e->obj[e->nb].material = ft_atoi(sp[6]);
 	e->obj[e->nb].color = ft_atoi_color(only_color(sp[4]));
 	e->obj[e->nb].type = 1;
