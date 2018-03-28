@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 15:45:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:27:28 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_inter		ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr)
 {
 	t_polynome	p;
 	t_inter		t;
-	t_vec 		v;
-	t_vec			f;
+	t_vec		v;
+	t_vec		f;
 
 	f = vector_init(ca.xr - e->obj[nbr].pos.x, ca.yr - e->obj[nbr].pos.y, ca.zr - e->obj[nbr].pos.z);
 	v = vector_init((i - SIZE_X / 2), (j - SIZE_Y / 2),

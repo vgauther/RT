@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 16:50:20 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/27 17:14:37 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_obj
 	int				color;
 	int 			angle;
 	t_vec			rot;
+	double			angle;
 }					t_obj;
 
 typedef struct		s_env
@@ -130,7 +131,6 @@ void				raytracing(t_env *e, t_cam c, t_sdl s);
 t_inter				ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr);
 t_inter				ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr);
 t_inter				ray_cone(t_env *e, int i, int j, t_cam ca, int nbr);
-
 
 /*
 ** parser
