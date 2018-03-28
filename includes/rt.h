@@ -6,14 +6,14 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:23:17 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 16:31:42 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# include "../lib/SDL/include/SDL2/SDL.h"
+# include "SDL2/SDL.h"
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
 # include <fcntl.h>

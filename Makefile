@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/28 15:43:36 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/03/28 16:26:10 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,16 +59,13 @@ SRC_NAME = 	lux.c  \
 			pars_cylindre.c       \
 			tools_geometric.c      \
 
-ifneq ("$(wildcard $(SDL_PATH))","")
-FILE = 1
-else
-FILE = 0
-endif
 
-all: sdl_if $(NAME)
+
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LFT_PATH)
+	@make sdl_if
 	@gcc ./make_srcs/dessin.c -lm -L $(LFT_PATH) -lft
 	@./a.out
 	@rm a.out
@@ -86,9 +83,8 @@ clean:
 	@echo "$(RED)[-] .o DELETED$(NC)"
 
 sdl_if:
-	@if [ $(FILE) = 0 ]; then \
-	make sdl; \
- 	fi
+	@make -C ./lib
+
 
 fclean:
 	@make clean
@@ -104,21 +100,11 @@ re:
 	@make fclean
 	@make all
 
-clsdl:
-	@rm -rf $(SDL_PATH)
-	@echo "$(RED)[-] LIB SDL 2.0 CLEANED$(NC)"
-
-sdl_2:
-	@rm -rf $(SDL_PATH)
-	@mkdir $(SDL_PATH)
-	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
-	@echo "$(GREEN)[✓] SDL 2.0 COMPILED$(NC)"
-
-sdl:
-	@make -j8 sdl_2
-
 coffee:
 	@echo "$(RED)warning it's hot$(NC)"
+
+clsdl:
+	@make -C ./lib clean
 
 push:
 	@make fclean
