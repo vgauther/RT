@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 12:05:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:07:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ typedef struct		s_obj
 	int				material;
 	int				type;
 	int				color;
-	int 			angle;
 	t_vec			rot;
 	double			angle;
 }					t_obj;

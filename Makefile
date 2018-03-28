@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/27 17:14:51 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/03/28 12:08:07 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,6 @@ SRC_NAME = 	lux.c   \
 			pars_cone.c \
 			pars_cylindre.c      \
 			tools_geometric.c     \
-			pars_cone.c
 
 all: $(NAME)
 
