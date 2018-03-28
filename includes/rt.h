@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 16:31:42 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 17:40:55 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <dirent.h>
 # include <stdio.h>
 
-# define SIZE_X 600
+# define SIZE_X 1000
 # define SIZE_Y 600
-# define SIZE_X_2 300
+# define SIZE_X_2 500
 # define SIZE_Y_2 300
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
@@ -93,7 +93,9 @@ typedef struct		s_sdl
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
-	SDL_Surface		*surface;
+	SDL_Texture		*texthud;
+	SDL_Surface		*rendu;
+	SDL_Surface		*hud;
 	SDL_Event		event;
 }					t_sdl;
 

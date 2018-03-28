@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:20:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 17:53:22 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,48 @@
 #include <stdint.h>
 #include <time.h>
 
-void	ft_init(t_sdl *s)
+void	ft_init(t_sdl *s, char *name)
 {
+	char *str;
+
 	SDL_Init(SDL_INIT_EVERYTHING);
-	s->window = SDL_CreateWindow("RT : Ray Tracer", 0, 0, SIZE_X, SIZE_Y,
+	str = ft_strjoin("RT : Ray Tracer - ", name);
+	s->window = SDL_CreateWindow(str, 100, 100, SIZE_X + SIZE_X_2, SIZE_Y + SIZE_Y_2 / 2,
 		SDL_WINDOW_ALLOW_HIGHDPI);
+	free(str);
 	if (s->window == NULL)
 		exit(1);
 	if ((s->renderer = SDL_CreateRenderer(s->window, -1, 0)) == NULL)
 		ft_sdl_error("Renderer error : ", SDL_GetError());
-	if ((s->surface = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
+	if ((s->rendu = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
 		== NULL)
+		ft_sdl_error("Surface error : ", SDL_GetError());
+	if ((s->hud = SDL_CreateRGBSurface(0, SIZE_X + SIZE_X_2, SIZE_Y + SIZE_Y_2 / 2, 32, 0, 0, 0, 0))
+			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
 }
 
 void	display(t_sdl *s)
 {
-	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->surface))
+	Uint32 *pixels;
+	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
+
+	pixels = malloc(sizeof(Uint32) * (SIZE_X + SIZE_X_2) * (SIZE_Y + SIZE_Y_2 / 2));
+	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 	== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
 		ft_sdl_error("Error clearing renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texture, NULL, NULL) < 0)
+	ft_memset(pixels, 255, (SIZE_X + SIZE_X_2) * (SIZE_Y + SIZE_Y_2 / 2) * sizeof(Uint32));
+	s->hud->pixels = pixels;
+	if ((s->texthud = SDL_CreateTextureFromSurface(s->renderer, s->hud))
+		== NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, NULL) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+
 	SDL_RenderPresent(s->renderer);
 }
 
@@ -79,8 +98,8 @@ int		main(int ac, char **av)
 	e.ca = init_cam(0, 0, -90);
 	if (ac != 2)
 		ft_error("\nWrong number of arguments.\n");
-	ft_init(&s);
-	free(s.surface->pixels);
+	ft_init(&s, av[1]);
+	free(s.rendu->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
 	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
