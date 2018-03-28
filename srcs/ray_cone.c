@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:46:26 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 15:10:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ t_inter		ray_cone(t_env *e, int i, int j, int nbr)
 	x = vector_init(e->ca.x - e->obj[nbr].pos.x, e->ca.y - e->obj[nbr].pos.y,
 		e->ca.z - e->obj[nbr].pos.z);
 	v = normalize_vec(e->obj[nbr].rot);
-	p.a = dot(d, d) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(d, v) * dot(d, v));
-	p.b = 2 * (dot(d, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(d, v) * dot(v, x)));
-	p.c = dot(x, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(x, v) * dot(x, v));
+	p.a = dot(d, d) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) *
+	dot(d, v) * dot(d, v));
+	p.b = 2 * (dot(d, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) *
+	dot(d, v) * dot(v, x)));
+	p.c = dot(x, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) *
+	dot(x, v) * dot(x, v));
 	p.delta = (p.b * p.b) - (4 * p.a * p.c);
 	if (p.delta >= 0)
 	{
