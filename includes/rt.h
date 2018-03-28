@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 13:24:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 14:23:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ typedef struct		s_point
 
 typedef struct		s_cam
 {
-	double			xr;
-	double			yr;
-	double			zr;
+	double			x;
+	double			y;
+	double			z;
 }					t_cam;
 
 typedef struct		s_obj
@@ -85,7 +85,6 @@ typedef struct		s_env
 	t_obj			*obj;
 	t_obj			*first;
 	Uint32			*pixels;
-	t_cam			cam;
 	t_cam			ca;
 }					t_env;
 
@@ -131,10 +130,10 @@ int					ft_tablen(void **tab);
 ** shapes's raycasting
 */
 
-void				raytracing(t_env *e, t_cam c, t_sdl s);
-t_inter				ray_sphere(t_env *e, int i, int j, t_cam ca, int nbr);
-t_inter				ray_cylindre(t_env *e, int i, int j, t_cam ca, int nbr);
-t_inter				ray_cone(t_env *e, int i, int j, t_cam ca, int nbr);
+void				raytracing(t_env *e, t_sdl s);
+t_inter				ray_sphere(t_env *e, int i, int j, int nbr);
+t_inter				ray_cylindre(t_env *e, int i, int j, int nbr);
+t_inter				ray_cone(t_env *e, int i, int j, int nbr);
 
 /*
 ** parser

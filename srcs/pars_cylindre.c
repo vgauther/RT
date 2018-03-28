@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 14:30:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 17:15:52 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 13:37:14 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		add_cylindre(t_env *e, char **sp)
 		ft_error("Wrong cylindre parameters.");
 	e->obj[e->nb].pos = vector_init(ft_atoi(sp[1]), ft_atoi(sp[2]), ft_atoi(sp[3]));
 	e->obj[e->nb].rayon = ft_atoi(sp[5]);
+	e->obj[e->nb].rayon_2 = e->obj[e->nb].rayon * e->obj[e->nb].rayon;
 	e->obj[e->nb].rot.x = ft_atoi(sp[6]);
 	e->obj[e->nb].rot.y = ft_atoi(sp[7]);
 	e->obj[e->nb].rot.z = ft_atoi(sp[8]);

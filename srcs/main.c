@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/23 16:58:18 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 14:20:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,60 @@ void	display(t_sdl *s)
 	SDL_RenderPresent(s->renderer);
 }
 
-void	mouv(long key, t_cam *c, t_env *e, t_sdl *s)
+void	mouv(long key, t_env *e, t_sdl *s)
 {
 	ft_memset(e->pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	if (key == 79)
-		c->xr--;
+		e->ca.x--;
 	if (key == 80)
-		c->xr++;
+		e->ca.x++;
 	if (key == 81)
-		c->yr--;
+		e->ca.y--;
 	if (key == 82)
-		c->yr++;
+		e->ca.y++;
 	if (key == 87)
-		c->zr++;
+		e->ca.z++;
 	if (key == 86)
-		c->zr--;
-	raytracing(e, *c, *s);
+		e->ca.z--;
+	raytracing(e, *s);
+}
+
+t_cam	init_cam(int x, int y, int z)
+{
+	t_cam c;
+
+	c.x = x;
+	c.y = y;
+	c.z = z;
+	return (c);
 }
 
 int		main(int ac, char **av)
 {
 	t_sdl	s;
 	t_env	e;
-	t_cam	c;
+	int r;
 
-	c.xr = 0;
-	c.yr = 0;
-	c.zr = -90;
+	r = 1;
+	e.ca = init_cam(0, 0, -90);
 	if (ac != 2)
-	{
-		ft_putstr_fd("Wrong number of arguments.\n", 2);
-		exit(0);
-	}
+		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s);
 	free(s.surface->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
 	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	parser(av[1], &e);
-	raytracing(&e, c, s);
-	while (1)
+	raytracing(&e, s);
+	while (r)
 	{
 		while (SDL_PollEvent(&s.event))
 		{
 			if ((SDL_QUIT == s.event.type) ||
 			(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
-				exit(0);
+				r = 0;
 			else if ((SDL_KEYDOWN == s.event.type))
-				mouv(s.event.key.keysym.scancode, &c, &e, &s);
+				mouv(s.event.key.keysym.scancode, &e, &s);
 		}
 	}
 	SDL_DestroyWindow(s.window);

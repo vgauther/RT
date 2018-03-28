@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 13:01:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 13:49:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_point		init_point(double x, double y, double z)
 
 void	intersection_point(t_inter *pt, t_cam ca, t_vec v)
 {
-	pt->x = ca.xr + v.x * pt->dist;
-	pt->y = ca.yr + v.y * pt->dist;
-	pt->z = ca.zr + v.z * pt->dist;
+	pt->x = ca.x + v.x * pt->dist;
+	pt->y = ca.y + v.y * pt->dist;
+	pt->z = ca.z + v.z * pt->dist;
 }
