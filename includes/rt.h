@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 12:07:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:34:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int					ft_tablen(void **tab);
 */
 
 double				dot(t_vec v1, t_vec v2);
+double				dot_2(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
 

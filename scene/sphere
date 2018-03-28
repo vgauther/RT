@@ -4,12 +4,8 @@
 
 spot 0 0 0 0xFFFFFF 0 0 0
 
-<<<<<<< HEAD
 cone 20 0 50 0xff0000 45 1 1 0 1
 
-//sphere 0 0 50 0xff00ff 20 1
+cylindre 0 0 40 0xffe0bd 20 1 0 0 1
 
-//cylindre -20 0 40 0xffe0bd 20 1 0 0 1
-=======
-cone 0 0 40 0xffe0bd 20 1 0 0 1
->>>>>>> 4631b5304a289533dd87b5453960acca4d083e31
+sphere 0 20 30 0xFF00FF 20 1
