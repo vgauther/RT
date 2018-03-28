@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:22:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 14:46:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ t_inter		ray_cone(t_env *e, int i, int j, int nbr)
 	t_vec		d;
 	t_vec		v;
 	t_vec		x;
-	t_point		o;
-	t_cam 		ca;
-	double		angle;
 
-	ca = e->ca;
-	angle = tan((e->obj[nbr].angle / 2) * RAD);
 	d = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
-	o = init_point(e->obj[nbr].pos.x, e->obj[nbr].pos.y, e->obj[nbr].pos.z);
-	x = vector_init(ca.x - o.x, ca.y - o.y, ca.z - o.z);
+	x = vector_init(e->ca.x - e->obj[nbr].pos.x, e->ca.y - e->obj[nbr].pos.y,
+		e->ca.z - e->obj[nbr].pos.z);
 	v = normalize_vec(e->obj[nbr].rot);
-	p.a = dot(d, d) - ((angle * angle + 1) * dot(d, v) * dot(d, v));
-	p.b = 2 * (dot(d, x) - ((angle * angle + 1) * dot(d, v) * dot(v, x)));
-	p.c = dot(x, x) - ((angle * angle + 1) * dot(x, v) * dot(x, v));
+	p.a = dot(d, d) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(d, v) * dot(d, v));
+	p.b = 2 * (dot(d, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(d, v) * dot(v, x)));
+	p.c = dot(x, x) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) * dot(x, v) * dot(x, v));
 	p.delta = (p.b * p.b) - (4 * p.a * p.c);
 	if (p.delta >= 0)
 	{
@@ -46,7 +41,7 @@ t_inter		ray_cone(t_env *e, int i, int j, int nbr)
 		else
 			p.x1 = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-			intersection_point(&pt, ca, d);
+			intersection_point(&pt, e->ca, d);
 	}
 	else
 		pt.dist = -1;

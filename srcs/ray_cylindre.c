@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:26:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/28 14:36:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ t_inter		ray_cylindre(t_env *e, int i, int j, int nbr)
 	t_vec		d;
 	t_vec		v;
 	t_vec		x;
-	t_point		o;
-	t_cam		ca;
 
-	ca = e->ca;
 	d = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
-	o = init_point(e->obj[nbr].pos.x, e->obj[nbr].pos.y, e->obj[nbr].pos.z);
-	x = vector_init(ca.x - o.x, ca.y - o.y, ca.z - o.z);
+	x = vector_init(e->ca.x - e->obj[nbr].pos.x, e->ca.y - e->obj[nbr].pos.y,
+		e->ca.z - e->obj[nbr].pos.z);
 	v = normalize_vec(e->obj[nbr].rot);
 	p.a = dot(d, d) - dot_2(d, v);
 	p.b = 2 * (dot(d, x) - dot(d, v) * dot(x, v));
@@ -44,7 +41,7 @@ t_inter		ray_cylindre(t_env *e, int i, int j, int nbr)
 		else
 			p.x1 = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-			intersection_point(&pt, ca, d);
+			intersection_point(&pt, e->ca, d);
 	}
 	else
 		pt.dist = -1;
