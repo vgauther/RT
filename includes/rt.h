@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/27 17:14:37 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:05:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define SIZE_X 600
 # define SIZE_Y 600
+# define SIZE_X_2 300
+# define SIZE_Y_2 300
 # define RAD (M_PI / 180.00)
 
 typedef struct		s_color
