@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/28 12:08:07 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/28 12:09:30 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,23 +41,23 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC_NAME = rt.h
 
-SRC_NAME = 	lux.c   \
-			main.c   \
-			error.c   \
-			parser.c   \
+SRC_NAME = 	lux.c  \
+			main.c  \
+			error.c  \
+			parser.c  \
+			ray_cone.c \
 			tools_tab.c \
 			pars_spot.c  \
 			raytracer.c   \
-			ray_sphere.c   \
-			pars_check.c 	\
-			pars_sphere.c    \
-			tools_color.c     \
-			tools_vector.c     \
-			ray_cylindre.c      \
-			ray_cone.c \
-			pars_cone.c \
-			pars_cylindre.c      \
-			tools_geometric.c     \
+			pars_cone.c    \
+			ray_sphere.c    \
+			pars_check.c     \
+			pars_sphere.c     \
+			tools_color.c      \
+			tools_vector.c      \
+			ray_cylindre.c       \
+			pars_cylindre.c       \
+			tools_geometric.c      \
 
 all: $(NAME)
 
