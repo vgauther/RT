@@ -6,22 +6,20 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:07:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:34:53 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_inter		ray_sphere(t_env *e, int i, int j, int nbr)
+t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 {
 	t_polynome	p;
 	t_inter		t;
-	t_vec		v;
 	t_vec		f;
 
-	f = vector_init(e->ca.pos.x - e->obj[nbr].pos.x, e->ca.pos.y - e->obj[nbr].pos.y,
-		e->ca.pos.z - e->obj[nbr].pos.z);
-	v = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
+	f = vector_init(ori.x - e->obj[nbr].pos.x, ori.y - e->obj[nbr].pos.y,
+		ori.z - e->obj[nbr].pos.z);
 	p.a = v.x * v.x + v.y * v.y + v.z * v.z;
 	p.b = 2 * (v.x * f.x + v.y * f.y + v.z * f.z);
 	p.c = pow(f.x, 2) + pow(f.y, 2) + pow(f.z, 2) - e->obj[nbr].rayon_2;
@@ -39,7 +37,7 @@ t_inter		ray_sphere(t_env *e, int i, int j, int nbr)
 		else
 			p.x1 = -p.b / (2 * p.a);
 		if (!(p.x1 < 0 && p.x2 < 0))
-			intersection_point(&t, e->ca, v);
+			intersection_point(&t, ori, v);
 	}
 	else
 		t.dist = -1;

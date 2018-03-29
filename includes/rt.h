@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:10:56 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:30:39 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
 
 t_point				init_point(double x, double y, double z);
-void				intersection_point(t_inter *pt, t_cam ca, t_vec v);
+void				intersection_point(t_inter *pt, t_point ca, t_vec v);
 t_rect				init_rect(int x1, int x2, int x3, int x4);
 void				print_rect(t_rect b, t_env *e, int t, int color);
 
@@ -174,9 +174,9 @@ void				ft_put_pixel_winrend(Uint32 *tab, int x, int y, int color);
 */
 
 void				raytracing(t_env *e, t_sdl s);
-t_inter				ray_sphere(t_env *e, int i, int j, int nbr);
-t_inter				ray_cylindre(t_env *e, int i, int j, int nbr);
-t_inter				ray_cone(t_env *e, int i, int j, int nbr);
+t_inter				ray_sphere(t_env *e, t_vec dir, t_point ori, int nbr);
+t_inter				ray_cylindre(t_env *e, t_vec dir, t_point ori, int nbr);
+t_inter				ray_cone(t_env *e, t_vec dir, t_point ori, int nbr);
 
 /*
 ** parser functions

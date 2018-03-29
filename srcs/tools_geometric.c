@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:06:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:30:42 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ t_point		init_point(double x, double y, double z)
 ** we determinate coordonnates of the intersection between a ray and the shape
 */
 
-void	intersection_point(t_inter *pt, t_cam ca, t_vec v)
+void	intersection_point(t_inter *pt, t_point ca, t_vec v)
 {
-	pt->x = ca.pos.x + v.x * pt->dist;
-	pt->y = ca.pos.y + v.y * pt->dist;
-	pt->z = ca.pos.z + v.z * pt->dist;
+	pt->x = ca.x + v.x * pt->dist;
+	pt->y = ca.y + v.y * pt->dist;
+	pt->z = ca.z + v.z * pt->dist;
 }
 
 t_rect	init_rect(int x1, int x2, int x3, int x4)
