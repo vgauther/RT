@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 11:54:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 14:47:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct		s_env
 	t_obj			*obj;
 	t_obj			*first;
 	Uint32			*pixels;
+	Uint32			*hud;
 	t_cam			ca;
 }					t_env;
 
@@ -108,11 +109,28 @@ typedef struct		s_inter
 	int				nb;
 }					t_inter;
 
+typedef	struct		s_bouton
+{
+	int				x_begin;
+	int				y_begin;
+	int				x_end;
+	int				y_end;
+}					t_bouton;
+
+typedef	struct		s_rect
+{
+	int				x_begin;
+	int				y_begin;
+	int				x_end;
+	int				y_end;
+}					t_rect;
+
 int					check_value(char *nbr);
 void				display(t_sdl *s);
 double				lux(t_env *e, t_inter pt);
 int					ft_tablen(void **tab);
-void				main_mouse(int mouse_x, int mouse_y, t_sdl *s);
+void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
+void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 
 /*
 ** tools
@@ -125,9 +143,24 @@ t_vec				normalize_vec(t_vec ret);
 
 t_point				init_point(double x, double y, double z);
 void				intersection_point(t_inter *pt, t_cam ca, t_vec v);
+t_rect				init_rect(int x1, int x2, int x3, int x4);
+void				print_rect(t_rect b, t_env *e, int t, int color);
 
 void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);
+
+/*
+** HUD
+*/
+
+void				hud_init(t_sdl *s, t_env *e);
+
+/*
+** ft_put_pixel
+*/
+
+void				ft_put_pixel_hud(Uint32 *tab, int x, int y, int color);
+void				ft_put_pixel_winrend(Uint32 *tab, int x, int y, int color);
 
 /*
 ** shapes's raycasting

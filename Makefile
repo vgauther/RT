@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/28 16:26:10 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/03/29 14:08:57 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,9 @@ SRC_NAME = 	lux.c  \
 			ray_cylindre.c       \
 			pars_cylindre.c       \
 			tools_geometric.c      \
+			mouse.c \
+			hud.c\
+			ft_put_pixels.c
 
 
 

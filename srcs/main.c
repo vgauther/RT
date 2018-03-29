@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 11:54:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 14:42:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,21 @@ void	ft_init(t_sdl *s, char *name)
 
 void	display(t_sdl *s)
 {
-	Uint32 *pixels;
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
+	SDL_Rect 	test2 = { 0, 0, SIZE_X + SIZE_X_2, SIZE_Y + SIZE_Y_2 / 2 };
 
-	pixels = malloc(sizeof(Uint32) * (SIZE_X + SIZE_X_2) * (SIZE_Y + SIZE_Y_2 / 2));
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 	== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
 		ft_sdl_error("Error clearing renderer : ", SDL_GetError());
-	ft_memset(pixels, 255, (SIZE_X + SIZE_X_2) * (SIZE_Y + SIZE_Y_2 / 2) * sizeof(Uint32));
-	s->hud->pixels = pixels;
 	if ((s->texthud = SDL_CreateTextureFromSurface(s->renderer, s->hud))
 		== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, NULL) < 0)
+	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, &test2) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-
 	SDL_RenderPresent(s->renderer);
 }
 
@@ -92,7 +88,7 @@ int		main(int ac, char **av)
 {
 	t_sdl	s;
 	t_env	e;
-	int r;
+	int		r;
 
 	r = 1;
 	e.ca = init_cam(0, 0, -90);
@@ -102,8 +98,14 @@ int		main(int ac, char **av)
 	free(s.rendu->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
+	if (!(e.hud = (Uint32*)malloc(sizeof(Uint32) * (SIZE_X + SIZE_X_2) *
+	(SIZE_Y + SIZE_Y_2 / 2))))
+		return (0);
 	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
+	ft_memset(e.hud, 0, sizeof(Uint32) * (SIZE_X + SIZE_X_2) *
+	(SIZE_Y + SIZE_Y_2 / 2));
 	parser(av[1], &e);
+	hud_init(&s, &e);
 	raytracing(&e, s);
 	while (r)
 	{
@@ -115,7 +117,11 @@ int		main(int ac, char **av)
 			else if ((SDL_KEYDOWN == s.event.type))
 				mouv(s.event.key.keysym.scancode, &e, &s);
 			else if ((SDL_MOUSEBUTTONDOWN == s.event.type))
+			{
 				printf("%d %d\n", s.event.button.x, s.event.button.y);
+				main_mouse(s.event.button.x, s.event.button.y, &s, &e);
+				display(&s);
+			}
 		}
 	}
 	SDL_DestroyWindow(s.window);

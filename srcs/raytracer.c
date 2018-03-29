@@ -6,16 +6,11 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/28 17:37:35 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 13:13:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-void	ft_put_pixel(t_env *e, int x, int y, int color)
-{
-	e->pixels[(y * SIZE_X + x)] = color;
-}
 
 t_inter		shape_redirection(t_env *e, int x, int y, int nbr)
 {
@@ -69,7 +64,7 @@ void	raytracing(t_env *e, t_sdl s)
 				nbr++;
 			}
 			if (pt.dist >= 0)
-				ft_put_pixel(e, x, y, lux(e, pt));
+				ft_put_pixel_winrend(e->pixels, x, y, lux(e, pt));
 			y++;
 		}
 		x++;
