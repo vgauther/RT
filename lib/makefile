@@ -38,7 +38,7 @@ $(NAME):
 sdl_2:
 	@rm -rf $(SDL_PATH)
 	@mkdir $(SDL_PATH)
-	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.5/configure --prefix=$(SDL_PATH) && make && make install
+	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.8/configure --prefix=$(SDL_PATH) && make && make install
 	@echo "$(GREEN)[✓] SDL 2.0 COMPILED$(NC)"
 
 clean:
