@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 14:37:53 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:07:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_inter		ray_sphere(t_env *e, int i, int j, int nbr)
 	t_vec		v;
 	t_vec		f;
 
-	f = vector_init(e->ca.x - e->obj[nbr].pos.x, e->ca.y - e->obj[nbr].pos.y,
-		e->ca.z - e->obj[nbr].pos.z);
+	f = vector_init(e->ca.pos.x - e->obj[nbr].pos.x, e->ca.pos.y - e->obj[nbr].pos.y,
+		e->ca.pos.z - e->obj[nbr].pos.z);
 	v = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
 	p.a = v.x * v.x + v.y * v.y + v.z * v.z;
 	p.b = 2 * (v.x * f.x + v.y * f.y + v.z * f.z);

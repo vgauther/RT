@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 14:47:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:10:56 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 # define SIZE_Y_2 300
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
+
+typedef struct		s_rot
+{
+	double		x;
+	double		y;
+	double		z;
+}					t_rot;
 
 typedef struct		s_color
 {
@@ -60,9 +67,9 @@ typedef struct		s_point
 
 typedef struct		s_cam
 {
-	double			x;
-	double			y;
-	double			z;
+	t_rot			rot;
+	t_point			pos;
+
 }					t_cam;
 
 typedef struct		s_obj

@@ -4,9 +4,6 @@
 
 spot 0 0 0 0xFFFFFF 0 0 0
 
-spot -50 0 0 0xFFFFFF 0 0 0
-
-
 cone 20 0 50 0xff0000 45 1 1 0 1
 
 cylindre 0 0 40 0xffe0bd 20 1 0 0 1

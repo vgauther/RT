@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 15:10:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:04:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_inter		ray_cone(t_env *e, int i, int j, int nbr)
 	t_vec		x;
 
 	d = vector_init(i - SIZE_X_2, j - SIZE_Y_2, SIZE_X_2 / TAN30);
-	x = vector_init(e->ca.x - e->obj[nbr].pos.x, e->ca.y - e->obj[nbr].pos.y,
-		e->ca.z - e->obj[nbr].pos.z);
+	x = vector_init(e->ca.pos.x - e->obj[nbr].pos.x,
+		e->ca.pos.y - e->obj[nbr].pos.y, e->ca.pos.z - e->obj[nbr].pos.z);
 	v = normalize_vec(e->obj[nbr].rot);
 	p.a = dot(d, d) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) *
 	dot(d, v) * dot(d, v));

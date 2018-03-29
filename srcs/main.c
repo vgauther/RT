@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 14:56:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 15:04:06 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ void	mouv(long key, t_env *e, t_sdl *s)
 {
 	ft_memset(e->pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	if (key == 79)
-		e->ca.x--;
+		e->ca.pos.x--;
 	if (key == 80)
-		e->ca.x++;
+		e->ca.pos.x++;
 	if (key == 81)
-		e->ca.y--;
+		e->ca.pos.y--;
 	if (key == 82)
-		e->ca.y++;
+		e->ca.pos.y++;
 	if (key == 87)
-		e->ca.z++;
+		e->ca.pos.z++;
 	if (key == 86)
-		e->ca.z--;
+		e->ca.pos.z--;
 	raytracing(e, *s);
 }
 
@@ -78,9 +78,9 @@ t_cam	init_cam(int x, int y, int z)
 {
 	t_cam c;
 
-	c.x = x;
-	c.y = y;
-	c.z = z;
+	c.pos.x = x;
+	c.pos.y = y;
+	c.pos.z = z;
 	return (c);
 }
 
