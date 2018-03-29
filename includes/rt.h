@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:30:39 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 16:45:37 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,10 @@ typedef struct		s_sdl
 
 typedef struct		s_inter
 {
-	double			x;
-	double			y;
-	double			z;
+	t_point			pos;
 	double			dist;
 	int				nb;
+	double			delta;
 }					t_inter;
 
 typedef	struct		s_bouton
@@ -135,6 +134,7 @@ typedef	struct		s_rect
 int					check_value(char *nbr);
 void				display(t_sdl *s);
 double				lux(t_env *e, t_inter pt);
+int					ray_shadow(t_env *e, t_point ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
@@ -170,7 +170,7 @@ void				ft_put_pixel_hud(Uint32 *tab, int x, int y, int color);
 void				ft_put_pixel_winrend(Uint32 *tab, int x, int y, int color);
 
 /*
-** shapes's raycasting
+** shapes's raytracing
 */
 
 void				raytracing(t_env *e, t_sdl s);

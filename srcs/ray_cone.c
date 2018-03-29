@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:31:24 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 16:04:46 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 	}
 	else
 		pt.dist = -1;
+	pt.delta = p.delta;
 	return (pt);
 }

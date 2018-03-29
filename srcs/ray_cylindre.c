@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:33:14 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 16:04:34 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 	}
 	else
 		pt.dist = -1;
+	pt.delta = p.delta;
 	return (pt);
 }

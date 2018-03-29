@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/29 15:50:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:01:39 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	raytracing(t_env *e, t_sdl s)
 				if (((tmp.dist < pt.dist || pt.dist < 0) && tmp.dist >= 0) || token == 42)
 				{
 					pt.dist = tmp.dist;
-					pt.x = tmp.x;
-					pt.y = tmp.y;
-					pt.z = tmp.z;
+					pt.pos.x = tmp.pos.x;
+					pt.pos.y = tmp.pos.y;
+					pt.pos.z = tmp.pos.z;
 					pt.nb = nbr;
 					token = 0;
 				}
@@ -75,7 +75,7 @@ void	raytracing(t_env *e, t_sdl s)
 	display(&s);
 }
 
-/*int			ray_shadow(t_env *e, t_sdl s, t_point ori)
+int			ray_shadow(t_env *e, t_point ori, t_obj spot, int nb)
 {
 	int		nbr;
 	t_vec	dir;
@@ -84,18 +84,15 @@ void	raytracing(t_env *e, t_sdl s)
 	nbr = 0;
 	while (nbr < e->nb)
 	{
-		dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
-		p = shape_redirection(e, dir, e->ca.pos, nbr);
-		if (((tmp.dist < pt.dist || pt.dist < 0) && tmp.dist >= 0) || token == 42)
+		if (nbr != nb)
 		{
-			pt.dist = tmp.dist;
-			pt.x = tmp.x;
-			pt.y = tmp.y;
-			pt.z = tmp.z;
-			pt.nb = nbr;
-			token = 0;
+			dir = vector_init(ori.x - spot.pos.x,
+			ori.y - spot.pos.y, ori.z - spot.pos.z);
+			p = shape_redirection(e, dir, ori, nbr);
+			if (p.delta >= 0)
+				return (1);
 		}
 		nbr++;
 	}
-
-}*/
+	return (0);
+}
