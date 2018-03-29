@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 14:42:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 14:56:05 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		main(int ac, char **av)
 		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s, av[1]);
 	free(s.rendu->pixels);
+	free(s.hud->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
 	if (!(e.hud = (Uint32*)malloc(sizeof(Uint32) * (SIZE_X + SIZE_X_2) *
