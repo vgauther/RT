@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 17:40:55 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 11:54:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int					check_value(char *nbr);
 void				display(t_sdl *s);
 double				lux(t_env *e, t_inter pt);
 int					ft_tablen(void **tab);
+void				main_mouse(int mouse_x, int mouse_y, t_sdl *s);
 
 /*
 ** tools
@@ -138,7 +139,7 @@ t_inter				ray_cylindre(t_env *e, int i, int j, int nbr);
 t_inter				ray_cone(t_env *e, int i, int j, int nbr);
 
 /*
-** parser
+** parser functions
 */
 
 void				parser(char *name, t_env *e);

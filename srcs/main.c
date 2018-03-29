@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 11:46:57 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/29 11:54:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int		main(int ac, char **av)
 			else if ((SDL_KEYDOWN == s.event.type))
 				mouv(s.event.key.keysym.scancode, &e, &s);
 			else if ((SDL_MOUSEBUTTONDOWN == s.event.type))
-				printf("%d %d\n",s.event.button.x, s.event.button.y );
+				printf("%d %d\n", s.event.button.x, s.event.button.y);
 		}
 	}
 	SDL_DestroyWindow(s.window);
