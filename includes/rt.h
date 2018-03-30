@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 14:19:10 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/30 16:32:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <stdio.h>
+# include "SDL2/SDL_ttf.h"
 
 # define SIZE_X 1000
 # define SIZE_Y 600

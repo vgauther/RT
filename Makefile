@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/30 13:47:56 by vgauther         ###   ########.fr        #
+#    Updated: 2018/03/30 16:44:27 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ NC = \033[0m
 NAME = rt
 
 CC = gcc
-CC_FLAGS = -g3 -Wall -Werror -Wextra
+CC_FLAGS = -g3
 
 SDL_PATH = $(shell pwd)/lib/SDL
+TTF_PATH = $(shell pwd)/lib/TTF
 SRC_PATH = ./srcs/
 INC_PATH = ./includes/
 OBJ_PATH = ./obj/
@@ -32,7 +33,7 @@ LFT_PATH = ./libft/
 MLX_PATH = ./minilibx_macos/
 SDLHEADER_PATH = ./lib/SDL/include/SDL2/
 
-SDL_FLG = -I $(SDLHEADER_PATH) -L $(SDL_PATH)/lib -lSDL2
+SDL_FLG = -I $(SDLHEADER_PATH) -L $(SDL_PATH)/lib -lSDL2 -L $(TTF_PATH)/lib -lSDL2_ttf
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
@@ -41,28 +42,26 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC_NAME = rt.h
 
-SRC_NAME = 	lux.c  \
+SRC_NAME = 	lux.c \
+			hud.c  \
 			main.c  \
-			error.c  \
-			parser.c  \
-			ray_cone.c \
-			tools_tab.c \
-			pars_spot.c  \
-			raytracer.c   \
-			pars_cone.c    \
-			ray_sphere.c    \
-			pars_check.c     \
-			pars_sphere.c     \
-			tools_color.c      \
-			tools_vector.c      \
-			ray_cylindre.c       \
-			pars_cylindre.c       \
-			tools_geometric.c      \
-			mouse.c \
-			hud.c\
-			ft_put_pixels.c
-
-
+			mouse.c  \
+			error.c   \
+			parser.c   \
+			ray_cone.c  \
+			tools_tab.c  \
+			pars_spot.c   \
+			raytracer.c    \
+			pars_cone.c     \
+			ray_sphere.c     \
+			pars_check.c      \
+			pars_sphere.c      \
+			tools_color.c       \
+			tools_vector.c       \
+			ray_cylindre.c        \
+			pars_cylindre.c        \
+			ft_put_pixels.c         \
+			tools_geometric.c        \
 
 all: $(NAME)
 
@@ -88,12 +87,15 @@ clean:
 sdl_if:
 	@make -C ./lib
 
-
 fclean:
 	@make clean
 	@make -C $(LFT_PATH) fclean
 	@rm -f $(NAME)
 	@echo "$(RED)[-] EXECUTABLE RT DELETED$(NC)"
+
+fclean_all:
+	@make fclean
+	@make cllib
 
 clean_o:
 	@rm -f $(NAME)
@@ -103,16 +105,24 @@ re:
 	@make fclean
 	@make all
 
-coffee:
-	@echo "$(RED)warning it's hot$(NC)"
-
-clsdl:
+cllib:
 	@make -C ./lib clean
 
+clfreetype:
+	@make -C ./lib freetype_clean
+
+clttf:
+	@make -C ./lib ttf_clean
+
+clsdl:
+	@make -C ./lib sdl_clean
+
 push:
-	@make fclean
-	@make clsdl
+	@make fclean_all
 	@git add *
 	@git commit -m "GIT ADD * via Makefile"
 	@git push
 	@echo "$(GREEN)[✓] PUSH DONE$(NC)"
+
+coffee:
+	@echo "$(RED)warning it's hot$(NC)"
