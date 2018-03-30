@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 12:04:24 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:19:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define SIZE_Y 600
 # define SIZE_X_2 500
 # define SIZE_Y_2 300
+# define WIN_X (SIZE_X + SIZE_X_2)
+# define WIN_Y (SIZE_Y + SIZE_Y_2 / 2)
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
 # define MAX_DIST 10000

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 14:02:55 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:21:35 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_init(t_sdl *s, char *name)
 void	display(t_sdl *s)
 {
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
-	SDL_Rect 	test2 = { 0, 0, 100, 100};
+	SDL_Rect 	test2 = { 15, 15, WIN_X / 7, WIN_Y / 5};
 	SDL_Surface *testimg;
 	SDL_Texture	*img;
 
-	testimg = SDL_LoadBMP("sdl_icone.bmp");
+	testimg = SDL_LoadBMP("./img_srcs/rtl.bmp");
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 	== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());

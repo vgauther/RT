@@ -6,13 +6,11 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 16:35:17 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:19:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-#define WIN_X (SIZE_X + SIZE_X_2)
-#define WIN_Y (SIZE_Y + SIZE_Y_2 / 2)
 
 void	empty_rect(t_rect b, t_env *e, int t, int color)
 {
@@ -20,7 +18,7 @@ void	empty_rect(t_rect b, t_env *e, int t, int color)
 	int save2;
 
 	if (b.y_begin > b.y_end || b.x_begin > b.x_end)
-		ft_error("\nbouton error\n");
+		ft_error("\nrect error\n");
 	save = b.x_begin;
 	save2 = b.y_begin;
 	while (b.y_begin <= b.y_end)
@@ -51,7 +49,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
 	r2 = init_rect(0, 0, WIN_X / 10 + 100, WIN_Y / 10 + 100);
 	r3 = init_rect(0, 0, SIZE_X + SIZE_X_2, SIZE_Y + SIZE_Y_2 / 2);
-	print_rect(r1, e, 1, color);
-	empty_rect(r2, e, 1, 0x00FF00);
+	print_rect(r1, e, 1, 0x202225);
+	empty_rect(r2, e, 1, 0x202225);
 	s->hud->pixels = e->hud;
 }
