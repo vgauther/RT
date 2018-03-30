@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 16:45:37 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/30 12:04:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SIZE_Y_2 300
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
+# define MAX_DIST 10000
 
 typedef struct		s_rot
 {
@@ -74,7 +75,7 @@ typedef struct		s_cam
 
 typedef struct		s_obj
 {
-	t_vec			pos;
+	t_point			pos;
 	double			rayon;
 	double			rayon_2;
 	int				material;

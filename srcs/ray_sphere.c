@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 16:13:45 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/30 13:08:27 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 			intersection_point(&t, ori, v);
 	}
 	else
-		t.dist = -1;
+		t.dist = MAX_DIST;
 	t.delta = p.delta;
 	return (t);
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 16:04:46 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/30 12:40:29 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 	t_vec		v;
 	t_vec		x;
 
-	x = vector_init(ori.x - e->obj[nbr].pos.x,
-		ori.y - e->obj[nbr].pos.y, ori.z - e->obj[nbr].pos.z);
+	x = vector_init(ori.x - e->obj[nbr].pos.x, ori.y - e->obj[nbr].pos.y,
+		ori.z - e->obj[nbr].pos.z);
 	v = normalize_vec(e->obj[nbr].rot);
 	p.a = dot(d, d) - ((e->obj[nbr].angle * e->obj[nbr].angle + 1) *
 	dot(d, v) * dot(d, v));
@@ -45,7 +45,7 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 			intersection_point(&pt, ori, d);
 	}
 	else
-		pt.dist = -1;
+		pt.dist = MAX_DIST;
 	pt.delta = p.delta;
 	return (pt);
 }

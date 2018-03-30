@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 14:30:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 16:22:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/03/30 12:36:58 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		add_cone(t_env *e, char **sp)
 {
 	if (!check_param(sp))
 		ft_error("Wrong cone parameters.");
-	e->obj[e->nb].pos = vector_init(ft_atoi(sp[1]),
+	e->obj[e->nb].pos = init_point(ft_atoi(sp[1]),
 	ft_atoi(sp[2]), ft_atoi(sp[3]));
 	e->obj[e->nb].angle = ft_atoi(sp[5]);
 	e->obj[e->nb].angle = tan((e->obj[e->nb].angle / 2) * RAD);
