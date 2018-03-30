@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/29 15:04:06 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:02:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,15 @@ void	ft_init(t_sdl *s, char *name)
 void	display(t_sdl *s)
 {
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
-	SDL_Rect 	test2 = { 0, 0, SIZE_X + SIZE_X_2, SIZE_Y + SIZE_Y_2 / 2 };
+	SDL_Rect 	test2 = { 0, 0, 100, 100};
+	SDL_Surface *testimg;
+	SDL_Texture	*img;
 
+	testimg = SDL_LoadBMP("sdl_icone.bmp");
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
+	== NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((img = SDL_CreateTextureFromSurface(s->renderer, testimg))
 	== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderClear(s->renderer) < 0)
@@ -49,9 +55,11 @@ void	display(t_sdl *s)
 	if ((s->texthud = SDL_CreateTextureFromSurface(s->renderer, s->hud))
 		== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, &test2) < 0)
+	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, NULL) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, img, NULL, &test2) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
 }
