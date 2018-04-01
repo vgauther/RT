@@ -14,10 +14,10 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Parsing du fichier scene
 
 # En cours [...]
-- Plan
-- Lumiere
-- Ombres portées
-- Interfaces
+- Plan (ppetit)
+- Lumiere (fde-souz)
+- Ombres portées (fde-souz)
+- Interfaces (vgauther)
 
 # Idées et ameliorations à faire [->]
 - Refraction
