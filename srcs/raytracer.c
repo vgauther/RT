@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/03/30 12:57:04 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/02 17:38:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_inter		shape_redirection(t_env *e, t_vec dir, t_point ori, int nbr)
 	return (tmp);
 }
 
-void	raytracing(t_env *e, t_sdl s)
+void	raytracing(t_env *e, t_sdl *s)
 {
 	int			x;
 	int			y;
@@ -64,12 +64,14 @@ void	raytracing(t_env *e, t_sdl s)
 			}
 			if (pt.dist != MAX_DIST)
 				ft_put_pixel_winrend(e->pixels, x, y, lux(e, pt));
+			else
+				ft_put_pixel_winrend(e->pixels, x, y, 0xFF0000);
 			y++;
 		}
 		x++;
 	}
-	s.rendu->pixels = e->pixels;
-	display(&s);
+	s->rendu->pixels = e->pixels;
+	display(s);
 }
 
 int			ray_shadow(t_env *e, t_point pt, t_obj spot, int nb)

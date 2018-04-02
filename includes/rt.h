@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 16:32:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/02 16:46:34 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
 # define MAX_DIST 10000
+# define POS_WIN_X 100
+# define POS_WIN_Y 100
+
+typedef struct		s_font
+{
+	TTF_Font		*bebas;
+	SDL_Color		color[5];
+	SDL_Texture		*texture;
+}					t_font;
 
 typedef struct		s_rot
 {
@@ -109,6 +118,7 @@ typedef struct		s_sdl
 	SDL_Surface		*rendu;
 	SDL_Surface		*hud;
 	SDL_Event		event;
+	t_font			font;
 }					t_sdl;
 
 typedef struct		s_inter
@@ -161,6 +171,13 @@ void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);
 
 /*
+** text and font
+*/
+
+void	init_font(t_sdl *s);
+void	print_text(char *str, SDL_Color color, t_sdl *s);
+
+/*
 ** HUD
 */
 
@@ -177,7 +194,7 @@ void				ft_put_pixel_winrend(Uint32 *tab, int x, int y, int color);
 ** shapes's raytracing
 */
 
-void				raytracing(t_env *e, t_sdl s);
+void				raytracing(t_env *e, t_sdl *s);
 t_inter				ray_sphere(t_env *e, t_vec dir, t_point ori, int nbr);
 t_inter				ray_cylindre(t_env *e, t_vec dir, t_point ori, int nbr);
 t_inter				ray_cone(t_env *e, t_vec dir, t_point ori, int nbr);

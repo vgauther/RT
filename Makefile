@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/03/30 16:44:27 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/02 14:51:59 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NC = \033[0m
 NAME = rt
 
 CC = gcc
-CC_FLAGS = -g3
+CC_FLAGS = -g3 -Wall -Wextra -Werror
 
 SDL_PATH = $(shell pwd)/lib/SDL
 TTF_PATH = $(shell pwd)/lib/TTF
@@ -62,6 +62,7 @@ SRC_NAME = 	lux.c \
 			pars_cylindre.c        \
 			ft_put_pixels.c         \
 			tools_geometric.c        \
+			print_text.c
 
 all: $(NAME)
 
