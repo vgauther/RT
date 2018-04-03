@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/02 17:38:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/03 13:13:15 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	raytracing(t_env *e, t_sdl *s)
 			if (pt.dist != MAX_DIST)
 				ft_put_pixel_winrend(e->pixels, x, y, lux(e, pt));
 			else
-				ft_put_pixel_winrend(e->pixels, x, y, 0xFF0000);
+				ft_put_pixel_winrend(e->pixels, x, y, 0);
 			y++;
 		}
 		x++;
@@ -76,32 +76,22 @@ void	raytracing(t_env *e, t_sdl *s)
 
 int			ray_shadow(t_env *e, t_point pt, t_obj spot, int nb)
 {
-	int		nbr;
+	int		j;
 	t_vec	dir;
-	t_inter	p;
 	t_inter tmp;
 
-	(void)nb;
-	nbr = 0;
-	p.dist = MAX_DIST;
-	while (nbr < e->nb)
+	j = 0;
+	dir = normalize_vec(vector_init(pt.x - spot.pos.x,
+	pt.y - spot.pos.y, pt.z - spot.pos.z));
+	while (j < e->nb)
 	{
-		dir = vector_init(pt.x - spot.pos.x,
-		pt.y - spot.pos.y, pt.z - spot.pos.z);
-		tmp = shape_redirection(e, dir, spot.pos, nbr);
-		if (tmp.dist < p.dist)
+		tmp = shape_redirection(e, dir, spot.pos, j);
+		if (j != nb)
 		{
-			p.dist = tmp.dist;
-			p.pos.x = tmp.pos.x;
-			p.pos.y = tmp.pos.y;
-			p.pos.z = tmp.pos.z;
-			p.nb = nbr;
+			if (tmp.delta >= 0 && tmp.dist > 0)
+				return (1);
 		}
-		nbr++;
-	}
-	if (p.dist < MAX_DIST && p.nb != nb && p.dist > 0)
-	{
-		return (1);
+		j++;
 	}
 	return (0);
 }

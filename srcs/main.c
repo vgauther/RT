@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/02 17:37:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/03 12:13:36 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	display(t_sdl *s)
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, NULL) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
@@ -51,7 +53,6 @@ void	display(t_sdl *s)
 
 void	mouv(long key, t_env *e, t_sdl *s)
 {
-	ft_memset(e->pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	if (key == 79)
 		e->ca.pos.x--;
 	if (key == 80)
@@ -92,7 +93,6 @@ int		main(int ac, char **av)
 	free(s.hud->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
-	ft_memset(e.pixels, 0, SIZE_X * SIZE_Y * sizeof(Uint32));
 	parser(av[1], &e);
 	hud_init(&s, &e);
 	raytracing(&e, &s);

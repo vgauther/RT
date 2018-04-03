@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/02 17:43:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/03 12:14:51 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	hud_init(t_sdl *s, t_env *e)
 	s->hud->pixels = e->hud;
 	if ((s->texthud = SDL_CreateTextureFromSurface(s->renderer, s->hud)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texthud, NULL, NULL) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	//r2 = init_rect(800, 180, 930, 350);
 	//empty_rect(r2, e, 1, 0xFFFFFF);
 	/*init_font(s);
