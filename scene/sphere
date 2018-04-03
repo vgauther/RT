@@ -4,8 +4,11 @@
 //cylindre -20 0 50 0xffff00 10 0 1 0 1
 //cylindre 50 0 50 0xffff00 20 0 1 0 1
 
-spot -100 0 50 0xFFFFFF 0 0 0
+spot -500 0 50 0xFFFFFF 0 0 0
+spot 100 0 50 0xFf00FF 0 0 0
+spot 100 50 50 0x00FF00 0 0 0
 
 
-sphere -20 0 50 0xFF00FF 10 1
+
+sphere -20 0 50 0xFF0000 10 1
 sphere 40 0 50 0xFF00FF 20 1

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 11:44:04 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/03 15:00:21 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ typedef	struct		s_rect
 int					check_value(char *nbr);
 void				display(t_sdl *s);
 double				lux(t_env *e, t_inter pt);
-int					ray_shadow(t_env *e, t_point ori, t_obj spot, int nb);
+int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
