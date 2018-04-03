@@ -1,4 +1,4 @@
-### RT
+# RT
 Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 
 ## Lib
@@ -30,13 +30,13 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Filtre de couleur (ex : sepia)
 
 ## Objets à faire [obj]
-# Fusion d'objet
+### Fusion d'objet
 - cube, verre
-# Objets divers
+### Objets divers
 - nappe
 - torre
 - ruban de mobius
-# Objets finis
+### Objets finis
 - cylindre 
 - conne
 - plan
