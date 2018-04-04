@@ -49,9 +49,16 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 	return (rect);
 }
 
+void		recup_cam_to_print(t_sdl *s, t_env *e)
+{
+	(void)e;
+	print_text("CAMERA", s->font.color[1], s, &s->hud1.cam.title);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
+	t_rect	r2;
 	//t_rect	r2;
 	//SDL_Surface *testimg;
 	//SDL_Texture	*img;
@@ -64,6 +71,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	//if ((img = SDL_CreateTextureFromSurface(s->renderer, testimg))
 		//	== NULL)
 		//ft_sdl_error("Texture error : ", SDL_GetError());
+	init_font(s);
 	s->hud1.s_logo = SDL_LoadBMP("./img_srcs/rtl.bmp");
 	s->hud1.r_logo = init_sdl_rect(WIN_X / 100, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
 	if ((s->hud1.t_logo = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_logo))
@@ -72,8 +80,12 @@ void	hud_init(t_sdl *s, t_env *e)
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
 		ft_error("MALLOC ERROR");
 	//ft_memset(e->hud, 255, sizeof(Uint32) * WIN_X * WIN_Y);
+	r2 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
-	print_rect(r1, e, 1, 0x202225);
+	print_rect(r1, e, 1, COLOR_BACK);
+	empty_rect(r2, e, 1, WHITE);
+	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
+	print_rect(r1, e, 1, COLOR_BACK);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());

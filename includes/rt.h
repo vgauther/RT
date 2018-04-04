@@ -206,13 +206,14 @@ int					ft_tablen(void **tab);
 */
 
 void	init_font(t_sdl *s);
-void	print_text(char *str, SDL_Color color, t_sdl *s);
+void	print_text(char *str, SDL_Color color, t_sdl *s, SDL_Texture **text);
 
 /*
 ** HUD
 */
 
 void				hud_init(t_sdl *s, t_env *e);
+void				recup_cam_to_print(t_sdl *s, t_env *e);
 
 /*
 ** ft_put_pixel

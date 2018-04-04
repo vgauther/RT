@@ -42,10 +42,13 @@ void	display(t_sdl *s, t_env *e)
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
 
 	(void)e;
+	recup_cam_to_print(s, e);
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.title, NULL, &s->hud1.cam.r_title) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
