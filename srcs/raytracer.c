@@ -72,7 +72,7 @@ void	raytracing(t_env *e, t_sdl *s)
 		x++;
 	}
 	s->rendu->pixels = e->pixels;
-	display(s);
+	display(s, e);
 }
 
 int			ray_shadow(t_env *e, t_inter pt, t_obj spot, int nb)

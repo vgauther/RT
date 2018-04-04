@@ -43,6 +43,28 @@
 # define PINK 		0xFF00FF
 # define CYAN		0x00FFFF
 
+typedef struct		s_print_cam
+{
+	SDL_Texture		*title;
+	SDL_Rect		r_title;
+	SDL_Texture		*pos_x;
+	SDL_Texture		*pos_y;
+	SDL_Texture		*pos_z;
+	SDL_Texture		*rot_x;
+	SDL_Texture		*rot_y;
+	SDL_Texture		*rot_z;
+}					t_print_cam;
+
+typedef struct		s_hud
+{
+	SDL_Surface		*s_back;
+	SDL_Texture		*t_back;
+	SDL_Surface		*s_logo;
+	SDL_Texture		*t_logo;
+	SDL_Rect		r_logo;
+	t_print_cam		cam;
+}					t_hud;
+
 typedef struct		s_font
 {
 	TTF_Font		*bebas;
@@ -124,10 +146,9 @@ typedef struct		s_sdl
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
-	SDL_Texture		*texthud;
 	SDL_Surface		*rendu;
-	SDL_Surface		*hud;
 	SDL_Event		event;
+	t_hud 	hud1;
 	t_font			font;
 }					t_sdl;
 
@@ -156,7 +177,7 @@ typedef	struct		s_rect
 }					t_rect;
 
 int					check_value(char *nbr);
-void				display(t_sdl *s);
+void				display(t_sdl *s, t_env *e);
 double				lux(t_env *e, t_inter pt);
 int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);

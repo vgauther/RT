@@ -44,5 +44,5 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	if (mouse_x > b.x_begin && mouse_x < b.x_end && mouse_y >
 		b.y_begin && mouse_y < b.y_end)
 		print_bouton(b, e);
-	s->hud->pixels = e->hud;
+	s->hud1.s_back->pixels = e->hud;
 }
