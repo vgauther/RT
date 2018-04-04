@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 13:06:45 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/03 16:46:16 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 				pt.dist = p.x1 < 0 ? p.x2 : p.x1;
 		}
 		else
+		{
 			p.x1 = -p.b / (2 * p.a);
+			p.x2 = p.x1;
+			pt.dist = p.x1;
+		}
 		if (!(p.x1 < 0 && p.x2 < 0))
 			intersection_point(&pt, ori, d);
 	}

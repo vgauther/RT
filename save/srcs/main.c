@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 17:39:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/03 12:13:36 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_init(t_sdl *s, char *name)
 	if ((s->rendu = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
-	if ((s->hud.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
+	if ((s->hud1.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
 }
@@ -40,17 +40,17 @@ void	ft_init(t_sdl *s, char *name)
 void	display(t_sdl *s, t_env *e)
 {
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
-	//SDL_Rect 	test2 = { 0, 0, SIZE_X, SIZE_Y };
+
 	(void)e;
-	//recup_cam_to_print(s, e);
+	recup_cam_to_print(s, e);
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud.t_back, NULL, NULL) < 0)
+	if (SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud.cam.title, NULL, &s->hud.cam.r_title) < 0)
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.title.tex, NULL, &s->hud1.cam.title.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud.t_logo, NULL, &s->hud.r_logo) < 0)
+	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
@@ -96,7 +96,7 @@ int		main(int ac, char **av)
 		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s, av[1]);
 	free(s.rendu->pixels);
-	free(s.hud.s_back->pixels);
+	free(s.hud1.s_back->pixels);
 	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		return (0);
 	parser(av[1], &e);

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 17:18:33 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/03 15:00:21 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,21 @@
 # define PINK 		0xFF00FF
 # define CYAN		0x00FFFF
 
+typedef struct 		s_tex_rect
+{
+	SDL_Texture		*tex;
+	SDL_Rect			rect;
+}									t_tex_rect;
+
 typedef struct		s_print_cam
 {
-	SDL_Texture		*title;
-	SDL_Rect		r_title;
-	SDL_Texture		*pos_x;
-	SDL_Texture		*pos_y;
-	SDL_Texture		*pos_z;
-	SDL_Texture		*rot_x;
-	SDL_Texture		*rot_y;
-	SDL_Texture		*rot_z;
+	t_tex_rect		title;
+	t_tex_rect		pos_x;
+	t_tex_rect		pos_y;
+	t_tex_rect		pos_z;
+	t_tex_rect		rot_x;
+	t_tex_rect		rot_y;
+	t_tex_rect		rot_z;
 }					t_print_cam;
 
 typedef struct		s_hud
@@ -143,12 +148,12 @@ typedef struct		s_env
 
 typedef struct		s_sdl
 {
-	t_hud			hud;
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
 	SDL_Surface		*rendu;
 	SDL_Event		event;
+	t_hud 	hud1;
 	t_font			font;
 }					t_sdl;
 
@@ -179,7 +184,7 @@ typedef	struct		s_rect
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);
 double				lux(t_env *e, t_inter pt);
-int					ray_shadow(t_env *e, t_point ori, t_obj spot, int nb);
+int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
@@ -206,7 +211,7 @@ int					ft_tablen(void **tab);
 */
 
 void	init_font(t_sdl *s);
-void	print_text(char *str, SDL_Color color, t_sdl *s, SDL_Texture **text);
+void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rect *data);
 
 /*
 ** HUD

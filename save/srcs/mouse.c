@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 16:11:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/03/29 14:44:29 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	if (mouse_x > b.x_begin && mouse_x < b.x_end && mouse_y >
 		b.y_begin && mouse_y < b.y_end)
 		print_bouton(b, e);
-	s->hud.s_back->pixels = e->hud;
+	s->hud1.s_back->pixels = e->hud;
 }
