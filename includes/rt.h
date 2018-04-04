@@ -33,6 +33,16 @@
 # define POS_WIN_X 100
 # define POS_WIN_Y 100
 
+# define COLOR_BACK 0x202225
+# define WHITE 		0xFFFFFF
+# define BLACK		0
+# define RED 		0xFF0000
+# define GREEN 		0x00FF00
+# define BLUE 		0x0000FF
+# define YELLOW 	0xFFFF00
+# define PINK 		0xFF00FF
+# define CYAN		0x00FFFF
+
 typedef struct		s_font
 {
 	TTF_Font		*bebas;
