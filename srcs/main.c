@@ -48,7 +48,19 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.title, NULL, &s->hud1.cam.r_title) < 0)
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.title.tex, NULL, &s->hud1.cam.title.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_x.tex, NULL, &s->hud1.cam.pos_x.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_y.tex, NULL, &s->hud1.cam.pos_y.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_z.tex, NULL, &s->hud1.cam.pos_z.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_x.tex, NULL, &s->hud1.cam.rot_x.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_y.tex, NULL, &s->hud1.cam.rot_y.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
@@ -81,6 +93,9 @@ t_cam	init_cam(int x, int y, int z)
 	c.pos.x = x;
 	c.pos.y = y;
 	c.pos.z = z;
+	c.rot.x = x;
+	c.rot.y = y;
+	c.rot.z = z;
 	return (c);
 }
 

@@ -51,8 +51,27 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
-	(void)e;
-	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.title);
+	s->hud1.cam.title.rect = init_sdl_rect(40, 190, 344/2, 96/3);
+	print_text("Camera", s->font.color[1], s, &s->hud1.cam.title);
+	s->hud1.cam.pos_x.rect = init_sdl_rect(170, 250, 17, 10);
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
+	s->hud1.cam.pos_y.rect = init_sdl_rect(170, 270, 17, 10);
+	print_text(ft_itoa(e->ca.pos.y), s->font.color[1], s, &s->hud1.cam.pos_y);
+	s->hud1.cam.pos_z.rect = init_sdl_rect(170, 290, 17, 10);
+	print_text(ft_itoa(e->ca.pos.z), s->font.color[1], s, &s->hud1.cam.pos_z);
+	s->hud1.cam.rot_x.rect = init_sdl_rect(210, 250, 17, 10);
+	print_text(ft_itoa(e->ca.rot.x), s->font.color[1], s, &s->hud1.cam.rot_x);
+	s->hud1.cam.rot_y.rect = init_sdl_rect(210, 270, 17, 10);
+	print_text(ft_itoa(e->ca.rot.y), s->font.color[1], s, &s->hud1.cam.rot_y);
+	s->hud1.cam.rot_z.rect = init_sdl_rect(210, 290, 17, 10);
+	print_text(ft_itoa(e->ca.rot.z), s->font.color[1], s, &s->hud1.cam.rot_z);
+	/*print_text(ft_itoa(e->ca.pos.y), s->font.color[1], s, &s->hud1.cam.pos_y);
+	print_text(ft_itoa(e->ca.pos.z), s->font.color[1], s, &s->hud1.cam.pos_z);
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.rot_x);
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.rot_y);
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.rot_z);*/
+
+
 }
 
 void	hud_init(t_sdl *s, t_env *e)

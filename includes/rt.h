@@ -43,16 +43,21 @@
 # define PINK 		0xFF00FF
 # define CYAN		0x00FFFF
 
+typedef struct		s_tex_rec
+{
+	SDL_Texture		*tex;
+	SDL_Rect			rect;
+}									t_tex_rec;
+
 typedef struct		s_print_cam
 {
-	SDL_Texture		*title;
-	SDL_Rect		r_title;
-	SDL_Texture		*pos_x;
-	SDL_Texture		*pos_y;
-	SDL_Texture		*pos_z;
-	SDL_Texture		*rot_x;
-	SDL_Texture		*rot_y;
-	SDL_Texture		*rot_z;
+	t_tex_rec		title;
+	t_tex_rec		pos_x;
+	t_tex_rec		pos_y;
+	t_tex_rec		pos_z;
+	t_tex_rec		rot_x;
+	t_tex_rec		rot_y;
+	t_tex_rec		rot_z;
 }					t_print_cam;
 
 typedef struct		s_hud
@@ -206,7 +211,9 @@ int					ft_tablen(void **tab);
 */
 
 void	init_font(t_sdl *s);
-void	print_text(char *str, SDL_Color color, t_sdl *s, SDL_Texture **text);
+void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data);
+
+
 
 /*
 ** HUD

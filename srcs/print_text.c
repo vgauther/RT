@@ -49,7 +49,7 @@ void	init_font(t_sdl *s)
 	creat_sdl_color(s);
 }
 
-void	print_text(char *str, SDL_Color color, t_sdl *s, SDL_Texture **text)
+void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data)
 {
 	SDL_Surface		*surface;
 	int				a;
@@ -57,13 +57,9 @@ void	print_text(char *str, SDL_Color color, t_sdl *s, SDL_Texture **text)
 
 	a = 0;
 	b = 0;
-	(void)text;
 	surface = TTF_RenderText_Solid(s->font.bebas, str, color);
-	*text = SDL_CreateTextureFromSurface(s->renderer, surface);
-	SDL_QueryTexture(*text, NULL, NULL, &a, &b);
-	printf("%d|%d\n",a, b);
-	SDL_Rect	rect = {40, 190, 344/2, 96/3};
-	s->hud1.cam.r_title = rect;
+	data->tex = SDL_CreateTextureFromSurface(s->renderer, surface);
+	SDL_QueryTexture(data->tex, NULL, NULL, &a, &b);
 	//SDL_RenderCopy(s->renderer, text, NULL, &rect);
 	//SDL_RenderPresent(s->renderer);
 }
