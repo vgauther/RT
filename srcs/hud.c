@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 12:14:51 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/05 16:11:27 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
 	(void)e;
-	print_text("CAMERA", s->font.color[1], s, &s->hud1.cam.title);
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.title);
 }
 
 void	hud_init(t_sdl *s, t_env *e)

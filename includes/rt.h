@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 15:00:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/05 13:42:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ typedef struct		s_rot
 
 typedef struct		s_color
 {
-	int			r;
-	int			g;
-	int			b;
+	double			r;
+	double			g;
+	double			b;
 }					t_color;
 
 typedef struct		s_polynome
@@ -148,7 +148,7 @@ typedef struct		s_sdl
 	SDL_Texture		*texture;
 	SDL_Surface		*rendu;
 	SDL_Event		event;
-	t_hud 	hud1;
+	t_hud			hud1;
 	t_font			font;
 }					t_sdl;
 
@@ -263,5 +263,6 @@ t_color				split_color(int full);
 void				parser_error(int err);
 void				ft_sdl_error(char *msg, const char *error);
 void				ft_error(char *msg);
+t_color				normalize_color(t_color ret);
 
 #endif
