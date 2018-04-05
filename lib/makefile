@@ -59,19 +59,19 @@ $(NAME):
 sdl_2:
 	@rm -rf $(SDL_PATH)
 	@mkdir $(SDL_PATH)
-	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.8/configure --prefix=$(SDL_PATH) && make && make install
+	@cd $(SDL_PATH) && $(SDL_PATH)/../SDL2-2.0.8/autogen.sh && $(SDL_PATH)/../SDL2-2.0.8/configure --prefix=$(SDL_PATH) && make && make install
 	@echo "$(GREEN)[✓] SDL 2.0 COMPILED$(NC)"
 
 ttf:
 	@rm -rf $(TTF_PATH)
 	@mkdir $(TTF_PATH)
-	@cd $(TTF_PATH) && $(TTF_PATH)/../SDL2_ttf-2.0.14/configure --prefix=$(TTF_PATH) --with-freetype-prefix=$(FREETYPE_PATH) --with-sdl-prefix=$(SDL_PATH) && make && make install
+	@cd $(TTF_PATH) && $(TTF_PATH)/../SDL2_ttf-2.0.14/autogen.sh && $(TTF_PATH)/../SDL2_ttf-2.0.14/configure --prefix=$(TTF_PATH) --with-freetype-prefix=$(FREETYPE_PATH) --with-sdl-prefix=$(SDL_PATH) && make && make install
 	@echo "$(GREEN)[✓] SDL_TFF COMPILED$(NC)"
 
 freetype:
 	@rm -rf $(FREETYPE_PATH)
 	@mkdir $(FREETYPE_PATH)
-	@cd $(FREETYPE_PATH) && $(FREETYPE_PATH)/../freetype-2.5.5/configure --prefix=$(FREETYPE_PATH) && make && make install
+	@cd $(FREETYPE_PATH) && $(FREETYPE_PATH)/../freetype-2.5.5/autogen.sh && $(FREETYPE_PATH)/../freetype-2.5.5/configure --prefix=$(FREETYPE_PATH) && make && make install
 	@echo "$(GREEN)[✓] FREETYPE COMPILED$(NC)"
 
 ttf_clean:
