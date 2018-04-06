@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 13:19:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:36:21 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
 	s->hud1.cam.title.rect = init_sdl_rect(40, 190, 344 / 2, 96 / 3);
-	print_text("Camera", s->font.color[1], s, &s->hud1.cam.title);
+	print_text(ft_strdup("Camera"), s->font.color[1], s, &s->hud1.cam.title);
 	s->hud1.cam.pos_x.rect = init_sdl_rect(105, 270, 17, 10);
 	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
 	s->hud1.cam.pos_y.rect = init_sdl_rect(105, 310, 17, 10);
@@ -69,8 +69,6 @@ void		recup_cam_to_print(t_sdl *s, t_env *e)
 
 void		create_bouton(t_sdl *s)
 {
-	SDL_Surface *piu;
-	SDL_Surface *meno;
 	int x;
 	int y;
 	int i;
@@ -78,32 +76,18 @@ void		create_bouton(t_sdl *s)
 	i = 0;
 	x = 70;
 	y = 265;
-	meno = SDL_LoadBMP("./img_srcs/-.bmp");
-	piu = SDL_LoadBMP("./img_srcs/+.bmp");
-	if ((s->hud1.bouton[0].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[1].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[2].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[3].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[4].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[5].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[6].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[7].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[8].tex = SDL_CreateTextureFromSurface(s->renderer, meno)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[9].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[10].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->hud1.bouton[11].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
+	s->hud1.bouton[0].i = 0;
+	s->hud1.bouton[1].i = 0;
+	s->hud1.bouton[2].i = 0;
+	s->hud1.bouton[3].i = 1;
+	s->hud1.bouton[4].i = 1;
+	s->hud1.bouton[5].i = 1;
+	s->hud1.bouton[6].i = 0;
+	s->hud1.bouton[7].i = 0;
+	s->hud1.bouton[8].i = 0;
+	s->hud1.bouton[9].i = 1;
+	s->hud1.bouton[10].i = 1;
+	s->hud1.bouton[11].i = 1;
 	while (i != 12)
 	{
 		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
@@ -122,33 +106,88 @@ void		create_bouton(t_sdl *s)
 	}
 }
 
+void	open_texture(t_sdl *s)
+{
+	SDL_Surface *surface[6];
+	int i;
+	i = 0;
+	surface[0] = SDL_LoadBMP("./img_srcs/-.bmp");
+	surface[1] = SDL_LoadBMP("./img_srcs/+.bmp");
+	surface[2] = SDL_LoadBMP("./img_srcs/-2.bmp");
+	surface[3] = SDL_LoadBMP("./img_srcs/+2.bmp");
+	surface[4] = SDL_LoadBMP("./img_srcs/m.bmp");
+	surface[5] = SDL_LoadBMP("./img_srcs/m2.bmp");
+	if ((s->tex[0] = SDL_CreateTextureFromSurface(s->renderer, surface[0])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((s->tex[1] = SDL_CreateTextureFromSurface(s->renderer, surface[1])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((s->tex[2] = SDL_CreateTextureFromSurface(s->renderer, surface[2])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((s->tex[3] = SDL_CreateTextureFromSurface(s->renderer, surface[3])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((s->tex[4] = SDL_CreateTextureFromSurface(s->renderer, surface[4])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((s->tex[5] = SDL_CreateTextureFromSurface(s->renderer, surface[5])) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	while(i != 6)
+	{
+		SDL_FreeSurface(surface[i]);
+		i++;
+	}
+}
+
+void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
+{
+	if (p1.x > p2.x)
+		ft_error("\nvertical_trait error\n");
+	while (p1.x != p2.x)
+	{
+		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
+		p1.x++;
+	}
+}
+
+void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
+{
+	if (p1.y > p2.y)
+		ft_error("\nhorizontal_trait error\n");
+	while (p1.y != p2.y)
+	{
+		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
+		p1.y++;
+	}
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
-	t_rect	r2;
 
 	init_font(s);
 	create_bouton(s);
+	open_texture(s);
 	s->hud1.s_logo = SDL_LoadBMP("./img_srcs/rtl.bmp");
-	s->hud1.r_logo = init_sdl_rect(WIN_X / 100, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
+	s->hud1.r_logo = init_sdl_rect(2, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
 	if ((s->hud1.t_logo = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_logo)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
 		ft_error("MALLOC ERROR");
-	r2 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
 	print_rect(r1, e, 1, COLOR_BACK);
-	empty_rect(r2, e, 1, WHITE);
+	r1 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
+	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
-	r2 = init_rect(SIZE_X / 4 + 4, (WIN_Y / 14) * 13, SIZE_X + SIZE_X / 4 - 4, WIN_Y - 10);
-	empty_rect(r2, e, 1, WHITE);
-	r1 = init_rect(SIZE_X / 4 + 20, (WIN_Y / 14) * 13 - 10, SIZE_X / 4 + 150, (WIN_Y / 14) * 13 + 10);
-	print_rect(r1, e, 1, COLOR_BACK);
+	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
+	print_rect(r1, e, 1, WHITE);
+	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 + SIZE_Y + 10, SIZE_X + SIZE_X / 4 + 9, WIN_Y);
+	empty_rect(r1, e, 1, WHITE);
+	r1 = init_rect(SIZE_X / 4 + SIZE_X - 150, -1, SIZE_X + SIZE_X / 4 + 9, SIZE_Y / 8);
+	empty_rect(r1, e, 1, WHITE);
+	r1 = init_rect(0, SIZE_Y / 6 * 5.5 , SIZE_X / 4 - 10, WIN_Y);
+	empty_rect(r1, e, 1, WHITE);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	print_text("Last action", s->font.color[1], s, &s->hud1.info);
-	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13 - 4, 110, 10);
-
+	print_text(ft_strdup("Last  info :"), s->font.color[4], s, &s->hud1.info);
+	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 100, 25);
 }

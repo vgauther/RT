@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 13:12:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 16:31:32 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ typedef struct		s_print_cam
 	t_tex_rec		rot_z;
 }					t_print_cam;
 
+typedef struct		s_bouton
+{
+	int				i;
+	SDL_Rect		rect;
+}					t_bouton;
+
 typedef struct		s_hud
 {
 	SDL_Surface		*s_back;
@@ -68,7 +74,7 @@ typedef struct		s_hud
 	SDL_Texture		*t_logo;
 	SDL_Rect		r_logo;
 	t_print_cam		cam;
-	t_tex_rec		bouton[12];
+	t_bouton		bouton[12];
 	t_tex_rec		info;
 }					t_hud;
 
@@ -157,6 +163,7 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	t_hud			hud1;
 	t_font			font;
+	SDL_Texture		*tex[6];
 }					t_sdl;
 
 typedef struct		s_inter
@@ -166,14 +173,6 @@ typedef struct		s_inter
 	int				nb;
 	double			delta;
 }					t_inter;
-
-typedef	struct		s_bouton
-{
-	int				x_begin;
-	int				y_begin;
-	int				x_end;
-	int				y_end;
-}					t_bouton;
 
 typedef	struct		s_rect
 {
