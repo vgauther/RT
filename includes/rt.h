@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/05 13:42:18 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 11:39:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 typedef struct		s_tex_rec
 {
 	SDL_Texture		*tex;
-	SDL_Rect			rect;
-}									t_tex_rec;
+	SDL_Rect		rect;
+}					t_tex_rec;
 
 typedef struct		s_print_cam
 {
@@ -68,6 +68,7 @@ typedef struct		s_hud
 	SDL_Texture		*t_logo;
 	SDL_Rect		r_logo;
 	t_print_cam		cam;
+	t_tex_rec		bouton[12];
 }					t_hud;
 
 typedef struct		s_font

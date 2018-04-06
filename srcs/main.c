@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 12:13:36 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 11:39:30 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void	ft_init(t_sdl *s, char *name)
 void	display(t_sdl *s, t_env *e)
 {
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y };
+	int i;
 
+	i = 0;
 	(void)e;
 	recup_cam_to_print(s, e);
+
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
@@ -62,6 +65,12 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	while(i != 12)
+	{
+		if (SDL_RenderCopy(s->renderer, s->hud1.bouton[i].tex, NULL, &s->hud1.bouton[i].rect) < 0)
+			ft_sdl_error("Error copying renderer : ", SDL_GetError());
+		i++;
+	}
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
