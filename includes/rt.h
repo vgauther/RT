@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 11:39:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:51:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct		s_hud
 	SDL_Rect		r_logo;
 	t_print_cam		cam;
 	t_tex_rec		bouton[12];
+	t_tex_rec		info;
 }					t_hud;
 
 typedef struct		s_font

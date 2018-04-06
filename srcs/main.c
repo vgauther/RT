@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 12:47:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:48:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	display(t_sdl *s, t_env *e)
 	(void)test;
 	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
-
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());

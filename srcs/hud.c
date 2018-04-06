@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 12:43:04 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:53:06 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,5 @@ void	hud_init(t_sdl *s, t_env *e)
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
+	print_text("Last action", s->font.color[1], s, &s->hud1.info);
 }
