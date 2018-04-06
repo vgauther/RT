@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 12:04:19 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:47:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	display(t_sdl *s, t_env *e)
 	i = 0;
 	(void)e;
 	(void)test;
+	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
 
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
@@ -66,7 +67,7 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	while(i != 12)
+	while (i != 12)
 	{
 		if (SDL_RenderCopy(s->renderer, s->hud1.bouton[i].tex, NULL, &s->hud1.bouton[i].rect) < 0)
 			ft_sdl_error("Error copying renderer : ", SDL_GetError());
