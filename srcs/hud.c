@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 12:53:06 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 13:19:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,6 @@ void	hud_init(t_sdl *s, t_env *e)
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	print_text("Last action", s->font.color[1], s, &s->hud1.info);
+	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13 - 4, 110, 10);
+
 }
