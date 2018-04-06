@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 11:39:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:04:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	display(t_sdl *s, t_env *e)
 
 	i = 0;
 	(void)e;
+	(void)test;
 	recup_cam_to_print(s, e);
 
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))

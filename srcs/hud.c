@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 11:44:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 12:43:04 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,28 +104,20 @@ void		create_bouton(t_sdl *s)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	if ((s->hud1.bouton[11].tex = SDL_CreateTextureFromSurface(s->renderer, piu)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	while (i != 6)
-	{
-		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
-		i++;
-		y += 40;
-		if (i == 3)
-		{
-			x -= 25;
-			y = 265;
-		}
-	}
-	x = 165;
-	y = 265;
 	while (i != 12)
 	{
 		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
 		i++;
 		y += 40;
-		if (i == 9)
+		if (i == 3 || i == 9)
 		{
 			x -= 25;
 			y = 265;
+		}
+		if (i == 6)
+		{
+			y = 265;
+			x = 165;
 		}
 	}
 }
@@ -149,7 +141,12 @@ void	hud_init(t_sdl *s, t_env *e)
 	empty_rect(r2, e, 1, WHITE);
 	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
+	r2 = init_rect(SIZE_X / 4 + 4, (WIN_Y / 14) * 13, SIZE_X + SIZE_X / 4 - 4, WIN_Y - 10);
+	empty_rect(r2, e, 1, WHITE);
+	r1 = init_rect(SIZE_X / 4 + 20, (WIN_Y / 14) * 13 - 10, SIZE_X / 4 + 150, (WIN_Y / 14) * 13 + 10);
+	print_rect(r1, e, 1, COLOR_BACK);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
+	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
 }
