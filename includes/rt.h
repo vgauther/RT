@@ -172,7 +172,6 @@ typedef struct		s_inter
 	double			dist;
 	int				nb;
 	double			delta;
-	t_vec			normal;
 }					t_inter;
 
 typedef	struct		s_rect
