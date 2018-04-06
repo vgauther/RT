@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/03 17:19:58 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:55:03 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ void	raytracing(t_env *e, t_sdl *s)
 			while (nbr < e->nb)
 			{
 				dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
-				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
 				dir = normalize_vec(dir);
+				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
 				if (tmp.dist < pt.dist)
 				{
 					pt.dist = tmp.dist;
 					pt.pos.x = tmp.pos.x;
 					pt.pos.y = tmp.pos.y;
 					pt.pos.z = tmp.pos.z;
+					pt.normal = tmp.normal;
 					pt.nb = nbr;
 				}
 				nbr++;
@@ -91,7 +92,7 @@ int			ray_shadow(t_env *e, t_inter pt, t_obj spot, int nb)
 	while (j < e->nb)
 	{
 		tmp = shape_redirection(e, dir, spot.pos, j);
-		if (tmp.dist > 0)
+		if (tmp.dist > 0 && tmp.dist < dist)
 			if (dist - 1 > tmp.dist)
 				return (1);
 		j++;

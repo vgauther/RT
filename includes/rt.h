@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 16:31:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:55:30 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ typedef struct		s_inter
 	double			dist;
 	int				nb;
 	double			delta;
+	t_vec			normal;
 }					t_inter;
 
 typedef	struct		s_rect
@@ -213,8 +214,6 @@ int					ft_tablen(void **tab);
 
 void	init_font(t_sdl *s);
 void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data);
-
-
 
 /*
 ** HUD

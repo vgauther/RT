@@ -6,11 +6,19 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 16:46:16 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:54:14 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static t_vec	cylindre_normal_at(t_inter t, t_obj obj)
+{
+	return (normalize_vec(vector_init(t.pos.x - obj.pos.x,
+		t.pos.y - obj.pos.y,
+		t.pos.z - obj.pos.z)));
+}
+
 
 t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 {
@@ -48,5 +56,6 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 	else
 		pt.dist = MAX_DIST;
 	pt.delta = p.delta;
+	pt.normal = cylindre_normal_at(pt, e->obj[nbr]);
 	return (pt);
 }

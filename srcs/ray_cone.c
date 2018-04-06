@@ -6,11 +6,31 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/30 12:40:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:55:56 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static t_vec	cone_normal_at(t_inter t, t_obj obj, t_vec d , t_vec rot)
+{
+	t_vec	norm;
+	t_vec	vec;
+	double	rad;
+	double	a;
+	double	b;
+	double	m;
+
+
+	vec = vector_init(t.pos.x - obj.pos.x, t.pos.y - obj.pos.y, t.pos.z - obj.pos.z);
+	rad = 1 + obj.angle * obj.angle;
+	a = dot(vec, rot);
+	b = dot(d, rot);
+	m = b * t.dist + a;
+	norm = vector_init(vec.x - (rot.x * (rad * m)), vec.y - (rot.y * (rad * m)), vec.z - (rot.z * (rad * m)));
+	norm = normalize_vec(norm);
+	return (norm);
+}
 
 t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 {
@@ -47,5 +67,6 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 	else
 		pt.dist = MAX_DIST;
 	pt.delta = p.delta;
+	pt.normal = cone_normal_at(pt, e->obj[nbr], d, v);
 	return (pt);
 }

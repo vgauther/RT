@@ -6,13 +6,20 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 11:38:52 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/06 17:54:29 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
+static t_vec	sphere_normal_at(t_inter t, t_obj obj)
+{
+	return (normalize_vec(vector_init(t.pos.x - obj.pos.x,
+		t.pos.y - obj.pos.y,
+		t.pos.z - obj.pos.z)));
+}
+
+t_inter			ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 {
 	t_polynome	p;
 	t_inter		t;
@@ -42,5 +49,6 @@ t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 	else
 		t.dist = MAX_DIST;
 	t.delta = p.delta;
+	t.normal = sphere_normal_at(t, e->obj[nbr]);
 	return (t);
 }
