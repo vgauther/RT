@@ -132,7 +132,7 @@ void	open_texture(t_sdl *s)
 	}
 }
 
-void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
+void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 {
 	if (p1.x > p2.x)
 		ft_error("\nvertical_trait error\n");
@@ -143,7 +143,7 @@ void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
 	}
 }
 
-void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
+void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
 {
 	if (p1.y > p2.y)
 		ft_error("\nhorizontal_trait error\n");
@@ -165,9 +165,20 @@ void	init_info_messages(t_sdl *s)
 
 }
 
+t_point 	init_point_2_coord(int x, int y)
+{
+	t_point p;
+
+	p.x = x;
+	p.y = y;
+	return (p);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
+	t_point p1;
+	t_point p2;
 
 	init_font(s);
 	create_bouton(s);
@@ -185,6 +196,26 @@ void	hud_init(t_sdl *s, t_env *e)
 	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
+	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
+	print_rect(r1, e, 1, WHITE);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y / 8);
+	vertical_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
+	vertical_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
+	vertical_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(0, WIN_Y / 8 * 7);
+	p2 = init_point_2_coord(SIZE_X / 4, WIN_Y / 8 * 7);
+	horizontal_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 - 10, WIN_Y);
+	vertical_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
+	vertical_trait(p1, p2, WHITE, e);
 	/*r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
 	print_rect(r1, e, 1, WHITE);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 + SIZE_Y + 10, SIZE_X + SIZE_X / 4 + 9, WIN_Y);

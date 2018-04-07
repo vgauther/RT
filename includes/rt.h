@@ -34,6 +34,7 @@
 # define POS_WIN_Y 100
 
 # define COLOR_BACK 0x202225
+# define CONTRAST 0x202225 - 1000
 # define WHITE 		0xFFFFFF
 # define BLACK		0
 # define RED 		0xFF0000
