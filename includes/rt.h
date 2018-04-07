@@ -76,6 +76,7 @@ typedef struct		s_hud
 	t_print_cam		cam;
 	t_bouton		bouton[12];
 	t_tex_rec		info;
+	char				**mess;
 }					t_hud;
 
 typedef struct		s_font

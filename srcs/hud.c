@@ -72,37 +72,33 @@ void		create_bouton(t_sdl *s)
 	int x;
 	int y;
 	int i;
+	int t;
 
 	i = 0;
 	x = 70;
 	y = 265;
-	s->hud1.bouton[0].i = 0;
-	s->hud1.bouton[1].i = 0;
-	s->hud1.bouton[2].i = 0;
-	s->hud1.bouton[3].i = 1;
-	s->hud1.bouton[4].i = 1;
-	s->hud1.bouton[5].i = 1;
-	s->hud1.bouton[6].i = 0;
-	s->hud1.bouton[7].i = 0;
-	s->hud1.bouton[8].i = 0;
-	s->hud1.bouton[9].i = 1;
-	s->hud1.bouton[10].i = 1;
-	s->hud1.bouton[11].i = 1;
+	t = 0;
+	while (i != 12)
+	{
+		s->hud1.bouton[i].i = t;
+		i++;
+		if (i == 3 || i== 9)
+			t = 1;
+		else if(i == 6)
+			t = 0;
+	}
+	i = 0;
 	while (i != 12)
 	{
 		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
 		i++;
 		y += 40;
-		if (i == 3 || i == 9)
-		{
+		if (i ==3||i == 9)
 			x -= 25;
-			y = 265;
-		}
 		if (i == 6)
-		{
-			y = 265;
 			x = 165;
-		}
+		if (i == 3 || i == 9 || i == 6)
+			y = 265;
 	}
 }
 
@@ -158,6 +154,17 @@ void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 	}
 }
 
+void	init_info_messages(t_sdl *s)
+{
+	s->hud1.mess = malloc(sizeof(char *) * 5);
+	s->hud1.mess[0] = ft_strdup("Last   Info   :   RT   succesfully   launched.");
+	s->hud1.mess[1] = ft_strdup("Last Info : Camera just mooved on x axis");
+	s->hud1.mess[2] = ft_strdup("Last Info : Camera just mooved on y axis");
+	s->hud1.mess[3] = ft_strdup("Last Info : Camera just mooved on z axis");
+	s->hud1.mess[4] = ft_strdup("Last Info : Your work has been saved.");
+
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -165,6 +172,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	init_font(s);
 	create_bouton(s);
 	open_texture(s);
+	init_info_messages(s);
 	s->hud1.s_logo = SDL_LoadBMP("./img_srcs/rtl.bmp");
 	s->hud1.r_logo = init_sdl_rect(2, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
 	if ((s->hud1.t_logo = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_logo)) == NULL)
@@ -177,17 +185,20 @@ void	hud_init(t_sdl *s, t_env *e)
 	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
-	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
+	/*r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
 	print_rect(r1, e, 1, WHITE);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 + SIZE_Y + 10, SIZE_X + SIZE_X / 4 + 9, WIN_Y);
 	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(SIZE_X / 4 + SIZE_X - 150, -1, SIZE_X + SIZE_X / 4 + 9, SIZE_Y / 8);
 	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(0, SIZE_Y / 6 * 5.5 , SIZE_X / 4 - 10, WIN_Y);
-	empty_rect(r1, e, 1, WHITE);
+	empty_rect(r1, e, 1, WHITE);*/
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	print_text(ft_strdup("Last  info :"), s->font.color[4], s, &s->hud1.info);
-	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 100, 25);
+	printf("%s\n", "test");
+	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
+	printf("%s\n", "test");
+
+	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
 }

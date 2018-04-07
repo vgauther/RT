@@ -1,8 +1,6 @@
 //sphere x y z color rayon mat
 //cone x y z color angle rot_x rot_y rot_z mat
 //cylindre x y z color rayon rot_x rot_y rot_z mat
-cone 0 0 50 0x00ffff 10 1 1 0 1
-cylindre 0 0 150 0xffff00 10 0 1 0 1
 
 spot 0 0 0 0x000000 0 0 0
 
