@@ -78,6 +78,8 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &test) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
 	//SDL_SaveBMP(s->rendu, "test.bmp");
 }

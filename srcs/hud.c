@@ -174,6 +174,26 @@ t_point 	init_point_2_coord(int x, int y)
 	return (p);
 }
 
+void 	bloc_save(t_env *e, t_sdl *s)
+{
+	t_point p1;
+	t_point p2;
+	t_rect	r1;
+
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y / 8);
+	vertical_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
+	vertical_trait(p1, p2, WHITE, e);
+	r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+	print_rect(r1, e, 1, WHITE);
+	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
+	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10 ,50, 15);
+
+
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -198,12 +218,13 @@ void	hud_init(t_sdl *s, t_env *e)
 	print_rect(r1, e, 1, COLOR_BACK);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
 	print_rect(r1, e, 1, WHITE);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
+	bloc_save(e, s);
+	/*p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);
+	vertical_trait(p1, p2, WHITE, e);*/
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
