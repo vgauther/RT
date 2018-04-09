@@ -20,6 +20,7 @@
 # include <dirent.h>
 # include <stdio.h>
 # include "SDL2/SDL_ttf.h"
+# include <time.h>
 
 # define SIZE_X 1000
 # define SIZE_Y 600

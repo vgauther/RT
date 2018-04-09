@@ -12,8 +12,53 @@
 
 #include "../includes/rt.h"
 
+void 	save_bouton(int x, int y, t_sdl *s, t_env *e)
+{
+	t_rect r1;
+
+	if (x >= SIZE_X / 4 + SIZE_X - 110 && x <= SIZE_X / 4 + SIZE_X - 20)
+	{
+		printf("%s\n", "flute");
+			if (SIZE_Y / 17 <= y && y <= SIZE_Y / 12)
+			{
+				printf("%s\n", "flute");
+
+				r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+				print_rect(r1, e, 1, RED);
+				s->hud1.s_back->pixels = e->hud;
+				if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
+					ft_sdl_error("Texture error : ", SDL_GetError());
+				display(s, e);
+				r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+				print_rect(r1, e, 1, WHITE);
+				s->hud1.s_back->pixels = e->hud;
+				if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
+					ft_sdl_error("Texture error : ", SDL_GetError());
+				display(s, e);
+				SDL_SaveBMP(s->rendu, "save.bmp");
+			}
+	}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
+	save_bouton(mouse_x, mouse_y, s, e);
+	/*t_rect r1;
+
+	if (mouse_x >= SIZE_X / 4 + SIZE_X - 110 && mouse_x <= SIZE_X / 4 + SIZE_X - 20)
+	{
+		printf("%s\n", "flute");
+			if (SIZE_Y / 17 <= mouse_y && mouse_y <= SIZE_Y / 12)
+			{
+				printf("%s\n", "flute");
+
+				r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+				print_rect(r1, e, 1, RED);
+				s->hud1.s_back->pixels = e->hud;
+				display(s, e);
+				SDL_SaveBMP(s->rendu, "save.bmp");
+			}
+	}*/
 	printf("%d|%d\n", mouse_x, mouse_y);
 	if (mouse_x > 45 && mouse_x < 65)
 	{
@@ -115,4 +160,5 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 		}
 		raytracing(e, s);
 	}
+
 }
