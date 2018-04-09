@@ -190,8 +190,12 @@ void 	bloc_save(t_env *e, t_sdl *s)
 	print_rect(r1, e, 1, WHITE);
 	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
 	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10 ,50, 15);
+}
 
-
+void	bloc_credits(t_env *e, t_sdl *s)
+{
+	(void)e;
+	(void)s;
 }
 
 void	hud_init(t_sdl *s, t_env *e)
@@ -219,12 +223,6 @@ void	hud_init(t_sdl *s, t_env *e)
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
 	print_rect(r1, e, 1, WHITE);
 	bloc_save(e, s);
-	/*p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);*/
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
@@ -237,20 +235,9 @@ void	hud_init(t_sdl *s, t_env *e)
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
 	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
 	vertical_trait(p1, p2, WHITE, e);
-	/*r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
-	print_rect(r1, e, 1, WHITE);
-	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 + SIZE_Y + 10, SIZE_X + SIZE_X / 4 + 9, WIN_Y);
-	empty_rect(r1, e, 1, WHITE);
-	r1 = init_rect(SIZE_X / 4 + SIZE_X - 150, -1, SIZE_X + SIZE_X / 4 + 9, SIZE_Y / 8);
-	empty_rect(r1, e, 1, WHITE);
-	r1 = init_rect(0, SIZE_Y / 6 * 5.5 , SIZE_X / 4 - 10, WIN_Y);
-	empty_rect(r1, e, 1, WHITE);*/
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	printf("%s\n", "test");
 	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
-	printf("%s\n", "test");
-
 	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
 }

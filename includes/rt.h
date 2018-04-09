@@ -79,6 +79,7 @@ typedef struct		s_hud
 	t_bouton		bouton[12];
 	t_tex_rec		info;
 	t_tex_rec 	save;
+	t_tex_rec		credits;
 	int					i_mess;
 	char				**mess;
 }					t_hud;
