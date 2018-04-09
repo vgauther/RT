@@ -20,6 +20,7 @@
 # include <dirent.h>
 # include <stdio.h>
 # include "SDL2/SDL_ttf.h"
+# include <time.h>
 
 # define SIZE_X 1000
 # define SIZE_Y 600
@@ -78,6 +79,7 @@ typedef struct		s_hud
 	t_bouton		bouton[12];
 	t_tex_rec		info;
 	t_tex_rec 	save;
+	t_tex_rec		credits;
 	int					i_mess;
 	char				**mess;
 }					t_hud;
