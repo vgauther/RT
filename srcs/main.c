@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 14:05:47 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 15:52:56 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdint.h>
 #include <time.h>
 
-void	ft_init(t_sdl *s, char *name)
+void	ft_init(t_sdl *s, char *name, t_env *e)
 {
 	char *str;
 
@@ -35,6 +35,12 @@ void	ft_init(t_sdl *s, char *name)
 	if ((s->hud1.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
+	free(s->rendu->pixels);
+	free(s->hud1.s_back->pixels);
+	if (!(e->pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
+		ft_error("\nmalloc error\n");
+	parser(name, e);
+	hud_init(s, e);
 }
 
 void	display(t_sdl *s, t_env *e)
@@ -42,7 +48,7 @@ void	display(t_sdl *s, t_env *e)
 	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y};
 	int i;
 
-	i = 0;
+	i = -1;
 	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
@@ -70,11 +76,10 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	while (i != 12)
+	while (++i != 12)
 	{
 		if (SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect) < 0)
 			ft_sdl_error("Error copying renderer : ", SDL_GetError());
-		i++;
 	}
 	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
@@ -85,51 +90,48 @@ void	display(t_sdl *s, t_env *e)
 	SDL_RenderPresent(s->renderer);
 }
 
+int		do_we_need_to_rt(int t)
+{
+	if (t == CAM_LEFT || t == CAM_RIGHT || t == CAM_DOWN ||
+		t == CAM_UP || t == CAM_FOR || t == CAM_BACK)
+		return (1);
+	return (0);
+}
+
 void	mouv(long key, t_env *e, t_sdl *s)
 {
-	if (key == 79)
+	if (key == CAM_LEFT)
 	{
+		print_info(s, e, 1);
 		e->ca.pos.x--;
-		print_text(ft_strdup(s->hud1.mess[1]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
 	}
-	if (key == 80)
+	if (key == CAM_RIGHT)
 	{
-		print_text(ft_strdup(s->hud1.mess[1]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
+		print_info(s, e, 1);
 		e->ca.pos.x++;
 	}
-	if (key == 81)
+	if (key == CAM_UP)
 	{
-		print_text(ft_strdup(s->hud1.mess[2]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
+		print_info(s, e, 2);
 		e->ca.pos.y--;
 	}
-	if (key == 82)
+	if (key == CAM_DOWN)
 	{
+		print_info(s, e, 2);
 		e->ca.pos.y++;
-		print_text(ft_strdup(s->hud1.mess[2]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
 	}
-	if (key == 87)
+	if (key == CAM_FOR)
 	{
-		print_text(ft_strdup(s->hud1.mess[3]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
+		print_info(s, e, 3);
 		e->ca.pos.z++;
 	}
-	if (key == 86)
+	if (key == CAM_BACK)
 	{
-		print_text(ft_strdup(s->hud1.mess[3]), s->font.color[4], s, &s->hud1.info);
-		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
-		display(s, e);
+		print_info(s, e, 3);
 		e->ca.pos.z--;
 	}
-	raytracing(e, s);
+	if (do_we_need_to_rt(key))
+		raytracing(e, s);
 }
 
 t_cam	init_cam(int x, int y, int z)
@@ -145,6 +147,13 @@ t_cam	init_cam(int x, int y, int z)
 	return (c);
 }
 
+void	quit_sdl_proprely(t_sdl *s)
+{
+	SDL_DestroyWindow(s->window);
+	TTF_Quit();
+	SDL_Quit();
+}
+
 int		main(int ac, char **av)
 {
 	t_sdl	s;
@@ -155,31 +164,21 @@ int		main(int ac, char **av)
 	e.ca = init_cam(0, 0, 0);
 	if (ac != 2)
 		ft_error("\nWrong number of arguments.\n");
-	ft_init(&s, av[1]);
-	free(s.rendu->pixels);
-	free(s.hud1.s_back->pixels);
-	if (!(e.pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
-		return (0);
-	parser(av[1], &e);
-	hud_init(&s, &e);
+	ft_init(&s, av[1], &e);
 	raytracing(&e, &s);
 	while (r)
 	{
 		while (SDL_PollEvent(&s.event))
 		{
 			if ((SDL_QUIT == s.event.type) ||
-					(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
+		(SDL_SCANCODE_ESCAPE == s.event.key.keysym.scancode))
 				r = 0;
 			else if ((SDL_KEYDOWN == s.event.type))
 				mouv(s.event.key.keysym.scancode, &e, &s);
 			else if ((SDL_MOUSEBUTTONDOWN == s.event.type))
-			{
 				main_mouse(s.event.button.x, s.event.button.y, &s, &e);
-			}
 		}
 	}
-	SDL_DestroyWindow(s.window);
-	TTF_Quit();
-	SDL_Quit();
+	quit_sdl_proprely(&s);
 	return (0);
 }

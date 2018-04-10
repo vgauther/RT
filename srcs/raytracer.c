@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/10 13:36:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 15:15:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	raytracing(t_env *e, t_sdl *s)
 				if (tmp.dist < pt.dist)
 				{
 					pt.dist = tmp.dist;
-					pt.pos.x = tmp.pos.x;
-					pt.pos.y = tmp.pos.y;
-					pt.pos.z = tmp.pos.z;
+					pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
 					pt.normal = tmp.normal;
 					pt.nb = nbr;
 				}

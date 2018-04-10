@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 13:59:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 14:56:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define POS_WIN_Y 100
 
 # define COLOR_BACK 0x202225
-# define CONTRAST 0x202225 - 1000
+# define CONTRAST 	0xFFFFFF
 # define WHITE 		0xFFFFFF
 # define BLACK		0
 # define RED 		0xFF0000
@@ -44,6 +44,13 @@
 # define YELLOW 	0xFFFF00
 # define PINK 		0xFF00FF
 # define CYAN		0x00FFFF
+
+# define CAM_RIGHT	79
+# define CAM_LEFT  	80
+# define CAM_UP		82
+# define CAM_DOWN	81
+# define CAM_FOR	87
+# define CAM_BACK	86
 
 typedef struct		s_tex_rec
 {
@@ -68,7 +75,7 @@ typedef struct		s_bouton
 	SDL_Rect		rect;
 }					t_bouton;
 
-typedef struct 		s_credits
+typedef struct		s_credits
 {
 	t_tex_rec		names;
 	t_tex_rec		title;
@@ -86,8 +93,8 @@ typedef struct		s_hud
 	t_tex_rec		info;
 	t_tex_rec		save;
 	t_credits		credits;
-	int					i_mess;
-	char				**mess;
+	int				i_mess;
+	char			**mess;
 }					t_hud;
 
 typedef struct		s_font
@@ -204,7 +211,8 @@ int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
-SDL_Rect	init_sdl_rect(int x, int y, int w, int h);
+SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
+void				print_info(t_sdl *s, t_env *e, int i);
 
 /*
 ** tools
