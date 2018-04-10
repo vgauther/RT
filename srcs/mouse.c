@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 16:50:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 11:40:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,29 @@ void 	save_bouton(int x, int y, t_sdl *s, t_env *e)
 
 	if (x >= SIZE_X / 4 + SIZE_X - 110 && x <= SIZE_X / 4 + SIZE_X - 20)
 	{
-		printf("%s\n", "flute");
-			if (SIZE_Y / 17 <= y && y <= SIZE_Y / 12)
-			{
-				printf("%s\n", "flute");
-
-				r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
-				print_rect(r1, e, 1, RED);
-				s->hud1.s_back->pixels = e->hud;
-				if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
-					ft_sdl_error("Texture error : ", SDL_GetError());
-				display(s, e);
-				r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
-				print_rect(r1, e, 1, WHITE);
-				s->hud1.s_back->pixels = e->hud;
-				if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
-					ft_sdl_error("Texture error : ", SDL_GetError());
-				display(s, e);
-				SDL_SaveBMP(s->rendu, "save.bmp");
-			}
+		if (SIZE_Y / 17 <= y && y <= SIZE_Y / 12)
+		{
+			r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+			print_rect(r1, e, 1, RED);
+			s->hud1.s_back->pixels = e->hud;
+			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
+				ft_sdl_error("Texture error : ", SDL_GetError());
+			display(s, e);
+			r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+			print_rect(r1, e, 1, WHITE);
+			s->hud1.s_back->pixels = e->hud;
+			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
+				ft_sdl_error("Texture error : ", SDL_GetError());
+			display(s, e);
+			SDL_SaveBMP(s->rendu, "save.bmp");
+		}
 	}
 }
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	save_bouton(mouse_x, mouse_y, s, e);
-	printf("%d|%d\n", mouse_x, mouse_y);
+	//printf("%d|%d\n", mouse_x, mouse_y);
 	if (mouse_x > 45 && mouse_x < 65)
 	{
 		if (mouse_y > 265 && mouse_y < 285)

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 17:36:21 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 11:37:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,35 +102,6 @@ void		create_bouton(t_sdl *s)
 	}
 }
 
-void	open_texture(t_sdl *s)
-{
-	SDL_Surface *surface[6];
-	int i;
-	i = 0;
-	surface[0] = SDL_LoadBMP("./img_srcs/-.bmp");
-	surface[1] = SDL_LoadBMP("./img_srcs/+.bmp");
-	surface[2] = SDL_LoadBMP("./img_srcs/-2.bmp");
-	surface[3] = SDL_LoadBMP("./img_srcs/+2.bmp");
-	surface[4] = SDL_LoadBMP("./img_srcs/m.bmp");
-	surface[5] = SDL_LoadBMP("./img_srcs/m2.bmp");
-	if ((s->tex[0] = SDL_CreateTextureFromSurface(s->renderer, surface[0])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->tex[1] = SDL_CreateTextureFromSurface(s->renderer, surface[1])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->tex[2] = SDL_CreateTextureFromSurface(s->renderer, surface[2])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->tex[3] = SDL_CreateTextureFromSurface(s->renderer, surface[3])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->tex[4] = SDL_CreateTextureFromSurface(s->renderer, surface[4])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((s->tex[5] = SDL_CreateTextureFromSurface(s->renderer, surface[5])) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
-	while(i != 6)
-	{
-		SDL_FreeSurface(surface[i]);
-		i++;
-	}
-}
 
 void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 {
@@ -165,14 +136,7 @@ void	init_info_messages(t_sdl *s)
 
 }
 
-t_point 	init_point_2_coord(int x, int y)
-{
-	t_point p;
 
-	p.x = x;
-	p.y = y;
-	return (p);
-}
 
 void 	bloc_save(t_env *e, t_sdl *s)
 {
@@ -194,8 +158,17 @@ void 	bloc_save(t_env *e, t_sdl *s)
 
 void	bloc_credits(t_env *e, t_sdl *s)
 {
-	(void)e;
-	(void)s;
+	t_point p1;
+	t_point p2;
+
+	print_text(ft_strdup("Credits"), s->font.color[4], s, &s->hud1.credits.title);
+	s->hud1.credits.title.rect = init_sdl_rect(0, SIZE_Y + SIZE_Y / 8 + 20, 50, 20);
+	p1 = init_point_2_coord(0, WIN_Y / 8 * 7);
+	p2 = init_point_2_coord(SIZE_X / 4, WIN_Y / 8 * 7);
+	horizontal_trait(p1, p2, WHITE, e);
+	p1 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 - 10, WIN_Y);
+	vertical_trait(p1, p2, WHITE, e);
 }
 
 void	hud_init(t_sdl *s, t_env *e)
@@ -223,17 +196,12 @@ void	hud_init(t_sdl *s, t_env *e)
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
 	print_rect(r1, e, 1, WHITE);
 	bloc_save(e, s);
+	bloc_credits(e,s);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(0, WIN_Y / 8 * 7);
-	p2 = init_point_2_coord(SIZE_X / 4, WIN_Y / 8 * 7);
-	horizontal_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y);
-	p2 = init_point_2_coord(SIZE_X / 4 - 10, WIN_Y);
-	vertical_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, WIN_Y);
 	vertical_trait(p1, p2, WHITE, e);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)

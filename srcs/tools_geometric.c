@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 11:39:31 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/10 11:25:28 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ t_point		init_point(double x, double y, double z)
 	p.x = x;
 	p.y = y;
 	p.z = z;
+	return (p);
+}
+
+/*
+** initialization of a point but only on x and y(norm funct)
+*/
+
+t_point		init_point_2_coord(int x, int y)
+{
+	t_point p;
+
+	p.x = x;
+	p.y = y;
 	return (p);
 }
 

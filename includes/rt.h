@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/09 13:41:37 by florian          ###   ########.fr       */
+/*   Updated: 2018/04/10 11:29:16 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ typedef struct		s_bouton
 	SDL_Rect		rect;
 }					t_bouton;
 
+typedef struct 		s_credits
+{
+	t_tex_rec		names;
+	t_tex_rec		title;
+}					t_credits;
+
 typedef struct		s_hud
 {
 	SDL_Surface		*s_back;
@@ -78,8 +84,8 @@ typedef struct		s_hud
 	t_print_cam		cam;
 	t_bouton		bouton[12];
 	t_tex_rec		info;
-	t_tex_rec 	save;
-	t_tex_rec		credits;
+	t_tex_rec		save;
+	t_credits		credits;
 	int					i_mess;
 	char				**mess;
 }					t_hud;
@@ -197,6 +203,7 @@ int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
+void				open_texture(t_sdl *s);
 
 /*
 ** tools
@@ -208,6 +215,7 @@ t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
 
 t_point				init_point(double x, double y, double z);
+t_point				init_point_2_coord(int x, int y);
 void				intersection_point(t_inter *pt, t_point ca, t_vec v);
 t_rect				init_rect(int x1, int x2, int x3, int x4);
 void				print_rect(t_rect b, t_env *e, int t, int color);

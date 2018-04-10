@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/02 14:51:59 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/10 11:38:33 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,13 @@ SRC_NAME = 	lux.c \
 			pars_check.c      \
 			pars_sphere.c      \
 			tools_color.c       \
-			tools_vector.c       \
-			ray_cylindre.c        \
-			pars_cylindre.c        \
-			ft_put_pixels.c         \
-			tools_geometric.c        \
-			print_text.c
+			open_texture.c       \
+			tools_vector.c        \
+			ray_cylindre.c         \
+			pars_cylindre.c         \
+			ft_put_pixels.c          \
+			tools_geometric.c         \
+			print_text.c               \
 
 all: $(NAME)
 
