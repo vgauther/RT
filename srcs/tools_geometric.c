@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:25:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 11:59:30 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ t_point		init_point_2_coord(int x, int y)
 ** we determinate coordonnates of the intersection between a ray and the shape
 */
 
-void	intersection_point(t_inter *pt, t_point ca, t_vec v)
+void		intersection_point(t_inter *pt, t_point ca, t_vec v)
 {
 	pt->pos.x = ca.x + v.x * pt->dist;
 	pt->pos.y = ca.y + v.y * pt->dist;
 	pt->pos.z = ca.z + v.z * pt->dist;
 }
 
-t_rect	init_rect(int x1, int x2, int x3, int x4)
+t_rect		init_rect(int x1, int x2, int x3, int x4)
 {
 	t_rect r;
 
@@ -61,7 +61,7 @@ t_rect	init_rect(int x1, int x2, int x3, int x4)
 	return (r);
 }
 
-void	print_rect(t_rect b, t_env *e, int t, int color)
+void		print_rect(t_rect b, t_env *e, int t, int color)
 {
 	int save;
 

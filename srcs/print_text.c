@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:22:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 17:34:22 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 12:01:33 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-SDL_Color	init_sdl_color(int r, int g, int b)
+SDL_Color		init_sdl_color(int r, int g, int b)
 {
 	SDL_Color ret;
 
@@ -28,7 +28,7 @@ SDL_Color	init_sdl_color(int r, int g, int b)
 	return (ret);
 }
 
-void	creat_sdl_color(t_sdl *s)
+void			creat_sdl_color(t_sdl *s)
 {
 	s->font.color[0] = init_sdl_color(0, 0, 0);
 	s->font.color[1] = init_sdl_color(255, 255, 255);
@@ -37,19 +37,19 @@ void	creat_sdl_color(t_sdl *s)
 	s->font.color[4] = init_sdl_color(255, 0, 0);
 }
 
-void	open_font(t_sdl *s)
+void			open_font(t_sdl *s)
 {
 	if (!(s->font.bebas = TTF_OpenFont("src_font/bebas.ttf", 100)))
 		ft_error("font error");
 }
 
-void	init_font(t_sdl *s)
+void			init_font(t_sdl *s)
 {
 	open_font(s);
 	creat_sdl_color(s);
 }
 
-void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data)
+void			print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data)
 {
 	SDL_Surface		*surface;
 	int				a;
@@ -62,6 +62,4 @@ void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data)
 	SDL_QueryTexture(data->tex, NULL, NULL, &a, &b);
 	SDL_FreeSurface(surface);
 	free(str);
-	//SDL_RenderCopy(s->renderer, text, NULL, &rect);
-	//SDL_RenderPresent(s->renderer);
 }
