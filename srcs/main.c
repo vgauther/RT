@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:44:47 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 14:05:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	display(t_sdl *s, t_env *e)
 	int i;
 
 	i = 0;
-	(void)e;
-	(void)test;
 	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
@@ -70,6 +68,8 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	if (SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect) < 0)
+		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	while (i != 12)
 	{
 		if (SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect) < 0)
@@ -83,23 +83,52 @@ void	display(t_sdl *s, t_env *e)
 	if (SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
-	//SDL_SaveBMP(s->rendu, "test.bmp");
 }
 
 void	mouv(long key, t_env *e, t_sdl *s)
 {
 	if (key == 79)
+	{
 		e->ca.pos.x--;
+		print_text(ft_strdup(s->hud1.mess[1]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
+	}
 	if (key == 80)
+	{
+		print_text(ft_strdup(s->hud1.mess[1]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
 		e->ca.pos.x++;
+	}
 	if (key == 81)
+	{
+		print_text(ft_strdup(s->hud1.mess[2]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
 		e->ca.pos.y--;
+	}
 	if (key == 82)
+	{
 		e->ca.pos.y++;
+		print_text(ft_strdup(s->hud1.mess[2]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
+	}
 	if (key == 87)
+	{
+		print_text(ft_strdup(s->hud1.mess[3]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
 		e->ca.pos.z++;
+	}
 	if (key == 86)
+	{
+		print_text(ft_strdup(s->hud1.mess[3]), s->font.color[4], s, &s->hud1.info);
+		s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
+		display(s, e);
 		e->ca.pos.z--;
+	}
 	raytracing(e, s);
 }
 
@@ -123,7 +152,7 @@ int		main(int ac, char **av)
 	int		r;
 
 	r = 1;
-	e.ca = init_cam(0, 0, -90);
+	e.ca = init_cam(0, 0, 0);
 	if (ac != 2)
 		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s, av[1]);

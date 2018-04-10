@@ -5,5 +5,5 @@
 spot 0 0 0 0x000000 0 0 0
 
 //sphere 0 0 150 0xff0000 10 1
-sphere 0 0 500 0x0000ff 50 1
-sphere 0 20 500 0x0000ff 50 1
+sphere 0 0 100 0x0000ff 20 1
+//cylindre 0 0 150 0xFF0000 10 1 0 0 1

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:29:16 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 13:59:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
+SDL_Rect	init_sdl_rect(int x, int y, int w, int h);
 
 /*
 ** tools

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:37:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 14:07:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		create_bouton(t_sdl *s)
 void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 {
 	if (p1.x > p2.x)
-		ft_error("\nvertical_trait error\n");
+		ft_error("\nhorizontal_trait error\n");
 	while (p1.x != p2.x)
 	{
 		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
@@ -117,7 +117,7 @@ void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
 {
 	if (p1.y > p2.y)
-		ft_error("\nhorizontal_trait error\n");
+		ft_error("\nvertical_trait error\n");
 	while (p1.y != p2.y)
 	{
 		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
@@ -129,14 +129,29 @@ void	init_info_messages(t_sdl *s)
 {
 	s->hud1.mess = malloc(sizeof(char *) * 5);
 	s->hud1.mess[0] = ft_strdup("Last   Info   :   RT   succesfully   launched.");
-	s->hud1.mess[1] = ft_strdup("Last Info : Camera just mooved on x axis");
-	s->hud1.mess[2] = ft_strdup("Last Info : Camera just mooved on y axis");
-	s->hud1.mess[3] = ft_strdup("Last Info : Camera just mooved on z axis");
-	s->hud1.mess[4] = ft_strdup("Last Info : Your work has been saved.");
+	s->hud1.mess[1] = ft_strdup("Last  Info  :  Camera  just  mooved  on  x  axis");
+	s->hud1.mess[2] = ft_strdup("Last  Info  :  Camera  just  mooved  on  y  axis");
+	s->hud1.mess[3] = ft_strdup("Last  Info  :  Camera  just  mooved  on  z  axis");
+	s->hud1.mess[4] = ft_strdup("Last  Info  :  Your  work  has  been  saved.");
 
 }
 
+void	ornement(SDL_Rect p, int color, int size, t_env *e)
+{
+	t_point p1;
+	t_point p2;
+	int l;
 
+	l = p.h / 2 + p.y;
+	p2.y = l;
+	p1.y = l;
+	p1.x = p.x - size;
+	p2.x = p.x - 10;
+	horizontal_trait(p1, p2, color, e);
+	p1.x = p.x + p.w + 10;
+	p2.x = p.x + p.w + size;
+	horizontal_trait(p1, p2, color, e);
+}
 
 void 	bloc_save(t_env *e, t_sdl *s)
 {
@@ -154,6 +169,7 @@ void 	bloc_save(t_env *e, t_sdl *s)
 	print_rect(r1, e, 1, WHITE);
 	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
 	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10 ,50, 15);
+	ornement(s->hud1.save.rect, WHITE, 20, e);
 }
 
 void	bloc_credits(t_env *e, t_sdl *s)
@@ -162,13 +178,16 @@ void	bloc_credits(t_env *e, t_sdl *s)
 	t_point p2;
 
 	print_text(ft_strdup("Credits"), s->font.color[4], s, &s->hud1.credits.title);
-	s->hud1.credits.title.rect = init_sdl_rect(0, SIZE_Y + SIZE_Y / 8 + 20, 50, 20);
+	s->hud1.credits.title.rect = init_sdl_rect(SIZE_X / 4 / 2 - 40, SIZE_Y + SIZE_Y / 8 - 5, 50, 20);
+	print_text(ft_strdup("ebertin/fde-souz/ppetit/vgauther"), s->font.color[4], s, &s->hud1.credits.names);
+	s->hud1.credits.names.rect = init_sdl_rect(7, SIZE_Y + SIZE_Y / 6, 230, 18);
 	p1 = init_point_2_coord(0, WIN_Y / 8 * 7);
 	p2 = init_point_2_coord(SIZE_X / 4, WIN_Y / 8 * 7);
 	horizontal_trait(p1, p2, WHITE, e);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, WIN_Y);
 	vertical_trait(p1, p2, WHITE, e);
+	ornement(s->hud1.credits.title.rect, WHITE, 20, e);
 }
 
 void	hud_init(t_sdl *s, t_env *e)

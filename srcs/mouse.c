@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:43:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 14:11:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void 	save_bouton(int x, int y, t_sdl *s, t_env *e)
 {
 	t_rect r1;
+	int i;
 
 	if (x >= SIZE_X / 4 + SIZE_X - 110 && x <= SIZE_X / 4 + SIZE_X - 20)
 	{
@@ -26,16 +27,26 @@ void 	save_bouton(int x, int y, t_sdl *s, t_env *e)
 			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 				ft_sdl_error("Texture error : ", SDL_GetError());
 			display(s, e);
+			i = 0;
+			while (i != 80000000)
+				i++;
 			r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
 			print_rect(r1, e, 1, WHITE);
 			s->hud1.s_back->pixels = e->hud;
 			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 				ft_sdl_error("Texture error : ", SDL_GetError());
+			print_text(ft_strdup(s->hud1.mess[4]), s->font.color[4], s, &s->hud1.info);
+			s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 ,500, 25);
 			display(s, e);
 			SDL_SaveBMP(s->rendu, "save.bmp");
 		}
 	}
 }
+
+/*void 	print_info(t_sdl *s, t_emv *e, int i)
+{
+
+}*/
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {

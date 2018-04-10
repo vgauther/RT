@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 17:54:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/10 13:40:32 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_inter			ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 
 	f = vector_init(ori.x - e->obj[nbr].pos.x, ori.y - e->obj[nbr].pos.y,
 		ori.z - e->obj[nbr].pos.z);
+	//printf("%f\n", ori.z);
 	p.a = v.x * v.x + v.y * v.y + v.z * v.z;
 	p.b = 2 * (v.x * f.x + v.y * f.y + v.z * f.z);
 	p.c = pow(f.x, 2) + pow(f.y, 2) + pow(f.z, 2) - e->obj[nbr].rayon_2;
