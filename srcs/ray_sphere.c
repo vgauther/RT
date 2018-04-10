@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 13:40:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 16:57:13 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-static t_vec	sphere_normal_at(t_inter t, t_obj obj)
+t_vec		sphere_normal_at(t_inter t, t_obj obj)
 {
 	return (normalize_vec(vector_init(t.pos.x - obj.pos.x,
 		t.pos.y - obj.pos.y,
@@ -50,6 +50,5 @@ t_inter			ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 	else
 		t.dist = MAX_DIST;
 	t.delta = p.delta;
-	t.normal = sphere_normal_at(t, e->obj[nbr]);
 	return (t);
 }

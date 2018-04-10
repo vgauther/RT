@@ -6,24 +6,46 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 12:02:33 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 18:23:06 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_vec		cone_normal_at(t_inter t, t_obj obj)
+// t_vec		cone_normal_at(t_inter t, t_obj obj, t_obj spot)
+// {
+// 	t_vec	v;
+// 	t_vec	dir;
+// 	double	dop;
+// 	double	rdopd;
+// 	t_vec	norm;
+// 	double	m2;
+// 	double	rad;
+//
+// 	dir = vector_init(t.pos.x - spot.pos.x, t.pos.y - spot.pos.y, t.pos.z - spot.pos.z);
+// 	rad = 1 + ((obj.angle) * (obj.angle));
+// 	v = vector_init(obj.pos.x - t.pos.x, obj.pos.y - t.pos.y , obj.pos.z - t.pos.z);
+// 	dop = dot(v, obj.rot);
+// 	rdopd = dot(obj.rot, dir);
+// 	m2 = rdopd * sqrtf(t.dist) + dop;
+// 	norm = vector_init(v.x - (obj.rot.x * (rad * m2)), v.y - (obj.rot.y * (rad * m2)) , v.z - (obj.rot.z * (rad * m2)));
+// 	return (normalize_vec(norm));
+// }
+
+t_vec		cone_normal_at(t_inter t, t_obj obj, t_obj spot)
 {
 	t_vec	v;
 	t_vec	norm;
 	double	m;
+	double rad;
 
-	v = vector_init(t.pos.x - obj.pos.x, t.pos.y -
-		obj.pos.y, t.pos.z - obj.pos.z);
-	m = sqrt(dot(v,v)) / cos(obj.angle * RAD);
-	norm = vector_init(v.x - obj.rot.x * m, v.y -
-		 obj.rot.y * m, v.z - obj.rot.z * m);
-	return (normalize_vec(norm));
+	(void)spot;
+	rad = 1 + ((RAD * obj.angle) * (obj.angle * RAD));
+	v = vector_init(t.pos.x - obj.pos.x, t.pos.y - obj.pos.y, t.pos.z - obj.pos.z);
+	m = sqrt(dot(v, v)) / cos(obj.angle * RAD);
+	norm = vector_init(v.x - obj.rot.x * m * rad , v.y - obj.rot.y * m * rad, v.z - obj.rot.z * m * rad);
+	norm = normalize_vec(norm);
+	return(norm);
 }
 
 t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
@@ -59,6 +81,5 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 	else
 		pt.dist = MAX_DIST;
 	pt.delta = p.delta;
-	pt.normal = cone_normal_at(pt, e->obj[nbr]);
 	return (pt);
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 14:56:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 18:18:31 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define WIN_Y (SIZE_Y + SIZE_Y_2 / 2)
 # define RAD (M_PI / 180.00)
 # define TAN30 0.577350
-# define MAX_DIST 10000
+# define MAX_DIST 1000000
 # define POS_WIN_X 100
 # define POS_WIN_Y 100
 
@@ -202,6 +202,10 @@ typedef	struct		s_rect
 	int				x_end;
 	int				y_end;
 }					t_rect;
+
+t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
+t_vec				cylindre_normal_at(t_inter t, t_obj obj);
+t_vec				sphere_normal_at(t_inter t, t_obj obj);
 
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);

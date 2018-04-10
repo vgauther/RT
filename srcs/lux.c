@@ -6,11 +6,24 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/09 14:30:11 by florian          ###   ########.fr       */
+/*   Updated: 2018/04/10 18:14:25 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+t_vec get_normal(t_env *e, t_inter pt, t_obj spot)
+{
+	t_vec norm;
+
+	if (e->obj[pt.nb].type == 1)
+		norm = sphere_normal_at(pt, e->obj[pt.nb]);
+	else if (e->obj[pt.nb].type == 2)
+		norm = cylindre_normal_at(pt, e->obj[pt.nb]);
+	else
+		norm = cone_normal_at(pt, e->obj[pt.nb], spot);
+	return (norm);
+}
 
 double		lux(t_env *e, t_inter pt)
 {
@@ -37,6 +50,7 @@ double		lux(t_env *e, t_inter pt)
 		if (!(ray_shadow(e, pt, e->spot[i], pt.nb)))
 		{
 			l = normalize_vec(vector_init(e->spot[i].pos.x - pt.pos.x, e->spot[i].pos.y - pt.pos.y, e->spot[i].pos.z - pt.pos.z));
+			pt.normal = get_normal(e, pt, e->spot[i]);
 			lambert = dot(pt.normal, l);
 			lambert = lambert < 0 ? 0 : lambert;
 			specular = 0;
@@ -51,9 +65,9 @@ double		lux(t_env *e, t_inter pt)
 			}
 			spot_color = split_color(e->spot[i].color);
 			spot_color = normalize_color(spot_color);
-			colorfin.r += 1 * lambert *  color.r;
-			colorfin.g += 1 * lambert *  color.g;
-			colorfin.b += 1 * lambert *  color.b;
+			colorfin.r += 1 * lambert * color.r;
+			colorfin.g += 1 * lambert * color.g;
+			colorfin.b += 1 * lambert * color.b;
 			colorfin.r += 1 * specular * 1;
 			colorfin.g += 1 * specular * 1;
 			colorfin.b += 1 * specular * 1;
