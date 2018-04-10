@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:37:54 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/10 11:44:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect) < 0)
+	if (SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	while (i != 12)
 	{
