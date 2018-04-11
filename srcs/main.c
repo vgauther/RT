@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 17:44:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/11 18:48:45 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int		main(int ac, char **av)
 	int		r;
 
 	r = 1;
-	e.ca = init_cam(0, 0, 0);
+	e.ca = init_cam(0, -500, -1000);
 	if (ac != 2)
 		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s, av[1], &e);
