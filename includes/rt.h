@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 17:07:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/11 17:37:34 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,8 @@ void				print_info(t_sdl *s, t_env *e, int i);
 Uint32				blackwhite(Uint32 color);
 Uint32				sepia(Uint32 color);
 Uint32				filtre(t_sdl *s, Uint32 color);
+t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
+					double rot_z);
 
 /*
 ** tools
