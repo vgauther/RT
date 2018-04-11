@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 15:36:55 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/11 11:40:43 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void		create_bouton(t_sdl *s)
 	{
 		s->hud1.bouton[i].i = t;
 		i++;
-		if (i == 3 || i== 9)
+		if (i == 3 || i == 9)
 			t = 1;
-		else if(i == 6)
+		else if (i == 6)
 			t = 0;
 	}
 	i = 0;
@@ -93,7 +93,7 @@ void		create_bouton(t_sdl *s)
 		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
 		i++;
 		y += 40;
-		if (i ==3||i == 9)
+		if (i == 3 ||i == 9)
 			x -= 25;
 		if (i == 6)
 			x = 165;
