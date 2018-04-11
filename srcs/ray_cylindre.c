@@ -6,19 +6,32 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 16:57:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/11 16:22:04 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_vec		cylindre_normal_at(t_inter t, t_obj obj)
+t_vec		cylindre_normal_at(t_inter t, t_obj obj, t_obj spot)
 {
-	return (normalize_vec(vector_init(t.pos.x - obj.pos.x,
-		t.pos.y - obj.pos.y,
-		t.pos.z - obj.pos.z)));
-}
+	t_vec x;
+	t_vec dir;
+	t_vec test;
+	double m;
 
+	x = vector_init(spot.pos.x - obj.pos.x,
+		spot.pos.y - obj.pos.y, spot.pos.z - obj.pos.z);
+	dir = vector_init(t.pos.x - spot.pos.x,
+		t.pos.y - spot.pos.y, t.pos.z - spot.pos.z);
+	test = vector_init(obj.rot.x * t.dist,
+		obj.rot.y * t.dist, obj.rot.z * t.dist);
+	test = normalize_vec(test);
+	m = dot(dir, test) + dot(x, obj.rot);
+	x = vector_init(obj.pos.x + obj.rot.x * m,
+		obj.pos.y + obj.rot.y * m, obj.pos.z + obj.rot.z * m);
+	x = normalize_vec(vector_init(t.pos.x - x.x, t.pos.y - x.y, t.pos.z - x.z));
+	return (x);
+}
 
 t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 {
@@ -53,6 +66,5 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 	}
 	else
 		pt.dist = MAX_DIST;
-	pt.normal = cylindre_normal_at(pt, e->obj[nbr]);
 	return (pt);
 }
