@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 11:42:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/11 11:44:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void		create_bouton(t_sdl *s)
 		s->hud1.bouton[i].rect = init_sdl_rect(x, y, 20, 20);
 		i++;
 		y += 40;
-		if (i == 3 || i == 9)
+		if (i == 3 ||  i == 9)
 			x -= 25;
 		if (i == 6)
 			x = 165;
@@ -127,12 +127,16 @@ void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
 void	init_info_messages(t_sdl *s)
 {
 	s->hud1.mess = malloc(sizeof(char *) * 5);
-	s->hud1.mess[0] = ft_strdup("Last   Info   :   RT   succesfully   launched.");
-	s->hud1.mess[1] = ft_strdup("Last  Info  :  Camera  just  mooved  on  x  axis");
-	s->hud1.mess[2] = ft_strdup("Last  Info  :  Camera  just  mooved  on  y  axis");
-	s->hud1.mess[3] = ft_strdup("Last  Info  :  Camera  just  mooved  on  z  axis");
-	s->hud1.mess[4] = ft_strdup("Last  Info  :  Your  work  has  been  saved.");
-
+	s->hud1.mess[0] =
+	ft_strdup("Last   Info   :   RT   succesfully   launched.");
+	s->hud1.mess[1] =
+	ft_strdup("Last  Info  :  Camera  just  mooved  on  x  axis");
+	s->hud1.mess[2] =
+	ft_strdup("Last  Info  :  Camera  just  mooved  on  y  axis");
+	s->hud1.mess[3] =
+	ft_strdup("Last  Info  :  Camera  just  mooved  on  z  axis");
+	s->hud1.mess[4] =
+	ft_strdup("Last  Info  :  Your  work  has  been  saved.");
 }
 
 void	ornement(SDL_Rect p, int color, int size, t_env *e)

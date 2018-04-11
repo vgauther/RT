@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 18:18:31 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/11 12:40:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,8 @@ void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
 SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
 void				print_info(t_sdl *s, t_env *e, int i);
+Uint32				blackwhite(Uint32 color);
+Uint32				sepia(Uint32 color);
 
 /*
 ** tools

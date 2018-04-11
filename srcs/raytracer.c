@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/10 16:59:50 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/11 12:43:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	raytracing(t_env *e, t_sdl *s)
 	t_inter		pt;
 	t_inter		tmp;
 	t_vec		dir;
+	Uint32		color;
 
 	x = 0;
 	while (x != SIZE_X)
@@ -63,7 +64,12 @@ void	raytracing(t_env *e, t_sdl *s)
 				nbr++;
 			}
 			if (pt.dist != MAX_DIST)
-				ft_put_pixel_winrend(e->pixels, x, y, lux(e, pt));
+			{
+				color = lux(e, pt);
+				//color = blackwhite(color);
+				//color = sepia(color);
+				ft_put_pixel_winrend(e->pixels, x, y, color);
+			}
 			else
 				ft_put_pixel_winrend(e->pixels, x, y, 0);
 			y++;
