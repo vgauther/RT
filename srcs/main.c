@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/12 17:31:30 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:50:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 
 void	display(t_sdl *s, t_env *e)
 {
-	SDL_Rect 	test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y};
+	const SDL_Rect test = { SIZE_X / 4, SIZE_Y / 8, SIZE_X, SIZE_Y};
 	int i;
 	int x;
 

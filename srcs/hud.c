@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 15:37:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:40:55 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,9 @@ void	init_info_messages(t_sdl *s)
 
 void	ornement(SDL_Rect p, int color, int size, t_env *e)
 {
-	t_point p1;
-	t_point p2;
-	int l;
+	t_point	p1;
+	t_point	p2;
+	int		l;
 
 	l = p.h / 2 + p.y;
 	p2.y = l;
@@ -164,7 +164,7 @@ void	ornement(SDL_Rect p, int color, int size, t_env *e)
 	horizontal_trait(p1, p2, color, e);
 }
 
-void 	bloc_save(t_env *e, t_sdl *s)
+void	bloc_save(t_env *e, t_sdl *s)
 {
 	t_point p1;
 	t_point p2;
@@ -176,10 +176,11 @@ void 	bloc_save(t_env *e, t_sdl *s)
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
-	r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+	r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17,
+		SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
 	print_rect(r1, e, 1, WHITE);
 	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
-	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10 ,50, 15);
+	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10, 50, 15);
 	ornement(s->hud1.save.rect, WHITE, 20, e);
 }
 
