@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/11 17:35:55 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/04/12 12:37:03 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC_NAME = 	lux.c \
 			tools_geometric.c         \
 			print_text.c               \
 			rotate.c					\
+			texture.c					 \
 			filter.c
 
 all: $(NAME)

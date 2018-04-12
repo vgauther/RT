@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:44:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/06 13:07:18 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/12 14:19:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_color		split_color(int full)
+t_color		split_color(Uint32 full)
 {
 	t_color color;
 

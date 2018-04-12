@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 15:37:27 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:21:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ double		lux(t_env *e, t_inter pt)
 	colorfin.g = 0;
 	colorfin.b = 0;
 	i = 0;
-	color = split_color(e->obj[pt.nb].color);
+	//color = split_color(e->obj[pt.nb].color);
+	color = split_color(get_texture_pixel(e, pt, e->obj[pt.nb]));
 	color = normalize_color(color);
 	while (i < e->nb_spot)
 	{

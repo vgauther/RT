@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 17:37:34 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/12 16:35:44 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ typedef struct		s_env
 	t_obj			*first;
 	Uint32			*pixels;
 	Uint32			*hud;
+	SDL_Surface		*test;
 	t_cam			ca;
 }					t_env;
 
@@ -210,6 +211,19 @@ typedef	struct		s_rect
 	int				y_end;
 }					t_rect;
 
+typedef struct		s_texture_calc
+{
+	double			x;
+	double			y;
+	double			theta;
+	double			phi;
+	char			*pixels;
+	Uint32			color;
+	t_vec			vp;
+	t_vec			pl;
+	t_vec			eq;
+}					t_texture_calc;
+
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
@@ -229,6 +243,7 @@ Uint32				sepia(Uint32 color);
 Uint32				filtre(t_sdl *s, Uint32 color);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
+Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
 
 /*
 ** tools
@@ -301,7 +316,7 @@ void				select_add_spot(char *str, t_env *e);
 
 char				*only_color(char *str);
 int					ft_atoi_color(char *str);
-t_color				split_color(int full);
+t_color				split_color(Uint32 full);
 
 /*
 ** error
