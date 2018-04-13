@@ -12,22 +12,22 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Cone
 - Ouverture de scene via l'input
 - Parsing du fichier scene
+- Ombres portées
+- Sauvegarde de l'image
+- Textures
+- Filtre de couleur (ex : sepia, noir et blanc)
 
 ## En cours [...]
 - Plan (ppetit)
 - Lumiere (fde-souz)
-- Ombres portées (fde-souz)
 - Interfaces (vgauther)
 
 ## Idées et ameliorations à faire [->]
 - Refraction
 - Reflexion
-- Textures
 - Selecteur de couleur
 - Selectionneur d'objet
 - Fusion de scene via l'input
-- Sauvegarde de l'image 
-- Filtre de couleur (ex : sepia)
 
 ## Objets à faire [obj]
 ### Fusion d'objet
