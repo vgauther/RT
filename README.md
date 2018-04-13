@@ -28,6 +28,8 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Selecteur de couleur
 - Selectionneur d'objet
 - Fusion de scene via l'input
+- Ajouter des objets pendant le rt
+- Faire un ecran de chargement
 
 ## Objets à faire [obj]
 ### Fusion d'objet
