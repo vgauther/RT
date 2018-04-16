@@ -16,17 +16,17 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Sauvegarde de l'image
 - Textures
 - Filtre de couleur (ex : sepia, noir et blanc)
+- Lumiere
 
 ## En cours [...]
 - Plan (ppetit)
-- Lumiere (fde-souz)
 - Interfaces (vgauther)
+- Selecteur de couleur (vgauther)
+- Selectionneur d'objet (vgauther)
+- Refraction (ebertin)
+- Reflexion (ebertin)
 
 ## Idées et ameliorations à faire [->]
-- Refraction
-- Reflexion
-- Selecteur de couleur
-- Selectionneur d'objet
 - Fusion de scene via l'input
 - Ajouter des objets pendant le rt
 - Faire un ecran de chargement
