@@ -193,7 +193,7 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	t_hud			hud1;
 	t_font			font;
-	SDL_Texture		*tex[6];
+	SDL_Texture		*tex[17];
 }					t_sdl;
 
 typedef struct		s_inter
