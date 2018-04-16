@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/12 16:35:44 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/16 11:32:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,8 @@ Uint32				filtre(t_sdl *s, Uint32 color);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
 Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
+t_inter				shape_redirection(t_env *e, t_vec dir,
+					t_point ori, int nbr);
 
 /*
 ** tools

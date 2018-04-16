@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/12 17:50:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/16 13:11:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	if ((s->hud1.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
-	if ((e->test = SDL_LoadBMP("./img_srcs/map_test.bmp"))
+	if ((e->test = SDL_LoadBMP("./img_srcs/rtl.bmp"))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
 	free(s->rendu->pixels);

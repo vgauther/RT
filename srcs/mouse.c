@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 16:44:29 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 13:04:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,11 +182,60 @@ void	mouse_filter_activate(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
+{
+	int			nbr;
+	t_inter		pt;
+	t_inter		tmp;
+	t_vec		dir;
+	t_point		cam;
+
+	cam.x = x + e->ca.pos.x - SIZE_X_2;
+	cam.y = y + e->ca.pos.y - SIZE_Y_2;
+	cam.z = e->ca.pos.z;
+	//e->ca.pos.x = x;
+	//e->ca.pos.y = y;
+	if (x > SIZE_X / 4 && x < SIZE_X / 4 + SIZE_X)
+	{
+		if (y > SIZE_Y / 8 && y < SIZE_Y / 8 + SIZE_Y)
+		{
+			x -= SIZE_X / 4;
+			y -= SIZE_Y / 8;
+			nbr = 0;
+			pt.dist = MAX_DIST;
+			while (nbr < e->nb)
+			{
+				dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
+				dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
+				dir = normalize_vec(dir);
+				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
+				if (tmp.dist < pt.dist && tmp.dist > 0)
+				{
+					pt.dist = tmp.dist;
+					pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
+					pt.normal = tmp.normal;
+					pt.nb = nbr;
+				}
+				nbr++;
+			}
+			if (pt.dist != MAX_DIST)
+			{
+				printf("%s|%f\n", "t'as touche un truc", pt.dist);
+				//function afichage espace de travail
+			}
+			else
+				printf("%s\n", "t'as rien touche");
+		}
+	}
+	(void)s;
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
+	mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	//printf("%d|%d\n", mouse_x, mouse_y);
 }
