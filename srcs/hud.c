@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 15:15:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 15:27:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,19 @@ void	create_bouton_tool_bar(t_sdl *s)
 		40, 40);
 }
 
+void	bloc_camera(t_env *e, t_sdl *s)
+{
+	t_rect	r1;
+
+	r1 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
+	empty_rect(r1, e, 1, WHITE);
+	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
+	print_rect(r1, e, 1, COLOR_BACK);
+	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
+	print_rect(r1, e, 1, WHITE);
+	(void)s;
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -231,15 +244,16 @@ void	hud_init(t_sdl *s, t_env *e)
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
 		ft_error("MALLOC ERROR");
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
-	print_rect(r1, e, 1, COLOR_BACK);
+	print_rect(r1, e, 1, COLOR_BACK);/*
 	r1 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
 	empty_rect(r1, e, 1, WHITE);
 	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
-	print_rect(r1, e, 1, WHITE);
+	print_rect(r1, e, 1, WHITE);*/
+	bloc_camera(e, s);
 	bloc_save(e, s);
-	bloc_credits(e,s);
+	bloc_credits(e, s);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
