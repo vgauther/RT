@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 15:27:47 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:28:31 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 void	empty_rect(t_rect b, t_env *e, int t, int color)
 {
-	int save;
-	int save2;
+	int i;
 
-	if (b.y_begin > b.y_end || b.x_begin > b.x_end)
-		ft_error("\nrect error\n");
-	save = b.x_begin;
-	save2 = b.y_begin;
-	while (b.y_begin <= b.y_end)
+	i = b.x;
+	while (i != b.x + b.len)
 	{
-		b.x_begin = save;
-		while (b.x_begin < b.x_end && (b.y_begin == b.y_end || b.y_begin == save2))
-		{
-			t == 1 ? ft_put_pixel_hud(e->hud, b.x_begin, b.y_begin, color) :
-			ft_put_pixel_winrend(e->pixels, b.x_begin, b.y_begin, color);
-			b.x_begin++;
-		}
-		t == 1 ? ft_put_pixel_hud(e->hud, b.x_begin, b.y_begin, color) :
-		ft_put_pixel_winrend(e->pixels, b.x_begin, b.y_begin, color);
-		t == 1 ? ft_put_pixel_hud(e->hud, b.x_end, b.y_begin, color) :
-		ft_put_pixel_winrend(e->pixels, b.x_end, b.y_begin, color);
-		b.y_begin++;
+		t == 1 ? ft_put_pixel_hud(e->hud, i, b.y, color) :
+		ft_put_pixel_winrend(e->pixels, i, b.y, color);
+		t == 1 ? ft_put_pixel_hud(e->hud, i, b.y + b.hei, color) :
+		ft_put_pixel_winrend(e->pixels, i, b.y + b.hei, color);
+		i++;
+	}
+	i = b.y;
+	while (i != b.y + b.hei)
+	{
+		t == 1 ? ft_put_pixel_hud(e->hud, b.x, i, color) :
+		ft_put_pixel_winrend(e->pixels, b.x, i, color);
+		t == 1 ? ft_put_pixel_hud(e->hud, b.x + b.len, i, color) :
+		ft_put_pixel_winrend(e->pixels, b.x + b.len, i, color);
+		i++;
 	}
 }
 
@@ -51,7 +49,7 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
-	s->hud1.cam.title.rect = init_sdl_rect(40, 190, 344 / 2, 96 / 3);
+	s->hud1.cam.title.rect = init_sdl_rect(0, 0, 344 / 2, 96 / 3);
 	print_text(ft_strdup("Camera"), s->font.color[1], s, &s->hud1.cam.title);
 	s->hud1.cam.pos_x.rect = init_sdl_rect(105, 270, 17, 10);
 	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
@@ -168,18 +166,19 @@ void	bloc_save(t_env *e, t_sdl *s)
 	t_point p2;
 	t_rect	r1;
 
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, 0);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y / 8);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, 0);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9 - 150, SIZE_Y / 8);
+	p1 = init_point_2_coord(SIZE_X / 4 + (SIZE_X / 6) * 5 - 5, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 + (SIZE_X / 6) * 5 - 5, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
-	r1 = init_rect(SIZE_X / 4 + SIZE_X - 110, SIZE_Y / 17,
-		SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+	r1 = init_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6, SIZE_Y / 17,
+		(SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
 	print_rect(r1, e, 1, WHITE);
 	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
-	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X - 90, 10, 50, 15);
-	ornement(s->hud1.save.rect, WHITE, 20, e);
+	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 8, SIZE_Y / 80,
+	((SIZE_X / 6 + 10) / 4) * 3, 15);
+	ornement(s->hud1.save.rect, WHITE, 15, e);
 }
 
 void	bloc_credits(t_env *e, t_sdl *s)
@@ -217,12 +216,11 @@ void	bloc_camera(t_env *e, t_sdl *s)
 {
 	t_rect	r1;
 
-	r1 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
+	r1 = init_rect(WIN_X / 100, SIZE_Y / 3, SIZE_X / 4 - (WIN_X / 50) - 10, SIZE_Y / 3);
 	empty_rect(r1, e, 1, WHITE);
-	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
+	r1 = init_rect(WIN_X / 100 + ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8), (SIZE_Y / 3) - 2,
+	 ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8 ) * 6, 4);
 	print_rect(r1, e, 1, COLOR_BACK);
-	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
-	print_rect(r1, e, 1, WHITE);
 	(void)s;
 }
 
@@ -244,21 +242,17 @@ void	hud_init(t_sdl *s, t_env *e)
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
 		ft_error("MALLOC ERROR");
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
-	print_rect(r1, e, 1, COLOR_BACK);/*
-	r1 = init_rect(WIN_X / 100, 200, (SIZE_X / 4) - (WIN_X / 100), 400);
-	empty_rect(r1, e, 1, WHITE);
-	r1 = init_rect(WIN_X / 67, 190, (SIZE_X / 4) - (WIN_X / 70), 210);
 	print_rect(r1, e, 1, COLOR_BACK);
-	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X / 4 + SIZE_X + 10, SIZE_Y / 8 + SIZE_Y + 10);
-	print_rect(r1, e, 1, WHITE);*/
+	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X + 20, SIZE_Y + 20);
+	print_rect(r1, e, 1, WHITE);
 	bloc_camera(e, s);
 	bloc_save(e, s);
 	bloc_credits(e, s);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, WIN_Y);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
 	vertical_trait(p1, p2, WHITE, e);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 11:59:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 16:36:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,31 @@ t_rect		init_rect(int x1, int x2, int x3, int x4)
 {
 	t_rect r;
 
-	r.x_begin = x1;
-	r.y_begin = x2;
-	r.x_end = x3;
-	r.y_end = x4;
+	r.x = x1;
+	r.y = x2;
+	r.len = x3;
+	r.hei = x4;
 	return (r);
 }
 
 void		print_rect(t_rect b, t_env *e, int t, int color)
 {
+	int i;
+	int j;
 	int save;
 
-	if (b.y_begin > b.y_end || b.x_begin > b.x_end)
-		ft_error("\nbouton error\n");
-	save = b.x_begin;
-	while (b.y_begin < b.y_end)
+	i = b.y + b.hei;
+	j = b.x + b.len;
+	save = b.x;
+	while (i >= b.y)
 	{
-		b.x_begin = save;
-		while (b.x_begin < b.x_end)
+		b.x = save;
+		while (j >= b.x)
 		{
-			t == 1 ? ft_put_pixel_hud(e->hud, b.x_begin, b.y_begin, color) :
-			ft_put_pixel_winrend(e->pixels, b.x_begin, b.y_begin, color);
-			b.x_begin++;
+			t == 1 ? ft_put_pixel_hud(e->hud, b.x, b.y, color) :
+			ft_put_pixel_winrend(e->pixels, b.x, b.y, color);
+			b.x++;
 		}
-		b.y_begin++;
+		b.y++;
 	}
 }

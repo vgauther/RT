@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 14:36:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 16:31:32 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,10 +206,10 @@ typedef struct		s_inter
 
 typedef	struct		s_rect
 {
-	int				x_begin;
-	int				y_begin;
-	int				x_end;
-	int				y_end;
+	int				x;
+	int				y;
+	int				len;
+	int				hei;
 }					t_rect;
 
 typedef struct		s_texture_calc
