@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 16:31:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:40:07 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct		s_obj
 	int				material;
 	int				type;
 	int				color;
+	t_color			color_rgb;
 	t_vec			rot;
 	double			angle;
 	double			angletan;
@@ -225,10 +226,19 @@ typedef struct		s_texture_calc
 	t_vec			eq;
 }					t_texture_calc;
 
+typedef struct		s_spec_dif
+{
+	int				i;
+	double			specular;
+	double			difuse;
+}					t_spec_dif;
+
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
+t_color				color_init(double r, double g, double b);
 
+double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);
 double				lux(t_env *e, t_inter pt);
@@ -247,6 +257,8 @@ t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
 t_inter				shape_redirection(t_env *e, t_vec dir,
 					t_point ori, int nbr);
+Uint32				rgb_to_int(t_color color);
+t_vec				vec3_cross(t_vec va, t_vec vb);
 
 /*
 ** tools

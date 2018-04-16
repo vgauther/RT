@@ -6,11 +6,22 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:44:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/12 14:19:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:41:11 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+Uint32		rgb_to_int(t_color color)
+{
+	color.r *= 255;
+	color.g *= 255;
+	color.b *= 255;
+	color.r = color.r > 255 ? 255 : color.r;
+	color.g = color.g > 255 ? 255 : color.g;
+	color.b = color.b > 255 ? 255 : color.b;
+	return (((int)color.r * 256 * 256) + ((int)color.g * 256) + (int)color.b);
+}
 
 t_color		split_color(Uint32 full)
 {
@@ -78,4 +89,14 @@ t_color		normalize_color(t_color in)
 	in.g /= 255;
 	in.b /= 255;
 	return (in);
+}
+
+t_color		color_init(double r, double g, double b)
+{
+	t_color color;
+
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	return (color);
 }
