@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 14:07:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 15:15:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void		create_bouton_cam(t_sdl *s)
 		i++;
 		if (i == 3 || i == 9)
 			t = 1;
-		else if (i == 6)
-			t = 0;
+		t = i == 6 ? 0 : t;
 	}
 	i = 0;
 	while (i != 12)
@@ -95,8 +94,7 @@ void		create_bouton_cam(t_sdl *s)
 		y += 40;
 		if (i == 3 || i == 9)
 			x -= 25;
-		if (i == 6)
-			x = 165;
+		x = i == 6 ? 165 : x;
 		if (i == 3 || i == 9 || i == 6)
 			y = 265;
 	}
@@ -205,11 +203,14 @@ void	bloc_credits(t_env *e, t_sdl *s)
 void	create_bouton_tool_bar(t_sdl *s)
 {
 	s->hud1.bouton[12].i = 4;
-	s->hud1.bouton[12].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4, SIZE_Y / 16 - 20, 40 , 40);
+	s->hud1.bouton[12].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4,
+		SIZE_Y / 16 - 20, 40, 40);
 	s->hud1.bouton[13].i = 4;
-	s->hud1.bouton[13].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4 + 60, SIZE_Y / 16 - 20, 40 , 40);
+	s->hud1.bouton[13].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4 + 60,
+		SIZE_Y / 16 - 20, 40, 40);
 	s->hud1.bouton[14].i = 4;
-	s->hud1.bouton[14].rect = init_sdl_rect(SIZE_X / 4 + 60, SIZE_Y / 16 - 20, 40 , 40);
+	s->hud1.bouton[14].rect = init_sdl_rect(SIZE_X / 4 + 60, SIZE_Y / 16 - 20,
+		40, 40);
 }
 
 void	hud_init(t_sdl *s, t_env *e)
