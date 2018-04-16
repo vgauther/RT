@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 13:11:19 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:07:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 			SDL_WINDOW_ALLOW_HIGHDPI);
 	s->hud1.filter_token.sep = 0;
 	s->hud1.filter_token.bw = 0;
+	s->hud1.selectobj = 0;
 	free(str);
 	if (s->window == NULL)
 		exit(1);
@@ -83,7 +84,7 @@ void	display(t_sdl *s, t_env *e)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
 	if (SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect) < 0)
 		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	while (++i != 14)
+	while (++i != 15)
 	{
 		if (SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect) < 0)
 			ft_sdl_error("Error copying renderer : ", SDL_GetError());

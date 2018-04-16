@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 11:32:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:36:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 # include "SDL2/SDL_ttf.h"
 # include <time.h>
 
-# define SIZE_X 1000
-# define SIZE_Y 600
-# define SIZE_X_2 500
-# define SIZE_Y_2 300
-# define WIN_X (SIZE_X + SIZE_X_2)
-# define WIN_Y (SIZE_Y + SIZE_Y_2 / 2)
-# define RAD (M_PI / 180.00)
-# define TAN30 0.577350
-# define MAX_DIST 1000000
-# define POS_WIN_X 100
-# define POS_WIN_Y 100
+# define SIZE_X 	1000
+# define SIZE_Y 	600
+# define SIZE_X_2 	500
+# define SIZE_Y_2 	300
+# define WIN_X 		(SIZE_X + SIZE_X_2)
+# define WIN_Y 		(SIZE_Y + SIZE_Y_2 / 2)
+# define RAD 		(M_PI / 180.00)
+# define TAN30 		0.577350
+# define MAX_DIST 	1000000
+# define POS_WIN_X 	100
+# define POS_WIN_Y 	100
 
 # define COLOR_BACK 0x202225
 # define CONTRAST 	0xFFFFFF
@@ -95,12 +95,13 @@ typedef struct		s_hud
 	SDL_Texture		*t_logo;
 	SDL_Rect		r_logo;
 	t_print_cam		cam;
-	t_bouton		bouton[14];
+	t_bouton		bouton[15];
 	t_tex_rec		info;
 	t_tex_rec		save;
 	t_credits		credits;
 	int				i_mess;
 	char			**mess;
+	int				selectobj;
 	t_filter_tok	filter_token;
 }					t_hud;
 

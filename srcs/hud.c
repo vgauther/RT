@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/12 17:40:55 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:07:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ void	create_bouton_tool_bar(t_sdl *s)
 	s->hud1.bouton[12].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4, SIZE_Y / 16 - 20, 40 , 40);
 	s->hud1.bouton[13].i = 4;
 	s->hud1.bouton[13].rect = init_sdl_rect(SIZE_X / 2 + SIZE_X / 4 + 60, SIZE_Y / 16 - 20, 40 , 40);
+	s->hud1.bouton[14].i = 4;
+	s->hud1.bouton[14].rect = init_sdl_rect(SIZE_X / 4 + 60, SIZE_Y / 16 - 20, 40 , 40);
 }
 
 void	hud_init(t_sdl *s, t_env *e)

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 13:04:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:37:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,19 +182,20 @@ void	mouse_filter_activate(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	print_data_obj(t_sdl *s, t_env *e, int nbr)
+{
+	(void)s;
+	(void)e;
+	(void)nbr;
+}
+
 void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 {
 	int			nbr;
 	t_inter		pt;
 	t_inter		tmp;
 	t_vec		dir;
-	t_point		cam;
 
-	cam.x = x + e->ca.pos.x - SIZE_X_2;
-	cam.y = y + e->ca.pos.y - SIZE_Y_2;
-	cam.z = e->ca.pos.z;
-	//e->ca.pos.x = x;
-	//e->ca.pos.y = y;
 	if (x > SIZE_X / 4 && x < SIZE_X / 4 + SIZE_X)
 	{
 		if (y > SIZE_Y / 8 && y < SIZE_Y / 8 + SIZE_Y)
@@ -218,24 +219,40 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 				}
 				nbr++;
 			}
-			if (pt.dist != MAX_DIST)
+			if (pt.dist != MAX_DIST && s->hud1.selectobj)
 			{
-				printf("%s|%f\n", "t'as touche un truc", pt.dist);
-				//function afichage espace de travail
+				print_data_obj(s, e, nbr);
+				printf("yolo\n");
 			}
-			else
-				printf("%s\n", "t'as rien touche");
 		}
 	}
 	(void)s;
 }
 
+void	mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
+{
+	if (x >= SIZE_X / 4 + 60 && x <= SIZE_X / 4 + 100)
+	{
+		printf("111\n");
+		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
+		{
+			printf("22\n");
+			s->hud1.bouton[14].i = s->hud1.bouton[14].i == 5 ? 4 : 5;
+			s->hud1.filter_token.sep = s->hud1.bouton[14].i == 5 ? 2 : 0;
+			display(s, e);
+			s->hud1.selectobj = s->hud1.selectobj == 1 ? 0 : 1;
+		}
+	}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
+	if (s->hud1.selectobj == 1)
+		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
-	mouse_obj_seletor(mouse_x, mouse_y, s, e);
+	mouse_selector_activate(mouse_x, mouse_y, s, e);
 	//printf("%d|%d\n", mouse_x, mouse_y);
 }
