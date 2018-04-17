@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 16:36:18 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:48:57 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void		print_rect(t_rect b, t_env *e, int t, int color)
 	i = b.y + b.hei;
 	j = b.x + b.len;
 	save = b.x;
-	while (i >= b.y)
+	while (i > b.y)
 	{
 		b.x = save;
-		while (j >= b.x)
+		while (j > b.x)
 		{
 			t == 1 ? ft_put_pixel_hud(e->hud, b.x, b.y, color) :
 			ft_put_pixel_winrend(e->pixels, b.x, b.y, color);
