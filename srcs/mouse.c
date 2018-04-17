@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 13:38:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 14:01:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 	if (i >= 9 && i < 12)
 	{
 		s->hud1.bouton[i].i = 3;
-		print_info(s, e, 0);
+		print_info(s, e, i);
 		s->hud1.bouton[i].i = 1;
 		if (i == 9)
 			e->ca.rot.x++;
@@ -74,7 +74,7 @@ void	mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 	else
 	{
 		s->hud1.bouton[i].i = 2;
-		print_info(s, e, 0);
+		print_info(s, e, i + 3);
 		s->hud1.bouton[i].i = 0;
 		if (i == 6)
 			e->ca.rot.x--;
