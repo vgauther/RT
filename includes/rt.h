@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 13:02:19 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 14:17:39 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include "SDL2/SDL_ttf.h"
 # include <time.h>
+# include <pthread.h>
 
 # define SIZE_X 	1000
 # define SIZE_Y 	600
@@ -233,6 +234,14 @@ typedef struct		s_spec_dif
 	double			specular;
 	double			difuse;
 }					t_spec_dif;
+
+typedef struct		s_thread_st
+{
+	t_env				*e;
+	t_sdl				*s;
+	int					x;
+	int					y;
+}					t_thread_st;
 
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
