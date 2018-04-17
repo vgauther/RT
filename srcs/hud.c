@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 11:54:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:57:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
-	s->hud1.cam.title.rect = init_sdl_rect(0, 0, 344 / 2, 96 / 3);
+	s->hud1.cam.title.rect = init_sdl_rect((SIZE_X / 4 - 10) / 2 - ((SIZE_X / 6 - (WIN_X / 50) - 10) / 2), SIZE_Y / 3 - 10, SIZE_X / 6 - (WIN_X / 50) - 10, 20);
 	print_text(ft_strdup("Camera"), s->font.color[1], s, &s->hud1.cam.title);
 	s->hud1.cam.pos_x.rect = init_sdl_rect(105, 270, 17, 10);
 	print_text(ft_itoa(e->ca.pos.x), s->font.color[1], s, &s->hud1.cam.pos_x);
