@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 13:11:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:38:37 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	save_bouton(int x, int y, t_sdl *s, t_env *e)
 	{
 		if (SIZE_Y / 17 <= y && y <= SIZE_Y / 12)
 		{
-			r1 = init_rect(SIZE_X / 4 + SIZE_X - 110,
-				SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
+			r1 = init_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6, SIZE_Y / 17,
+				(SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
 			print_rect(r1, e, 1, RED);
 			s->hud1.s_back->pixels = e->hud;
 			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer,
@@ -38,8 +38,6 @@ void	save_bouton(int x, int y, t_sdl *s, t_env *e)
 				ft_sdl_error("Texture error : ", SDL_GetError());
 			display(s, e);
 			ft_wait();
-			r1 = init_rect(SIZE_X / 4 + SIZE_X - 110,
-				SIZE_Y / 17, SIZE_X / 4 + SIZE_X - 20, SIZE_Y / 12);
 			print_rect(r1, e, 1, WHITE);
 			s->hud1.s_back->pixels = e->hud;
 			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer,
@@ -177,26 +175,14 @@ void	mouse_filter_activate(int x, int y, t_sdl *s, t_env *e)
 
 void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 {
-	(void)s;
-	(void)e;
-	(void)nbr;
-
-	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X + (SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
+	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
+		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
 	if (e->obj[nbr].type == 1)
-	{
-		ft_putstr("sphere\n");
 		s->hud1.shape_img.i = 12;
-	}
 	if (e->obj[nbr].type == 2)
-	{
-		ft_putstr("cylindre\n");
 		s->hud1.shape_img.i = 14;
-	}
 	if (e->obj[nbr].type == 3)
-	{
-		ft_putstr("cone\n");
 		s->hud1.shape_img.i = 13;
-	}
 	display(s, e);
 }
 
@@ -207,15 +193,13 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 	t_inter		tmp;
 	t_vec		dir;
 
-	if (x > SIZE_X / 4 && x < SIZE_X / 4 + SIZE_X)
+	if (x > SIZE_X / 4 && x < SIZE_X / 4 + SIZE_X && (x -= SIZE_X / 4) >= 0)
 	{
-		if (y > SIZE_Y / 8 && y < SIZE_Y / 8 + SIZE_Y)
+		if (y > SIZE_Y / 8 && y < SIZE_Y / 8 + SIZE_Y && (y -= SIZE_Y / 8) >= 0)
 		{
-			x -= SIZE_X / 4;
-			y -= SIZE_Y / 8;
-			nbr = 0;
+			nbr = -1;
 			pt.dist = MAX_DIST;
-			while (nbr < e->nb)
+			while (++nbr < e->nb)
 			{
 				dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
 				dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
@@ -228,13 +212,11 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 					pt.normal = tmp.normal;
 					pt.nb = nbr;
 				}
-				nbr++;
 			}
 			if (pt.dist != MAX_DIST && s->hud1.selectobj)
 				print_data_obj(s, e, pt.nb);
 		}
 	}
-	(void)s;
 }
 
 void	mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
@@ -259,5 +241,4 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
 	mouse_selector_activate(mouse_x, mouse_y, s, e);
-	//printf("%d|%d\n", mouse_x, mouse_y);
 }
