@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/17 15:28:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:33:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void	raytracing(t_env *e, t_sdl *s)
 	}
 	i = 0;
 	while (++i < NB_THREAD)
-		ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i]);
+		if ((ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i])))
+			ft_error("\nThread error.\n");
 	i = 0;
 	while (++i < NB_THREAD)
 		pthread_join(thread[i], NULL);
