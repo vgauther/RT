@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 15:41:06 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:07:06 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	display(t_sdl *s, t_env *e)
 {
 	int			i;
 	SDL_Rect	rendu_rect;
+	int			*ret;
 
+	if (!(ret = (int*)malloc(sizeof(int) * 27)))
+		ft_error("\nMalloc Error\n");
 	i = -1;
 	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
@@ -63,39 +66,26 @@ void	display(t_sdl *s, t_env *e)
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if ((SDL_RenderCopy(s->renderer, s->hud1.cam.title.tex, NULL, &s->hud1.cam.title.rect)) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_x.tex, NULL, &s->hud1.cam.pos_x.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_y.tex, NULL, &s->hud1.cam.pos_y.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.pos_z.tex, NULL, &s->hud1.cam.pos_z.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_x.tex, NULL, &s->hud1.cam.rot_x.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_y.tex, NULL, &s->hud1.cam.rot_y.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+	ret[0] = SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);
+	ret[1] = SDL_RenderCopy(s->renderer, s->hud1.cam.title.tex, NULL, &s->hud1.cam.title.rect);
+	ret[2] = SDL_RenderCopy(s->renderer, s->hud1.cam.pos_x.tex, NULL, &s->hud1.cam.pos_x.rect);
+	ret[3] = SDL_RenderCopy(s->renderer, s->hud1.cam.pos_y.tex, NULL, &s->hud1.cam.pos_y.rect);
+	ret[4] = SDL_RenderCopy(s->renderer, s->hud1.cam.pos_z.tex, NULL, &s->hud1.cam.pos_z.rect);
+	ret[5] = SDL_RenderCopy(s->renderer, s->hud1.cam.rot_x.tex, NULL, &s->hud1.cam.rot_x.rect);
+	ret[6] = SDL_RenderCopy(s->renderer, s->hud1.cam.rot_y.tex, NULL, &s->hud1.cam.rot_y.rect);
+	ret[7] = SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect);
+	ret[8] = SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
+	ret[9] = SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect);
+	ret[10] = SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect);
 	while (++i != 15)
-	{
-		if (SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect) < 0)
-			ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	}
-	if (SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
-	if (SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect) < 0)
-		ft_sdl_error("Error copying renderer : ", SDL_GetError());
+		ret[i + 10] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
+	ret[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
+	ret[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
+	ret[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
+	i = -1;
+	while (++i < 27)
+		if (ret[i] < 0)
+			ft_error("\nRender copy Error\n");
 	SDL_RenderPresent(s->renderer);
 }
 
