@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/11 16:46:32 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:04:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,6 @@ t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 	p.c = dot(x, x) - ((e->obj[nbr].angletan * e->obj[nbr].angletan + 1) *
 	dot(x, e->obj[nbr].rot) * dot(x, e->obj[nbr].rot));
 	p.delta = (p.b * p.b) - (4 * p.a * p.c);
-	if (p.delta >= 0)
-	{
-		if (p.delta > 0)
-		{
-			p.x1 = (-p.b + sqrt(p.delta)) / (2 * p.a);
-			p.x2 = (-p.b - sqrt(p.delta)) / (2 * p.a);
-			pt.dist = p.x1 < p.x2 ? p.x1 : p.x2;
-			if (pt.dist < 0)
-				pt.dist = p.x1 < 0 ? p.x2 : p.x1;
-		}
-		else
-			p.x1 = -p.b / (2 * p.a);
-		if (!(p.x1 < 0 && p.x2 < 0))
-			intersection_point(&pt, ori, d);
-	}
-	else
-		pt.dist = MAX_DIST;
-	pt.delta = p.delta;
+	resolve_poly(&p, &pt, d, ori);
 	return (pt);
 }

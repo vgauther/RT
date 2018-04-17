@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 17:40:07 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:02:43 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,6 +259,8 @@ t_inter				shape_redirection(t_env *e, t_vec dir,
 					t_point ori, int nbr);
 Uint32				rgb_to_int(t_color color);
 t_vec				vec3_cross(t_vec va, t_vec vb);
+void				resolve_poly(t_polynome *p, t_inter *t,
+					t_vec v, t_point ori);
 
 /*
 ** tools

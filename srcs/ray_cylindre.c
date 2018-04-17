@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 13:24:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:03:28 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_vec		cylindre_normal_at(t_inter t, t_obj obj, t_obj spot)
 {
-	t_vec x;
-	t_vec dir;
-	t_vec test;
-	double m;
+	t_vec	x;
+	t_vec	dir;
+	t_vec	test;
+	double	m;
 
 	x = vector_init(spot.pos.x - obj.pos.x,
 		spot.pos.y - obj.pos.y, spot.pos.z - obj.pos.z);
@@ -45,26 +45,6 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_point ori, int nbr)
 	p.b = 2 * (dot(d, x) - dot(d, e->obj[nbr].rot) * dot(x, e->obj[nbr].rot));
 	p.c = dot(x, x) - dot_2(x, e->obj[nbr].rot) - e->obj[nbr].rayon_2;
 	p.delta = (p.b * p.b) - (4 * p.a * p.c);
-	if (p.delta >= 0)
-	{
-		if (p.delta > 0)
-		{
-			p.x1 = (-p.b + sqrt(p.delta)) / (2 * p.a);
-			p.x2 = (-p.b - sqrt(p.delta)) / (2 * p.a);
-			pt.dist = p.x1 < p.x2 ? p.x1 : p.x2;
-			if (pt.dist < 0)
-				pt.dist = p.x1 < 0 ? p.x2 : p.x1;
-		}
-		else
-		{
-			p.x1 = -p.b / (2 * p.a);
-			p.x2 = p.x1;
-			pt.dist = p.x1;
-		}
-		if (!(p.x1 < 0 && p.x2 < 0))
-			intersection_point(&pt, ori, d);
-	}
-	else
-		pt.dist = MAX_DIST;
+	resolve_poly(&p, &pt, d, ori);
 	return (pt);
 }
