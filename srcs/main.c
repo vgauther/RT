@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 12:54:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:02:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	s->hud1.filter_token.sep = 0;
 	s->hud1.filter_token.bw = 0;
 	s->hud1.selectobj = 0;
-	s->hud1.shape_img = 0;
+	s->hud1.shape_img.i = 0;
 	free(str);
 	if (s->window == NULL)
 		exit(1);

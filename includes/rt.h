@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 12:50:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:02:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct		s_hud
 	t_tex_rec		save;
 	t_credits		credits;
 	int				i_mess;
-	int				shape_img;
+	t_bouton		shape_img;
 	char			**mess;
 	int				selectobj;
 	t_filter_tok	filter_token;
