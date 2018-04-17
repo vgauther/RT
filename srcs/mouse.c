@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 12:18:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:54:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,11 +184,20 @@ void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 
 	rect = init_sdl_rect(SIZE_X / 4 + SIZE_X + (SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, 50, 50);
 	if (e->obj[nbr].type == 1)
+	{
 		ft_putstr("sphere\n");
+		s->hud1.shape_img = 12;
+	}
 	if (e->obj[nbr].type == 2)
+	{
 		ft_putstr("cylindre\n");
+		s->hud1.shape_img = 13;
+	}
 	if (e->obj[nbr].type == 3)
+	{
 		ft_putstr("cone\n");
+		s->hud1.shape_img = 14;
+	}
 }
 
 void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
