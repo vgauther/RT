@@ -6,11 +6,36 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/16 11:34:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:33:58 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+void		get_closest(t_env *e, t_inter *pt, int x, int y)
+{
+	int		nbr;
+	t_inter	tmp;
+	t_vec	dir;
+
+	nbr = 0;
+	pt->dist = MAX_DIST;
+	while (nbr < e->nb)
+	{
+		dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
+		dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
+		dir = normalize_vec(dir);
+		tmp = shape_redirection(e, dir, e->ca.pos, nbr);
+		if (tmp.dist < pt->dist && tmp.dist > 0)
+		{
+			pt->dist = tmp.dist;
+			pt->pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
+			pt->normal = tmp.normal;
+			pt->nb = nbr;
+		}
+		nbr++;
+	}
+}
 
 t_inter		shape_redirection(t_env *e, t_vec dir, t_point ori, int nbr)
 {
@@ -35,10 +60,7 @@ void	raytracing(t_env *e, t_sdl *s)
 {
 	int			x;
 	int			y;
-	int			nbr;
 	t_inter		pt;
-	t_inter		tmp;
-	t_vec		dir;
 	Uint32		color;
 
 	x = 0;
@@ -47,27 +69,10 @@ void	raytracing(t_env *e, t_sdl *s)
 		y = 0;
 		while (y != SIZE_Y)
 		{
-			nbr = 0;
-			pt.dist = MAX_DIST;
-			while (nbr < e->nb)
-			{
-				dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
-				dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
-				dir = normalize_vec(dir);
-				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
-				if (tmp.dist < pt.dist && tmp.dist > 0)
-				{
-					pt.dist = tmp.dist;
-					pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
-					pt.normal = tmp.normal;
-					pt.nb = nbr;
-				}
-				nbr++;
-			}
+			get_closest(e, &pt, x, y);
 			if (pt.dist != MAX_DIST)
 			{
-				color = lux(e, pt);
-				color = filtre(s, color);
+				color = filtre(s, lux(e, pt));
 				ft_put_pixel_winrend(e->pixels, x, y, color);
 			}
 			else
