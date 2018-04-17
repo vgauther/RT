@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 15:00:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 11:46:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,16 +159,16 @@ void	mouse_filter_activate(int x, int y, t_sdl *s, t_env *e)
 	{
 		if (x >= SIZE_X / 4 + SIZE_X / 2 && x <= SIZE_X / 4 + SIZE_X / 2 + 40)
 		{
-			s->hud1.bouton[12].i = s->hud1.bouton[12].i == 5 ? 4 : 5;
-			s->hud1.filter_token.sep = s->hud1.bouton[12].i == 5 ? 2 : 0;
+			s->hud1.bouton[12].i = s->hud1.bouton[12].i == 8 ? 9 : 8;
+			s->hud1.filter_token.sep = s->hud1.bouton[12].i == 9 ? 2 : 0;
 			display(s, e);
 			raytracing(e, s);
 		}
 		else if (x >= SIZE_X / 4 + SIZE_X / 2 + 60 &&
 			x <= SIZE_X / 4 + SIZE_X / 2 + 100)
 		{
-			s->hud1.bouton[13].i = s->hud1.bouton[13].i == 5 ? 4 : 5;
-			s->hud1.filter_token.bw = s->hud1.bouton[13].i == 5 ? 1 : 0;
+			s->hud1.bouton[13].i = s->hud1.bouton[13].i == 7 ? 6 : 7;
+			s->hud1.filter_token.bw = s->hud1.bouton[13].i == 7 ? 1 : 0;
 			display(s, e);
 			raytracing(e, s);
 		}
