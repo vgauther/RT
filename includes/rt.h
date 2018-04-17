@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 14:53:13 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:24:45 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ typedef struct		s_inter
 	int				nb;
 	double			delta;
 	t_vec			normal;
+	t_color			color_rgb;
 }					t_inter;
 
 typedef	struct		s_rect

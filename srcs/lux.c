@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/16 17:35:39 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:26:42 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,9 @@ void		get_color_final(t_env *e, t_inter pt,
 	t_color spot_color;
 
 	spot_color = normalize_color(split_color(e->spot[difspec.i].color));
-	colorfin->r += 1 * difspec.difuse *
-									(e->obj[pt.nb].color_rgb.r * spot_color.r);
-	colorfin->g += 1 * difspec.difuse *
-									(e->obj[pt.nb].color_rgb.g * spot_color.g);
-	colorfin->b += 1 * difspec.difuse *
-									(e->obj[pt.nb].color_rgb.b * spot_color.b);
+	colorfin->r += 1 * difspec.difuse * (pt.color_rgb.r * spot_color.r);
+	colorfin->g += 1 * difspec.difuse * (pt.color_rgb.g * spot_color.g);
+	colorfin->b += 1 * difspec.difuse * (pt.color_rgb.b * spot_color.b);
 	colorfin->r += 1 * difspec.specular * spot_color.r;
 	colorfin->g += 1 * difspec.specular * spot_color.g;
 	colorfin->b += 1 * difspec.specular * spot_color.b;
@@ -72,9 +69,9 @@ double		lux(t_env *e, t_inter pt)
 
 	colorfin = color_init(0, 0, 0);
 	difspec.i = 0;
-	e->obj[pt.nb].color_rgb = e->obj[pt.nb].material == 2 ? split_color(
+	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
 	get_texture_pixel(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
-	e->obj[pt.nb].color_rgb = normalize_color(e->obj[pt.nb].color_rgb);
+	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
 		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))

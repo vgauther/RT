@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/17 14:53:06 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:28:21 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void	*threadt(void *param)
 	int				xlim;
 	int				y;
 
-	var = (void*)param;
+	var = (t_thread_st*)param;
 	xlim = var->x + (SIZE_X / NB_THREAD);
 	while (var->x < xlim)
 	{
 		y = 0;
-		while (y < SIZE_Y)
+		while (++y < SIZE_Y)
 		{
 			get_closest(var->e, &pt, var->x, y);
 			if (pt.dist != MAX_DIST)
@@ -79,7 +79,6 @@ void	*threadt(void *param)
 			}
 			else
 				ft_put_pixel_winrend(var->e->pixels, var->x, y, 0);
-			y++;
 		}
 		var->x++;
 	}
