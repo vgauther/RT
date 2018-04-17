@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 13:57:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 14:12:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,9 @@ void	init_info_messages(t_sdl *s)
 	s->hud1.mess[4] =
 	ft_strdup("Last  Info  :  Your  work  has  been  saved.");
 	s->hud1.mess[5] =
-	ft_strdup("Last  Info  :  Scepia filter actived.");
+	ft_strdup("Last  Info  :  Sepia filter actived.");
 	s->hud1.mess[6] =
-	ft_strdup("Last  Info  :  Scepia filter disabled.");
+	ft_strdup("Last  Info  :  Sepia filter disabled.");
 	s->hud1.mess[7] =
 	ft_strdup("Last  Info  :  Black and white filter actived.");
 	s->hud1.mess[8] =
