@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 11:44:31 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 11:54:35 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
 
 void	init_info_messages(t_sdl *s)
 {
-	s->hud1.mess = malloc(sizeof(char *) * 9);
+	s->hud1.mess = malloc(sizeof(char *) * 12);
 	s->hud1.mess[0] =
 	ft_strdup("Last   Info   :   RT   succesfully   launched.");
 	s->hud1.mess[1] =
@@ -141,6 +141,12 @@ void	init_info_messages(t_sdl *s)
 	ft_strdup("Last  Info  :  Black and white filter actived.");
 	s->hud1.mess[8] =
 	ft_strdup("Last  Info  :  Black and whit filter disabled.");
+	s->hud1.mess[9] =
+	ft_strdup("Last  Info  :  Camera just rotated on x axis.");
+	s->hud1.mess[10] =
+	ft_strdup("Last  Info  :  Camera just rotated on y axis.");
+	s->hud1.mess[11] =
+	ft_strdup("Last  Info  :  Camera just rotated on z axis.");
 }
 
 void	ornement(SDL_Rect p, int color, int size, t_env *e)
@@ -175,7 +181,7 @@ void	bloc_save(t_env *e, t_sdl *s)
 	r1 = init_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6, SIZE_Y / 17,
 		(SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
 	print_rect(r1, e, 1, WHITE);
-	print_text(ft_strdup("save"), s->font.color[4], s, &s->hud1.save);
+	print_text(ft_strdup("Save"), s->font.color[4], s, &s->hud1.save);
 	s->hud1.save.rect = init_sdl_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 8, SIZE_Y / 80,
 	((SIZE_X / 6 + 10) / 4) * 3, 15);
 	ornement(s->hud1.save.rect, WHITE, 15, e);

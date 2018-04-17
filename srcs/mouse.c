@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 11:46:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:07:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,13 @@ void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 	(void)s;
 	(void)e;
 	(void)nbr;
+	SDL_Rect rect;
+
+	rect = init_sdl_rect(SIZE_X / 4 + SIZE_X + (SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, 50, 50);
+	if (e->obj[nbr].type == 1)
+		ft_putstr("sphere\n");
+
+
 }
 
 void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
@@ -226,10 +233,8 @@ void	mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
 {
 	if (x >= SIZE_X / 4 + 60 && x <= SIZE_X / 4 + 100)
 	{
-		printf("111\n");
 		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
 		{
-			printf("22\n");
 			s->hud1.bouton[14].i = s->hud1.bouton[14].i == 5 ? 4 : 5;
 			s->hud1.filter_token.sep = s->hud1.bouton[14].i == 5 ? 2 : 0;
 			display(s, e);
