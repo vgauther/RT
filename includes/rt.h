@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 14:17:39 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 14:53:13 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MAX_DIST 	1000000
 # define POS_WIN_X 	100
 # define POS_WIN_Y 	100
+# define NB_THREAD	8
 
 # define COLOR_BACK 0x202225
 # define CONTRAST 	0xFFFFFF
@@ -240,7 +241,6 @@ typedef struct		s_thread_st
 	t_env				*e;
 	t_sdl				*s;
 	int					x;
-	int					y;
 }					t_thread_st;
 
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);

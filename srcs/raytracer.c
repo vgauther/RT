@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/17 13:33:58 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/17 14:53:06 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,59 @@ t_inter		shape_redirection(t_env *e, t_vec dir, t_point ori, int nbr)
 	return (tmp);
 }
 
-void	raytracing(t_env *e, t_sdl *s)
+void	*threadt(void *param)
 {
-	int			x;
-	int			y;
-	t_inter		pt;
-	Uint32		color;
+	t_thread_st		*var;
+	t_inter			pt;
+	Uint32			color;
+	int				xlim;
+	int				y;
 
-	x = 0;
-	while (x != SIZE_X)
+	var = (void*)param;
+	xlim = var->x + (SIZE_X / NB_THREAD);
+	while (var->x < xlim)
 	{
 		y = 0;
-		while (y != SIZE_Y)
+		while (y < SIZE_Y)
 		{
-			get_closest(e, &pt, x, y);
+			get_closest(var->e, &pt, var->x, y);
 			if (pt.dist != MAX_DIST)
 			{
-				color = filtre(s, lux(e, pt));
-				ft_put_pixel_winrend(e->pixels, x, y, color);
+				color = filtre(var->s, lux(var->e, pt));
+				ft_put_pixel_winrend(var->e->pixels, var->x, y, color);
 			}
 			else
-				ft_put_pixel_winrend(e->pixels, x, y, 0);
+				ft_put_pixel_winrend(var->e->pixels, var->x, y, 0);
 			y++;
 		}
-		x++;
+		var->x++;
 	}
+	return (NULL);
+}
+
+void	raytracing(t_env *e, t_sdl *s)
+{
+	t_thread_st var[NB_THREAD];
+	pthread_t	thread[NB_THREAD];
+	int			ret[NB_THREAD];
+	int			i;
+	int			x;
+
+	x = 0;
+	i = 0;
+	while (++i < NB_THREAD)
+	{
+		var[i].x = x;
+		var[i].e = e;
+		var[i].s = s;
+		x += SIZE_X / NB_THREAD;
+	}
+	i = 0;
+	while (++i < NB_THREAD)
+		ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i]);
+	i = 0;
+	while (++i < NB_THREAD)
+		pthread_join(thread[i], NULL);
 	s->rendu->pixels = e->pixels;
 	display(s, e);
 }
