@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 12:25:31 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:47:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,8 +218,9 @@ int					ft_tablen(void **tab);
 ** text and font
 */
 
-void	init_font(t_sdl *s);
-void	print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data);
+void				init_font(t_sdl *s);
+void				print_text(char *str, SDL_Color color, t_sdl *s,
+					t_tex_rec *data);
 
 /*
 ** HUD
