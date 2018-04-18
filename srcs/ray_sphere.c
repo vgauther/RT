@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 11:59:00 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:55:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vec		sphere_normal_at(t_inter t, t_obj obj)
 		t.pos.z - obj.pos.z)));
 }
 
-void	resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_point ori)
+void		resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_point ori)
 {
 	if (p->delta >= 0)
 	{
@@ -41,7 +41,7 @@ void	resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_point ori)
 	t->delta = p->delta;
 }
 
-t_inter			ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
+t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
 {
 	t_polynome	p;
 	t_inter		t;

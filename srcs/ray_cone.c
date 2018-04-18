@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 12:04:01 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:55:31 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,6 @@ t_vec		cone_normal_at(t_inter t, t_obj obj, t_obj spot)
 	x = normalize_vec(vector_init(t.pos.x - x.x, t.pos.y - x.y, t.pos.z - x.z));
 	return (x);
 }
-
-//
-// t_vec		cone_normal_at(t_inter t, t_obj obj, t_obj spot)
-// {
-// 	t_vec	v;
-// 	t_vec	norm;
-// 	double	m;
-//
-// 	(void)spot;
-// 	v = vector_init(t.pos.x - obj.pos.x, t.pos.y - obj.pos.y, t.pos.z - obj.pos.z);
-// 	m = sqrt(dot(v, v)) / cos(obj.angle * RAD);
-// 	norm = vector_init(v.x - obj.rot.x * m, v.y - obj.rot.y * m , v.z - obj.rot.z * m);
-// 	norm = normalize_vec(norm);
-// 	return (norm);
-// }
 
 t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
 {
