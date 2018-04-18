@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 12:55:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 13:55:28 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,10 +221,29 @@ void	bloc_camera(t_env *e, t_sdl *s)
 	t_rect	r1;
 
 	r1 = init_rect(WIN_X / 100, SIZE_Y / 3, SIZE_X / 4 - (WIN_X / 50) - 10, SIZE_Y / 3);
-	empty_rect(r1, e, 1, WHITE);
+	empty_rect(r1, e, 1, CONTRAST);
 	r1 = init_rect(WIN_X / 100 + ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8), (SIZE_Y / 3) - 2,
 	 ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8 ) * 6, 4);
 	print_rect(r1, e, 1, COLOR_BACK);
+	(void)s;
+}
+
+void	bloc_multiplier(t_env *e, t_sdl *s)
+{
+	t_rect rect;
+
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	print_rect(rect, e, 1, CONTRAST);
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X / 4 + 10) / 9 ) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	print_rect(rect, e, 1, CONTRAST);
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9 ) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	print_rect(rect, e, 1, CONTRAST);
+	s->hud1.multi_bouton[0] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 + 5 , (SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi_bouton[1] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X / 4 + 10) / 9)
+	* 1.5 + 5, (SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi_bouton[2] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9 ) * 1.5 + 5,
+	(SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi = 1;
 	(void)s;
 }
 
@@ -248,10 +267,11 @@ void	hud_init(t_sdl *s, t_env *e)
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);
 	print_rect(r1, e, 1, COLOR_BACK);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X + 20, SIZE_Y + 20);
-	print_rect(r1, e, 1, WHITE);
+	print_rect(r1, e, 1, CONTRAST);
 	bloc_camera(e, s);
 	bloc_save(e, s);
 	bloc_credits(e, s);
+	bloc_multiplier(e, s);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
 	vertical_trait(p1, p2, WHITE, e);

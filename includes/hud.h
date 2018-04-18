@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 12:32:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 13:40:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct		s_hud
 	char			**mess;
 	int				selectobj;
 	t_filter_tok	filter_token;
+	int				multi;
+	SDL_Rect		multi_bouton[3];
 }					t_hud;
 
 #endif
