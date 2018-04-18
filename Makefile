@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/12 12:37:03 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/04/18 12:44:37 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,3 +131,15 @@ push:
 
 coffee:
 	@echo "$(RED)warning it's hot$(NC)"
+
+norme:
+	@make norme_srcs
+	@make norme_includes
+
+norme_includes:
+	@echo "$(GREEN)- INCLUDES -$(NC)"
+	norminette includes/*.h
+
+norme_srcs:
+	@echo "$(GREEN)- SRCS -$(NC)"
+	norminette srcs/
