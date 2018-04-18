@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 14:14:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:45:40 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,9 @@ void	create_bouton_tool_bar(t_sdl *s)
 	s->hud1.bouton[14].i = 4;
 	s->hud1.bouton[14].rect = init_sdl_rect(SIZE_X / 4 + 60, SIZE_Y / 16 - 20,
 		40, 40);
+	s->hud1.bouton[15].i = 4;
+	s->hud1.bouton[15].rect = init_sdl_rect(SIZE_X / 4 + 120, SIZE_Y / 16 - 20,
+		40, 40);
 }
 
 void	bloc_camera(t_env *e, t_sdl *s)
@@ -245,6 +248,17 @@ void	bloc_multiplier(t_env *e, t_sdl *s)
 	(SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
 	s->hud1.multi = 1;
 	s->hud1.how_much = 1;
+	print_text(ft_strdup("+ 1"), s->font.color[1], s, &s->hud1.multi_text[1]);
+	s->hud1.multi_text[0].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5 , ((SIZE_X / 4 + 10) / 9), (SIZE_X / 4 + 10) / 9 - 10);
+	print_text(ft_strdup("+ 10"), s->font.color[1], s, &s->hud1.multi_text[0]);
+	s->hud1.multi_text[1].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5 - ((SIZE_X / 4 + 10) / 9)
+	* 1.5, ((SIZE_X / 4 + 10) / 9 - 10), (SIZE_X / 4 + 10) / 9 - 10);
+	print_text(ft_strdup("+ 100"), s->font.color[1], s, &s->hud1.multi_text[2]);
+	s->hud1.multi_text[2].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5 + ((SIZE_X / 4 + 10) / 9)
+	* 1.5, ((SIZE_X / 4 + 10) / 9 + 10), (SIZE_X / 4 + 10) / 9 - 10);
 	(void)s;
 }
 
@@ -284,4 +298,6 @@ void	hud_init(t_sdl *s, t_env *e)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
 	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
+	s->hud1.color_selector = init_sdl_rect(0 , 0, 999, 999);
+	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/color.bmp");
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 14:23:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:44:28 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,10 +255,57 @@ void	mouse_multi(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e)
+{
+	if (x >= SIZE_X / 4 + 120 && x <= SIZE_X / 4 + 160)
+	{
+		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
+		{
+			s->hud1.bouton[15].i = s->hud1.bouton[15].i == 5 ? 4 : 5;
+			s->hud1.pipette = s->hud1.pipette == 1 ? 0 : 1;
+			display(s, e);
+		}
+	}
+}
+
+void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
+{
+	Uint32 color;
+	char *tab;
+
+//	x -= WIN_X / 2 - 125;
+	//y -= WIN_Y / 2 - 125;
+	printf("%d|%d\n",x, y);
+	/*if (x >= 0 && x <= 256)
+	{
+		if (y >= 0 && y <= 256)
+		{*/
+			tab = (char *)s->hud1.color_selector_surf->pixels;
+			color = tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) +
+			s->hud1.color_selector_surf->w * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) * y];
+			color += tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) + s->hud1.color_selector_surf->w
+			* (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) * y + 1] * 256;
+			color += tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) + s->hud1.color_selector_surf->w
+			* (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) * y + 2]
+			* 256 * 256;
+			(void)x;
+			(void)y;
+			(void)s;
+			(void)e;
+			//color = color & 0xffffff;
+			e->obj[0].color = color;
+			printf("%u\n", color);
+		//}
+	//}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.selectobj == 1)
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
+	if (s->hud1.pipette == 1)
+		mouse_pipette_color(mouse_x, mouse_y, s, e);
+	mouse_pipette_activate(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
 	mouse_cam_trans(mouse_x, mouse_y, s, e);

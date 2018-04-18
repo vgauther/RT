@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 14:17:26 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 17:30:44 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	s->hud1.filter_token.sep = 0;
 	s->hud1.filter_token.bw = 0;
 	s->hud1.selectobj = 0;
+	s->hud1.pipette = 0;
 	s->hud1.shape_img.i = 0;
 	free(str);
 	if (s->window == NULL)
@@ -39,7 +40,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	if ((s->hud1.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
-	if ((e->test = SDL_LoadBMP("./img_srcs/rtl.bmp"))
+	if ((e->test = SDL_LoadBMP("./img_srcs/map_test.bmp"))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
 	free(s->rendu->pixels);
@@ -56,7 +57,7 @@ void	display(t_sdl *s, t_env *e)
 	SDL_Rect	rendu_rect;
 	int			*ret;
 
-	if (!(ret = (int*)malloc(sizeof(int) * 29)))
+	if (!(ret = (int*)malloc(sizeof(int) * 33)))
 		ft_error("\nMalloc Error\n");
 	i = -1;
 	SDL_RenderClear(s->renderer);
@@ -77,15 +78,22 @@ void	display(t_sdl *s, t_env *e)
 	ret[8] = SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
 	ret[9] = SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect);
 	ret[10] = SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect);
-	while (++i != 15)
+	while (++i != 16)
 		ret[i + 10] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
 	ret[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
 	ret[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
 	ret[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
 	ret[27] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL, &s->hud1.shape_img.rect);
 	ret[28] = SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.multi_bouton[s->hud1.multi]);
+	ret[29] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[0].tex, NULL, &s->hud1.multi_text[0].rect);
+	ret[30] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[1].tex, NULL, &s->hud1.multi_text[1].rect);
+	ret[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
+	if (s->hud1.pipette == 1)
+		ret[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
+	else
+		ret[32] = 0;
 	i = -1;
-	while (++i < 29)
+	while (++i < 33)
 		if (ret[i] < 0)
 			ft_error("\nRender copy Error\n");
 	SDL_RenderPresent(s->renderer);
@@ -124,12 +132,12 @@ void	mouv(long key, t_env *e, t_sdl *s)
 	if (key == CAM_FOR)
 	{
 		print_info(s, e, 3);
-		e->ca.pos.z -= s->hud1.how_much;
+		e->ca.pos.z += s->hud1.how_much;
 	}
 	if (key == CAM_BACK)
 	{
 		print_info(s, e, 3);
-		e->ca.pos.z += s->hud1.how_much;
+		e->ca.pos.z -= s->hud1.how_much;
 	}
 	if (do_we_need_to_rt(key))
 		raytracing(e, s);
