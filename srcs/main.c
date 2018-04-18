@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 16:07:06 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/18 11:57:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	display(t_sdl *s, t_env *e)
 	SDL_Rect	rendu_rect;
 	int			*ret;
 
-	if (!(ret = (int*)malloc(sizeof(int) * 27)))
+	if (!(ret = (int*)malloc(sizeof(int) * 28)))
 		ft_error("\nMalloc Error\n");
 	i = -1;
 	SDL_RenderClear(s->renderer);
@@ -82,8 +82,9 @@ void	display(t_sdl *s, t_env *e)
 	ret[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
 	ret[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
 	ret[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
+	ret[27] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL, &s->hud1.shape_img.rect);
 	i = -1;
-	while (++i < 27)
+	while (++i < 28)
 		if (ret[i] < 0)
 			ft_error("\nRender copy Error\n");
 	SDL_RenderPresent(s->renderer);
