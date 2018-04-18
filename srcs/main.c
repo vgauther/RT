@@ -170,6 +170,7 @@ int		main(int ac, char **av)
 	int		r;
 
 	r = 1;
+	check_define();
 	e.ca = init_cam(0, 0, 0);
 	if (ac != 2)
 		ft_error("\nWrong number of arguments.\n");

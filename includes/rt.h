@@ -17,6 +17,8 @@
 # include "SDL2/SDL_ttf.h"
 # include "../libft/includes/libft.h"
 # include "define_color.h"
+# include "define_rt.h"
+# include "define_key.h"
 # include "hud.h"
 
 # include <fcntl.h>
@@ -25,26 +27,6 @@
 # include <time.h>
 # include <pthread.h>
 # include <stdlib.h>
-
-# define SIZE_X 	1000
-# define SIZE_Y 	600
-# define SIZE_X_2 	500
-# define SIZE_Y_2 	300
-# define WIN_X 		(SIZE_X + SIZE_X_2)
-# define WIN_Y 		(SIZE_Y + SIZE_Y_2 / 2)
-# define RAD 		(M_PI / 180.00)
-# define TAN30 		0.577350
-# define MAX_DIST 	1000000
-# define POS_WIN_X 	100
-# define POS_WIN_Y 	100
-# define NB_THREAD	8
-
-# define CAM_RIGHT	79
-# define CAM_LEFT  	80
-# define CAM_UP		82
-# define CAM_DOWN	81
-# define CAM_FOR	87
-# define CAM_BACK	86
 
 typedef struct		s_rot
 {
@@ -171,6 +153,7 @@ t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
 t_color				color_init(double r, double g, double b);
+void 			check_define(void);
 
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
