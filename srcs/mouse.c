@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 11:52:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:20:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ void	mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 		print_info(s, e, i - 2);
 		s->hud1.bouton[i].i = 1;
 		if (i == 3)
-			e->ca.pos.x++;
+			e->ca.pos.x += s->hud1.how_much;
 		else if (i == 4)
-			e->ca.pos.y++;
+			e->ca.pos.y += s->hud1.how_much;
 		else
-			e->ca.pos.z++;
+			e->ca.pos.z += s->hud1.how_much;
 	}
 	else
 	{
@@ -124,11 +124,11 @@ void	mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 		print_info(s, e, i);
 		s->hud1.bouton[i].i = 0;
 		if (i == 0)
-			e->ca.pos.x--;
+			e->ca.pos.x -= s->hud1.how_much;
 		else if (i == 1)
-			e->ca.pos.y--;
+			e->ca.pos.y -= s->hud1.how_much;
 		else
-			e->ca.pos.z--;
+			e->ca.pos.z -= s->hud1.how_much;
 	}
 	raytracing(e, s);
 }
@@ -232,6 +232,29 @@ void	mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_multi(int x, int y, t_sdl *s, t_env *e)
+{
+	int i;
+
+	i = 0;
+	if (x >= s->hud1.multi_bouton[0].x && x <= s->hud1.multi_bouton[0].x + s->hud1.multi_bouton[0].w)
+	{
+		while (i != 3)
+		{
+			if (y >= s->hud1.multi_bouton[i].y && y <= s->hud1.multi_bouton[i].y + s->hud1.multi_bouton[i].h)
+			{
+				(i == 0) ? s->hud1.how_much = 10 : 0;
+				(i == 1) ? s->hud1.how_much = 1 : 0;
+				(i == 2) ? s->hud1.how_much = 100 : 0;
+				s->hud1.multi = i;
+				display(s, e);
+				break ;
+			}
+			i++;
+		}
+	}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.selectobj == 1)
@@ -241,4 +264,5 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
 	mouse_selector_activate(mouse_x, mouse_y, s, e);
+	mouse_multi(mouse_x, mouse_y, s, e);
 }

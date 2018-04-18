@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 13:55:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:14:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ void	bloc_multiplier(t_env *e, t_sdl *s)
 	s->hud1.multi_bouton[2] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9 ) * 1.5 + 5,
 	(SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
 	s->hud1.multi = 1;
+	s->hud1.how_much = 1;
 	(void)s;
 }
 
