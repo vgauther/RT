@@ -70,6 +70,8 @@ SRC_NAME = 	lux.c \
 			check_define.c \
 			ray_plan.c \
 			pars_plan.c \
+			mouse_camera.c \
+			mouse_pipette.c
 
 all: $(NAME)
 

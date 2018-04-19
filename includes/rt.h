@@ -156,6 +156,9 @@ t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
 					t_vec v, t_vec ori);
 t_obj				*realloc_obj(t_env *e);
+void 			mouse_main_cam(int x, int y, t_sdl *s, t_env *e);
+void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e);
+void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e);
 
 /*
 ** tools
