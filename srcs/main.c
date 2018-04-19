@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:24:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:37:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,16 @@ void	add_obj_menu(t_sdl *s, t_env *e, int nb)
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[4].tex, NULL, &s->hud1.add_obj_data[4].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[5].tex, NULL, &s->hud1.add_obj_data[5].rect);
 	SDL_RenderCopy(s->renderer, s->tex[s->hud1.ok.i], NULL, &s->hud1.ok.rect);
+}
 
+void	display_credits(t_sdl *s)
+{
+	if ((SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL,
+		&s->hud1.credits.title.rect)) < 0)
+		ft_error("\nRender copy Error\n");
+	if ((SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL,
+		&s->hud1.credits.names.rect)) < 0)
+		ft_error("\nRender copy Error\n");
 }
 
 void	display(t_sdl *s, t_env *e)
@@ -134,10 +143,9 @@ void	display(t_sdl *s, t_env *e)
 	r[6] = SDL_RenderCopy(s->renderer, s->hud1.cam.rot_y.tex, NULL, &s->hud1.cam.rot_y.rect);
 	r[7] = SDL_RenderCopy(s->renderer, s->hud1.cam.rot_z.tex, NULL, &s->hud1.cam.rot_z.rect);
 	r[8] = SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
-	r[9] = SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect);
-	r[10] = SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect);
+	display_credits(s);
 	while (++i != 17)
-		r[i + 10] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
+		r[i + 8] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
 	r[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
 	r[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
 	r[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);

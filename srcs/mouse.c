@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:27:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:34:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 
 	if (x > SIZE_X / 4 && x < SIZE_X / 4 + SIZE_X && (x -= SIZE_X / 4) >= 0)
 	{
-		if (y > SIZE_Y / 8 && y < SIZE_Y / 8 + SIZE_Y && (y -= SIZE_Y / 8) >= 0)
+		if (y > LINE && y < LINE + SIZE_Y && (y -= LINE) >= 0)
 		{
 			nbr = -1;
 			pt.dist = MAX_DIST;
@@ -270,16 +270,20 @@ void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e)
 
 void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 {
-	Uint32 color;
+	(void)x;
+	(void)y;
+	(void)s;
+	(void)e;
+	/*Uint32 color;
 	char *tab;
 
 //	x -= WIN_X / 2 - 125;
 	//y -= WIN_Y / 2 - 125;
 	printf("%d|%d\n",x, y);
-	/*if (x >= 0 && x <= 256)
+	if (x >= 0 && x <= 256)
 	{
 		if (y >= 0 && y <= 256)
-		{*/
+		{
 			tab = (char *)s->hud1.color_selector_surf->pixels;
 			color = tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) +
 			s->hud1.color_selector_surf->w * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) * y];
@@ -296,7 +300,7 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 			e->obj[0].color = color;
 			printf("%u\n", color);
 		//}
-	//}
+	//}*/
 }
 
 void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
