@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 16:06:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 16:47:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,6 +283,34 @@ void	bloc_multiplier(t_env *e, t_sdl *s)
 	(void)s;
 }
 
+void	init_add_obj_text_box(t_sdl *s)
+{
+	s->hud1.text_box[0] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 2,
+		COL / 9 * 2, COL / 9);
+	s->hud1.text_box[1] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 4,
+	WIN_Y / 2, COL / 9 * 2, COL / 9);
+	s->hud1.text_box[2] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
+	WIN_Y / 2, COL / 9 * 2, COL / 9);
+	s->hud1.text_box[3] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 2 +
+		WIN_Y / 4, COL / 9 * 2, COL / 9);
+	s->hud1.text_box[4] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 4,
+	WIN_Y / 2 + WIN_Y / 4, COL / 9 * 2, COL / 9);
+	s->hud1.text_box[5] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
+	WIN_Y / 2 + WIN_Y / 4, COL / 9 * 2, COL / 9);
+}
+
+void	init_add_obj_selection_rect(t_sdl *s)
+{
+	s->hud1.r_add_obj[0] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y
+		/ 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[1] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5),
+	SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[2] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y
+		/ 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[3] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5),
+	SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -294,6 +322,8 @@ void	hud_init(t_sdl *s, t_env *e)
 	create_bouton_cam(s);
 	init_info_messages(s);
 	create_bouton_tool_bar(s);
+	init_add_obj_text_box(s);
+	init_add_obj_selection_rect(s);
 	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
 		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
 	s->hud1.s_logo = SDL_LoadBMP("./img_srcs/rtl.bmp");
@@ -323,8 +353,5 @@ void	hud_init(t_sdl *s, t_env *e)
 	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
 	s->hud1.color_selector = init_sdl_rect(0 , 0, 999, 999);
 	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/color.bmp");
-	s->hud1.r_add_obj[0] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[1] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5), SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[2] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[3] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5), SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
+
 }

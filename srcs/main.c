@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 16:07:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:55:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_hud_var(t_sdl *s)
 	s->hud1.pipette = 0;
 	s->hud1.shape_img.i = 0;
 	s->hud1.add_obj = 0;
+	s->hud1.box_picked = 42;
 }
 
 void	ft_init(t_sdl *s, char *name, t_env *e)
@@ -84,6 +85,18 @@ void	add_obj_display(t_sdl *s, t_env *e)
 	SDL_RenderCopy(s->renderer, s->tex[15], NULL, &s->hud1.r_add_obj[3]);
 }
 
+void	add_obj_menu(t_sdl *s, t_env *e)
+{
+	(void)e;
+	(void)s;
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[0]);
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[1]);
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[2]);
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[3]);
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[4]);
+	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[5]);
+}
+
 void	display(t_sdl *s, t_env *e)
 {
 	int			i;
@@ -126,6 +139,8 @@ void	display(t_sdl *s, t_env *e)
 	r[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
 	if (s->hud1.add_obj == 1)
 		add_obj_display(s, e);
+	if (s->hud1.add_obj == 2)
+		add_obj_menu(s, e);
 	if (s->hud1.pipette == 1)
 		r[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
 	else
@@ -146,40 +161,146 @@ int		do_we_need_to_rt(int t)
 	return (0);
 }
 
+int		nbr_touch(int key)
+{
+	if (key == 39 || key == 98)
+		return (0);
+	else if (key == 30 || key == 89)
+		return (1);
+	else if (key == 31 || key == 90)
+		return (2);
+	else if (key == 32 || key == 91)
+		return (3);
+	else if (key == 33 || key == 92)
+		return (4);
+	else if (key == 34 || key == 93)
+		return (5);
+	else if (key == 35 || key == 94)
+		return (6);
+	else if (key == 36 || key == 95)
+		return (7);
+	else if (key == 37 || key == 96)
+		return (8);
+	else if (key == 38 || key == 97)
+		return (9);
+	else if (key == 86 || key == 45)
+		return (-1);
+	return (42);
+}
+
+void	del_char(t_env *e, t_sdl *s)
+{
+	if (s->hud1.box_picked == 0)
+	{
+		e->obj[e->nb - 1].pos.x = e->obj[e->nb - 1].pos.x / 10;
+	}
+	else if (s->hud1.box_picked == 1)
+	{
+		e->obj[e->nb - 1].pos.y = e->obj[e->nb - 1].pos.y / 10;
+	}
+	else if (s->hud1.box_picked == 2)
+	{
+		e->obj[e->nb - 1].pos.z = e->obj[e->nb - 1].pos.z / 10;
+	}
+	else if (s->hud1.box_picked == 3)
+	{
+		e->obj[e->nb - 1].rot.x = e->obj[e->nb - 1].rot.x / 10;
+	}
+	else if (s->hud1.box_picked == 4)
+	{
+		e->obj[e->nb - 1].rot.y = e->obj[e->nb - 1].rot.y / 10;
+	}
+	else if (s->hud1.box_picked == 5)
+	{
+		e->obj[e->nb - 1].rot.z = e->obj[e->nb - 1].rot.z / 10;
+	}
+	raytracing(e, s);
+}
+
+void	remplir_text_box(int key, t_env *e, t_sdl *s)
+{
+	int x;
+	int y;
+
+	y = 1;
+	x = nbr_touch(key);
+	printf("%d\n", key);
+	if (key == 42)
+	{
+		del_char(e, s);
+		return ;
+	}
+	if (x == -1)
+	{
+		x = 0;
+		y = -1;
+	}
+	if (s->hud1.box_picked == 0)
+	{
+		e->obj[e->nb - 1].pos.x = e->obj[e->nb - 1].pos.x * 10 + x * y;
+	}
+	else if (s->hud1.box_picked == 1)
+	{
+		e->obj[e->nb - 1].pos.y = e->obj[e->nb - 1].pos.y * 10 + x * y;
+	}
+	else if (s->hud1.box_picked == 2)
+	{
+		e->obj[e->nb - 1].pos.z = e->obj[e->nb - 1].pos.z * 10 + x * y;
+	}
+	else if (s->hud1.box_picked == 3)
+	{
+		e->obj[e->nb - 1].rot.x = e->obj[e->nb - 1].rot.x * 10 + x * y;
+	}
+	else if (s->hud1.box_picked == 4)
+	{
+		e->obj[e->nb - 1].rot.y = e->obj[e->nb - 1].rot.y * 10 + x * y;
+	}
+	else if (s->hud1.box_picked == 5)
+	{
+		e->obj[e->nb - 1].rot.z = e->obj[e->nb - 1].rot.z * 10 + x * y;
+	}
+	raytracing(e, s);
+}
+
 void	mouv(long key, t_env *e, t_sdl *s)
 {
-	if (key == CAM_LEFT)
+	if (s->hud1.box_picked != 42)
+		remplir_text_box(key, e, s);
+	else
 	{
-		print_info(s, e, 1);
-		e->ca.pos.x -= s->hud1.how_much;
+		if (key == CAM_LEFT)
+		{
+			print_info(s, e, 1);
+			e->ca.pos.x -= s->hud1.how_much;
+		}
+		if (key == CAM_RIGHT)
+		{
+			print_info(s, e, 1);
+			e->ca.pos.x += s->hud1.how_much;
+		}
+		if (key == CAM_UP)
+		{
+			print_info(s, e, 2);
+			e->ca.pos.y -= s->hud1.how_much;
+		}
+		if (key == CAM_DOWN)
+		{
+			print_info(s, e, 2);
+			e->ca.pos.y += s->hud1.how_much;
+		}
+		if (key == CAM_FOR)
+		{
+			print_info(s, e, 3);
+			e->ca.pos.z += s->hud1.how_much;
+		}
+		if (key == CAM_BACK)
+		{
+			print_info(s, e, 3);
+			e->ca.pos.z -= s->hud1.how_much;
+		}
+		if (do_we_need_to_rt(key))
+			raytracing(e, s);
 	}
-	if (key == CAM_RIGHT)
-	{
-		print_info(s, e, 1);
-		e->ca.pos.x += s->hud1.how_much;
-	}
-	if (key == CAM_UP)
-	{
-		print_info(s, e, 2);
-		e->ca.pos.y -= s->hud1.how_much;
-	}
-	if (key == CAM_DOWN)
-	{
-		print_info(s, e, 2);
-		e->ca.pos.y += s->hud1.how_much;
-	}
-	if (key == CAM_FOR)
-	{
-		print_info(s, e, 3);
-		e->ca.pos.z += s->hud1.how_much;
-	}
-	if (key == CAM_BACK)
-	{
-		print_info(s, e, 3);
-		e->ca.pos.z -= s->hud1.how_much;
-	}
-	if (do_we_need_to_rt(key))
-		raytracing(e, s);
 }
 
 t_cam	init_cam(int x, int y, int z)

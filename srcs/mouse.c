@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 16:10:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 16:57:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,11 +366,27 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 
 void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 {
-	e->obj[e->nb - 1].pos.x = -50;
+	int i;
+
+	i = 0;
+	while(i != 6)
+	{
+		if (y >= s->hud1.text_box[i].y && y <= s->hud1.text_box[i].y + s->hud1.text_box[i].h)
+		{
+			if (x >= s->hud1.text_box[i].x && x <= s->hud1.text_box[i].x + s->hud1.text_box[i].w)
+			{
+				ft_putstr("TOUCHE");
+				s->hud1.box_picked = i;
+				break ;
+			}
+		}
+		i++;
+	}
+	e->obj[e->nb - 1].pos.x = 0;
 	e->obj[e->nb - 1].pos.y = 0;
-	e->obj[e->nb - 1].pos.z = 50;
-	e->obj[e->nb - 1].rot.x = 0;
-	e->obj[e->nb - 1].rot.y = 1;
+	e->obj[e->nb - 1].pos.z = 0;
+	e->obj[e->nb - 1].rot.x = 1;
+	e->obj[e->nb - 1].rot.y = 0;
 	e->obj[e->nb - 1].rot.z = 0;
 	e->obj[e->nb - 1].material = 1;
 	e->obj[e->nb - 1].color = 0x00FF00;
@@ -387,21 +403,24 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
-	if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
-		mouse_obj_seletor(mouse_x, mouse_y, s, e);
-	if (s->hud1.pipette == 1)
-		mouse_pipette_color(mouse_x, mouse_y, s, e);
 	if (s->hud1.add_obj == 1)
 		mouse_add_obj_select(mouse_x, mouse_y, s, e);
 	if (s->hud1.add_obj == 2)
 		mouse_add_obj(mouse_x, mouse_y, s, e);
+	else
+	{
+		if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
+			mouse_obj_seletor(mouse_x, mouse_y, s, e);
+		if (s->hud1.pipette == 1)
+			mouse_pipette_color(mouse_x, mouse_y, s, e);
 //	mouse_pipette_activate(mouse_x, mouse_y, s, e);
-	save_bouton(mouse_x, mouse_y, s, e);
-	mouse_cam_rot(mouse_x, mouse_y, s, e);
-	mouse_cam_trans(mouse_x, mouse_y, s, e);
-	mouse_filter_activate(mouse_x, mouse_y, s, e);
-	if (s->hud1.add_obj != 1)
-		mouse_selector_activate(mouse_x, mouse_y, s, e);
-	mouse_add_obj_activate(mouse_x, mouse_y, s, e);
-	mouse_multi(mouse_x, mouse_y, s, e);
+		save_bouton(mouse_x, mouse_y, s, e);
+		mouse_cam_rot(mouse_x, mouse_y, s, e);
+		mouse_cam_trans(mouse_x, mouse_y, s, e);
+		mouse_filter_activate(mouse_x, mouse_y, s, e);
+		if (s->hud1.add_obj != 1)
+			mouse_selector_activate(mouse_x, mouse_y, s, e);
+		mouse_add_obj_activate(mouse_x, mouse_y, s, e);
+		mouse_multi(mouse_x, mouse_y, s, e);
+	}
 }
