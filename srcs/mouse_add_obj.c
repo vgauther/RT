@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 00:26:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/20 00:26:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,7 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 		if (y >= s->hud1.text_box[i].y && y <= s->hud1.text_box[i].y + s->hud1.text_box[i].h)
 		{
 			if (x >= s->hud1.text_box[i].x && x <= s->hud1.text_box[i].x + s->hud1.text_box[i].w)
-			{
 				s->hud1.box_picked = i;
-				break ;
-			}
 		}
 	}
 	if (y >= s->hud1.ok.rect.y && y <= s->hud1.ok.rect.y + s->hud1.ok.rect.h)
