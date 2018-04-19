@@ -6,9 +6,12 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 12:19:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:51:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef DEFINE_RT_H
+# define DEFINE_RT_H
 
 # define SIZE_X 	1000
 # define SIZE_Y 	600
@@ -23,3 +26,5 @@
 # define POS_WIN_X 	100
 # define POS_WIN_Y 	100
 # define NB_THREAD	8
+
+#endif
