@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 11:22:43 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:52:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include "../libft/includes/libft.h"
 #include <stdint.h>
 #include <time.h>
+
+void	init_hud_var(t_sdl *s)
+{
+	s->hud1.filter_token.sep = 0;
+	s->hud1.filter_token.bw = 0;
+	s->hud1.selectobj = 0;
+	s->hud1.pipette = 0;
+	s->hud1.shape_img.i = 0;
+	s->hud1.add_obj = 0;
+}
 
 void	ft_init(t_sdl *s, char *name, t_env *e)
 {
@@ -24,11 +34,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	str = ft_strjoin("RT : Ray Tracer - ", name);
 	s->window = SDL_CreateWindow(str, POS_WIN_X, POS_WIN_Y, WIN_X, WIN_Y,
 			SDL_WINDOW_ALLOW_HIGHDPI);
-	s->hud1.filter_token.sep = 0;
-	s->hud1.filter_token.bw = 0;
-	s->hud1.selectobj = 0;
-	s->hud1.pipette = 0;
-	s->hud1.shape_img.i = 0;
+	init_hud_var(s);
 	free(str);
 	if (s->window == NULL)
 		exit(1);
@@ -49,6 +55,12 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 		ft_error("\nmalloc error\n");
 	parser(name, e);
 	hud_init(s, e);
+}
+
+void	add_obj_display(t_sdl *s, t_env *e)
+{
+	(void)s;
+	(void)e;
 }
 
 void	display(t_sdl *s, t_env *e)
@@ -78,16 +90,21 @@ void	display(t_sdl *s, t_env *e)
 	r[8] = SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
 	r[9] = SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL, &s->hud1.credits.title.rect);
 	r[10] = SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL, &s->hud1.credits.names.rect);
-	while (++i != 16)
+	while (++i != 17)
 		r[i + 10] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
 	r[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
 	r[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
 	r[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
-	r[27] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL, &s->hud1.shape_img.rect);
+	if (s->hud1.shape_img.i >= 12 && s->hud1.shape_img.i <= 15)
+		r[27] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL, &s->hud1.shape_img.rect);
+	else
+		r[27] = 0;
 	r[28] = SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.multi_bouton[s->hud1.multi]);
 	r[29] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[0].tex, NULL, &s->hud1.multi_text[0].rect);
 	r[30] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[1].tex, NULL, &s->hud1.multi_text[1].rect);
 	r[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
+	if (s->hud1.add_obj == 1)
+		add_obj_display(s, e);
 	if (s->hud1.pipette == 1)
 		r[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
 	else

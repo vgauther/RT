@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 16:45:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:00:07 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,9 +214,12 @@ void	create_bouton_tool_bar(t_sdl *s)
 	s->hud1.bouton[14].i = 4;
 	s->hud1.bouton[14].rect = init_sdl_rect(SIZE_X / 4 + 60, SIZE_Y / 16 - 20,
 		40, 40);
-	s->hud1.bouton[15].i = 4;
+	s->hud1.bouton[15].i = 10;
 	s->hud1.bouton[15].rect = init_sdl_rect(SIZE_X / 4 + 120, SIZE_Y / 16 - 20,
 		40, 40);
+	s->hud1.bouton[16].i = 1;
+	s->hud1.bouton[16].rect = init_sdl_rect(SIZE_X / 4 + 180, SIZE_Y / 16 - 20,
+			40, 40);
 }
 
 void	bloc_camera(t_env *e, t_sdl *s)
@@ -231,21 +234,38 @@ void	bloc_camera(t_env *e, t_sdl *s)
 	(void)s;
 }
 
-void	bloc_multiplier(t_env *e, t_sdl *s)
+void	bloc_multiplier_rect(t_env *e)
 {
 	t_rect rect;
 
-	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4, (SIZE_X / 4
+		+ 10) / 9, (SIZE_X / 4 + 10) / 9);
 	print_rect(rect, e, 1, CONTRAST);
-	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X / 4 + 10) / 9 ) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X /
+		4 + 10) / 9) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
 	print_rect(rect, e, 1, CONTRAST);
-	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9 ) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
+	rect = init_rect((SIZE_X / 4 + 10) / 8, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X /
+		4 + 10) / 9) * 1.5, (SIZE_X / 4 + 10) / 9, (SIZE_X / 4 + 10) / 9);
 	print_rect(rect, e, 1, CONTRAST);
-	s->hud1.multi_bouton[0] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 + 5 , (SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
-	s->hud1.multi_bouton[1] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X / 4 + 10) / 9)
+}
+
+void	bloc_multiplier_bouton_rect(t_sdl *s)
+{
+	s->hud1.multi_bouton[0] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5,
+	WIN_Y / 2 + WIN_Y / 4 + 5, (SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10)
+	/ 9 - 10);
+	s->hud1.multi_bouton[1] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5,
+	WIN_Y / 2 + WIN_Y / 4 - ((SIZE_X / 4 + 10) / 9)
 	* 1.5 + 5, (SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
-	s->hud1.multi_bouton[2] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2 + WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9 ) * 1.5 + 5,
+	s->hud1.multi_bouton[2] = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5, WIN_Y / 2
+	+ WIN_Y / 4 + ((SIZE_X / 4 + 10) / 9) * 1.5 + 5,
 	(SIZE_X / 4 + 10) / 9 - 10, (SIZE_X / 4 + 10) / 9 - 10);
+}
+
+void	bloc_multiplier(t_env *e, t_sdl *s)
+{
+	bloc_multiplier_rect(e);
+	bloc_multiplier_bouton_rect(s);
 	s->hud1.multi = 1;
 	s->hud1.how_much = 1;
 	print_text(ft_strdup("+ 1"), s->font.color[1], s, &s->hud1.multi_text[1]);

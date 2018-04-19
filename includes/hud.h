@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 16:07:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:41:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct		s_hud
 	SDL_Texture		*t_logo;
 	SDL_Rect		r_logo;
 	t_print_cam		cam;
-	t_bouton		bouton[16];
+	t_bouton		bouton[17];
 	t_tex_rec		info;
 	t_tex_rec		save;
 	t_credits		credits;
@@ -86,6 +86,7 @@ typedef struct		s_hud
 	t_filter_tok	filter_token;
 	int				multi;
 	int				how_much;
+	int				add_obj;
 	SDL_Rect		color_selector;
 	SDL_Surface		*color_selector_surf;
 	t_tex_rec		multi_text[3];

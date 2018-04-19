@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 16:44:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:52:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,8 @@ void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 		s->hud1.shape_img.i = 14;
 	if (e->obj[nbr].type == 3)
 		s->hud1.shape_img.i = 13;
+	if (e->obj[nbr].type == 4)
+		s->hud1.shape_img.i = 15;
 	display(s, e);
 }
 
@@ -261,7 +263,7 @@ void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e)
 	{
 		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
 		{
-			s->hud1.bouton[15].i = s->hud1.bouton[15].i == 5 ? 4 : 5;
+			s->hud1.bouton[15].i = s->hud1.bouton[15].i == 11 ? 10 : 11;
 			s->hud1.pipette = s->hud1.pipette == 1 ? 0 : 1;
 			display(s, e);
 		}
@@ -299,17 +301,33 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 	//}
 }
 
+void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
+{
+	if (x >= SIZE_X / 4 + 180 && x <= SIZE_X / 4 + 220)
+	{
+		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
+		{
+			s->hud1.bouton[16].i = s->hud1.bouton[16].i == 1 ? 3 : 1;
+			s->hud1.add_obj = s->hud1.add_obj == 1 ? 0 : 1;
+			s->hud1.bouton[14].i = 4;
+			s->hud1.shape_img.i = 0;
+			display(s, e);
+		}
+	}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.selectobj == 1)
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	if (s->hud1.pipette == 1)
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
-	mouse_pipette_activate(mouse_x, mouse_y, s, e);
+//	mouse_pipette_activate(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
 	mouse_selector_activate(mouse_x, mouse_y, s, e);
+	mouse_add_obj_activate(mouse_x, mouse_y, s, e);
 	mouse_multi(mouse_x, mouse_y, s, e);
 }
