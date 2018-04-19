@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 23:21:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/20 00:24:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,21 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						e->obj = realloc_obj(e);
 						if (i == 0)
 						{
-							ft_putstr("SPHERE\n");
 							e->obj[e->nb - 1].type = 1;
 							s->hud1.shape_img.i = 12;
 						}
 						else if (i == 2)
 						{
-							ft_putstr("CYLINDRE\n");
 							e->obj[e->nb - 1].type = 2;
 							s->hud1.shape_img.i = 14;
 						}
 						else if (i == 1)
 						{
-							ft_putstr("CONE\n");
 							e->obj[e->nb - 1].type = 3;
 							s->hud1.shape_img.i = 13;
 						}
 						else if (i == 3)
 						{
-							ft_putstr("PLAN\n");
 							e->obj[e->nb - 1].type = 4;
 							s->hud1.shape_img.i = 15;
 						}
@@ -77,7 +73,6 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 			}
 		}
 	}
-	(void)e;
 }
 
 void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
