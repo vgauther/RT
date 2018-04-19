@@ -76,7 +76,8 @@ SRC_NAME = 	lux.c \
 			ft_wait.c \
 			tools_key.c \
 			tools_sdl.c \
-			hud_bloc_multiplier.c
+			hud_bloc_multiplier.c \
+			trait.c \
 
 all: $(NAME)
 

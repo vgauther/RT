@@ -85,28 +85,6 @@ void		create_bouton_cam(t_sdl *s)
 	}
 }
 
-void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e)
-{
-	if (p1.x > p2.x)
-		ft_error("\nhorizontal_trait error\n");
-	while (p1.x != p2.x)
-	{
-		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
-		p1.x++;
-	}
-}
-
-void	vertical_trait(t_vec p1, t_vec p2, int color, t_env *e)
-{
-	if (p1.y > p2.y)
-		ft_error("\nvertical_trait error\n");
-	while (p1.y != p2.y)
-	{
-		ft_put_pixel_hud(e->hud, p1.x, p1.y, color);
-		p1.y++;
-	}
-}
-
 void	init_info_messages(t_sdl *s)
 {
 	s->hud1.mess = malloc(sizeof(char *) * 12);

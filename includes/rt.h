@@ -273,4 +273,11 @@ void				ft_sdl_error(char *msg, const char *error);
 void				ft_error(char *msg);
 t_color				normalize_color(t_color ret);
 
+/*
+** trait.c
+*/
+
+void	vertical_trait(t_vec p1, t_vec p2, int color, t_env *e);
+void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e);
+
 #endif
