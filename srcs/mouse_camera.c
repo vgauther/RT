@@ -1,7 +1,7 @@
 
 #include "../includes/rt.h"
 
-void	mouse_cam_rot2(int i, t_sdl *s, t_env *e)
+static void	  mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 {
 	if (i >= 9 && i < 12)
 	{
@@ -30,7 +30,7 @@ void	mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 	raytracing(e, s);
 }
 
-void	mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
+static void	  mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	int i;
 
@@ -48,7 +48,7 @@ void	mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	}
 }
 
-void	mouse_cam_trans2(int i, t_sdl *s, t_env *e)
+static void	  mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 {
 	if (i > 2 && i < 6)
 	{
@@ -77,7 +77,7 @@ void	mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 	raytracing(e, s);
 }
 
-void	mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
+static void	  mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	int i;
 
@@ -95,7 +95,7 @@ void	mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	}
 }
 
-void mouse_main_cam(int x, int y, t_sdl *s, t_env *e)
+void        mouse_main_cam(int x, int y, t_sdl *s, t_env *e)
 {
   mouse_cam_trans(x, y, s, e);
   mouse_cam_rot(x, y, s, e);
