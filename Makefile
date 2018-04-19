@@ -75,7 +75,8 @@ SRC_NAME = 	lux.c \
 			mouse_add_obj.c \
 			ft_wait.c \
 			tools_key.c \
-			tools_sdl.c
+			tools_sdl.c \
+			hud_bloc_multiplier.c
 
 all: $(NAME)
 

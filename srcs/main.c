@@ -76,7 +76,7 @@ t_obj	*realloc_obj(t_env *e)
 	return (new);
 }
 
-void	add_obj_display(t_sdl *s, t_env *e)
+void	add_obj_selection_display(t_sdl *s, t_env *e)
 {
 	(void)e;
 	SDL_RenderCopy(s->renderer, s->tex[12], NULL, &s->hud1.r_add_obj[0]);
@@ -158,7 +158,7 @@ void	display(t_sdl *s, t_env *e)
 	r[30] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[1].tex, NULL, &s->hud1.multi_text[1].rect);
 	r[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
 	if (s->hud1.add_obj == 1)
-		add_obj_display(s, e);
+		add_obj_selection_display(s, e);
 	if (s->hud1.add_obj == 2)
 		add_obj_menu(s, e, e->nb - 1);
 	if (s->hud1.pipette == 1)

@@ -166,6 +166,7 @@ void	ft_wait(void);
 int		nbr_touch(int key);
 int		do_we_need_to_rt(int t);
 void	quit_sdl_proprely(t_sdl *s);
+void	bloc_multiplier(t_env *e, t_sdl *s);
 
 /*
 ** tools
