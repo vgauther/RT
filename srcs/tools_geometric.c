@@ -16,9 +16,9 @@
 ** initialization of a point (norm funct)
 */
 
-t_point		init_point(double x, double y, double z)
+t_vec		init_point(double x, double y, double z)
 {
-	t_point p;
+	t_vec p;
 
 	p.x = x;
 	p.y = y;
@@ -30,9 +30,9 @@ t_point		init_point(double x, double y, double z)
 ** initialization of a point but only on x and y(norm funct)
 */
 
-t_point		init_point_2_coord(int x, int y)
+t_vec		init_point_2_coord(int x, int y)
 {
-	t_point p;
+	t_vec p;
 
 	p.x = x;
 	p.y = y;
@@ -43,7 +43,7 @@ t_point		init_point_2_coord(int x, int y)
 ** we determinate coordonnates of the intersection between a ray and the shape
 */
 
-void		intersection_point(t_inter *pt, t_point ca, t_vec v)
+void		intersection_point(t_inter *pt, t_vec ca, t_vec v)
 {
 	pt->pos.x = ca.x + v.x * pt->dist;
 	pt->pos.y = ca.y + v.y * pt->dist;

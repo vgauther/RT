@@ -73,6 +73,6 @@ int		check_file(char *argument)
 		ft_error("Argument is a folder.");
 	}
 	if ((fd = open(argument, O_RDONLY)) == -1)
-		ft_error("Error with scene file.");
+		ft_error("Error reading scene file.");
 	return (fd);
 }

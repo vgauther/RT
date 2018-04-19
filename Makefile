@@ -67,7 +67,9 @@ SRC_NAME = 	lux.c \
 			rotate.c					\
 			texture.c					 \
 			filter.c \
-			check_define.c
+			check_define.c \
+			ray_plan.c \
+			pars_plan.c \
 
 all: $(NAME)
 

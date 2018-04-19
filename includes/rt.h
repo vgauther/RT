@@ -28,13 +28,6 @@
 # include <pthread.h>
 # include <stdlib.h>
 
-typedef struct		s_rot
-{
-	double		x;
-	double		y;
-	double		z;
-}					t_rot;
-
 typedef struct		s_color
 {
 	double			r;
@@ -59,23 +52,15 @@ typedef struct		s_vec
 	double			z;
 }					t_vec;
 
-typedef struct		s_point
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_point;
-
 typedef struct		s_cam
 {
-	t_rot			rot;
-	t_point			pos;
-
+	t_vec			rot;
+	t_vec			pos;
 }					t_cam;
 
 typedef struct		s_obj
 {
-	t_point			pos;
+	t_vec			pos;
 	double			rayon;
 	double			rayon_2;
 	int				material;
@@ -85,6 +70,7 @@ typedef struct		s_obj
 	t_vec			rot;
 	double			angle;
 	double			angletan;
+	t_vec			norm;
 }					t_obj;
 
 typedef struct		s_env
@@ -114,7 +100,7 @@ typedef struct		s_sdl
 
 typedef struct		s_inter
 {
-	t_point			pos;
+	t_vec			pos;
 	double			dist;
 	int				nb;
 	double			delta;
@@ -152,6 +138,7 @@ typedef struct		s_thread_st
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
+t_vec				plan_normal_at(t_inter pt, t_env *e);
 t_color				color_init(double r, double g, double b);
 void 			check_define(void);
 
@@ -173,11 +160,11 @@ t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
 Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
 t_inter				shape_redirection(t_env *e, t_vec dir,
-					t_point ori, int nbr);
+					t_vec ori, int nbr);
 Uint32				rgb_to_int(t_color color);
 t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
-					t_vec v, t_point ori);
+					t_vec v, t_vec ori);
 
 /*
 ** tools
@@ -187,10 +174,11 @@ double				dot(t_vec v1, t_vec v2);
 double				dot_2(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
+t_vec				sub_vec(t_vec v1, t_vec v2);
 
-t_point				init_point(double x, double y, double z);
-t_point				init_point_2_coord(int x, int y);
-void				intersection_point(t_inter *pt, t_point ca, t_vec v);
+t_vec				init_point(double x, double y, double z);
+t_vec				init_point_2_coord(int x, int y);
+void				intersection_point(t_inter *pt, t_vec ca, t_vec v);
 t_rect				init_rect(int x1, int x2, int x3, int x4);
 void				print_rect(t_rect b, t_env *e, int t, int color);
 
@@ -224,9 +212,10 @@ void				ft_put_pixel_winrend(Uint32 *tab, int x, int y, int color);
 */
 
 void				raytracing(t_env *e, t_sdl *s);
-t_inter				ray_sphere(t_env *e, t_vec dir, t_point ori, int nbr);
-t_inter				ray_cylindre(t_env *e, t_vec dir, t_point ori, int nbr);
-t_inter				ray_cone(t_env *e, t_vec dir, t_point ori, int nbr);
+t_inter				ray_sphere(t_env *e, t_vec dir, t_vec ori, int nbr);
+t_inter				ray_cylindre(t_env *e, t_vec dir, t_vec ori, int nbr);
+t_inter				ray_cone(t_env *e, t_vec dir, t_vec ori, int nbr);
+t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
 
 /*
 ** parser functions
@@ -242,6 +231,7 @@ void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
 void				add_cylindre(t_env *e, char **sp);
 void				add_cone(t_env *e, char **sp);
+void				add_plan(t_env *e, char **sp);
 void				count_spot(char *str, t_env *e);
 void				select_add_spot(char *str, t_env *e);
 

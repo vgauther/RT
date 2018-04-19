@@ -12,6 +12,7 @@
 
 #include "../includes/rt.h"
 
+
 void		add_obj(t_env *e, char *line)
 {
 	char	**split;
@@ -35,6 +36,11 @@ void		add_obj(t_env *e, char *line)
 	else if (ft_strequ("cone", split[0]))
 	{
 		add_cone(e, split);
+		e->nb++;
+	}
+	else if (ft_strequ("plan", split[0]))
+	{
+		add_plan(e, split);
 		e->nb++;
 	}
 	else

@@ -33,7 +33,7 @@ t_vec		cone_normal_at(t_inter t, t_obj obj, t_obj spot)
 	return (x);
 }
 
-t_inter		ray_cone(t_env *e, t_vec d, t_point ori, int nbr)
+t_inter		ray_cone(t_env *e, t_vec d, t_vec ori, int nbr)
 {
 	t_inter		pt;
 	t_polynome	p;

@@ -20,6 +20,8 @@ t_vec		get_normal(t_env *e, t_inter pt, t_obj spot)
 		norm = sphere_normal_at(pt, e->obj[pt.nb]);
 	else if (e->obj[pt.nb].type == 2)
 		norm = cylindre_normal_at(pt, e->obj[pt.nb], spot);
+	// else if (e->obj[pt.nb].type == 4)
+	// 	norm = plan_normal_at(pt, e);
 	else
 		norm = cone_normal_at(pt, e->obj[pt.nb], spot);
 	return (norm);

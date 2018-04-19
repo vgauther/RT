@@ -96,7 +96,7 @@ void		create_bouton_cam(t_sdl *s)
 	}
 }
 
-void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
+void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e)
 {
 	if (p1.x > p2.x)
 		ft_error("\nhorizontal_trait error\n");
@@ -107,7 +107,7 @@ void	horizontal_trait(t_point p1, t_point p2, int color, t_env *e)
 	}
 }
 
-void	vertical_trait(t_point p1, t_point p2, int color, t_env *e)
+void	vertical_trait(t_vec p1, t_vec p2, int color, t_env *e)
 {
 	if (p1.y > p2.y)
 		ft_error("\nvertical_trait error\n");
@@ -149,8 +149,8 @@ void	init_info_messages(t_sdl *s)
 
 void	ornement(SDL_Rect p, int color, int size, t_env *e)
 {
-	t_point	p1;
-	t_point	p2;
+	t_vec	p1;
+	t_vec	p2;
 	int		l;
 
 	l = p.h / 2 + p.y;
@@ -166,8 +166,8 @@ void	ornement(SDL_Rect p, int color, int size, t_env *e)
 
 void	bloc_save(t_env *e, t_sdl *s)
 {
-	t_point p1;
-	t_point p2;
+	t_vec p1;
+	t_vec p2;
 	t_rect	r1;
 
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, 0);
@@ -187,8 +187,8 @@ void	bloc_save(t_env *e, t_sdl *s)
 
 void	bloc_credits(t_env *e, t_sdl *s)
 {
-	t_point p1;
-	t_point p2;
+	t_vec p1;
+	t_vec p2;
 
 	print_text(ft_strdup("Credits"), s->font.color[4], s, &s->hud1.credits.title);
 	s->hud1.credits.title.rect = init_sdl_rect(SIZE_X / 4 / 2 - 40, SIZE_Y + SIZE_Y / 8 - 5, 50, 20);
@@ -286,8 +286,8 @@ void	bloc_multiplier(t_env *e, t_sdl *s)
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
-	t_point p1;
-	t_point p2;
+	t_vec p1;
+	t_vec p2;
 
 	init_font(s);
 	open_texture(s);

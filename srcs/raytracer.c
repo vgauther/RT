@@ -37,7 +37,7 @@ void		get_closest(t_env *e, t_inter *pt, int x, int y)
 	}
 }
 
-t_inter		shape_redirection(t_env *e, t_vec dir, t_point ori, int nbr)
+t_inter		shape_redirection(t_env *e, t_vec dir, t_vec ori, int nbr)
 {
 	t_inter tmp;
 
@@ -48,6 +48,10 @@ t_inter		shape_redirection(t_env *e, t_vec dir, t_point ori, int nbr)
 	else if (e->obj[nbr].type == 2)
 	{
 		tmp = ray_cylindre(e, dir, ori, nbr);
+	}
+	else if (e->obj[nbr].type == 4)
+	{
+		tmp = ray_plan(e, dir, ori, nbr);
 	}
 	else//if (e->obj[nbr].type == 3)
 	{

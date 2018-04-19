@@ -19,7 +19,7 @@ t_vec		sphere_normal_at(t_inter t, t_obj obj)
 		t.pos.z - obj.pos.z)));
 }
 
-void		resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_point ori)
+void		resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_vec ori)
 {
 	if (p->delta >= 0)
 	{
@@ -41,7 +41,7 @@ void		resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_point ori)
 	t->delta = p->delta;
 }
 
-t_inter		ray_sphere(t_env *e, t_vec v, t_point ori, int nbr)
+t_inter		ray_sphere(t_env *e, t_vec v, t_vec ori, int nbr)
 {
 	t_polynome	p;
 	t_inter		t;
