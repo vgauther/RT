@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 16:26:25 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/03 11:41:00 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:46:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	z(double *x, double *y, double rot_z)
 	*y = sin(rot_z * RAD) * *x + cos(rot_z * RAD) * *y;
 }
 
-t_vec			ft_rotate(t_vec p, double rot_x, double rot_y, double rot_z)
+t_vec	ft_rotate(t_vec p, double rot_x, double rot_y, double rot_z)
 {
 	int					x;
 	int					y;
