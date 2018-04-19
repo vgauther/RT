@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 16:57:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:27:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,7 +306,10 @@ void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
 		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
 		{
 			s->hud1.bouton[16].i = s->hud1.bouton[16].i == 1 ? 3 : 1;
-			s->hud1.add_obj = s->hud1.add_obj == 1 ? 0 : 1;
+			if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
+				s->hud1.add_obj = 0;
+			else
+				s->hud1.add_obj = 1;
 			s->hud1.bouton[14].i = 4;
 			s->hud1.shape_img.i = 0;
 			display(s, e);
@@ -367,43 +370,50 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 {
 	int i;
+	int t;
 
-	i = 0;
-	while(i != 6)
+	t = 0;
+	i = -1;
+	while (++i != 6)
 	{
 		if (y >= s->hud1.text_box[i].y && y <= s->hud1.text_box[i].y + s->hud1.text_box[i].h)
 		{
 			if (x >= s->hud1.text_box[i].x && x <= s->hud1.text_box[i].x + s->hud1.text_box[i].w)
 			{
-				ft_putstr("TOUCHE");
 				s->hud1.box_picked = i;
 				break ;
 			}
 		}
-		i++;
 	}
-	e->obj[e->nb - 1].pos.x = 0;
-	e->obj[e->nb - 1].pos.y = 0;
-	e->obj[e->nb - 1].pos.z = 0;
-	e->obj[e->nb - 1].rot.x = 1;
-	e->obj[e->nb - 1].rot.y = 0;
-	e->obj[e->nb - 1].rot.z = 0;
-	e->obj[e->nb - 1].material = 1;
-	e->obj[e->nb - 1].color = 0x00FF00;
-	e->obj[e->nb - 1].rayon = 10;
-	e->obj[e->nb - 1].rayon_2 = 10 * 10;
-	e->obj[e->nb - 1].angle = 20;
-	e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+	if (y >= s->hud1.ok.rect.y && y <= s->hud1.ok.rect.y + s->hud1.ok.rect.h)
+	{
+		if (x >= s->hud1.ok.rect.x && x <= s->hud1.ok.rect.x + s->hud1.ok.rect.w)
+		{
+			s->hud1.ok.i = 18;
+			display(s, e);
+			s->hud1.add_obj = 0;
+			s->hud1.bouton[16].i = 1;
+			s->hud1.box_picked = 42;
+			t = 42;
+		}
+	}
+	if (t != 42)
+	{
+		e->obj[e->nb - 1].pos = vector_init(0, 0, 0);
+		e->obj[e->nb - 1].rot = vector_init(1, 0, 0);
+		e->obj[e->nb - 1].material = 1;
+		e->obj[e->nb - 1].color = 0x00FF00;
+		e->obj[e->nb - 1].rayon = 10;
+		e->obj[e->nb - 1].rayon_2 = 10 * 10;
+		e->obj[e->nb - 1].angle = 20;
+		e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+	}
 	raytracing(e, s);
-	(void)x;
-	(void)y;
-	(void)s;
-	(void)e;
 }
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
-	if (s->hud1.add_obj == 1)
+	if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
 		mouse_add_obj_select(mouse_x, mouse_y, s, e);
 	if (s->hud1.add_obj == 2)
 		mouse_add_obj(mouse_x, mouse_y, s, e);

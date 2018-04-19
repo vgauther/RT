@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 16:56:06 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:12:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ typedef struct		s_hud
 	SDL_Rect		multi_bouton[3];
 	SDL_Rect		r_add_obj[4];
 	SDL_Rect		text_box[6];
+	t_tex_rec		add_obj_data[6];
 	int				box_picked;
+	t_bouton		ok;
 }					t_hud;
 
 #endif

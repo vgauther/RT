@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 15:59:26 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:08:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	t_hud			hud1;
 	t_font			font;
-	SDL_Texture		*tex[17];
+	SDL_Texture		*tex[19];
 }					t_sdl;
 
 typedef struct		s_inter
@@ -135,12 +135,7 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
-t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
-t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
-t_vec				sphere_normal_at(t_inter t, t_obj obj);
-t_vec				plan_normal_at(t_inter pt, t_env *e);
-t_color				color_init(double r, double g, double b);
-void 			check_define(void);
+void 				check_define(void);
 
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
@@ -153,20 +148,16 @@ void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
 SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
 void				print_info(t_sdl *s, t_env *e, int i);
-Uint32				blackwhite(Uint32 color);
-Uint32				sepia(Uint32 color);
-Uint32				filtre(t_sdl *s, Uint32 color);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
 Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
 t_inter				shape_redirection(t_env *e, t_vec dir,
 					t_vec ori, int nbr);
-Uint32				rgb_to_int(t_color color);
 t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
 					t_vec v, t_vec ori);
-
 t_obj				*realloc_obj(t_env *e);
+
 /*
 ** tools
 */
@@ -195,6 +186,14 @@ void				print_text(char *str, SDL_Color color, t_sdl *s,
 					t_tex_rec *data);
 
 /*
+** filtre
+*/
+
+Uint32				blackwhite(Uint32 color);
+Uint32				sepia(Uint32 color);
+Uint32				filtre(t_sdl *s, Uint32 color);
+
+/*
 ** HUD
 */
 
@@ -217,6 +216,15 @@ t_inter				ray_sphere(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_cylindre(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_cone(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
+
+/*
+** shapes's normal
+*/
+
+t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
+t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
+t_vec				sphere_normal_at(t_inter t, t_obj obj);
+t_vec				plan_normal_at(t_inter pt, t_env *e);
 
 /*
 ** parser functions
@@ -243,6 +251,8 @@ void				select_add_spot(char *str, t_env *e);
 char				*only_color(char *str);
 int					ft_atoi_color(char *str);
 t_color				split_color(Uint32 full);
+Uint32				rgb_to_int(t_color color);
+t_color				color_init(double r, double g, double b);
 
 /*
 ** error

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 16:04:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:03:54 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	open_texture(t_sdl *s)
 {
-	SDL_Surface	*surfac[17];
+	SDL_Surface	*surfac[19];
 	int			i;
 
 	i = -1;
@@ -35,7 +35,9 @@ void	open_texture(t_sdl *s)
 	surfac[14] = SDL_LoadBMP("./img_srcs/cylindre.bmp");
 	surfac[15] = SDL_LoadBMP("./img_srcs/plan.bmp");
 	surfac[16] = SDL_LoadBMP("./img_srcs/color.bmp");
-	while (++i < 17)
+	surfac[17] = SDL_LoadBMP("./img_srcs/ok.bmp");
+	surfac[18] = SDL_LoadBMP("./img_srcs/ok2.bmp");
+	while (++i < 19)
 	{
 		if (!(s->tex[i] = SDL_CreateTextureFromSurface(s->renderer, surfac[i])))
 			ft_sdl_error("Texture error : ", SDL_GetError());

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 17:55:18 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:24:35 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 
 t_obj	*realloc_obj(t_env *e)
 {
-	t_obj *new;
-	int i;
+	t_obj	*new;
+	int		i;
 
 	i = 0;
 	e->nb++;
-	if(!(new = malloc(sizeof(t_obj) * e->nb)))
+	if (!(new = malloc(sizeof(t_obj) * e->nb)))
 		ft_error("malloc error\n");
-	while(i != e->nb - 1)
+	while (i != e->nb - 1)
 	{
 		new[i] = e->obj[i];
 		i++;
@@ -85,16 +85,28 @@ void	add_obj_display(t_sdl *s, t_env *e)
 	SDL_RenderCopy(s->renderer, s->tex[15], NULL, &s->hud1.r_add_obj[3]);
 }
 
-void	add_obj_menu(t_sdl *s, t_env *e)
+void	add_obj_menu(t_sdl *s, t_env *e, int nb)
 {
-	(void)e;
-	(void)s;
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[0]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[1]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[2]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[3]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[4]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[5]);
+	print_text(ft_itoa(e->obj[nb].pos.x), s->font.color[1], s, &s->hud1.add_obj_data[0]);
+	print_text(ft_itoa(e->obj[nb].pos.y), s->font.color[1], s, &s->hud1.add_obj_data[1]);
+	print_text(ft_itoa(e->obj[nb].pos.z), s->font.color[1], s, &s->hud1.add_obj_data[2]);
+	print_text(ft_itoa(e->obj[nb].rot.x), s->font.color[1], s, &s->hud1.add_obj_data[3]);
+	print_text(ft_itoa(e->obj[nb].rot.y), s->font.color[1], s, &s->hud1.add_obj_data[4]);
+	print_text(ft_itoa(e->obj[nb].rot.z), s->font.color[1], s, &s->hud1.add_obj_data[5]);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[0].tex, NULL, &s->hud1.add_obj_data[0].rect);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[1].tex, NULL, &s->hud1.add_obj_data[1].rect);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[2].tex, NULL, &s->hud1.add_obj_data[2].rect);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[3].tex, NULL, &s->hud1.add_obj_data[3].rect);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[4].tex, NULL, &s->hud1.add_obj_data[4].rect);
+	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[5].tex, NULL, &s->hud1.add_obj_data[5].rect);
+	SDL_RenderCopy(s->renderer, s->tex[s->hud1.ok.i], NULL, &s->hud1.ok.rect);
+
 }
 
 void	display(t_sdl *s, t_env *e)
@@ -140,7 +152,7 @@ void	display(t_sdl *s, t_env *e)
 	if (s->hud1.add_obj == 1)
 		add_obj_display(s, e);
 	if (s->hud1.add_obj == 2)
-		add_obj_menu(s, e);
+		add_obj_menu(s, e, e->nb - 1);
 	if (s->hud1.pipette == 1)
 		r[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
 	else
@@ -192,27 +204,27 @@ void	del_char(t_env *e, t_sdl *s)
 {
 	if (s->hud1.box_picked == 0)
 	{
-		e->obj[e->nb - 1].pos.x = e->obj[e->nb - 1].pos.x / 10;
+		e->obj[e->nb - 1].pos.x = (e->obj[e->nb - 1].pos.x - (int)e->obj[e->nb - 1].pos.x % 10) / 10;
 	}
 	else if (s->hud1.box_picked == 1)
 	{
-		e->obj[e->nb - 1].pos.y = e->obj[e->nb - 1].pos.y / 10;
+		e->obj[e->nb - 1].pos.y = (e->obj[e->nb - 1].pos.y - (int)e->obj[e->nb - 1].pos.y % 10) / 10;
 	}
 	else if (s->hud1.box_picked == 2)
 	{
-		e->obj[e->nb - 1].pos.z = e->obj[e->nb - 1].pos.z / 10;
+		e->obj[e->nb - 1].pos.z = (e->obj[e->nb - 1].pos.z - (int)e->obj[e->nb - 1].pos.z % 10) / 10;
 	}
 	else if (s->hud1.box_picked == 3)
 	{
-		e->obj[e->nb - 1].rot.x = e->obj[e->nb - 1].rot.x / 10;
+		e->obj[e->nb - 1].rot.x = (e->obj[e->nb - 1].rot.x - (int)e->obj[e->nb - 1].rot.x % 10) / 10;
 	}
 	else if (s->hud1.box_picked == 4)
 	{
-		e->obj[e->nb - 1].rot.y = e->obj[e->nb - 1].rot.y / 10;
+		e->obj[e->nb - 1].rot.y = (e->obj[e->nb - 1].rot.y - (int)e->obj[e->nb - 1].rot.y % 10) / 10;
 	}
 	else if (s->hud1.box_picked == 5)
 	{
-		e->obj[e->nb - 1].rot.z = e->obj[e->nb - 1].rot.z / 10;
+		e->obj[e->nb - 1].rot.z = (e->obj[e->nb - 1].rot.z - (int)e->obj[e->nb - 1].rot.z % 10) / 10;
 	}
 	raytracing(e, s);
 }
@@ -235,29 +247,31 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 		x = 0;
 		y = -1;
 	}
+	if (x == 42)
+		return ;
 	if (s->hud1.box_picked == 0)
 	{
-		e->obj[e->nb - 1].pos.x = e->obj[e->nb - 1].pos.x * 10 + x * y;
+		e->obj[e->nb - 1].pos.x = (e->obj[e->nb - 1].pos.x * 10 + x) * y;
 	}
 	else if (s->hud1.box_picked == 1)
 	{
-		e->obj[e->nb - 1].pos.y = e->obj[e->nb - 1].pos.y * 10 + x * y;
+		e->obj[e->nb - 1].pos.y = (e->obj[e->nb - 1].pos.y * 10 + x) * y;
 	}
 	else if (s->hud1.box_picked == 2)
 	{
-		e->obj[e->nb - 1].pos.z = e->obj[e->nb - 1].pos.z * 10 + x * y;
+		e->obj[e->nb - 1].pos.z = (e->obj[e->nb - 1].pos.z * 10 + x) * y;
 	}
 	else if (s->hud1.box_picked == 3)
 	{
-		e->obj[e->nb - 1].rot.x = e->obj[e->nb - 1].rot.x * 10 + x * y;
+		e->obj[e->nb - 1].rot.x = (e->obj[e->nb - 1].rot.x * 10 + x) * y;
 	}
 	else if (s->hud1.box_picked == 4)
 	{
-		e->obj[e->nb - 1].rot.y = e->obj[e->nb - 1].rot.y * 10 + x * y;
+		e->obj[e->nb - 1].rot.y = (e->obj[e->nb - 1].rot.y * 10 + x) * y;
 	}
 	else if (s->hud1.box_picked == 5)
 	{
-		e->obj[e->nb - 1].rot.z = e->obj[e->nb - 1].rot.z * 10 + x * y;
+		e->obj[e->nb - 1].rot.z = (e->obj[e->nb - 1].rot.z * 10 + x) * y;
 	}
 	raytracing(e, s);
 }
