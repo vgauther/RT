@@ -12,15 +12,6 @@
 
 #include "../includes/rt.h"
 
-void	ft_wait(void)
-{
-	int i;
-
-	i = 0;
-	while (i != 80000000)
-		i++;
-}
-
 void	save_bouton(int x, int y, t_sdl *s, t_env *e)
 {
 	t_rect r1;

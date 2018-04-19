@@ -159,6 +159,10 @@ t_obj				*realloc_obj(t_env *e);
 void 			mouse_main_cam(int x, int y, t_sdl *s, t_env *e);
 void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e);
 void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e);
+void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
+void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
+void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
+void	ft_wait(void);
 
 /*
 ** tools
