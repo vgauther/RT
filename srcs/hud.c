@@ -36,17 +36,6 @@ void	empty_rect(t_rect b, t_env *e, int t, int color)
 	}
 }
 
-SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
-{
-	SDL_Rect rect;
-
-	rect.x = x;
-	rect.y = y;
-	rect.h = h;
-	rect.w = w;
-	return (rect);
-}
-
 void		recup_cam_to_print(t_sdl *s, t_env *e)
 {
 	s->hud1.cam.title.rect = init_sdl_rect((SIZE_X / 4 - 10) / 2 -
