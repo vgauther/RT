@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 18:41:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:19:14 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SIZE_Y 	600
 # define SIZE_X_2 	500
 # define SIZE_Y_2 	300
+# define COL		(SIZE_X / 4 + 10)
 # define WIN_X 		(SIZE_X + SIZE_X_2)
 # define WIN_Y 		(SIZE_Y + SIZE_Y_2 / 2)
 # define RAD 		(M_PI / 180.00)

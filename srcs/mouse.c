@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 11:52:23 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:33:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,7 +318,7 @@ void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
-	if (s->hud1.selectobj == 1)
+	if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	if (s->hud1.pipette == 1)
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
@@ -327,7 +327,8 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
 	mouse_cam_trans(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
-	mouse_selector_activate(mouse_x, mouse_y, s, e);
+	if (s->hud1.add_obj != 1)
+		mouse_selector_activate(mouse_x, mouse_y, s, e);
 	mouse_add_obj_activate(mouse_x, mouse_y, s, e);
 	mouse_multi(mouse_x, mouse_y, s, e);
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 11:52:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:31:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,15 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	hud_init(s, e);
 }
 
-void	add_obj_display(t_sdl *s, t_env *e)
+void	add_obj_display(t_sdl *s, t_env *e, SDL_Renderer **rend)
 {
 	(void)s;
 	(void)e;
+	printf("test\n");
+	SDL_RenderCopy(*rend, s->tex[12], NULL, &s->hud1.r_add_obj[0]);
+	SDL_RenderCopy(*rend, s->tex[13], NULL, &s->hud1.r_add_obj[1]);
+	SDL_RenderCopy(*rend, s->tex[14], NULL, &s->hud1.r_add_obj[2]);
+	SDL_RenderCopy(*rend, s->tex[15], NULL, &s->hud1.r_add_obj[3]);
 }
 
 void	display(t_sdl *s, t_env *e)
@@ -104,7 +109,7 @@ void	display(t_sdl *s, t_env *e)
 	r[30] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[1].tex, NULL, &s->hud1.multi_text[1].rect);
 	r[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
 	if (s->hud1.add_obj == 1)
-		add_obj_display(s, e);
+		add_obj_display(s, e, &s->renderer);
 	if (s->hud1.pipette == 1)
 		r[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
 	else

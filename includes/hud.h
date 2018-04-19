@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 11:41:18 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:12:48 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct		s_hud
 	SDL_Surface		*color_selector_surf;
 	t_tex_rec		multi_text[3];
 	SDL_Rect		multi_bouton[3];
+	SDL_Rect		r_add_obj[4];
 }					t_hud;
 
 #endif

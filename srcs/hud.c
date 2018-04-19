@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 12:00:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:26:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,10 +226,11 @@ void	bloc_camera(t_env *e, t_sdl *s)
 {
 	t_rect	r1;
 
-	r1 = init_rect(WIN_X / 100, SIZE_Y / 3, SIZE_X / 4 - (WIN_X / 50) - 10, SIZE_Y / 3);
+	r1 = init_rect(WIN_X / 100, SIZE_Y / 3, SIZE_X / 4 - (WIN_X / 50) - 10,
+	SIZE_Y / 3);
 	empty_rect(r1, e, 1, CONTRAST);
-	r1 = init_rect(WIN_X / 100 + ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8), (SIZE_Y / 3) - 2,
-	 ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8 ) * 6, 4);
+	r1 = init_rect(WIN_X / 100 + ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8),
+	(SIZE_Y / 3) - 2, ((SIZE_X / 4 - (WIN_X / 50) - 10) / 8) * 6, 4);
 	print_rect(r1, e, 1, COLOR_BACK);
 	(void)s;
 }
@@ -320,4 +321,8 @@ void	hud_init(t_sdl *s, t_env *e)
 	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
 	s->hud1.color_selector = init_sdl_rect(0 , 0, 999, 999);
 	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/color.bmp");
+	s->hud1.r_add_obj[0] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[1] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5), SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[2] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
+	s->hud1.r_add_obj[3] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5), SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
 }
