@@ -73,7 +73,9 @@ SRC_NAME = 	lux.c \
 			mouse_camera.c \
 			mouse_pipette.c \
 			mouse_add_obj.c \
-			ft_wait.c
+			ft_wait.c \
+			tools_key.c \
+			tools_sdl.c
 
 all: $(NAME)
 

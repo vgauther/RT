@@ -173,41 +173,6 @@ void	display(t_sdl *s, t_env *e)
 	SDL_RenderPresent(s->renderer);
 }
 
-int		do_we_need_to_rt(int t)
-{
-	if (t == CAM_LEFT || t == CAM_RIGHT || t == CAM_DOWN ||
-		t == CAM_UP || t == CAM_FOR || t == CAM_BACK)
-		return (1);
-	return (0);
-}
-
-int		nbr_touch(int key)
-{
-	if (key == 39 || key == 98)
-		return (0);
-	else if (key == 30 || key == 89)
-		return (1);
-	else if (key == 31 || key == 90)
-		return (2);
-	else if (key == 32 || key == 91)
-		return (3);
-	else if (key == 33 || key == 92)
-		return (4);
-	else if (key == 34 || key == 93)
-		return (5);
-	else if (key == 35 || key == 94)
-		return (6);
-	else if (key == 36 || key == 95)
-		return (7);
-	else if (key == 37 || key == 96)
-		return (8);
-	else if (key == 38 || key == 97)
-		return (9);
-	else if (key == 86 || key == 45)
-		return (-1);
-	return (42);
-}
-
 void	del_char(t_env *e, t_sdl *s)
 {
 	if (s->hud1.box_picked == 0)
@@ -244,7 +209,6 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 
 	y = 1;
 	x = nbr_touch(key);
-	printf("%d\n", key);
 	if (key == 42)
 	{
 		del_char(e, s);
@@ -336,13 +300,6 @@ t_cam	init_cam(int x, int y, int z)
 	c.rot.y = 0;
 	c.rot.z = 0;
 	return (c);
-}
-
-void	quit_sdl_proprely(t_sdl *s)
-{
-	SDL_DestroyWindow(s->window);
-	TTF_Quit();
-	SDL_Quit();
 }
 
 int		main(int ac, char **av)

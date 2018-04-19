@@ -163,6 +163,9 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
 void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
 void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
 void	ft_wait(void);
+int		nbr_touch(int key);
+int		do_we_need_to_rt(int t);
+void	quit_sdl_proprely(t_sdl *s);
 
 /*
 ** tools
