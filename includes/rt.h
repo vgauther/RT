@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:08:19 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:43:03 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
-void 				check_define(void);
-
+void				check_define(void);
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);
