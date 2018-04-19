@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 12:33:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:55:04 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,12 +316,83 @@ void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
+{
+	int i;
+
+	i = 0;
+	if (x >= s->hud1.r_add_obj[0].x && x <=  s->hud1.r_add_obj[1].x + s->hud1.r_add_obj[1].w)
+	{
+		if(y >= s->hud1.r_add_obj[0].y && y <= s->hud1.r_add_obj[2].y + s->hud1.r_add_obj[2].h)
+		{
+			while (i != 4)
+			{
+				if (y >= s->hud1.r_add_obj[i].y && y <= s->hud1.r_add_obj[i].y + s->hud1.r_add_obj[i].h)
+				{
+					if (x >= s->hud1.r_add_obj[i].x && x <= s->hud1.r_add_obj[i].x + s->hud1.r_add_obj[i].w)
+					{
+						e->obj = realloc_obj(e);
+						if (i == 0)
+						{
+							ft_putstr("SPHERE\n");
+							e->obj[e->nb - 1].type = 1;
+						}
+						else if (i == 2)
+						{
+							ft_putstr("CYLINDRE\n");
+							e->obj[e->nb - 1].type = 2;
+						}
+						else if (i == 1)
+						{
+							ft_putstr("CONE\n");
+							e->obj[e->nb - 1].type = 3;
+						}
+						else if (i == 3)
+						{
+							ft_putstr("PLAN\n");
+							e->obj[e->nb - 1].type = 4;
+						}
+						s->hud1.add_obj = 2;
+					}
+				}
+				i++;
+			}
+		}
+	}
+	(void)e;
+}
+
+void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
+{
+	e->obj[e->nb - 1].pos.x = -50;
+	e->obj[e->nb - 1].pos.y = 0;
+	e->obj[e->nb - 1].pos.z = 50;
+	e->obj[e->nb - 1].rot.x = 0;
+	e->obj[e->nb - 1].rot.y = 1;
+	e->obj[e->nb - 1].rot.z = 0;
+	e->obj[e->nb - 1].material = 1;
+	e->obj[e->nb - 1].color = 0x00FF00;
+	e->obj[e->nb - 1].rayon = 10;
+	e->obj[e->nb - 1].rayon_2 = 10 * 10;
+	e->obj[e->nb - 1].angle = 20;
+		e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+	raytracing(e, s);
+	(void)x;
+	(void)y;
+	(void)s;
+	(void)e;
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	if (s->hud1.pipette == 1)
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
+	if (s->hud1.add_obj == 1)
+		mouse_add_obj_select(mouse_x, mouse_y, s, e);
+	if (s->hud1.add_obj == 2)
+		mouse_add_obj(mouse_x, mouse_y, s, e);
 //	mouse_pipette_activate(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_cam_rot(mouse_x, mouse_y, s, e);
