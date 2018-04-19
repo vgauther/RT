@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 15:55:04 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/19 16:10:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,6 @@ void	mouse_filter_activate(int x, int y, t_sdl *s, t_env *e)
 
 void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 {
-	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
-		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
 	if (e->obj[nbr].type == 1)
 		s->hud1.shape_img.i = 12;
 	if (e->obj[nbr].type == 2)
@@ -336,21 +334,25 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						{
 							ft_putstr("SPHERE\n");
 							e->obj[e->nb - 1].type = 1;
+							s->hud1.shape_img.i = 12;
 						}
 						else if (i == 2)
 						{
 							ft_putstr("CYLINDRE\n");
 							e->obj[e->nb - 1].type = 2;
+							s->hud1.shape_img.i = 14;
 						}
 						else if (i == 1)
 						{
 							ft_putstr("CONE\n");
 							e->obj[e->nb - 1].type = 3;
+							s->hud1.shape_img.i = 13;
 						}
 						else if (i == 3)
 						{
 							ft_putstr("PLAN\n");
 							e->obj[e->nb - 1].type = 4;
+							s->hud1.shape_img.i = 15;
 						}
 						s->hud1.add_obj = 2;
 					}
@@ -375,7 +377,7 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 	e->obj[e->nb - 1].rayon = 10;
 	e->obj[e->nb - 1].rayon_2 = 10 * 10;
 	e->obj[e->nb - 1].angle = 20;
-		e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+	e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
 	raytracing(e, s);
 	(void)x;
 	(void)y;
