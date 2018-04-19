@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/18 12:47:45 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/19 11:22:23 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,8 @@ SRC_NAME = 	lux.c \
 			print_text.c               \
 			rotate.c					\
 			texture.c					 \
-			filter.c
+			filter.c \
+			check_define.c
 
 all: $(NAME)
 
