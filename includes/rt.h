@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 12:35:44 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:49:04 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,17 +156,18 @@ t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
 					t_vec v, t_vec ori);
 t_obj				*realloc_obj(t_env *e);
-void 			mouse_main_cam(int x, int y, t_sdl *s, t_env *e);
-void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e);
-void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e);
-void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
-void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
-void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
-void	ft_wait(void);
-int		nbr_touch(int key);
-int		do_we_need_to_rt(int t);
-void	quit_sdl_proprely(t_sdl *s);
-void	bloc_multiplier(t_env *e, t_sdl *s);
+void				mouse_main_cam(int x, int y, t_sdl *s, t_env *e);
+void				mouse_pipette_color(int x, int y, t_sdl *s, t_env *e);
+void				mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e);
+void				mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
+void				mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
+void				mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
+void				ft_wait(void);
+int					nbr_touch(int key);
+int					do_we_need_to_rt(int t);
+void				quit_sdl_proprely(t_sdl *s);
+void				bloc_multiplier(t_env *e, t_sdl *s);
+t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
 
 /*
 ** tools
@@ -231,10 +232,10 @@ t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
 ** shapes's normal
 */
 
-t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
-t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
+t_vec				cone_normal_at(t_inter t, t_obj obj, t_vec ori);
+t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_vec ori);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
-t_vec				plan_normal_at(t_inter t, t_obj obj, t_obj spot);
+t_vec				plan_normal_at(t_inter t, t_obj obj, t_vec ori);
 
 /*
 ** parser functions
@@ -277,7 +278,7 @@ t_color				normalize_color(t_color ret);
 ** trait.c
 */
 
-void	vertical_trait(t_vec p1, t_vec p2, int color, t_env *e);
-void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e);
+void				vertical_trait(t_vec p1, t_vec p2, int color, t_env *e);
+void				horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e);
 
 #endif

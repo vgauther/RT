@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:31:27 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/20 14:26:26 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:45:59 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ t_vec	v_scale(double c, t_vec *v)
 	return (vector_init(v->x * c, v->y * c, v->z * c));
 }
 
-t_vec	plan_normal_at(t_inter t, t_obj obj, t_obj spot)
+t_vec	plan_normal_at(t_inter t, t_obj obj, t_vec ori)
 {
 	t_vec	v;
 	double	d;
 
-	v = normalize_vec(vector_init(t.pos.x - spot.pos.x,
-		t.pos.y - spot.pos.y, t.pos.z - spot.pos.z));
+	v = normalize_vec(vector_init(t.pos.x - ori.x,
+		t.pos.y - ori.y, t.pos.z - ori.z));
 	d = dot(v, obj.norm);
 	if (d < 0.01)
 		v = obj.norm;
