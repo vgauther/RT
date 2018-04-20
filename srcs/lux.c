@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 16:11:59 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:27:05 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ t_color	get_reflect(t_env *e, t_inter pt)
 	//t_color color;
 
 	j = 0;
-	i = normalize_vec(sub_vec(pt.pos, e->obj[pt.nb].pos));
+	i = normalize_vec(sub_vec(pt.pos, e->ca.pos));
 	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
 	get_closest(e, &t, reflect, pt.pos);
+	if (t.dist != MAX_DIST)
+		printf("%f %f %f\n", reflect.x, reflect.y, reflect.z);
 	return (pt.color_rgb);
 }
 
