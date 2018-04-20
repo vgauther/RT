@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:43:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/20 12:35:44 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_obj spot);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
-t_vec				plan_normal_at(t_inter pt, t_env *e);
+t_vec				plan_normal_at(t_inter t, t_obj obj, t_obj spot);
 
 /*
 ** parser functions

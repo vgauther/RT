@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 15:26:42 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 13:48:46 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ t_vec		get_normal(t_env *e, t_inter pt, t_obj spot)
 		norm = sphere_normal_at(pt, e->obj[pt.nb]);
 	else if (e->obj[pt.nb].type == 2)
 		norm = cylindre_normal_at(pt, e->obj[pt.nb], spot);
-	// else if (e->obj[pt.nb].type == 4)
-	// 	norm = plan_normal_at(pt, e);
+	else if (e->obj[pt.nb].type == 4)
+	{
+
+		norm = plan_normal_at(pt, e->obj[pt.nb], spot);
+	}
 	else
 		norm = cone_normal_at(pt, e->obj[pt.nb], spot);
 	return (norm);
@@ -80,6 +83,7 @@ double		lux(t_env *e, t_inter pt)
 		{
 			l = normalize_vec(vector_init(e->spot[difspec.i].pos.x - pt.pos.x,
 	e->spot[difspec.i].pos.y - pt.pos.y, e->spot[difspec.i].pos.z - pt.pos.z));
+
 			pt.normal = get_normal(e, pt, e->spot[difspec.i]);
 			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
 			get_color_final(e, pt, difspec, &colorfin);
