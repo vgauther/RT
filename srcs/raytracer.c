@@ -6,26 +6,32 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/20 14:08:23 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:01:33 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void		get_closest(t_env *e, t_inter *pt, int x, int y)
+t_vec		calc_dir_vec(int x, int y, t_env *e)
+{
+	t_vec dir;
+
+	dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
+	dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
+	dir = normalize_vec(dir);
+	return (dir);
+}
+
+void		get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori)
 {
 	int		nbr;
 	t_inter	tmp;
-	t_vec	dir;
 
 	nbr = 0;
 	pt->dist = MAX_DIST;
 	while (nbr < e->nb)
 	{
-		dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
-		dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
-		dir = normalize_vec(dir);
-		tmp = shape_redirection(e, dir, e->ca.pos, nbr);
+		tmp = shape_redirection(e, dir, ori, nbr);
 		if (tmp.dist < pt->dist && tmp.dist > 0)
 		{
 			pt->dist = tmp.dist;
@@ -64,7 +70,6 @@ void	*threadt(void *param)
 {
 	t_thread_st		*var;
 	t_inter			pt;
-	Uint32			color;
 	int				xlim;
 	int				y;
 
@@ -75,12 +80,11 @@ void	*threadt(void *param)
 		y = 0;
 		while (++y < SIZE_Y)
 		{
-			get_closest(var->e, &pt, var->x, y);
+			get_closest(var->e, &pt, calc_dir_vec(var->x, y, var->e),
+			var->e->ca.pos);
 			if (pt.dist != MAX_DIST)
-			{
-				color = filtre(var->s, lux(var->e, pt));
-				ft_put_pixel_winrend(var->e->pixels, var->x, y, color);
-			}
+				ft_put_pixel_winrend(var->e->pixels, var->x, y,
+					filtre(var->s, lux(var->e, pt)));
 			else
 				ft_put_pixel_winrend(var->e->pixels, var->x, y, 0);
 		}

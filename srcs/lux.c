@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 14:56:37 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:11:59 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,21 @@ void		get_color_final(t_env *e, t_inter pt,
 	colorfin->b += 1 * difspec.specular * spot_color.b;
 }
 
+t_color	get_reflect(t_env *e, t_inter pt)
+{
+	int		j;
+	t_vec	i;
+	t_vec	reflect;
+	t_inter	t;
+	//t_color color;
+
+	j = 0;
+	i = normalize_vec(sub_vec(pt.pos, e->obj[pt.nb].pos));
+	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
+	get_closest(e, &t, reflect, pt.pos);
+	return (pt.color_rgb);
+}
+
 double		lux(t_env *e, t_inter pt)
 {
 	t_vec		l;
@@ -75,6 +90,7 @@ double		lux(t_env *e, t_inter pt)
 	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
 	get_texture_pixel(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
 	pt.color_rgb = normalize_color(pt.color_rgb);
+	pt.color_rgb = get_reflect(e, pt);
 	while (difspec.i < e->nb_spot)
 	{
 		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))

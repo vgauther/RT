@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 15:31:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/20 15:59:34 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
+t_vec				v_scale(double c, t_vec *v);
 void				check_define(void);
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
