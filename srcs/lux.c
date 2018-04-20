@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 14:47:43 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:56:37 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ double		lux(t_env *e, t_inter pt)
 
 	colorfin = color_init(0, 0, 0);
 	difspec.i = 0;
+	pt.normal = get_normal(e, pt, e->ca.pos);
 	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
 	get_texture_pixel(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
 	pt.color_rgb = normalize_color(pt.color_rgb);
@@ -80,7 +81,6 @@ double		lux(t_env *e, t_inter pt)
 		{
 			l = normalize_vec(vector_init(e->spot[difspec.i].pos.x - pt.pos.x,
 	e->spot[difspec.i].pos.y - pt.pos.y, e->spot[difspec.i].pos.z - pt.pos.z));
-			pt.normal = get_normal(e, pt, e->spot[difspec.i].pos);
 			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
 			get_color_final(e, pt, difspec, &colorfin);
 		}
