@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 21:49:45 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:57:14 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ typedef struct		s_hud
 {
 	SDL_Surface		*s_back;
 	SDL_Texture		*t_back;
-	SDL_Surface		*s_logo;
-	SDL_Texture		*t_logo;
-	SDL_Rect		r_logo;
+	t_tex_rec		logo;
 	t_print_cam		cam;
 	t_bouton		bouton[17];
 	t_tex_rec		info;

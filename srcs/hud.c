@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 22:07:36 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:57:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,17 @@ void	bloc_work_space(t_env *e, t_sdl *s)
 	print_text(ft_strdup("Workspace"), s->font.color[4], s, &s->hud1.workspace_text);
 }
 
+void	bloc_logo(t_sdl *s)
+{
+	SDL_Surface *surf;
+
+	surf = SDL_LoadBMP("./img_srcs/rtl.bmp");
+	s->hud1.logo.rect = init_sdl_rect(2, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
+	if ((s->hud1.logo.tex = SDL_CreateTextureFromSurface(s->renderer, surf)) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	SDL_FreeSurface(surf);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -263,10 +274,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	init_add_obj_selection_rect(s);
 	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
 		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
-	s->hud1.s_logo = SDL_LoadBMP("./img_srcs/rtl.bmp");
-	s->hud1.r_logo = init_sdl_rect(2, 0, (SIZE_X / 4) - (WIN_X / 100) ,SIZE_Y / 4);
-	if ((s->hud1.t_logo = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_logo)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
+	bloc_logo(s);
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
 		ft_error("MALLOC ERROR");
 	r1 = init_rect(0, 0, WIN_X, WIN_Y);

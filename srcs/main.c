@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 22:02:23 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:59:31 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void	display(t_sdl *s, t_env *e)
 	display_credits(s);
 	while (++i != 17)
 		r[i + 8] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL, &s->hud1.bouton[i].rect);
-	r[24] = SDL_RenderCopy(s->renderer, s->hud1.t_logo, NULL, &s->hud1.r_logo);
+	r[24] = SDL_RenderCopy(s->renderer, s->hud1.logo.tex, NULL, &s->hud1.logo.rect);
 	r[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
 	r[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
 	if ((s->hud1.shape_img.i >= 12 && s->hud1.shape_img.i <= 15) || s->hud1.add_obj == 2)
