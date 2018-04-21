@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:23 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/12 12:42:07 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:21:06 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void		add_sphere(t_env *e, char **sp)
 	e->obj[e->nb].material = ft_atoi(sp[6]);
 	e->obj[e->nb].color = ft_atoi_color(only_color(sp[4]));
 	e->obj[e->nb].type = 1;
+	e->obj[e->nb].num = e->nb;
 }

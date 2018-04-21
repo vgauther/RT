@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:31:27 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/20 15:10:20 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:21:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void		add_plan(t_env *e, char **sp)
 	new->rot = normalize_vec(norm);
 	new->type = 4;
 	e->obj[e->nb] = *new;
+	e->obj[e->nb].num = e->nb;
 	free(new);
 }

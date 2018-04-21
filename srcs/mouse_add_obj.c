@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 00:26:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:25:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 		e->obj[e->nb - 1].rayon_2 = 10 * 10;
 		e->obj[e->nb - 1].angle = 20;
 		e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+		e->obj[e->nb - 1].num = e->nb - 1;
 	}
 	raytracing(e, s);
 }

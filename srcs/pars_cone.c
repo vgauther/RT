@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 14:30:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 15:01:22 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:22:37 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void		add_cone(t_env *e, char **sp)
 	e->obj[e->nb].material = ft_atoi(sp[9]);
 	e->obj[e->nb].color = ft_atoi_color(only_color(sp[4]));
 	e->obj[e->nb].type = 3;
+	e->obj[e->nb].num = e->nb;
 }
