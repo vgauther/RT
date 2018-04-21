@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:16:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:07:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,18 @@ void	init_add_obj_selection_rect(t_sdl *s)
 	SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
 }
 
+void	bloc_work_space(t_env *e, t_sdl *s)
+{
+	t_vec	p1;
+	t_vec 	p2;
+
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X, SIZE_Y / 8);
+	p2 = init_point_2_coord(WIN_X, SIZE_Y / 8);
+	horizontal_trait(p1, p2, CONTRAST, e);
+	s->hud1.workspace_text.rect = init_sdl_rect(COL + SIZE_X, (SIZE_Y - 10) / 16 - 10, COL - 20, 20);
+	print_text(ft_strdup("Workspace"), s->font.color[4], s, &s->hud1.workspace_text);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -265,12 +277,13 @@ void	hud_init(t_sdl *s, t_env *e)
 	bloc_save(e, s);
 	bloc_credits(e, s);
 	bloc_multiplier(e, s);
+	bloc_work_space(e, s);
 	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
 	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);
+	vertical_trait(p1, p2, CONTRAST, e);
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
 	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
-	vertical_trait(p1, p2, WHITE, e);
+	vertical_trait(p1, p2, CONTRAST, e);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());

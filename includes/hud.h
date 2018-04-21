@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:12:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:49:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct		s_hud
 	t_tex_rec		add_obj_data[6];
 	int				box_picked;
 	t_bouton		ok;
+	t_tex_rec		workspace_text;
 }					t_hud;
 
 #endif

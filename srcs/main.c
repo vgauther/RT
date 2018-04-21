@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:37:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/21 22:02:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	display(t_sdl *s, t_env *e)
 	SDL_Rect	rendu_rect;
 	int			*r;
 
-	if (!(r = (int*)malloc(sizeof(int) * 33)))
+	if (!(r = (int*)malloc(sizeof(int) * 34)))
 		ft_error("\nMalloc Error\n");
 	i = -1;
 	SDL_RenderClear(s->renderer);
@@ -157,6 +157,7 @@ void	display(t_sdl *s, t_env *e)
 	r[29] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[0].tex, NULL, &s->hud1.multi_text[0].rect);
 	r[30] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[1].tex, NULL, &s->hud1.multi_text[1].rect);
 	r[31] = SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL, &s->hud1.multi_text[2].rect);
+	r[33] = SDL_RenderCopy(s->renderer, s->hud1.workspace_text.tex, NULL, &s->hud1.workspace_text.rect);
 	if (s->hud1.add_obj == 1)
 		add_obj_selection_display(s, e);
 	if (s->hud1.add_obj == 2)
@@ -166,7 +167,7 @@ void	display(t_sdl *s, t_env *e)
 	else
 		r[32] = 0;
 	i = -1;
-	while (++i < 33)
+	while (++i < 34)
 		if (r[i] < 0)
 			ft_error("\nRender copy Error\n");
 	free(r);
