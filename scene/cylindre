@@ -1,1 +1,1 @@
-cylindre : |10|20|30|0xFFFFFF|20|30|1|3|3|3|
+cylindre 0 0 150 0xFF0000 10 1 0 0 1
