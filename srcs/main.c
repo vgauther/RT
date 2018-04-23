@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 12:13:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:38:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,36 @@ void	init_hud_var(t_sdl *s)
 	s->hud1.ok.i = 17;
 }
 
+void	loading(t_sdl *s, int i)
+{
+	SDL_Surface *surf;
+	SDL_Rect	rect;
+	SDL_Texture *tex;
+
+	if (i == 0)
+	{
+		rect = init_sdl_rect(0, 0, WIN_X - 1, WIN_Y - 1);
+		surf = SDL_LoadBMP("./img_srcs/load1.bmp");
+	}
+	else
+	{
+		rect = init_sdl_rect(0, 0, WIN_X - 1, WIN_Y - 1);
+		surf = SDL_LoadBMP("./img_srcs/load2.bmp");
+	}
+	if (!(tex = SDL_CreateTextureFromSurface(s->renderer, surf)))
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	SDL_RenderCopy(s->renderer, tex, NULL, &rect);
+	SDL_RenderPresent(s->renderer);
+}
+
+void	call_loading(t_sdl *s)
+{
+	loading(s, 0);
+	ft_wait();
+	loading(s, 1);
+	ft_wait();
+}
+
 void	ft_init(t_sdl *s, char *name, t_env *e)
 {
 	char *str;
@@ -42,6 +72,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 		exit(1);
 	if ((s->renderer = SDL_CreateRenderer(s->window, -1, 0)) == NULL)
 		ft_sdl_error("Renderer error : ", SDL_GetError());
+	call_loading(s);
 	if ((s->rendu = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
