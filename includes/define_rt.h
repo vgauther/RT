@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:30:43 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:59:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@
 # define POS_WIN_X 	100
 # define POS_WIN_Y 	100
 # define NB_THREAD	8
+
+# define CAM_POS_X 0
+# define CAM_POS_Y 0
+# define CAM_POS_Z 0
+# define CAM_ROT_X 0
+# define CAM_ROT_Y 0
+# define CAM_ROT_Z 0
 
 #endif

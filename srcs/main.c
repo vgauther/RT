@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:46:17 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:02:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,16 +205,19 @@ void	del_char(t_env *e, t_sdl *s)
 	}
 	else if (s->hud1.box_picked == 3)
 	{
-		e->obj[e->nb - 1].rot.x = (e->obj[e->nb - 1].rot.x - (int)e->obj[e->nb - 1].rot.x % 10) / 10;
+		e->obj[e->nb - 1].rot_to_print.x = (e->obj[e->nb - 1].rot_to_print.x - (int)e->obj[e->nb - 1].rot_to_print.x % 10) / 10;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 4)
 	{
-		e->obj[e->nb - 1].rot.y = (e->obj[e->nb - 1].rot.y - (int)e->obj[e->nb - 1].rot.y % 10) / 10;
+		e->obj[e->nb - 1].rot_to_print.y = (e->obj[e->nb - 1].rot_to_print.y - (int)e->obj[e->nb - 1].rot.y % 10) / 10;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 5)
 	{
-		e->obj[e->nb - 1].rot.z = (e->obj[e->nb - 1].rot.z - (int)e->obj[e->nb - 1].rot.z % 10) / 10;
-	}
+		e->obj[e->nb - 1].rot_to_print.z = (e->obj[e->nb - 1].rot_to_print.z - (int)e->obj[e->nb - 1].rot_to_print.z % 10) / 10;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
+ 	}
 	raytracing(e, s);
 }
 
@@ -308,19 +311,6 @@ void	mouv(long key, t_env *e, t_sdl *s)
 	}
 }
 
-t_cam	init_cam(int x, int y, int z)
-{
-	t_cam c;
-
-	c.pos.x = x;
-	c.pos.y = y;
-	c.pos.z = z;
-	c.rot.x = 0;
-	c.rot.y = 0;
-	c.rot.z = 0;
-	return (c);
-}
-
 int		main(int ac, char **av)
 {
 	t_sdl	s;
@@ -328,7 +318,7 @@ int		main(int ac, char **av)
 	int		r;
 
 	check_define();
-	e.ca = init_cam(0, 0, 0);
+	e.ca = init_cam(CAM_POS_X, CAM_POS_Y, CAM_ROT_Z);
 	if ((r = 1) == 1 && ac != 2)
 		ft_error("\nWrong number of arguments.\n");
 	ft_init(&s, av[1], &e);

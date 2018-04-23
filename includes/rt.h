@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:50:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:03:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
 t_obj				*realloc_obj(t_env *e);
+t_cam				init_cam(int x, int y, int z);
 
 /*
 ** display
