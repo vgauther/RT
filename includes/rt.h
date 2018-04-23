@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/22 14:27:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:49:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ typedef struct		s_obj
 	t_vec			rot;
 	double			angle;
 	double			angletan;
-	int 			num;
+	t_vec			rot_to_print;
+	int				num;
 }					t_obj;
 
 typedef struct		s_env

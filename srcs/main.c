@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:38:10 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:46:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_hud_var(t_sdl *s)
 	s->hud1.shape_img.i = 0;
 	s->hud1.add_obj = 0;
 	s->hud1.box_picked = 42;
+	s->hud1.ok.i = 17;
 }
 
 void	ft_init(t_sdl *s, char *name, t_env *e)
@@ -219,6 +220,7 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 	else if (s->hud1.box_picked == 3)
 	{
 		e->obj[e->nb - 1].rot.x = (e->obj[e->nb - 1].rot.x * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
 	}
 	else if (s->hud1.box_picked == 4)
 	{
@@ -228,6 +230,7 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 	else if (s->hud1.box_picked == 5)
 	{
 		e->obj[e->nb - 1].rot.z = (e->obj[e->nb - 1].rot.z * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
 	}
 	raytracing(e, s);
 }

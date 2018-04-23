@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 23:57:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:44:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,12 +210,12 @@ void	init_add_obj_text_box(t_sdl *s)
 	WIN_Y / 2, COL / 9 * 2, COL / 9);
 	s->hud1.text_box[2] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
 	WIN_Y / 2, COL / 9 * 2, COL / 9);
-	s->hud1.text_box[3] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 2 +
+	s->hud1.text_box[3] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 3 +
 		WIN_Y / 4, COL / 9 * 2, COL / 9);
 	s->hud1.text_box[4] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 4,
-	WIN_Y / 2 + WIN_Y / 4, COL / 9 * 2, COL / 9);
+	WIN_Y / 3 + WIN_Y / 4, COL / 9 * 2, COL / 9);
 	s->hud1.text_box[5] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
-	WIN_Y / 2 + WIN_Y / 4, COL / 9 * 2, COL / 9);
+	WIN_Y / 3 + WIN_Y / 4, COL / 9 * 2, COL / 9);
 	s->hud1.add_obj_data[0].rect = s->hud1.text_box[0];
 	s->hud1.add_obj_data[1].rect = s->hud1.text_box[1];
 	s->hud1.add_obj_data[2].rect = s->hud1.text_box[2];
@@ -300,5 +300,4 @@ void	hud_init(t_sdl *s, t_env *e)
 	s->hud1.color_selector = init_sdl_rect(0 , 0, 999, 999);
 	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/color.bmp");
 	s->hud1.ok.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 2 - 20, WIN_Y - SIZE_Y / 8, 40, 40);
-	s->hud1.ok.i = 17;
 }
