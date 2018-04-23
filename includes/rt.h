@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 22:19:29 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:27:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
 void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
+t_obj				*realloc_obj(t_env *e);
+
 
 /*
 ** tools

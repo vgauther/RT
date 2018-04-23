@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/20 15:30:47 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/22 14:28:24 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ SRC_NAME = 	lux.c \
 			tools_sdl.c \
 			hud_bloc_multiplier.c \
 			trait.c \
-			mouse_selector.c
+			mouse_selector.c \
+			ft_realloc_obj.c
 
 all: $(NAME)
 

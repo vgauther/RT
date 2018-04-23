@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 23:59:31 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:26:54 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,6 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 		ft_error("\nmalloc error\n");
 	parser(name, e);
 	hud_init(s, e);
-}
-
-t_obj	*realloc_obj(t_env *e)
-{
-	t_obj	*new;
-	int		i;
-
-	i = 0;
-	e->nb++;
-	if (!(new = malloc(sizeof(t_obj) * e->nb)))
-		ft_error("malloc error\n");
-	while (i != e->nb - 1)
-	{
-		new[i] = e->obj[i];
-		i++;
-	}
-	free(e->obj);
-	return (new);
 }
 
 void	add_obj_selection_display(t_sdl *s, t_env *e)
