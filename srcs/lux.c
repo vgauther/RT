@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:15:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:28:04 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,8 @@ double		lux(t_env *e, t_inter pt)
 		}
 		difspec.i += 1;
 	}
+	colorfin.r += 0.2 * pt.color_rgb.r;
+	colorfin.g += 0.2 * pt.color_rgb.g;
+	colorfin.b += 0.2 * pt.color_rgb.b;
 	return (rgb_to_int(colorfin));
 }
