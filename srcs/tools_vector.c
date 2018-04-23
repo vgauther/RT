@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:05:50 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:44:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:40:00 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,9 @@ t_vec	normalize_vec(t_vec ret)
 t_vec	sub_vec(t_vec v1, t_vec v2)
 {
 	return (vector_init(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
+}
+
+t_vec	add_vec(t_vec v1, t_vec v2)
+{
+	return (vector_init(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z));
 }

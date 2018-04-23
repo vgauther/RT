@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:49:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:42:03 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,7 @@ void				select_add_spot(char *str, t_env *e);
 */
 
 char				*only_color(char *str);
+t_color				mult_color(t_color a, t_color b);
 int					ft_atoi_color(char *str);
 t_color				split_color(Uint32 full);
 Uint32				rgb_to_int(t_color color);
