@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:22:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/10 12:01:33 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:43:52 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void			init_font(t_sdl *s)
 	creat_sdl_color(s);
 }
 
-void			print_text(char *str, SDL_Color color, t_sdl *s, t_tex_rec *data)
+void			print_text(char *str, SDL_Color color, t_sdl *s,
+	t_tex_rec *data)
 {
 	SDL_Surface		*surface;
 	int				a;
