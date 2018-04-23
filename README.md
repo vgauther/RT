@@ -18,6 +18,7 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Textures
 - Filtre de couleur (ex : sepia, noir et blanc)
 - Lumiere
+- Ecran de chargement
 
 ## En cours [...]
 - Interfaces (vgauther)
@@ -29,7 +30,6 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 
 ## Idées et ameliorations à faire [->]
 - Fusion de scene via l'input (pas compris dans les bonus)
-- Ecran de chargement
 - Parseur ++
 
 ## Objets à faire [obj]
