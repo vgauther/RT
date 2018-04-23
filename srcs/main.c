@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 14:02:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:11:46 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,47 +268,6 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	raytracing(e, s);
-}
-
-void	mouv(long key, t_env *e, t_sdl *s)
-{
-	if (s->hud1.box_picked != 42)
-		remplir_text_box(key, e, s);
-	else
-	{
-		if (key == CAM_LEFT)
-		{
-			print_info(s, e, 1);
-			e->ca.pos.x -= s->hud1.how_much;
-		}
-		if (key == CAM_RIGHT)
-		{
-			print_info(s, e, 1);
-			e->ca.pos.x += s->hud1.how_much;
-		}
-		if (key == CAM_UP)
-		{
-			print_info(s, e, 2);
-			e->ca.pos.y -= s->hud1.how_much;
-		}
-		if (key == CAM_DOWN)
-		{
-			print_info(s, e, 2);
-			e->ca.pos.y += s->hud1.how_much;
-		}
-		if (key == CAM_FOR)
-		{
-			print_info(s, e, 3);
-			e->ca.pos.z += s->hud1.how_much;
-		}
-		if (key == CAM_BACK)
-		{
-			print_info(s, e, 3);
-			e->ca.pos.z -= s->hud1.how_much;
-		}
-		if (do_we_need_to_rt(key))
-			raytracing(e, s);
-	}
 }
 
 int		main(int ac, char **av)

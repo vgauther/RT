@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 14:03:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:14:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
-SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
 void				print_info(t_sdl *s, t_env *e, int i);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
@@ -164,9 +163,6 @@ void				mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
 void				mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
 void				mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
 void				ft_wait(void);
-int					nbr_touch(int key);
-int					do_we_need_to_rt(int t);
-void				quit_sdl_proprely(t_sdl *s);
 void				bloc_multiplier(t_env *e, t_sdl *s);
 t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
 void				print_data_obj(t_sdl *s, t_env *e, int nbr);
@@ -174,6 +170,8 @@ void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
 t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(int x, int y, int z);
+void				mouv(long key, t_env *e, t_sdl *s);
+void				remplir_text_box(int key, t_env *e, t_sdl *s);
 
 /*
 ** display
@@ -206,6 +204,12 @@ void				print_rect(t_rect b, t_env *e, int t, int color);
 
 void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);
+
+SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
+void				quit_sdl_proprely(t_sdl *s);
+
+int					nbr_touch(int key);
+int					do_we_need_to_rt(int t);
 
 /*
 ** text and font
