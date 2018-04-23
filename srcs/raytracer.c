@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/23 17:43:56 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:14:02 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	*threadt(void *param)
 	int				xlim;
 	int				y;
 	Uint32			color;
+	int				depth;
 
 	var = (t_thread_st*)param;
 	xlim = var->x + (SIZE_X / NB_THREAD);
@@ -82,13 +83,14 @@ void	*threadt(void *param)
 		y = 0;
 		while (++y < SIZE_Y)
 		{
+			depth = 0;
 			get_closest(var->e, &pt, calc_dir_vec(var->x, y, var->e),
 			var->e->ca.pos);
 			if (pt.dist != MAX_DIST)
 			{
 				color = lux(var->e, pt);
 				if (var->e->obj[pt.nb].reflex)
-					color = get_reflect(var->e, pt, 0, color);
+					color = get_reflect(var->e, pt, &depth, color);
 				color = filtre(var->s, color);
 				ft_put_pixel_winrend(var->e->pixels, var->x, y, color);
 			}

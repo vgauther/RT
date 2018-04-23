@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:08:03 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:15:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_inter		get_closest_test(t_env *e, t_vec dir, t_vec ori, int t)
 ** R -> New vec to the next direction from the hitted obj
 */
 
-Uint32	get_reflect(t_env *e, t_inter pt, int depth, Uint32 color)
+Uint32	get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
 {
 	t_color		color_rgb;
 	t_color		color_2;
@@ -132,14 +132,15 @@ Uint32	get_reflect(t_env *e, t_inter pt, int depth, Uint32 color)
 	dir_ori = normalize_vec(sub_vec(pt.pos, e->ca.pos));
 	ref = sub_vec(dir_ori, v_scale(2 * dot(dir_ori, pt.normal), &pt.normal));
 	tmp = get_closest_test(e, ref, pt.pos, pt.nb);
-	if (tmp.dist != MAX_DIST && depth < 5)
+	if (tmp.dist != MAX_DIST && *depth < 5)
 	{
 		color_2 = normalize_color(split_color(lux(e, tmp)));
-		/*if (e->obj[tmp.nb].reflex)
+		if (e->obj[tmp.nb].reflex)
 		{
+			*depth += 1;
 			color_2 = mult_color(color_2, normalize_color(
-				split_color(get_reflect(e, tmp, depth++, rgb_to_int(color_2)))));
-		}*/
+				split_color(get_reflect(e, tmp, depth, rgb_to_int(color_2)))));
+		}
 		color_rgb = mult_color(color_rgb, color_2);
 	}
 	return (rgb_to_int(color_rgb));
