@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/22 14:26:54 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:38:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 	else if (s->hud1.box_picked == 4)
 	{
 		e->obj[e->nb - 1].rot.y = (e->obj[e->nb - 1].rot.y * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
 	}
 	else if (s->hud1.box_picked == 5)
 	{

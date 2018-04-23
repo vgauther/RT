@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:24:10 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:36:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 							s->hud1.shape_img.i = 15;
 						}
 						s->hud1.add_obj = 2;
+						e->obj[e->nb - 1].rot = vector_init(1, 0, 0);
+						e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
+						e->obj[e->nb - 1].pos = vector_init(0, 0, 0);
+						e->obj[e->nb - 1].material = 1;
+						e->obj[e->nb - 1].color = RED;
+						e->obj[e->nb - 1].rayon = 10;
+						e->obj[e->nb - 1].rayon_2 = 10 * 10;
+						e->obj[e->nb - 1].angle = 20;
+						e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
+						e->obj[e->nb - 1].num = e->nb - 1;
 					}
 				}
 				i++;
@@ -78,9 +88,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 {
 	int i;
-	int t;
 
-	t = 0;
 	i = -1;
 	while (++i != 6)
 	{
@@ -97,24 +105,10 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 			s->hud1.ok.i = 18;
 			display(s, e);
 			s->hud1.add_obj = 0;
+			s->hud1.ok.i = 17;
 			s->hud1.bouton[16].i = 1;
 			s->hud1.box_picked = 42;
-			t = 42;
 		}
-	}
-	if (t != 42)
-	{
-		e->obj[e->nb - 1].rot = vector_init(1, 0, 0);
-		if (e->obj[e->nb - 1].type == 4)
-			e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
-		e->obj[e->nb - 1].pos = vector_init(0, 0, 0);
-		e->obj[e->nb - 1].material = 1;
-		e->obj[e->nb - 1].color = RED;
-		e->obj[e->nb - 1].rayon = 10;
-		e->obj[e->nb - 1].rayon_2 = 10 * 10;
-		e->obj[e->nb - 1].angle = 20;
-		e->obj[e->nb - 1].angletan = tan((e->obj[e->nb - 1].angle / 2) * RAD);
-		e->obj[e->nb - 1].num = e->nb - 1;
 	}
 	raytracing(e, s);
 }

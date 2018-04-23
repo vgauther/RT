@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 23:57:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:30:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ typedef	struct		s_rect
 	int				hei;
 }					t_rect;
 
+typedef struct		s_token
+{
+	int				add_obj;
+}					t_token;
+
 typedef struct		s_hud
 {
 	SDL_Surface		*s_back;
@@ -95,6 +100,7 @@ typedef struct		s_hud
 	int				box_picked;
 	t_bouton		ok;
 	t_tex_rec		workspace_text;
+	t_token			tok;
 }					t_hud;
 
 #endif
