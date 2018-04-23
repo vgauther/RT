@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/23 14:03:28 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/23 14:12:25 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ SRC_NAME = 	lux.c \
 			mouse_selector.c \
 			ft_realloc_obj.c \
 			display_credits.c \
-			tools_cam.c
+			tools_cam.c \
+			user_key_interaction.c
 
 all: $(NAME)
 

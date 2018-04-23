@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 14:03:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:22:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,15 +138,12 @@ typedef struct		s_thread_st
 
 void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
 t_vec				v_scale(double c, t_vec *v);
-void				check_define(void);
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);
 int					ft_tablen(void **tab);
-void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
 void				open_texture(t_sdl *s);
-SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
 void				print_info(t_sdl *s, t_env *e, int i);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
@@ -157,23 +154,28 @@ t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
 					t_vec v, t_vec ori);
 t_obj				*realloc_obj(t_env *e);
+void				ft_wait(void);
+void				bloc_multiplier(t_env *e, t_sdl *s);
+t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
+void				print_data_obj(t_sdl *s, t_env *e, int nbr);
+t_obj				*realloc_obj(t_env *e);
+t_cam				init_cam(int x, int y, int z);
+void				mouv(long key, t_env *e, t_sdl *s);
+void				remplir_text_box(int key, t_env *e, t_sdl *s);
+
+/*
+** mouse functions
+*/
+
 void				mouse_main_cam(int x, int y, t_sdl *s, t_env *e);
 void				mouse_pipette_color(int x, int y, t_sdl *s, t_env *e);
 void				mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e);
 void				mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e);
 void				mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e);
 void				mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
-void				ft_wait(void);
-int					nbr_touch(int key);
-int					do_we_need_to_rt(int t);
-void				quit_sdl_proprely(t_sdl *s);
-void				bloc_multiplier(t_env *e, t_sdl *s);
-t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
-void				print_data_obj(t_sdl *s, t_env *e, int nbr);
+void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
-t_obj				*realloc_obj(t_env *e);
-t_cam				init_cam(int x, int y, int z);
 
 /*
 ** display
@@ -206,6 +208,12 @@ void				print_rect(t_rect b, t_env *e, int t, int color);
 
 void				ft_free_tab(char **tab);
 int					ft_tablen(void **tab);
+
+SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
+void				quit_sdl_proprely(t_sdl *s);
+
+int					nbr_touch(int key);
+int					do_we_need_to_rt(int t);
 
 /*
 ** text and font
@@ -293,6 +301,8 @@ void				parser_error(int err);
 void				ft_sdl_error(char *msg, const char *error);
 void				ft_error(char *msg);
 t_color				normalize_color(t_color ret);
+
+void				check_define(void);
 
 /*
 ** trait.c
