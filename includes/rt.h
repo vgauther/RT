@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:48:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:50:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,6 @@ void				check_define(void);
 double				toon(t_env *e, t_inter pt);
 int					check_value(char *nbr);
 void				display(t_sdl *s, t_env *e);
-double				lux(t_env *e, t_inter pt);
-int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 int					ft_tablen(void **tab);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
@@ -181,6 +179,13 @@ t_obj				*realloc_obj(t_env *e);
 */
 
 void				display_credits(t_sdl *s);
+
+/*
+** lux light lumiere
+*/
+
+double				lux(t_env *e, t_inter pt);
+int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
 
 /*
 ** tools
