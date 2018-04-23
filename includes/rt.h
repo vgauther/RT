@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:42:03 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:48:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,11 @@ void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
 t_obj				*realloc_obj(t_env *e);
 
+/*
+** display
+*/
+
+void				display_credits(t_sdl *s);
 
 /*
 ** tools

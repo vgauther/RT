@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:38:02 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:46:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,31 @@ void	add_obj_selection_display(t_sdl *s, t_env *e)
 	SDL_RenderCopy(s->renderer, s->tex[15], NULL, &s->hud1.r_add_obj[3]);
 }
 
+void 	add_obj_print_text(t_sdl *s, t_env *e, int nb)
+{
+	print_text(ft_itoa(e->obj[nb].pos.x), s->font.color[1], s,
+	&s->hud1.add_obj_data[0]);
+	print_text(ft_itoa(e->obj[nb].pos.y), s->font.color[1], s,
+	&s->hud1.add_obj_data[1]);
+	print_text(ft_itoa(e->obj[nb].pos.z), s->font.color[1], s,
+	&s->hud1.add_obj_data[2]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.x), s->font.color[1], s,
+	&s->hud1.add_obj_data[3]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.y), s->font.color[1], s,
+	&s->hud1.add_obj_data[4]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.z), s->font.color[1], s,
+	&s->hud1.add_obj_data[5]);
+}
+
 void	add_obj_menu(t_sdl *s, t_env *e, int nb)
 {
+	add_obj_print_text(s, e, nb);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[0]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[1]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[2]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[3]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[4]);
 	SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.text_box[5]);
-	print_text(ft_itoa(e->obj[nb].pos.x), s->font.color[1], s, &s->hud1.add_obj_data[0]);
-	print_text(ft_itoa(e->obj[nb].pos.y), s->font.color[1], s, &s->hud1.add_obj_data[1]);
-	print_text(ft_itoa(e->obj[nb].pos.z), s->font.color[1], s, &s->hud1.add_obj_data[2]);
-	print_text(ft_itoa(e->obj[nb].rot_to_print.x), s->font.color[1], s, &s->hud1.add_obj_data[3]);
-	print_text(ft_itoa(e->obj[nb].rot_to_print.y), s->font.color[1], s, &s->hud1.add_obj_data[4]);
-	print_text(ft_itoa(e->obj[nb].rot_to_print.z), s->font.color[1], s, &s->hud1.add_obj_data[5]);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[0].tex, NULL, &s->hud1.add_obj_data[0].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[1].tex, NULL, &s->hud1.add_obj_data[1].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[2].tex, NULL, &s->hud1.add_obj_data[2].rect);
@@ -120,16 +131,6 @@ void	add_obj_menu(t_sdl *s, t_env *e, int nb)
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[4].tex, NULL, &s->hud1.add_obj_data[4].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[5].tex, NULL, &s->hud1.add_obj_data[5].rect);
 	SDL_RenderCopy(s->renderer, s->tex[s->hud1.ok.i], NULL, &s->hud1.ok.rect);
-}
-
-void	display_credits(t_sdl *s)
-{
-	if ((SDL_RenderCopy(s->renderer, s->hud1.credits.title.tex, NULL,
-		&s->hud1.credits.title.rect)) < 0)
-		ft_error("\nRender copy Error\n");
-	if ((SDL_RenderCopy(s->renderer, s->hud1.credits.names.tex, NULL,
-		&s->hud1.credits.names.rect)) < 0)
-		ft_error("\nRender copy Error\n");
 }
 
 void	display(t_sdl *s, t_env *e)
