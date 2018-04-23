@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 15:30:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:18:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	save_bouton(int x, int y, t_sdl *s, t_env *e)
 	{
 		if (SIZE_Y / 17 <= y && y <= SIZE_Y / 12)
 		{
-			r1 = init_rect(SIZE_X / 4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6, SIZE_Y / 17,
-				(SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
+			r1 = init_rect(COL4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6,
+			SIZE_Y / 17, (SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
 			print_rect(r1, e, 1, RED);
 			s->hud1.s_back->pixels = e->hud;
 			if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer,
@@ -75,11 +75,13 @@ void	mouse_multi(int x, int y, t_sdl *s, t_env *e)
 	int i;
 
 	i = 0;
-	if (x >= s->hud1.multi_bouton[0].x && x <= s->hud1.multi_bouton[0].x + s->hud1.multi_bouton[0].w)
+	if (x >= s->hud1.multi_bouton[0].x && x <= s->hud1.multi_bouton[0].x +
+		s->hud1.multi_bouton[0].w)
 	{
 		while (i != 3)
 		{
-			if (y >= s->hud1.multi_bouton[i].y && y <= s->hud1.multi_bouton[i].y + s->hud1.multi_bouton[i].h)
+			if (y >= s->hud1.multi_bouton[i].y && y <=
+				s->hud1.multi_bouton[i].y + s->hud1.multi_bouton[i].h)
 			{
 				(i == 0) ? s->hud1.how_much = 10 : 0;
 				(i == 1) ? s->hud1.how_much = 1 : 0;

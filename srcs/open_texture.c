@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:50:20 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:19:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-SDL_Surface		**open_texture2(void)
+static SDL_Surface		**open_texture2(void)
 {
 	SDL_Surface **surfac;
 
@@ -40,7 +40,7 @@ SDL_Surface		**open_texture2(void)
 	return (surfac);
 }
 
-void	open_texture(t_sdl *s)
+void					open_texture(t_sdl *s)
 {
 	SDL_Surface	**surfac;
 	int			i;

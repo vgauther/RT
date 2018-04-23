@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:14:20 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:31:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,9 @@ void				init_is_neg(t_env *e);
 void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
 void				ornement(SDL_Rect p, int color, int size, t_env *e);
 void				empty_rect(t_rect b, t_env *e, int t, int color);
+void				add_obj_menu(t_sdl *s, t_env *e, int nb);
+void				add_obj_selection_display(t_sdl *s);
+void				del_char(t_env *e, t_sdl *s, int n);
 
 /*
 ** bloc hud
