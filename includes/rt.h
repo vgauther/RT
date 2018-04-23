@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 14:59:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 16:23:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct		s_obj
 	t_vec			rot_to_print;
 	int				num;
 	int				reflex;
+	int				is_neg[6];
 }					t_obj;
 
 typedef struct		s_env
@@ -163,6 +164,7 @@ t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(int x, int y, int z);
 void				mouv(long key, t_env *e, t_sdl *s);
 void				remplir_text_box(int key, t_env *e, t_sdl *s);
+void				init_is_neg(t_env *e);
 
 /*
 ** mouse functions
