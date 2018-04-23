@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 23:21:16 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:03:30 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-static void	  mouse_cam_rot2(int i, t_sdl *s, t_env *e)
+static void		mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 {
 	if (i >= 9 && i < 12)
 	{
@@ -41,7 +41,7 @@ static void	  mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 	raytracing(e, s);
 }
 
-static void	  mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
+static void		mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	int i;
 
@@ -59,7 +59,7 @@ static void	  mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	}
 }
 
-static void	  mouse_cam_trans2(int i, t_sdl *s, t_env *e)
+static void		mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 {
 	if (i > 2 && i < 6)
 	{
@@ -88,7 +88,7 @@ static void	  mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 	raytracing(e, s);
 }
 
-static void	  mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
+static void		mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	int i;
 
@@ -106,8 +106,8 @@ static void	  mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	}
 }
 
-void        mouse_main_cam(int x, int y, t_sdl *s, t_env *e)
+void			mouse_main_cam(int x, int y, t_sdl *s, t_env *e)
 {
-  mouse_cam_trans(x, y, s, e);
-  mouse_cam_rot(x, y, s, e);
+	mouse_cam_trans(x, y, s, e);
+	mouse_cam_rot(x, y, s, e);
 }
