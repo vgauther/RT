@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:31:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:36:31 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,8 @@ void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
 */
 
 void				display_credits(t_sdl *s);
+void				display_cam(t_sdl *s);
+void				display_multi_text(t_sdl *s);
 
 /*
 ** lux light lumiere

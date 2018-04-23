@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:20:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 15:30:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:41:44 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	print_data_obj(t_sdl *s, t_env *e, int nbr)
+void			print_data_obj(t_sdl *s, t_env *e, int nbr)
 {
 	if (e->obj[nbr].type == 1)
 		s->hud1.shape_img.i = 12;
@@ -25,7 +25,18 @@ void	print_data_obj(t_sdl *s, t_env *e, int nbr)
 	display(s, e);
 }
 
-void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
+static t_inter	mouse_save_tmp(t_inter tmp, int nbr)
+{
+	t_inter pt;
+
+	pt.dist = tmp.dist;
+	pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
+	pt.normal = tmp.normal;
+	pt.nb = nbr;
+	return (pt);
+}
+
+void			mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 {
 	int			nbr;
 	t_inter		pt;
@@ -45,12 +56,7 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 				dir = normalize_vec(dir);
 				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
 				if (tmp.dist < pt.dist && tmp.dist > 0)
-				{
-					pt.dist = tmp.dist;
-					pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
-					pt.normal = tmp.normal;
-					pt.nb = nbr;
-				}
+					pt = mouse_save_tmp(tmp, nbr);
 			}
 			if (pt.dist != MAX_DIST && s->hud1.selectobj)
 				print_data_obj(s, e, pt.nb);
@@ -58,7 +64,7 @@ void	mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
-void	mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
+void			mouse_selector_activate(int x, int y, t_sdl *s, t_env *e)
 {
 	if (x >= SIZE_X / 4 + 60 && x <= SIZE_X / 4 + 100)
 	{
