@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:09:20 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:11:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ t_obj	*realloc_obj(t_env *e)
 	e->nb++;
 	if (!(new = (t_obj *)malloc(sizeof(t_obj) * e->nb)))
 		ft_error("malloc error\n");
-	printf("%d\n", e->nb);
 	while (i != e->nb - 1)
 	{
 		if (e->obj[i].type == 2)
@@ -98,8 +97,7 @@ t_obj	*realloc_obj(t_env *e)
 		else if (e->obj[i].type == 1)
 			new[i] = realloc_sphere(e, i);
 		else
-			printf("error\n");
-		printf("%d\n", i);
+			ft_error("realloc error\n");
 		i++;
 	}
 	free(e->obj);
