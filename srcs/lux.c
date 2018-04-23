@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 21:36:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:12:42 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,46 @@ void		get_color_final(t_env *e, t_inter pt,
 	colorfin->b += 1 * difspec.specular * spot_color.b;
 }
 
+void		get_closest_test(t_env *e, t_inter *pt, t_vec dir, t_vec ori, int t)
+{
+	int		nbr;
+	t_inter	tmp;
+
+	nbr = 0;
+	pt->dist = MAX_DIST;
+	while (nbr < e->nb)
+	{
+		tmp = shape_redirection(e, dir, ori, nbr);
+		if (tmp.dist < pt->dist && tmp.dist > 0 && t != nbr)
+		{
+			pt->dist = tmp.dist;
+			pt->pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
+			pt->normal = tmp.normal;
+			pt->nb = nbr;
+		}
+		nbr++;
+	}
+}
+
 t_color	get_reflect(t_env *e, t_inter pt)
 {
 	int		j;
 	t_vec	i;
 	t_vec	reflect;
 	t_inter	t;
-	//t_color color;
+	t_color color;
 
 	j = 0;
 	i = normalize_vec(sub_vec(pt.pos, e->ca.pos));
 	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
-	get_closest(e, &t, reflect, pt.pos);
-//	if (t.dist != MAX_DIST)
-	//	printf("%f %f %f\n", reflect.x, reflect.y, reflect.z);
+	get_closest_test(e, &t, reflect, pt.pos, pt.nb);
+	if (t.dist != MAX_DIST)
+	{
+		color = e->obj[t.nb].material == 2 ? split_color(
+		get_texture_pixel(e, t, e->obj[t.nb])) : split_color(e->obj[t.nb].color);
+		color = normalize_color(color);
+		pt.color_rgb = mult_color(pt.color_rgb, color);
+	}
 	return (pt.color_rgb);
 }
 
