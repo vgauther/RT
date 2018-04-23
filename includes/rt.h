@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 17:54:56 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:57:21 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,6 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
-Uint32				get_reflect(t_env *e, t_inter pt, int depth,
-	Uint32 color_1);
 void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
 t_vec				v_scale(double c, t_vec *v);
 double				toon(t_env *e, t_inter pt);
@@ -165,8 +163,9 @@ void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(int x, int y, int z);
 void				mouv(long key, t_env *e, t_sdl *s);
-void				remplir_text_box(int key, t_env *e, t_sdl *s);
 void				init_is_neg(t_env *e);
+void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
+
 
 /*
 ** mouse functions
