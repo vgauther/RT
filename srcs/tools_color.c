@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:44:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 12:07:24 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:39:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,6 @@ char		*only_color(char *str)
 	}
 	ret[x] = 0;
 	return (ret);
-}
-
-t_color		normalize_color(t_color in)
-{
-	in.r /= 255;
-	in.g /= 255;
-	in.b /= 255;
-	return (in);
-}
-
-t_color		color_init(double r, double g, double b)
-{
-	t_color color;
-
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
 }
 
 t_color		mult_color(t_color a, t_color b)
