@@ -7,8 +7,8 @@ sphere -50 0 100 0xff0000 10 2
 
 plan 0 0 200 0xFFFFFF 0 0 1
 plan -80 0 0 0xFF00FF 1 0 0
-plan 80 0 0 0xFFFFFF 1 0 0
-plan 0 -50 200 0xFFFFFF 0 -1 0
+plan 80 0 0 0x00FF00 1 0 0
+plan 0 -50 200 0x00FF00 0 -1 0
 plan 0 50 200 0xFFFFFF 0 -1 0
 
 spot 0 0 0 0xffffff 0 0 0

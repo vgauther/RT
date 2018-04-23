@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/22 15:41:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:09:20 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ t_obj	realloc_plan(t_env *e, int i)
 
 	ret.pos = init_point(e->obj[i].pos.x, e->obj[i].pos.y, e->obj[i].pos.z);
 	ret.color = e->obj[i].color;
-	ret.rot = e->obj[i].rot;
+	ret.rot.x = e->obj[i].rot.x;
+	ret.rot.y = e->obj[i].rot.y;
+	ret.rot.z = e->obj[i].rot.z;
+	ret.material = e->obj[i].material;
 	ret.type = 4;
 	ret.num = e->obj[i].num;
 	return (ret);
@@ -81,8 +84,9 @@ t_obj	*realloc_obj(t_env *e)
 
 	i = 0;
 	e->nb++;
-	if (!(new = malloc(sizeof(t_obj) * e->nb)))
+	if (!(new = (t_obj *)malloc(sizeof(t_obj) * e->nb)))
 		ft_error("malloc error\n");
+	printf("%d\n", e->nb);
 	while (i != e->nb - 1)
 	{
 		if (e->obj[i].type == 2)
@@ -93,6 +97,9 @@ t_obj	*realloc_obj(t_env *e)
 			new[i] = realloc_plan(e, i);
 		else if (e->obj[i].type == 1)
 			new[i] = realloc_sphere(e, i);
+		else
+			printf("error\n");
+		printf("%d\n", i);
 		i++;
 	}
 	free(e->obj);
