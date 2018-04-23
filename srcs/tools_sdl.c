@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:35:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 23:35:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:41:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	quit_sdl_proprely(t_sdl *s)
+void		quit_sdl_proprely(t_sdl *s)
 {
 	SDL_DestroyWindow(s->window);
 	TTF_Quit();

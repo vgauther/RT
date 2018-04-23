@@ -6,18 +6,18 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 19:03:54 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:49:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	open_texture(t_sdl *s)
+SDL_Surface		**open_texture2(void)
 {
-	SDL_Surface	*surfac[19];
-	int			i;
+	SDL_Surface **surfac;
 
-	i = -1;
+	if (!(surfac = malloc(sizeof(SDL_Surface *) * 19)))
+		ft_error("\n MALLOC ERROR : open_texture2\n\n");
 	surfac[0] = SDL_LoadBMP("./img_srcs/-.bmp");
 	surfac[1] = SDL_LoadBMP("./img_srcs/+.bmp");
 	surfac[2] = SDL_LoadBMP("./img_srcs/-2.bmp");
@@ -37,10 +37,21 @@ void	open_texture(t_sdl *s)
 	surfac[16] = SDL_LoadBMP("./img_srcs/color.bmp");
 	surfac[17] = SDL_LoadBMP("./img_srcs/ok.bmp");
 	surfac[18] = SDL_LoadBMP("./img_srcs/ok2.bmp");
+	return (surfac);
+}
+
+void	open_texture(t_sdl *s)
+{
+	SDL_Surface	**surfac;
+	int			i;
+
+	i = -1;
+	surfac = open_texture2();
 	while (++i < 19)
 	{
 		if (!(s->tex[i] = SDL_CreateTextureFromSurface(s->renderer, surfac[i])))
 			ft_sdl_error("Texture error : ", SDL_GetError());
 		SDL_FreeSurface(surfac[i]);
 	}
+	free(surfac);
 }
