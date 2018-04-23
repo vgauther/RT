@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 15:36:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 15:58:34 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,21 +124,56 @@ void	display_multi_text(t_sdl *s)
 	if ((SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL,
 		&s->hud1.multi_text[2].rect)) < 0)
 		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((SDL_RenderCopy(s->renderer, s->tex[0], NULL,
+		&s->hud1.multi_bouton[s->hud1.multi])) < 0)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+}
+
+void	display_work_space(t_sdl *s, t_env *e)
+{
+	if ((s->hud1.shape_img.i >= 12 && s->hud1.shape_img.i <= 15) ||
+	s->hud1.add_obj == 2)
+	{
+		if ((SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL,
+			&s->hud1.shape_img.rect)) < 0)
+			ft_sdl_error("Texture error : ", SDL_GetError());
+	}
+	if (s->hud1.add_obj == 1)
+		add_obj_selection_display(s);
+	if (s->hud1.add_obj == 2)
+		add_obj_menu(s, e, e->nb - 1);
+}
+
+void	display_pipette(t_sdl *s)
+{
+	if (s->hud1.pipette == 1)
+	{
+		if ((SDL_RenderCopy(s->renderer, s->tex[16], NULL,
+			&s->hud1.color_selector)) < 0)
+			ft_sdl_error("Texture error : ", SDL_GetError());
+	}
+}
+
+void	display_hud(t_sdl *s, t_env *e)
+{
+	SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);
+	SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
+	SDL_RenderCopy(s->renderer, s->hud1.logo.tex, NULL, &s->hud1.logo.rect);
+	SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
+	SDL_RenderCopy(s->renderer, s->hud1.workspace_text.tex, NULL,
+		&s->hud1.workspace_text.rect);
+	display_pipette(s);
+	display_work_space(s, e);
+	display_cam(s);
+	display_credits(s);
+	display_all_bouton(s);
+	display_multi_text(s);
 }
 
 void	display(t_sdl *s, t_env *e)
 {
-	int			i;
 	SDL_Rect	rendu_rect;
-	int			*r;
 
-	if (!(r = (int*)malloc(sizeof(int) * 34)))
-		ft_error("\nMalloc Error\n");
-	i = -1;
-	while (++i < 33)
-	{
-		r[i] = 0;
-	}
 	SDL_RenderClear(s->renderer);
 	recup_cam_to_print(s, e);
 	s->rendu->pixels = e->pixels;
@@ -146,34 +181,8 @@ void	display(t_sdl *s, t_env *e)
 	if ((s->texture = SDL_CreateTextureFromSurface(s->renderer, s->rendu))
 			== NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	r[0] = SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);
-	display_cam(s);
-	r[8] = SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
-	display_credits(s);
-	display_all_bouton(s);
-	display_multi_text(s);
-	r[24] = SDL_RenderCopy(s->renderer, s->hud1.logo.tex, NULL, &s->hud1.logo.rect);
-	r[25] = SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect);
-	r[26] = SDL_RenderCopy(s->renderer, s->hud1.save.tex, NULL, &s->hud1.save.rect);
-	if ((s->hud1.shape_img.i >= 12 && s->hud1.shape_img.i <= 15) || s->hud1.add_obj == 2)
-		r[27] = SDL_RenderCopy(s->renderer, s->tex[s->hud1.shape_img.i], NULL, &s->hud1.shape_img.rect);
-	else
-		r[27] = 0;
-	r[28] = SDL_RenderCopy(s->renderer, s->tex[0], NULL, &s->hud1.multi_bouton[s->hud1.multi]);
-	r[33] = SDL_RenderCopy(s->renderer, s->hud1.workspace_text.tex, NULL, &s->hud1.workspace_text.rect);
-	if (s->hud1.add_obj == 1)
-		add_obj_selection_display(s);
-	if (s->hud1.add_obj == 2)
-		add_obj_menu(s, e, e->nb - 1);
-	if (s->hud1.pipette == 1)
-		r[32] = SDL_RenderCopy(s->renderer, s->tex[16], NULL, &s->hud1.color_selector);
-	else
-		r[32] = 0;
-
-	i = -1;
-	while (++i < 34)
-		if (r[i] < 0)
-			ft_error("\nRender copy Error\n");
-	free(r);
+	display_hud(s, e);
+	if ((SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect)) < 0)
+		ft_sdl_error("Texture error : ", SDL_GetError());
 	SDL_RenderPresent(s->renderer);
 }
