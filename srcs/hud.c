@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:44:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:15:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ void	ornement(SDL_Rect p, int color, int size, t_env *e)
 
 void	bloc_save(t_env *e, t_sdl *s)
 {
-	t_vec p1;
-	t_vec p2;
+	t_vec 	p1;
+	t_vec 	p2;
 	t_rect	r1;
 
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, 0);

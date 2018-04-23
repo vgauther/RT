@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:41 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 17:38:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:25:29 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s, int n)
 	int y;
 
 	(void)n;
-	y = 1;
+	y = 10;
 	if (key == 42)
 	{
 		del_char(e, s, n);
@@ -112,32 +112,33 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s, int n)
 	{
 		neg_gestion(e, s, n);
 		x = 0;
+		y = 1;
 	}
 	if (s->hud1.box_picked == 0)
 	{
-		e->obj[n].pos.x = fabs((e->obj[n].pos.x * 10) + x) * e->obj[n].is_neg[0];
+		e->obj[n].pos.x = (fabs(e->obj[n].pos.x * y) + x) * e->obj[n].is_neg[0];
 	}
 	else if (s->hud1.box_picked == 1)
 	{
-		e->obj[n].pos.y = fabs((e->obj[n].pos.y * 10) + x) * e->obj[n].is_neg[1];
+		e->obj[n].pos.y = (fabs(e->obj[n].pos.y * y) + x) * e->obj[n].is_neg[1];
 	}
 	else if (s->hud1.box_picked == 2)
 	{
-		e->obj[n].pos.z = fabs((e->obj[n].pos.z * 10) + x) * e->obj[n].is_neg[2];
+		e->obj[n].pos.z = (fabs(e->obj[n].pos.z * y) + x) * e->obj[n].is_neg[2];
 	}
 	else if (s->hud1.box_picked == 3)
 	{
-		e->obj[n].rot_to_print.x = fabs((e->obj[n].rot_to_print.x * 10) + x) * e->obj[n].is_neg[3];
+		e->obj[n].rot_to_print.x = (fabs(e->obj[n].rot_to_print.x * y) + x) * e->obj[n].is_neg[3];
 		e->obj[n].rot = normalize_vec(e->obj[n].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 4)
 	{
-		e->obj[n].rot_to_print.y = fabs((e->obj[n].rot_to_print.y * 10) + x) * e->obj[n].is_neg[4];
+		e->obj[n].rot_to_print.y = (fabs(e->obj[n].rot_to_print.y * y) + x) * e->obj[n].is_neg[4];
 		e->obj[n].rot = normalize_vec(e->obj[n].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 5)
 	{
-		e->obj[n].rot_to_print.z = fabs((e->obj[n].rot_to_print.z * 10) + x) * e->obj[n].is_neg[5];
+		e->obj[n].rot_to_print.z = (fabs(e->obj[n].rot_to_print.z * y) + x) * e->obj[n].is_neg[5];
 		e->obj[n].rot = normalize_vec(e->obj[n].rot_to_print);
 	}
 	raytracing(e, s);
