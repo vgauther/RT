@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/23 18:40:16 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/23 19:11:32 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,9 @@ SRC_NAME = 	lux.c \
 			user_key_interaction.c \
 			display.c \
 			text_box_add_obj.c \
-			tools_color2.c
+			tools_color2.c \
+			hud_draw.c \
+			hud_bloc_credits_save_logo_cam.c
 
 all: $(NAME)
 

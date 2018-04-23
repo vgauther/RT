@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:14:16 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:14:20 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,17 @@ t_cam				init_cam(int x, int y, int z);
 void				mouv(long key, t_env *e, t_sdl *s);
 void				init_is_neg(t_env *e);
 void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
+void				ornement(SDL_Rect p, int color, int size, t_env *e);
+void				empty_rect(t_rect b, t_env *e, int t, int color);
+
+/*
+** bloc hud
+*/
+
+void				bloc_save(t_env *e, t_sdl *s);
+void				bloc_credits(t_env *e, t_sdl *s);
+void				bloc_logo(t_sdl *s);
+void				bloc_camera(t_env *e, t_sdl *s);
 
 /*
 ** mouse functions

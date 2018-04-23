@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:04:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:52:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define SIZE_X_2 	500
 # define SIZE_Y_2 	300
 # define COL		(SIZE_X / 4 + 10)
+# define COL4		(SIZE_X / 4)
 # define LINE		(SIZE_Y / 8)
 # define WIN_X 		(SIZE_X + SIZE_X_2)
 # define WIN_Y 		(SIZE_Y + SIZE_Y_2 / 2)

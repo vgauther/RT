@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:19:34 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 00:19:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:08:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ void	bloc_multiplier(t_env *e, t_sdl *s)
 	s->hud1.multi = 1;
 	s->hud1.how_much = 1;
 	print_text(ft_strdup("+ 1"), s->font.color[1], s, &s->hud1.multi_text[1]);
-	s->hud1.multi_text[0].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
-	WIN_Y / 2 + WIN_Y / 4 + 5 , ((SIZE_X / 4 + 10) / 9), (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi_text[0].rect = init_sdl_rect(COL / 8 + 5 + (COL / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5, (COL / 9), COL / 9 - 10);
 	print_text(ft_strdup("+ 10"), s->font.color[1], s, &s->hud1.multi_text[0]);
-	s->hud1.multi_text[1].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
-	WIN_Y / 2 + WIN_Y / 4 + 5 - ((SIZE_X / 4 + 10) / 9)
-	* 1.5, ((SIZE_X / 4 + 10) / 9 - 10), (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi_text[1].rect = init_sdl_rect(COL / 8 + 5 + (COL / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5 - (COL / 9) * 1.5, (COL / 9 - 10), COL / 9 - 10);
 	print_text(ft_strdup("+ 100"), s->font.color[1], s, &s->hud1.multi_text[2]);
-	s->hud1.multi_text[2].rect = init_sdl_rect((SIZE_X / 4 + 10) / 8 + 5 + ((SIZE_X / 4 + 10) / 9 - 10) * 2,
-	WIN_Y / 2 + WIN_Y / 4 + 5 + ((SIZE_X / 4 + 10) / 9)
-	* 1.5, ((SIZE_X / 4 + 10) / 9 + 10), (SIZE_X / 4 + 10) / 9 - 10);
+	s->hud1.multi_text[2].rect = init_sdl_rect(COL / 8 + 5 + (COL / 9 - 10) * 2,
+	WIN_Y / 2 + WIN_Y / 4 + 5 + (COL / 9) * 1.5, (COL / 9 + 10), COL / 9 - 10);
 }
