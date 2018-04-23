@@ -6,9 +6,9 @@
 spot 0 -500 -500 0xffffff 0 0 0
 //spot -50 0 0 0xffffff 0 0 0
 //spot 0 100 0 0xffffff 0 0 0
-sphere 0 0 50 0x0000ff 5 2
+sphere 0 0 50 0x0000ff 5 2 1
 //sphere 0 50 100 0x0000ff 20 1
 
-cone 0 0 50 0xFFFF00 20 -1 -1 0 1
-cylindre 0 0 100 0x00FF00 20 0 1 0 1
+cone 0 0 50 0xFFFF00 20 -1 -1 0 1 1
+cylindre 0 0 100 0x00FF00 20 0 1 0 1 1
 //cylindre 0 0 0 0x0000FF 20 0 0 1 1
