@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:46:17 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 12:13:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	add_obj_menu(t_sdl *s, t_env *e, int nb)
 	print_text(ft_itoa(e->obj[nb].pos.x), s->font.color[1], s, &s->hud1.add_obj_data[0]);
 	print_text(ft_itoa(e->obj[nb].pos.y), s->font.color[1], s, &s->hud1.add_obj_data[1]);
 	print_text(ft_itoa(e->obj[nb].pos.z), s->font.color[1], s, &s->hud1.add_obj_data[2]);
-	print_text(ft_itoa(e->obj[nb].rot.x), s->font.color[1], s, &s->hud1.add_obj_data[3]);
-	print_text(ft_itoa(e->obj[nb].rot.y), s->font.color[1], s, &s->hud1.add_obj_data[4]);
-	print_text(ft_itoa(e->obj[nb].rot.z), s->font.color[1], s, &s->hud1.add_obj_data[5]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.x), s->font.color[1], s, &s->hud1.add_obj_data[3]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.y), s->font.color[1], s, &s->hud1.add_obj_data[4]);
+	print_text(ft_itoa(e->obj[nb].rot_to_print.z), s->font.color[1], s, &s->hud1.add_obj_data[5]);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[0].tex, NULL, &s->hud1.add_obj_data[0].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[1].tex, NULL, &s->hud1.add_obj_data[1].rect);
 	SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[2].tex, NULL, &s->hud1.add_obj_data[2].rect);
@@ -219,18 +219,18 @@ void	remplir_text_box(int key, t_env *e, t_sdl *s)
 	}
 	else if (s->hud1.box_picked == 3)
 	{
-		e->obj[e->nb - 1].rot.x = (e->obj[e->nb - 1].rot.x * 10 + x) * y;
-		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
+		e->obj[e->nb - 1].rot_to_print.x = (e->obj[e->nb - 1].rot_to_print.x * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 4)
 	{
-		e->obj[e->nb - 1].rot.y = (e->obj[e->nb - 1].rot.y * 10 + x) * y;
-		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
+		e->obj[e->nb - 1].rot_to_print.y = (e->obj[e->nb - 1].rot_to_print.y * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	else if (s->hud1.box_picked == 5)
 	{
-		e->obj[e->nb - 1].rot.z = (e->obj[e->nb - 1].rot.z * 10 + x) * y;
-		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
+		e->obj[e->nb - 1].rot_to_print.z = (e->obj[e->nb - 1].rot_to_print.z * 10 + x) * y;
+		e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot_to_print);
 	}
 	raytracing(e, s);
 }

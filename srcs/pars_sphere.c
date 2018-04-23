@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:23 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/21 22:21:06 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 12:02:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,7 @@ void		add_sphere(t_env *e, char **sp)
 	e->obj[e->nb].color = ft_atoi_color(only_color(sp[4]));
 	e->obj[e->nb].type = 1;
 	e->obj[e->nb].num = e->nb;
+	e->obj[e->nb].rot = vector_init(0, 0, 0);
+	e->obj[e->nb].rot = normalize_vec(e->obj[e->nb].rot);
+	e->obj[e->nb].rot_to_print = e->obj[e->nb].rot;
 }

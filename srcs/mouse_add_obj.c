@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:36:36 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 12:07:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						}
 						s->hud1.add_obj = 2;
 						e->obj[e->nb - 1].rot = vector_init(1, 0, 0);
+						e->obj[e->nb - 1].rot_to_print = e->obj[e->nb - 1].rot;
 						e->obj[e->nb - 1].rot = normalize_vec(e->obj[e->nb - 1].rot);
 						e->obj[e->nb - 1].pos = vector_init(0, 0, 0);
 						e->obj[e->nb - 1].material = 1;

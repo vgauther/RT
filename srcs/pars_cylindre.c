@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 14:30:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/21 22:21:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 12:02:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		add_cylindre(t_env *e, char **sp)
 	e->obj[e->nb].rot.x = ft_atoi(sp[6]);
 	e->obj[e->nb].rot.y = ft_atoi(sp[7]);
 	e->obj[e->nb].rot.z = ft_atoi(sp[8]);
+	e->obj[e->nb].rot_to_print = e->obj[e->nb].rot;
 	e->obj[e->nb].rot = normalize_vec(e->obj[e->nb].rot);
 	e->obj[e->nb].material = ft_atoi(sp[9]);
 	e->obj[e->nb].color = ft_atoi_color(only_color(sp[4]));

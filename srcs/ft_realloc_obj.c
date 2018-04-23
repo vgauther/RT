@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 11:17:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 12:11:07 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ t_obj	realloc_sphere(t_env *e, int i)
 	ret.color = e->obj[i].color;
 	ret.type = 1;
 	ret.num = e->obj[i].num;
+	ret.rot.x = e->obj[i].rot.x;
+	ret.rot.y = e->obj[i].rot.y;
+	ret.rot.z = e->obj[i].rot.z;
+	ret.rot = normalize_vec(ret.rot);
+	ret.rot_to_print = e->obj[i].rot_to_print;
 	return (ret);
 }
 
@@ -38,6 +43,7 @@ t_obj	realloc_plan(t_env *e, int i)
 	ret.material = e->obj[i].material;
 	ret.type = 4;
 	ret.num = e->obj[i].num;
+	ret.rot_to_print = e->obj[i].rot_to_print;
 	return (ret);
 }
 
@@ -56,6 +62,7 @@ t_obj	realloc_cone(t_env *e, int i)
 	ret.color = e->obj[i].color;
 	ret.type = 3;
 	ret.num = e->obj[i].num;
+	ret.rot_to_print = e->obj[i].rot_to_print;
 	return (ret);
 }
 
@@ -69,6 +76,7 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	ret.rot.x = e->obj[i].rot.x;
 	ret.rot.y = e->obj[i].rot.y;
 	ret.rot.z = e->obj[i].rot.z;
+	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.rot = normalize_vec(ret.rot);
 	ret.material = e->obj[i].material;
 	ret.color = e->obj[i].color;
