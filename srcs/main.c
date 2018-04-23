@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 15:44:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 16:24:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 	if (!(e->pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
 		ft_error("\nmalloc error\n");
 	parser(name, e);
+	init_is_neg(e);
 	hud_init(s, e);
 }
 
