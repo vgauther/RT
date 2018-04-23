@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/20 16:01:33 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:43:56 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori)
 			pt->pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
 			pt->normal = tmp.normal;
 			pt->nb = nbr;
+			pt->normal = get_normal(e, *pt, e->ca.pos);
 		}
 		nbr++;
 	}
@@ -72,6 +73,7 @@ void	*threadt(void *param)
 	t_inter			pt;
 	int				xlim;
 	int				y;
+	Uint32			color;
 
 	var = (t_thread_st*)param;
 	xlim = var->x + (SIZE_X / NB_THREAD);
@@ -83,8 +85,13 @@ void	*threadt(void *param)
 			get_closest(var->e, &pt, calc_dir_vec(var->x, y, var->e),
 			var->e->ca.pos);
 			if (pt.dist != MAX_DIST)
-				ft_put_pixel_winrend(var->e->pixels, var->x, y,
-					filtre(var->s, lux(var->e, pt)));
+			{
+				color = lux(var->e, pt);
+				if (var->e->obj[pt.nb].reflex)
+					color = get_reflect(var->e, pt, 0, color);
+				color = filtre(var->s, color);
+				ft_put_pixel_winrend(var->e->pixels, var->x, y, color);
+			}
 			else
 				ft_put_pixel_winrend(var->e->pixels, var->x, y, 0);
 		}

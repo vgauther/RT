@@ -6,11 +6,11 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 13:59:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:05:38 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_RT_H
+# ifndef DEFINE_RT_H
 # define DEFINE_RT_H
 
 # define SIZE_X 	1000

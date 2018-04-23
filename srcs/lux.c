@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 14:12:42 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:45:54 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,47 +63,86 @@ void		get_color_final(t_env *e, t_inter pt,
 	colorfin->b += 1 * difspec.specular * spot_color.b;
 }
 
-void		get_closest_test(t_env *e, t_inter *pt, t_vec dir, t_vec ori, int t)
+t_inter		get_closest_test(t_env *e, t_vec dir, t_vec ori, int t)
 {
 	int		nbr;
 	t_inter	tmp;
+	t_inter p;
 
 	nbr = 0;
-	pt->dist = MAX_DIST;
+	p.dist = MAX_DIST;
 	while (nbr < e->nb)
 	{
 		tmp = shape_redirection(e, dir, ori, nbr);
-		if (tmp.dist < pt->dist && tmp.dist > 0 && t != nbr)
+		if (tmp.dist < p.dist && tmp.dist > 0 && t != nbr)
 		{
-			pt->dist = tmp.dist;
-			pt->pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
-			pt->normal = tmp.normal;
-			pt->nb = nbr;
+			p.dist = tmp.dist;
+			p.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
+			p.normal = tmp.normal;
+			p.nb = nbr;
+			p.normal = get_normal(e, p, e->ca.pos);
 		}
 		nbr++;
 	}
+	return (p);
 }
 
-t_color	get_reflect(t_env *e, t_inter pt)
-{
-	int		j;
-	t_vec	i;
-	t_vec	reflect;
-	t_inter	t;
-	t_color color;
+// Uint32	get_reflect(t_env *e, t_inter pt, int depth, Uint32 color_1)
+// {
+// 	int		j;
+// 	t_vec	i;
+// 	t_vec	reflect;
+// 	t_inter	t;
+// 	t_color color;
+//
+// 	j = 0;
+// 	pt.color_rgb = normalize_color(split_color(color_1));
+// 	i = normalize_vec(sub_vec(pt.pos, e->ca.pos));
+// 	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
+// 	get_closest_test(e, &t, reflect, pt.pos, pt.nb);
+// 	if (t.dist != MAX_DIST)
+// 	{
+// 		color = e->obj[t.nb].material == 2 ? split_color(
+// 	get_texture_pixel(e, t, e->obj[t.nb])) : split_color(e->obj[t.nb].color);
+// 		color = normalize_color(color);
+// 		if (e->obj[t.nb].reflex)
+// 			color = mult_color(color, get_reflect(e, t, depth++), );
+// 		pt.color_rgb = mult_color(pt.color_rgb, color);
+// 	}
+// 	return (rgb_to_int(pt.color_rgb));
+// }
 
-	j = 0;
-	i = normalize_vec(sub_vec(pt.pos, e->ca.pos));
-	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
-	get_closest_test(e, &t, reflect, pt.pos, pt.nb);
-	if (t.dist != MAX_DIST)
+/*
+** Maths for equ -> I * 2 (I . N) * N = R
+** I -> Vect from cam to obj hitted
+** 2 -> Inverse the angle
+** N -> Normal vec from obj hitted
+** R -> New vec to the next direction from the hitted obj
+*/
+
+Uint32	get_reflect(t_env *e, t_inter pt, int depth, Uint32 color)
+{
+	t_color		color_rgb;
+	t_color		color_2;
+	t_inter		tmp;
+	t_vec		ref;
+	t_vec		dir_ori;
+
+	color_rgb = normalize_color(split_color(color));
+	dir_ori = normalize_vec(sub_vec(pt.pos, e->ca.pos));
+	ref = sub_vec(dir_ori, v_scale(2 * dot(dir_ori, pt.normal), &pt.normal));
+	tmp = get_closest_test(e, ref, pt.pos, pt.nb);
+	if (tmp.dist != MAX_DIST && depth < 5)
 	{
-		color = e->obj[t.nb].material == 2 ? split_color(
-		get_texture_pixel(e, t, e->obj[t.nb])) : split_color(e->obj[t.nb].color);
-		color = normalize_color(color);
-		pt.color_rgb = mult_color(pt.color_rgb, color);
+		color_2 = normalize_color(split_color(lux(e, tmp)));
+		/*if (e->obj[tmp.nb].reflex)
+		{
+			color_2 = mult_color(color_2, normalize_color(
+				split_color(get_reflect(e, tmp, depth++, rgb_to_int(color_2)))));
+		}*/
+		color_rgb = mult_color(color_rgb, color_2);
 	}
-	return (pt.color_rgb);
+	return (rgb_to_int(color_rgb));
 }
 
 double		lux(t_env *e, t_inter pt)
@@ -114,17 +153,14 @@ double		lux(t_env *e, t_inter pt)
 
 	colorfin = color_init(0, 0, 0);
 	difspec.i = 0;
-	pt.normal = get_normal(e, pt, e->ca.pos);
 	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
 	get_texture_pixel(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
 	pt.color_rgb = normalize_color(pt.color_rgb);
-	pt.color_rgb = get_reflect(e, pt);
 	while (difspec.i < e->nb_spot)
 	{
-		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))
+	if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))
 		{
-			l = normalize_vec(vector_init(e->spot[difspec.i].pos.x - pt.pos.x,
-	e->spot[difspec.i].pos.y - pt.pos.y, e->spot[difspec.i].pos.z - pt.pos.z));
+			l = normalize_vec(sub_vec(e->spot[difspec.i].pos,pt.pos));
 			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
 			get_color_final(e, pt, difspec, &colorfin);
 		}
