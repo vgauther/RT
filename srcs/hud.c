@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:12:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 19:55:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,35 +61,6 @@ void		create_bouton_cam(t_sdl *s)
 	}
 }
 
-void	init_info_messages(t_sdl *s)
-{
-	s->hud1.mess = malloc(sizeof(char *) * 12);
-	s->hud1.mess[0] =
-	ft_strdup("Last   Info   :   RT   succesfully   launched.");
-	s->hud1.mess[1] =
-	ft_strdup("Last  Info  :  Camera  just  mooved  on  x  axis");
-	s->hud1.mess[2] =
-	ft_strdup("Last  Info  :  Camera  just  mooved  on  y  axis");
-	s->hud1.mess[3] =
-	ft_strdup("Last  Info  :  Camera  just  mooved  on  z  axis");
-	s->hud1.mess[4] =
-	ft_strdup("Last  Info  :  Your  work  has  been  saved.");
-	s->hud1.mess[5] =
-	ft_strdup("Last  Info  :  Sepia filter actived.");
-	s->hud1.mess[6] =
-	ft_strdup("Last  Info  :  Sepia filter disabled.");
-	s->hud1.mess[7] =
-	ft_strdup("Last  Info  :  Black and white filter actived.");
-	s->hud1.mess[8] =
-	ft_strdup("Last  Info  :  Black and whit filter disabled.");
-	s->hud1.mess[9] =
-	ft_strdup("Last  Info  :  Camera just rotated on x axis.");
-	s->hud1.mess[10] =
-	ft_strdup("Last  Info  :  Camera just rotated on y axis.");
-	s->hud1.mess[11] =
-	ft_strdup("Last  Info  :  Camera just rotated on z axis.");
-}
-
 void	create_bouton_tool_bar(t_sdl *s)
 {
 	s->hud1.bouton[12].i = 8;
@@ -107,40 +78,6 @@ void	create_bouton_tool_bar(t_sdl *s)
 	s->hud1.bouton[16].i = 1;
 	s->hud1.bouton[16].rect = init_sdl_rect(COL4 + 180, SIZE_Y / 16 - 20,
 			40, 40);
-}
-
-void	init_add_obj_text_box(t_sdl *s)
-{
-	s->hud1.text_box[0] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 2,
-		COL / 9 * 2, COL / 9);
-	s->hud1.text_box[1] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 4,
-	WIN_Y / 2, COL / 9 * 2, COL / 9);
-	s->hud1.text_box[2] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
-	WIN_Y / 2, COL / 9 * 2, COL / 9);
-	s->hud1.text_box[3] = init_sdl_rect(COL + SIZE_X + COL / 11, WIN_Y / 3 +
-		WIN_Y / 4, COL / 9 * 2, COL / 9);
-	s->hud1.text_box[4] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 4,
-	WIN_Y / 3 + WIN_Y / 4, COL / 9 * 2, COL / 9);
-	s->hud1.text_box[5] = init_sdl_rect(COL + SIZE_X + (COL / 11) * 7,
-	WIN_Y / 3 + WIN_Y / 4, COL / 9 * 2, COL / 9);
-	s->hud1.add_obj_data[0].rect = s->hud1.text_box[0];
-	s->hud1.add_obj_data[1].rect = s->hud1.text_box[1];
-	s->hud1.add_obj_data[2].rect = s->hud1.text_box[2];
-	s->hud1.add_obj_data[3].rect = s->hud1.text_box[3];
-	s->hud1.add_obj_data[4].rect = s->hud1.text_box[4];
-	s->hud1.add_obj_data[5].rect = s->hud1.text_box[5];
-}
-
-void	init_add_obj_selection_rect(t_sdl *s)
-{
-	s->hud1.r_add_obj[0] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y
-		/ 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[1] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5),
-	SIZE_Y / 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[2] = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 9, SIZE_Y
-		/ 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
-	s->hud1.r_add_obj[3] = init_sdl_rect(SIZE_X / 4 + SIZE_X + (COL / 9 * 5),
-	SIZE_Y / 4 + COL / 9 * 4, COL / 9 * 3, COL / 9 * 3);
 }
 
 void	bloc_work_space(t_env *e, t_sdl *s)

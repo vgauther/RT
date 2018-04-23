@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/23 19:40:18 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/23 19:55:53 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,9 @@ SRC_NAME = 	lux.c \
 			hud_bloc_credits_save_logo_cam.c \
 			display_add_obj_menu.c \
 			text_box_del_char.c \
-			display_cam_multi_text.c
+			display_cam_multi_text.c \
+			hud_init_add_obj_menu.c \
+			hud_init_info_mess.c
 
 all: $(NAME)
 
