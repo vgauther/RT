@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:23 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/23 12:02:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/23 14:50:32 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_param(char **sp)
 	int			ret;
 
 	ret = 1;
-	if (ft_tablen((void **)sp) != 7)
+	if (ft_tablen((void **)sp) != 8)
 		ret = 0;
 	else if (!check_value(sp[5]))
 		ret = 0;
@@ -39,4 +39,5 @@ void		add_sphere(t_env *e, char **sp)
 	e->obj[e->nb].rot = vector_init(0, 0, 0);
 	e->obj[e->nb].rot = normalize_vec(e->obj[e->nb].rot);
 	e->obj[e->nb].rot_to_print = e->obj[e->nb].rot;
+	e->obj[e->nb].reflex = ft_atoi(sp[7]);
 }
