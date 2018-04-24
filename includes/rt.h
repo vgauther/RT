@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:40:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:50:03 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct		s_env
 	Uint32			*hud;
 	SDL_Surface		*test;
 	t_cam			ca;
+	double			amb;
 }					t_env;
 
 typedef struct		s_sdl
@@ -175,7 +176,6 @@ void				add_obj_selection_display(t_sdl *s);
 void				del_char(t_env *e, t_sdl *s, int n);
 void				create_bouton_tool_bar(t_sdl *s);
 void				create_bouton_cam(t_sdl *s);
-
 
 /*
 ** bloc hud

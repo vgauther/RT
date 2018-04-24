@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:39:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:22:59 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,24 @@ void	bloc_work_space(t_env *e, t_sdl *s)
 	&s->hud1.workspace_text);
 }
 
+void	bloc_lux(t_sdl *s, t_env *e)
+{
+	char *str;
+	char *str2;
+
+	s->hud1.lux.title.rect = init_sdl_rect(SIZE_X - 40, 7, 70, 12);
+	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 75, SIZE_Y / 16 - 6, 60, 12);
+	str = ft_itoa(e->amb * 100);
+	str2 = ft_strjoin(str, " %");
+	free(str);
+	print_text(str2, s->font.color[1], s, &s->hud1.lux.percento);
+	print_text(ft_strdup("Light"), s->font.color[4], s, &s->hud1.lux.title);
+}
+
 void	call_blocs(t_env *e, t_sdl *s)
 {
 	bloc_logo(s);
+	bloc_lux(s, e);
 	bloc_camera(e, s);
 	bloc_save(e, s);
 	bloc_credits(e, s);
