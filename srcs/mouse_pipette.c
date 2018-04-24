@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:58:50 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:19:06 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e)
 {
-	if (x >= SIZE_X / 4 + 120 && x <= SIZE_X / 4 + 160)
+	if (x >= COL4 + 120 && x <= COL4 + 160)
 	{
 		if (y >= SIZE_Y / 16 - 20 && y <= SIZE_Y / 16 + 20)
 		{
@@ -34,12 +34,12 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 	Uint32 color;
 	char *tab;
 
-	x -= WIN_X / 2 - 120;
-	y -= WIN_Y / 2 - 110;
-	printf("%d|%d\n", x, x);
-	if (x >= 0 && x <= 239)
+	x -= (WIN_X / 2) - s->hud1.color_selector_surf->w / 2;
+	y -= (WIN_Y / 2) - s->hud1.color_selector_surf->h / 2;
+	printf("%d|%d\n", y, x);
+	if (x >= 0 && x <= s->hud1.color_selector_surf->w)
 	{
-		if (y >= 0 && y <= 220)
+		if (y >= 0 && y <= s->hud1.color_selector_surf->h)
 		{
 			tab = (char *)s->hud1.color_selector_surf->pixels;
 			color = tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) +
@@ -53,8 +53,9 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 			(void)y;
 			(void)s;
 			(void)e;
-			color = color & 0xffffff;
 			e->obj[0].color = color;
+			raytracing(e, s);
+
 			printf("%u\n", color);
 		}
 	}

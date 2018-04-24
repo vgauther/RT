@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:57:15 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:19:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	hud_init(t_sdl *s, t_env *e)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
 	s->hud1.info.rect = init_sdl_rect(SIZE_X / 4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
-	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 120 , (WIN_Y / 2) - 110, 239, 220);
+	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2) - 128, 256, 256);
 	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/selector.bmp");
 	s->hud1.ok.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X + COL / 2 - 20, WIN_Y - SIZE_Y / 8, 40, 40);
 }
