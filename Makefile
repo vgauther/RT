@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/24 14:39:44 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/24 15:22:46 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,8 @@ SRC_NAME = 	lux.c \
 			hud_init_add_obj_menu.c \
 			hud_init_info_mess.c \
 			tools_vector_2.c \
-			hud_create_bouton.c
+			hud_create_bouton.c \
+			reflect.c
 
 all: $(NAME)
 
