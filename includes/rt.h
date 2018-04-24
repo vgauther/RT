@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:50:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:49:17 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+Uint32				get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj);
 Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
 t_vec				calc_dir_vec(int x, int y, t_env *e);
 Uint32				get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color);
@@ -153,7 +154,7 @@ void				open_texture(t_sdl *s);
 void				print_info(t_sdl *s, t_env *e, int i);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
-Uint32				get_texture_pixel(t_env *e, t_inter pt, t_obj obj);
+Uint32				get_texture_pixel_sphere(t_env *e, t_inter pt, t_obj obj);
 t_inter				shape_redirection(t_env *e, t_vec dir,
 					t_vec ori, int nbr);
 t_vec				vec3_cross(t_vec va, t_vec vb);

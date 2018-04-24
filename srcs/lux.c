@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:25:59 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:54:17 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ double		lux(t_env *e, t_inter pt)
 	colorfin = color_init(0, 0, 0);
 	difspec.i = 0;
 	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
-	get_texture_pixel(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
+	get_texture_chest_sphere(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
 	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
