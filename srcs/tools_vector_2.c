@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 11:56:13 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:04:27 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ t_vec		calc_dir_vec(int x, int y, t_env *e)
 	dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
 	dir = normalize_vec(dir);
 	return (dir);
+}
+
+t_vec	vec3_cross(t_vec va, t_vec vb)
+{
+	t_vec	v;
+
+	v.x = va.y * vb.z - va.z * vb.y;
+	v.y = va.z * vb.x - va.x * vb.z;
+	v.z = va.x * vb.y - va.y * vb.x;
+	return (v);
 }

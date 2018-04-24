@@ -6,21 +6,11 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 12:26:07 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/19 15:56:22 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:04:34 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-t_vec	vec3_cross(t_vec va, t_vec vb)
-{
-	t_vec	v;
-
-	v.x = va.y * vb.z - va.z * vb.y;
-	v.y = va.z * vb.x - va.x * vb.z;
-	v.z = va.x * vb.y - va.y * vb.x;
-	return (v);
-}
 
 Uint32	get_texture_pixel(t_env *e, t_inter pt, t_obj obj)
 {
