@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 12:26:07 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 12:04:34 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:41:45 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ Uint32	get_texture_pixel(t_env *e, t_inter pt, t_obj obj)
 		v.x = v.theta;
 	else
 		v.x = 1 - v.theta;
-	if (isnan(v.x) || isnan(v.y))
-		return (0);
+	v.x = isnan(v.x) ? 1 : v.x;
+	v.y = isnan(v.y) ? 1 : v.y;
 	v.y = v.y * e->test->h;
 	v.x = v.x * e->test->w;
 	v.color = v.pixels[(int)v.x * (e->test->pitch / e->test->w) +
