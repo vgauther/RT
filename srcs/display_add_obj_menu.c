@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:27:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:25:40 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ static void		add_obj_print_text(t_sdl *s, t_env *e, int nb)
 	&s->hud1.add_obj_data[5]);
 }
 
-static void		display_add_obj_menu_bloc(t_sdl *s)
+static void		display_add_obj_menu_bloc(t_sdl *s, t_env *e, int nb)
 {
 	int i;
+	int stop;
 
 	i = 0;
-	while (i < 6)
+	stop = e->obj[nb].type == 1 ? 3 : 6;
+	while (i < stop)
 	{
 		if ((SDL_RenderCopy(s->renderer, s->tex[0], NULL,
 			&s->hud1.text_box[i])) < 0)
@@ -50,12 +52,14 @@ static void		display_add_obj_menu_bloc(t_sdl *s)
 	}
 }
 
-static void		display_add_obj_menu_data(t_sdl *s)
+static void		display_add_obj_menu_data(t_sdl *s, t_env *e, int nb)
 {
 	int i;
+	int stop;
 
 	i = 0;
-	while (i < 6)
+	stop = e->obj[nb].type == 1 ? 3 : 6;
+	while (i < stop)
 	{
 		if ((SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[i].tex, NULL,
 			&s->hud1.add_obj_data[i].rect)) < 0)
@@ -67,7 +71,7 @@ static void		display_add_obj_menu_data(t_sdl *s)
 void			add_obj_menu(t_sdl *s, t_env *e, int nb)
 {
 	add_obj_print_text(s, e, nb);
-	display_add_obj_menu_bloc(s);
-	display_add_obj_menu_data(s);
+	display_add_obj_menu_bloc(s, e, nb);
+	display_add_obj_menu_data(s, e, nb);
 	SDL_RenderCopy(s->renderer, s->tex[s->hud1.ok.i], NULL, &s->hud1.ok.rect);
 }

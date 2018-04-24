@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:11:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:43:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	if (s->hud1.pipette == 1)
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
-//	mouse_pipette_activate(mouse_x, mouse_y, s, e);
+	mouse_pipette_activate(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_main_cam(mouse_x, mouse_y, s, e);
 	mouse_filter_activate(mouse_x, mouse_y, s, e);
