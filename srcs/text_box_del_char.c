@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:30:04 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:31:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:15:22 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		del_char2(t_env *e, t_sdl *s, int n)
 	else if (s->hud1.box_picked == 4)
 	{
 		e->obj[n].rot_to_print.y = (e->obj[n].rot_to_print.y -
-			(int)e->obj[n].rot.y % 10) / 10;
+			(int)e->obj[n].rot_to_print.y % 10) / 10;
 		e->obj[n].rot = normalize_vec(e->obj[n].rot_to_print);
 		(e->obj[n].rot_to_print.y == 0) ? e->obj[n].is_neg[4] = 1 : 0;
 	}
