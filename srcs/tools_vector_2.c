@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 12:04:27 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:04:58 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vec		calc_dir_vec(int x, int y, t_env *e)
 	return (dir);
 }
 
-t_vec	vec3_cross(t_vec va, t_vec vb)
+t_vec		vec3_cross(t_vec va, t_vec vb)
 {
 	t_vec	v;
 
