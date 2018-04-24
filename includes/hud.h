@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 13:29:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:47:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct		s_token
 
 typedef struct		s_amibiant_lux
 {
-	SDL_Rect		percento;
-
+	t_tex_rec		percento;
+	t_tex_rec		title;
 }					t_amibiant_lux;
 
 typedef struct		s_hud
@@ -108,6 +108,7 @@ typedef struct		s_hud
 	t_bouton		ok;
 	t_tex_rec		workspace_text;
 	t_token			tok;
+	t_amibiant_lux	lux;
 }					t_hud;
 
 #endif
