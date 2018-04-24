@@ -6,16 +6,11 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:31:27 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/20 15:12:34 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:21:48 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-t_vec	v_scale(double c, t_vec *v)
-{
-	return (vector_init(v->x * c, v->y * c, v->z * c));
-}
 
 t_vec	plan_normal_at(t_inter t, t_obj obj, t_vec ori)
 {

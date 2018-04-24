@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 12:05:56 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:21:58 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,9 @@ t_vec		vec3_cross(t_vec va, t_vec vb)
 	v.y = va.z * vb.x - va.x * vb.z;
 	v.z = va.x * vb.y - va.y * vb.x;
 	return (v);
+}
+
+t_vec	v_scale(double c, t_vec *v)
+{
+	return (vector_init(v->x * c, v->y * c, v->z * c));
 }
