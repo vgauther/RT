@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 13:19:01 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:32:33 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ void	create_bouton_tool_bar(t_sdl *s)
 	s->hud1.bouton[16].i = 1;
 	s->hud1.bouton[16].rect = init_sdl_rect(COL4 + 180, SIZE_Y / 16 - 20,
 			40, 40);
+	s->hud1.bouton[17].i = 10;
+	s->hud1.bouton[17].rect = init_sdl_rect(COL + SIZE_X / 2 + 60, SIZE_Y / 16 - 15,
+			30, 30);
+	s->hud1.bouton[18].i = 10;
+	s->hud1.bouton[18].rect = init_sdl_rect(COL + SIZE_X / 2 + 60, SIZE_Y / 16 - 15,
+							30, 30);
 }
 
 void	bloc_work_space(t_env *e, t_sdl *s)

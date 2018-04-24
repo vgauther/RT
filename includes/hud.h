@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 11:46:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:29:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,19 @@ typedef struct		s_token
 	int				obj_select;
 }					t_token;
 
+typedef struct		s_amibiant_lux
+{
+	SDL_Rect		percento;
+
+}					t_amibiant_lux;
+
 typedef struct		s_hud
 {
 	SDL_Surface		*s_back;
 	SDL_Texture		*t_back;
 	t_tex_rec		logo;
 	t_print_cam		cam;
-	t_bouton		bouton[17];
+	t_bouton		bouton[19];
 	t_tex_rec		info;
 	t_tex_rec		save;
 	t_credits		credits;
