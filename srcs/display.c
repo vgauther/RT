@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:11:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:49:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,17 @@ void	display_pipette(t_sdl *s)
 	}
 }
 
-void	display_light(t_sdl *s)
+void	display_light(t_sdl *s, t_env *e)
 {
+	char *str;
+	char *str2;
+	int x;
+
+	x = ((int)(e->amb * 100) % 10 == 0) ? e->amb * 100 : e->amb * 100 + 1;
+	str = ft_itoa(x);
+	str2 = ft_strjoin(str, " %");
+	free(str);
+	print_text(str2, s->font.color[1], s, &s->hud1.lux.percento);
 	if ((SDL_RenderCopy(s->renderer, s->hud1.lux.percento.tex, NULL,
 		&s->hud1.lux.percento.rect)) < 0)
 		ft_sdl_error("Renderer : ", SDL_GetError());
@@ -73,7 +82,7 @@ void	display_hud(t_sdl *s, t_env *e)
 	display_cam(s);
 	display_credits(s);
 	display_all_bouton(s);
-	display_light(s);
+	display_light(s, e);
 	display_multi_text(s);
 }
 
