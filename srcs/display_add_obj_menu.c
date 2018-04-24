@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:25:40 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:54:09 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void			add_obj_selection_display(t_sdl *s)
 
 static void		add_obj_print_text(t_sdl *s, t_env *e, int nb)
 {
+
 	print_text(ft_itoa(e->obj[nb].pos.x), s->font.color[1], s,
 	&s->hud1.add_obj_data[0]);
 	print_text(ft_itoa(e->obj[nb].pos.y), s->font.color[1], s,

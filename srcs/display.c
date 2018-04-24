@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:49:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:59:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ void	display_light(t_sdl *s, t_env *e)
 
 void	display_hud(t_sdl *s, t_env *e)
 {
+	t_rect r1;
+
+	if (s->hud1.tok.obj_select != -1)
+	{
+		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 100, 40, 40);
+		print_rect(r1, e, 1, e->obj[s->hud1.tok.obj_select].color);
+		s->hud1.s_back->pixels = e->hud;
+		if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer,
+			s->hud1.s_back)) == NULL)
+			ft_sdl_error("Texture error : ", SDL_GetError());
+		//actualize_background(s, e);
+	}
 	SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);
 	SDL_RenderCopy(s->renderer, s->hud1.info.tex, NULL, &s->hud1.info.rect);
 	SDL_RenderCopy(s->renderer, s->hud1.logo.tex, NULL, &s->hud1.logo.rect);
