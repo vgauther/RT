@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:29:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:54:29 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,34 @@ void	mouse_multi(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_light(int x, int y, t_sdl *s, t_env *e)
+{
+	if (y >= s->hud1.bouton[17].rect.y &&
+		y <= s->hud1.bouton[17].rect.y + s->hud1.bouton[17].rect.h)
+	{
+		if (x >= s->hud1.bouton[17].rect.x &&
+			x <= s->hud1.bouton[17].rect.x + s->hud1.bouton[17].rect.w)
+		{
+			s->hud1.bouton[17].i = 3;
+			display(s, e);
+			e->amb = (e->amb + 0.1 <= 1) ? e->amb + 0.1 : 1;
+			raytracing(e, s);
+			s->hud1.bouton[17].i = 1;
+			display(s, e);
+		}
+		else if (x >= s->hud1.bouton[18].rect.x &&
+			x <= s->hud1.bouton[18].rect.x + s->hud1.bouton[18].rect.w)
+		{
+			s->hud1.bouton[18].i = 2;
+			display(s, e);
+			e->amb = (e->amb - 0.1 >= 0) ? e->amb - 0.1 : 0;
+			raytracing(e, s);
+			s->hud1.bouton[18].i = 0;
+			display(s, e);
+		}
+	}
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
@@ -113,6 +141,7 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	{
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
 	}
+	mouse_light(mouse_x, mouse_y, s, e);
 	mouse_pipette_activate(mouse_x, mouse_y, s, e);
 	save_bouton(mouse_x, mouse_y, s, e);
 	mouse_main_cam(mouse_x, mouse_y, s, e);

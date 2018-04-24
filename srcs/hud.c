@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:22:59 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 15:44:42 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,14 @@ void	bloc_lux(t_sdl *s, t_env *e)
 {
 	char *str;
 	char *str2;
+	t_vec	p1;
+	t_vec	p2;
 
+	p1 = init_point_2_coord(SIZE_X - 90, 0);
+	p2 = init_point_2_coord(SIZE_X - 90, SIZE_Y / 8);
+	vertical_trait(p1, p2, CONTRAST, e);
 	s->hud1.lux.title.rect = init_sdl_rect(SIZE_X - 40, 7, 70, 12);
-	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 75, SIZE_Y / 16 - 6, 60, 12);
+	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 70, SIZE_Y / 16 - 6, 60, 12);
 	str = ft_itoa(e->amb * 100);
 	str2 = ft_strjoin(str, " %");
 	free(str);
