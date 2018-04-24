@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/19 23:21:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:58:50 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 	(void)y;
 	(void)s;
 	(void)e;
-	/*Uint32 color;
+	Uint32 color;
 	char *tab;
 
-//	x -= WIN_X / 2 - 125;
-	//y -= WIN_Y / 2 - 125;
-	printf("%d|%d\n",x, y);
-	if (x >= 0 && x <= 256)
+	x -= WIN_X / 2 - 120;
+	y -= WIN_Y / 2 - 110;
+	printf("%d|%d\n", x, x);
+	if (x >= 0 && x <= 239)
 	{
-		if (y >= 0 && y <= 256)
+		if (y >= 0 && y <= 220)
 		{
 			tab = (char *)s->hud1.color_selector_surf->pixels;
 			color = tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) +
@@ -53,9 +53,9 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 			(void)y;
 			(void)s;
 			(void)e;
-			//color = color & 0xffffff;
+			color = color & 0xffffff;
 			e->obj[0].color = color;
 			printf("%u\n", color);
-		//}
-	//}*/
+		}
+	}
 }

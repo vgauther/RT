@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 11:49:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:53:38 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	display(t_sdl *s, t_env *e)
 	display_hud(s, e);
 	if ((SDL_RenderCopy(s->renderer, s->texture, NULL, &rendu_rect)) < 0)
 		ft_sdl_error("Texture error : ", SDL_GetError());
+	display_pipette(s);
 	SDL_RenderPresent(s->renderer);
 }
