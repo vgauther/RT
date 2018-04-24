@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:55:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:02:26 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
+t_vec				calc_dir_vec(int x, int y, t_env *e);
 Uint32				get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color);
 void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
 t_vec				v_scale(double c, t_vec *v);

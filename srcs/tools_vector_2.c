@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 11:46:04 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:56:13 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ t_vec		get_normal(t_env *e, t_inter pt, t_vec ori)
 t_vec		add_vec(t_vec v1, t_vec v2)
 {
 	return (vector_init(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z));
+}
+
+t_vec		calc_dir_vec(int x, int y, t_env *e)
+{
+	t_vec dir;
+
+	dir = vector_init(x - SIZE_X_2, y - SIZE_Y_2, SIZE_X_2 / TAN30);
+	dir = ft_rotate(dir, e->ca.rot.x, e->ca.rot.y, e->ca.rot.z);
+	dir = normalize_vec(dir);
+	return (dir);
 }
