@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:20:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:41:44 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:56:14 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			print_data_obj(t_sdl *s, t_env *e, int nbr)
 	display(s, e);
 }
 
-static t_inter	mouse_save_tmp(t_inter tmp, int nbr)
+static t_inter	mouse_save_tmp(t_inter tmp, int nbr, t_sdl *s)
 {
 	t_inter pt;
 
@@ -33,6 +33,7 @@ static t_inter	mouse_save_tmp(t_inter tmp, int nbr)
 	pt.pos = init_point(tmp.pos.x, tmp.pos.y, tmp.pos.z);
 	pt.normal = tmp.normal;
 	pt.nb = nbr;
+	s->hud1.tok.obj_select = nbr;
 	return (pt);
 }
 
@@ -56,7 +57,7 @@ void			mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e)
 				dir = normalize_vec(dir);
 				tmp = shape_redirection(e, dir, e->ca.pos, nbr);
 				if (tmp.dist < pt.dist && tmp.dist > 0)
-					pt = mouse_save_tmp(tmp, nbr);
+					pt = mouse_save_tmp(tmp, nbr, s);
 			}
 			if (pt.dist != MAX_DIST && s->hud1.selectobj)
 				print_data_obj(s, e, pt.nb);

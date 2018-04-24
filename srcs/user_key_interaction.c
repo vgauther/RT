@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:05:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 17:37:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:04:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	cam_mouv1(long key, t_env *e, t_sdl *s)
 
 void	mouv(long key, t_env *e, t_sdl *s)
 {
-	if (s->hud1.box_picked != 42)
-		remplir_text_box(key, e, s, e->nb - 1);
+	if (s->hud1.box_picked != 42 || s->hud1.tok.obj_select != -1)
+		remplir_text_box(key, e, s, s->hud1.tok.obj_select);
 	else
 	{
 		cam_mouv1(key, e, s);

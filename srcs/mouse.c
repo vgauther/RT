@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:18:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 12:11:40 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,18 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
 		mouse_add_obj_select(mouse_x, mouse_y, s, e);
-	if (s->hud1.add_obj == 2)
+	if (s->hud1.add_obj == 2 || s->hud1.tok.obj_select != -1)
 		mouse_add_obj(mouse_x, mouse_y, s, e);
-	else
-	{
-		if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
-			mouse_obj_seletor(mouse_x, mouse_y, s, e);
-		if (s->hud1.pipette == 1)
-			mouse_pipette_color(mouse_x, mouse_y, s, e);
+	if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1)
+		mouse_obj_seletor(mouse_x, mouse_y, s, e);
+	if (s->hud1.pipette == 1)
+		mouse_pipette_color(mouse_x, mouse_y, s, e);
 //	mouse_pipette_activate(mouse_x, mouse_y, s, e);
-		save_bouton(mouse_x, mouse_y, s, e);
-		mouse_main_cam(mouse_x, mouse_y, s, e);
-		mouse_filter_activate(mouse_x, mouse_y, s, e);
-		if (s->hud1.add_obj != 1)
-			mouse_selector_activate(mouse_x, mouse_y, s, e);
-		mouse_add_obj_activate(mouse_x, mouse_y, s, e);
-		mouse_multi(mouse_x, mouse_y, s, e);
-	}
+	save_bouton(mouse_x, mouse_y, s, e);
+	mouse_main_cam(mouse_x, mouse_y, s, e);
+	mouse_filter_activate(mouse_x, mouse_y, s, e);
+	if (s->hud1.add_obj != 1)
+		mouse_selector_activate(mouse_x, mouse_y, s, e);
+	mouse_add_obj_activate(mouse_x, mouse_y, s, e);
+	mouse_multi(mouse_x, mouse_y, s, e);
 }

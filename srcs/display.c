@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:35:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:49:15 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	display_work_space(t_sdl *s, t_env *e)
 	}
 	if (s->hud1.add_obj == 1)
 		add_obj_selection_display(s);
-	if (s->hud1.add_obj == 2)
-		add_obj_menu(s, e, e->nb - 1);
+	if (s->hud1.add_obj == 2 || s->hud1.tok.obj_select != -1)
+		add_obj_menu(s, e, s->hud1.tok.obj_select);
 }
 
 void	display_pipette(t_sdl *s)

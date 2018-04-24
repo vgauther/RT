@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 16:25:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:46:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef	struct		s_rect
 typedef struct		s_token
 {
 	int				add_obj;
+	int				obj_select;
 }					t_token;
 
 typedef struct		s_hud
