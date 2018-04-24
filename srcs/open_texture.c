@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:19:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:35:43 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static SDL_Surface		**open_texture2(void)
 	surfac[13] = SDL_LoadBMP("./img_srcs/cone.bmp");
 	surfac[14] = SDL_LoadBMP("./img_srcs/cylindre.bmp");
 	surfac[15] = SDL_LoadBMP("./img_srcs/plan.bmp");
-	surfac[16] = SDL_LoadBMP("./img_srcs/color.bmp");
+	surfac[16] = SDL_LoadBMP("./img_srcs/selector.bmp");
 	surfac[17] = SDL_LoadBMP("./img_srcs/ok.bmp");
 	surfac[18] = SDL_LoadBMP("./img_srcs/ok2.bmp");
 	return (surfac);

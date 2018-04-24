@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 13:19:35 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:27:07 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 
 	x -= (WIN_X / 2) - s->hud1.color_selector_surf->w / 2;
 	y -= (WIN_Y / 2) - s->hud1.color_selector_surf->h / 2;
-	printf("%d|%d\n", y, x);
+	printf("%d|%d\n", s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w, x);
 	if (x >= 0 && x <= s->hud1.color_selector_surf->w)
 	{
 		if (y >= 0 && y <= s->hud1.color_selector_surf->h)
