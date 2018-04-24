@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 13:27:07 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:46:12 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 	(void)e;
 	Uint32 color;
 	char *tab;
+	t_rect r1;
 
 	x -= (WIN_X / 2) - s->hud1.color_selector_surf->w / 2;
 	y -= (WIN_Y / 2) - s->hud1.color_selector_surf->h / 2;
@@ -49,14 +50,11 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 			color += tab[x * (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) + s->hud1.color_selector_surf->w
 			* (s->hud1.color_selector_surf->pitch / s->hud1.color_selector_surf->w) * y + 2]
 			* 256 * 256;
-			(void)x;
-			(void)y;
-			(void)s;
-			(void)e;
-			e->obj[0].color = color;
-			raytracing(e, s);
-
-			printf("%u\n", color);
+			r1 = init_rect(s->hud1.bouton[15].rect.x + 110, s->hud1.bouton[15].rect.y, 40, 40);
+			s->hud1.color = color;
+			print_rect(r1, e, 1, color);
+			actualize_background(s, e);
+			display(s, e);
 		}
 	}
 }

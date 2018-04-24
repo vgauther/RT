@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:35:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:41:45 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:42:25 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,12 @@ SDL_Rect	init_sdl_rect(int x, int y, int w, int h)
 	rect.h = h;
 	rect.w = w;
 	return (rect);
+}
+
+void		actualize_background(t_sdl *s, t_env *e)
+{
+	s->hud1.s_back->pixels = e->hud;
+	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer,
+		s->hud1.s_back)) == NULL)
+		ft_sdl_error("Texture error : ", SDL_GetError());
 }

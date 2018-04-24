@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:50:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 16:43:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ void				add_obj_selection_display(t_sdl *s);
 void				del_char(t_env *e, t_sdl *s, int n);
 void				create_bouton_tool_bar(t_sdl *s);
 void				create_bouton_cam(t_sdl *s);
+void				actualize_background(t_sdl *s, t_env *e);
 
 /*
 ** bloc hud
