@@ -6,26 +6,11 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 18:28:04 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:46:21 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-t_vec		get_normal(t_env *e, t_inter pt, t_vec ori)
-{
-	t_vec norm;
-
-	if (e->obj[pt.nb].type == 1)
-		norm = sphere_normal_at(pt, e->obj[pt.nb]);
-	else if (e->obj[pt.nb].type == 2)
-		norm = cylindre_normal_at(pt, e->obj[pt.nb], ori);
-	else if (e->obj[pt.nb].type == 4)
-		norm = plan_normal_at(pt, e->obj[pt.nb], ori);
-	else
-		norm = cone_normal_at(pt, e->obj[pt.nb], ori);
-	return (norm);
-}
 
 double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse)
 {
@@ -87,31 +72,6 @@ t_inter		get_closest_test(t_env *e, t_vec dir, t_vec ori, int t)
 	return (p);
 }
 
-// Uint32	get_reflect(t_env *e, t_inter pt, int depth, Uint32 color_1)
-// {
-// 	int		j;
-// 	t_vec	i;
-// 	t_vec	reflect;
-// 	t_inter	t;
-// 	t_color color;
-//
-// 	j = 0;
-// 	pt.color_rgb = normalize_color(split_color(color_1));
-// 	i = normalize_vec(sub_vec(pt.pos, e->ca.pos));
-// 	reflect = sub_vec(i, v_scale(2 * dot(i, pt.normal), &pt.normal));
-// 	get_closest_test(e, &t, reflect, pt.pos, pt.nb);
-// 	if (t.dist != MAX_DIST)
-// 	{
-// 		color = e->obj[t.nb].material == 2 ? split_color(
-// 	get_texture_pixel(e, t, e->obj[t.nb])) : split_color(e->obj[t.nb].color);
-// 		color = normalize_color(color);
-// 		if (e->obj[t.nb].reflex)
-// 			color = mult_color(color, get_reflect(e, t, depth++), );
-// 		pt.color_rgb = mult_color(pt.color_rgb, color);
-// 	}
-// 	return (rgb_to_int(pt.color_rgb));
-// }
-
 /*
 ** Maths for equ -> I * 2 (I . N) * N = R
 ** I -> Vect from cam to obj hitted
@@ -120,7 +80,7 @@ t_inter		get_closest_test(t_env *e, t_vec dir, t_vec ori, int t)
 ** R -> New vec to the next direction from the hitted obj
 */
 
-Uint32	get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
+Uint32		get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
 {
 	t_color		color_rgb;
 	t_color		color_2;
@@ -159,9 +119,9 @@ double		lux(t_env *e, t_inter pt)
 	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
-	if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))
+		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))
 		{
-			l = normalize_vec(sub_vec(e->spot[difspec.i].pos,pt.pos));
+			l = normalize_vec(sub_vec(e->spot[difspec.i].pos, pt.pos));
 			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
 			get_color_final(e, pt, difspec, &colorfin);
 		}
