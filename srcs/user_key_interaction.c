@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:05:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:04:55 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:28:54 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,8 @@ void	mouv(long key, t_env *e, t_sdl *s)
 {
 	if (s->hud1.box_picked != 42 || s->hud1.tok.obj_select != -1)
 		remplir_text_box(key, e, s, s->hud1.tok.obj_select);
-	else
-	{
-		cam_mouv1(key, e, s);
-		cam_mouv2(key, e, s);
-		if (do_we_need_to_rt(key))
-			raytracing(e, s);
-	}
+	cam_mouv1(key, e, s);
+	cam_mouv2(key, e, s);
+	if (do_we_need_to_rt(key))
+		raytracing(e, s);
 }

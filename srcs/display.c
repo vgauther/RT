@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 14:56:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:53:38 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:31:38 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	display_all_bouton(t_sdl *s)
 	int i;
 
 	i = -1;
-	while (++i != 17)
+	while (++i != 19)
 	{
 		if ((SDL_RenderCopy(s->renderer, s->tex[s->hud1.bouton[i].i], NULL,
 			&s->hud1.bouton[i].rect)) < 0)
