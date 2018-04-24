@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 11:46:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 13:49:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ double		lux(t_env *e, t_inter pt)
 	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
-		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)))
+		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)) ||
+		e->obj[pt.nb].reflex)
 		{
 			l = normalize_vec(sub_vec(e->spot[difspec.i].pos, pt.pos));
 			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
