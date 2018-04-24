@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 12:26:07 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 16:57:10 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:05:16 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ Uint32	get_texture_pixel_sphere(t_env *e, t_inter pt, t_obj obj)
 	return (v.color);
 }
 
-Uint32	get_texture_pixel_plane(t_env *e, t_inter pt, t_obj obj)
-{
-	t_vec	ua;
-	t_vec	va;
-	double	u;
-	double	v;
-
-	(void)e;
-	(void)obj;
-	ua = vector_init(pt.normal.y, pt.normal.z, -pt.normal.x);
-	va = vec3_cross(ua, pt.normal);
-	u = dot(pt.pos, ua);
-	v = dot(pt.pos, va);
-	if ((((int)u % 2) && ((int)v % 2)))
-		return (0);
-	return (0xffffff);
-}
+// Uint32	get_texture_pixel_plane(t_env *e, t_inter pt, t_obj obj)
+// {
+// 	t_vec	ua;
+// 	t_vec	va;
+// 	double	u;
+// 	double	v;
+//
+// 	(void)e;
+// 	(void)obj;
+// 	ua = vector_init(pt.normal.y, pt.normal.z, -pt.normal.x);
+// 	va = vec3_cross(ua, pt.normal);
+// 	u = dot(pt.pos, ua);
+// 	v = dot(pt.pos, va);
+// 	if ((((int)u % 2) && ((int)v % 2)))
+// 		return (0);
+// 	return (0xffffff);
+// }
 
 Uint32	get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj)
 {
@@ -83,8 +83,7 @@ Uint32	get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj)
 	v.y *= 10;
 	xpair = ((int)v.x % 2);
 	ypair = ((int)v.y % 2);
-	//get_texture_pixel_plane(e, pt, obj);
 	if ((xpair && ypair) || (!xpair && !ypair))
 		return (0);
-	return (0xffff00);
+	return (0xffffff);
 }
