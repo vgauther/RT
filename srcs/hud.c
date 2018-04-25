@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:44:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 19:11:07 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	hud_init(t_sdl *s, t_env *e)
 	t_vec	p2;
 
 	init_font(s);
-	open_texture(s);
 	create_bouton_cam(s);
 	init_info_messages(s);
 	create_bouton_tool_bar(s);

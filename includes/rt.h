@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 16:31:38 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 18:34:01 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	t_hud			hud1;
 	t_font			font;
-	SDL_Texture		*tex[19];
+	SDL_Texture		*tex[27];
 }					t_sdl;
 
 typedef struct		s_inter
@@ -180,6 +180,7 @@ void				del_char(t_env *e, t_sdl *s, int n);
 void				create_bouton_tool_bar(t_sdl *s);
 void				create_bouton_cam(t_sdl *s);
 void				actualize_background(t_sdl *s, t_env *e);
+void 				loading_screen(int i, t_sdl *s);
 
 /*
 ** bloc hud

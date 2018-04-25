@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 15:01:46 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 19:11:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	ft_init(t_sdl *s, char *name, t_env *e)
 		exit(1);
 	if ((s->renderer = SDL_CreateRenderer(s->window, -1, 0)) == NULL)
 		ft_sdl_error("Renderer error : ", SDL_GetError());
-	call_loading(s);
+	open_texture(s);
+	ft_wait();
 	if ((s->rendu = SDL_CreateRGBSurface(0, SIZE_X, SIZE_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());

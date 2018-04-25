@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/24 12:03:19 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 19:00:04 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void		raytracing(t_env *e, t_sdl *s)
 
 	x = 0;
 	i = -1;
+	loading_screen(4, s);
 	while (++i < NB_THREAD)
 	{
 		var[i].x = x;
@@ -96,13 +97,17 @@ void		raytracing(t_env *e, t_sdl *s)
 		x += SIZE_X / NB_THREAD;
 	}
 	i = -1;
+	loading_screen(5, s);
 	while (++i < NB_THREAD)
 		if ((ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i])))
 			ft_error("\nThread error.\n");
 	i = -1;
+	loading_screen(6, s);
 	while (++i < NB_THREAD)
 		pthread_join(thread[i], NULL);
 	s->rendu->pixels = e->pixels;
+	loading_screen(7, s);
+	ft_wait();
 	display(s, e);
 }
 
