@@ -6,11 +6,28 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 18:16:43 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 21:34:38 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static SDL_Surface		**open_texture3(SDL_Surface **surfac)
+{
+	surfac[16] = SDL_LoadBMP("./img_srcs/selector.bmp");
+	surfac[17] = SDL_LoadBMP("./img_srcs/ok.bmp");
+	surfac[18] = SDL_LoadBMP("./img_srcs/ok2.bmp");
+	surfac[19] = SDL_LoadBMP("./img_srcs/loadwin20.bmp");
+	surfac[20] = SDL_LoadBMP("./img_srcs/loadwin50.bmp");
+	surfac[21] = SDL_LoadBMP("./img_srcs/loadwin75.bmp");
+	surfac[22] = SDL_LoadBMP("./img_srcs/loadwin100.bmp");
+	surfac[23] = SDL_LoadBMP("./img_srcs/load20.bmp");
+	surfac[24] = SDL_LoadBMP("./img_srcs/load50.bmp");
+	surfac[25] = SDL_LoadBMP("./img_srcs/load75.bmp");
+	surfac[26] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	return (surfac);
+}
+
 
 static SDL_Surface		**open_texture2(void)
 {
@@ -34,17 +51,7 @@ static SDL_Surface		**open_texture2(void)
 	surfac[13] = SDL_LoadBMP("./img_srcs/cone.bmp");
 	surfac[14] = SDL_LoadBMP("./img_srcs/cylindre.bmp");
 	surfac[15] = SDL_LoadBMP("./img_srcs/plan.bmp");
-	surfac[16] = SDL_LoadBMP("./img_srcs/selector.bmp");
-	surfac[17] = SDL_LoadBMP("./img_srcs/ok.bmp");
-	surfac[18] = SDL_LoadBMP("./img_srcs/ok2.bmp");
-	surfac[19] = SDL_LoadBMP("./img_srcs/loadwin20.bmp");
-	surfac[20] = SDL_LoadBMP("./img_srcs/loadwin50.bmp");
-	surfac[21] = SDL_LoadBMP("./img_srcs/loadwin75.bmp");
-	surfac[22] = SDL_LoadBMP("./img_srcs/loadwin100.bmp");
-	surfac[23] = SDL_LoadBMP("./img_srcs/load20.bmp");
-	surfac[24] = SDL_LoadBMP("./img_srcs/load50.bmp");
-	surfac[25] = SDL_LoadBMP("./img_srcs/load75.bmp");
-	surfac[26] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	surfac = open_texture3(surfac);
 	return (surfac);
 }
 

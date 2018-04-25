@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 19:11:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 21:38:20 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	bloc_lux(t_sdl *s, t_env *e)
 	p2 = init_point_2_coord(SIZE_X - 90, SIZE_Y / 8);
 	vertical_trait(p1, p2, CONTRAST, e);
 	s->hud1.lux.title.rect = init_sdl_rect(SIZE_X - 40, 7, 70, 12);
-	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 70, SIZE_Y / 16 - 6, 60, 12);
+	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 70, LINE / 2 - 6, 60, 12);
 	str = ft_itoa(e->amb * 100);
 	str2 = ft_strjoin(str, " %");
 	free(str);
@@ -74,6 +74,12 @@ void	call_blocs(t_env *e, t_sdl *s)
 	bloc_credits(e, s);
 	bloc_multiplier(e, s);
 	bloc_work_space(e, s);
+}
+
+void	init_color_selector(t_sdl *s)
+{
+	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2) - 128, 256, 256);
+	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/selector.bmp");
 }
 
 void	hud_init(t_sdl *s, t_env *e)
@@ -108,7 +114,5 @@ void	hud_init(t_sdl *s, t_env *e)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
 	s->hud1.info.rect = init_sdl_rect(COL4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
-	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2) - 128, 256, 256);
-	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/selector.bmp");
 	s->hud1.ok.rect = init_sdl_rect(COL4 + SIZE_X + COL / 2 - 20, WIN_Y - SIZE_Y / 8, 40, 40);
 }
