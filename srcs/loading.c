@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 18:20:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 19:23:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 20:29:54 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void 	loading_screen(int i, t_sdl *s)
 	static int x = 0;
 	int y;
 
-	ft_wait();
 	if (x < 4)
 		y = 4;
 	else
