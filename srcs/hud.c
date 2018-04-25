@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 21:38:20 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 21:44:57 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	create_bouton_tool_bar(s);
 	init_add_obj_text_box(s);
 	init_add_obj_selection_rect(s);
+	init_color_selector(s);
 	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
 		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))

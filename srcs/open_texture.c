@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 21:34:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 21:50:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static SDL_Surface		**open_texture3(SDL_Surface **surfac)
 	surfac[26] = SDL_LoadBMP("./img_srcs/load100.bmp");
 	return (surfac);
 }
-
 
 static SDL_Surface		**open_texture2(void)
 {
