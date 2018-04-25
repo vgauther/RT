@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 14:00:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:31:38 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct		s_obj
 	int				reflex;
 	SDL_Surface		*tex;
 	int				is_neg[6];
+	char			*name;
 }					t_obj;
 
 typedef struct		s_env
@@ -139,6 +140,7 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+SDL_Surface			*load_texture(char *texture);
 Uint32				get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj);
 Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
 t_vec				calc_dir_vec(int x, int y, t_env *e);

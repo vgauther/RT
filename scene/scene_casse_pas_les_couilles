@@ -10,8 +10,8 @@ spot 0 0 0 0xffffff 0 0 0
 
 //spot -50 0 0 0xffffff 0 0 0
 //spot 0 100 0 0xffffff 0 0 0
-sphere +30 0 100 0x0000ff 10 2 1 ./img_srcs/selector.bmp
-sphere -30 0 100 0x0000ff 10 3 1 none
+sphere 30 0 100 0x0000ff 10 2 0 ./img_srcs/map_test.bmp
+sphere -30 0 100 0x0000ff 10 3 0 ./img_srcs/selector.bmp
 //sphere 0 50 100 0x0000ff 20 1 0
 //plan 0 0 200 0xFFFFFF 0 0 1 1 0
 //plan 0 0 -200 0xFFFFFF 0 0 1 1 1

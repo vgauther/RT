@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:57:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 12:46:59 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 15:22:16 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_free_tab(char **tab)
 
 	i = -1;
 	while (tab[++i])
-		ft_strdel(&tab[i]);
+		free(tab[i]);
 	free(tab);
 }
 

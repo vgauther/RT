@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:31:23 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/25 14:01:00 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:34:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void		add_sphere(t_env *e, char **sp)
 	e->obj[e->nb].rayon_2 = e->obj[e->nb].rayon * e->obj[e->nb].rayon;
 	e->obj[e->nb].material = ft_atoi(sp[6]);
 	if (e->obj[e->nb].material == 2)
-		e->obj[e->nb].tex = load_texture(sp[8]);
-	e->obj[e->nb].color = ft_atoi_color(only_color(sp[8]));
+	{
+		e->obj[e->nb].name = ft_strdup(sp[8]);
+		e->obj[e->nb].tex = load_texture(e->obj[e->nb].name);
+	}
+	e->obj[e->nb].color = ft_strtol(sp[4]);
 	e->obj[e->nb].type = 1;
 	e->obj[e->nb].num = e->nb;
 	e->obj[e->nb].rot = vector_init(0, 0, 0);
