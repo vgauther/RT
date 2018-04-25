@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 17:13:25 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 23:01:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	mouse_pipette_color(int x, int y, t_sdl *s, t_env *e)
 			* 256;
 			color += tab[x * bpp + s->hud1.color_selector_surf->w * bpp * y + 2]
 			* 256 * 256;
-			s->hud1.color = color;
+			s->hud1.color = (int)color;
 			print_rect(init_rect(s->hud1.bouton[15].rect.x + 110,
 			s->hud1.bouton[15].rect.y, 40, 40), e, 1, color);
 			actualize_background(s, e);

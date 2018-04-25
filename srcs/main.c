@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 20:30:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 22:49:19 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	init_hud_var(t_sdl *s)
 	s->hud1.box_picked = 42;
 	s->hud1.ok.i = 17;
 	s->hud1.tok.obj_select = -1;
+	s->hud1.tok.change_color_obj = 0;
+	s->hud1.color = 0;
 }
 
 void	loading(t_sdl *s, int i)

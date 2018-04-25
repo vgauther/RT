@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 16:30:55 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 23:07:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,27 @@ void	mouse_light(int x, int y, t_sdl *s, t_env *e)
 	}
 }
 
+void	mouse_color_obj(int x, int y, t_sdl *s, t_env *e)
+{
+	if (x >= SIZE_X + COL4 + 20 && x <= SIZE_X + COL4 + 60)
+	{
+		if (y >= WIN_Y / 2 + LINE + 100 && y <= WIN_Y / 2 + LINE + 140)
+		{
+			s->hud1.tok.change_color_obj = s->hud1.tok.change_color_obj == 1 ? 0 : 1;
+			printf("test\n");
+		}
+	}
+	(void)e;
+
+}
+
+void	mouse_color_obj_change(int x, int y, t_sdl *s, t_env *e)
+{
+	mouse_pipette_color(x, y, s, e);
+	e->obj[s->hud1.tok.obj_select].color = s->hud1.color;
+	raytracing(e, s);
+}
+
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
@@ -137,10 +158,15 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 	{
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
 	}
-	if (s->hud1.pipette == 1)
+	if (s->hud1.pipette == 1 && s->hud1.tok.change_color_obj != 1)
 	{
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
 	}
+	else if (s->hud1.tok.change_color_obj == 1 && s->hud1.pipette == 1)
+	{
+		mouse_color_obj_change(mouse_x, mouse_y, s, e);
+	}
+	mouse_color_obj(mouse_x, mouse_y, s, e);
 	mouse_light(mouse_x, mouse_y, s, e);
 	if (mouse_x <= COL)
 		mouse_main_cam(mouse_x, mouse_y, s, e);

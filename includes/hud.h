@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 16:45:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 22:30:03 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_token
 {
 	int				add_obj;
 	int				obj_select;
+	int				change_color_obj;
 }					t_token;
 
 typedef struct		s_amibiant_lux
