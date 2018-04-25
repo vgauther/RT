@@ -27,7 +27,8 @@
 # define MAX_DIST 	1000000
 # define POS_WIN_X 	100
 # define POS_WIN_Y 	100
-# define NB_THREAD	16
+# define NB_THREAD	8
+# define MAX_DEPTH  7
 
 # define CAM_POS_X 0
 # define CAM_POS_Y 0
