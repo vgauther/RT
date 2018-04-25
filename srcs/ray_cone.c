@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 14:47:32 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:35:15 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ t_vec		cone_normal_at(t_inter t, t_obj obj, t_vec ori)
 	t_vec	test;
 	double	m;
 
-	x = vector_init(ori.x - obj.pos.x,
-		ori.y - obj.pos.y, ori.z - obj.pos.z);
-	dir = vector_init(t.pos.x - ori.x,
-		t.pos.y - ori.y, t.pos.z - ori.z);
+	x = sub_vec(ori, obj.pos);
+	dir = sub_vec(t.pos, ori);
 	test = vector_init(obj.rot.x * t.dist,
 		obj.rot.y * t.dist, obj.rot.z * t.dist);
 	test = normalize_vec(test);

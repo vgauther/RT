@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 17:03:46 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 14:00:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct		s_obj
 	t_vec			rot_to_print;
 	int				num;
 	int				reflex;
+	SDL_Surface		*tex;
 	int				is_neg[6];
 }					t_obj;
 
@@ -85,7 +86,6 @@ typedef struct		s_env
 	t_obj			*first;
 	Uint32			*pixels;
 	Uint32			*hud;
-	SDL_Surface		*test;
 	t_cam			ca;
 	double			amb;
 }					t_env;

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 14:43:17 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 11:54:30 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MAX_DIST 	1000000
 # define POS_WIN_X 	100
 # define POS_WIN_Y 	100
-# define NB_THREAD	8
+# define NB_THREAD	16
 
 # define CAM_POS_X 0
 # define CAM_POS_Y 0

@@ -2,7 +2,7 @@
 //cone x y z color angle rot_x rot_y rot_z mat
 //cylindre x y z color rayon rot_x rot_y rot_z mat
 
-sphere 0 0 100 0xffffff 10 2 0
+sphere 0 0 100 0xffffff 10 1 0
 //plan 0 0 200 0xFFFFFF 0 0 1 1 1
 //plan 0 0 -200 0xFFFFFF 0 0 1 1 0
 plan -80 0 0 0xFFFFFF 1 0 0 1 1

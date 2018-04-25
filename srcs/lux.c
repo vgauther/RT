@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 17:14:39 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/25 13:44:54 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,19 @@ void		get_color_final(t_env *e, t_inter pt,
 	colorfin->b += 1 * difspec.specular * spot_color.b;
 }
 
+t_color		color_pix(t_env *e, t_inter pt)
+{
+	t_color color;
+
+	if (e->obj[pt.nb].material == 2 && e->obj[pt.nb].type == 1)
+		color = split_color(get_texture_pixel_sphere(e, pt, e->obj[pt.nb]));
+	else if (e->obj[pt.nb].material == 3 && e->obj[pt.nb].type == 1)
+		color = split_color(get_texture_chest_sphere(e, pt, e->obj[pt.nb]));
+	else
+		color = split_color(e->obj[pt.nb].color);
+	return (color);
+}
+
 double		lux(t_env *e, t_inter pt)
 {
 	t_vec		l;
@@ -56,8 +69,7 @@ double		lux(t_env *e, t_inter pt)
 
 	colorfin = color_init(0, 0, 0);
 	difspec.i = 0;
-	pt.color_rgb = e->obj[pt.nb].material == 2 ? split_color(
-	get_texture_chest_sphere(e, pt, e->obj[pt.nb])) : split_color(e->obj[pt.nb].color);
+	pt.color_rgb = color_pix(e, pt);
 	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
