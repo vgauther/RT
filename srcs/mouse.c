@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 23:07:13 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/25 23:09:58 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ void	mouse_color_obj(int x, int y, t_sdl *s, t_env *e)
 		if (y >= WIN_Y / 2 + LINE + 100 && y <= WIN_Y / 2 + LINE + 140)
 		{
 			s->hud1.tok.change_color_obj = s->hud1.tok.change_color_obj == 1 ? 0 : 1;
-			printf("test\n");
 		}
 	}
 	(void)e;
