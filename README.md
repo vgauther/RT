@@ -19,17 +19,16 @@ Un ray-tracer fait par vgauther, fde-souz, ppetit et ebertin
 - Filtre de couleur (ex : sepia, noir et blanc)
 - Lumiere
 - Ecran de chargement
+- Reflexion
+- Ajouter des objets pendant le rt
 
 ## En cours [...]
 - Interfaces (vgauther)
-- Ajouter des objets pendant le rt (vgauther)
 - Selecteur de couleur (vgauther)
 - Selectionneur d'objet (vgauther)
 - Refraction (ebertin/fde-souz)
-- Reflexion (ebertin/fde-souz)
 
 ## Idées et ameliorations à faire [->]
-- Fusion de scene via l'input (pas compris dans les bonus)
 - Parseur ++
 
 ## Objets à faire [obj]
