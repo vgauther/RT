@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 11:54:30 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:10:13 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define NB_THREAD	8
 # define MAX_DEPTH  7
 
-# define CAM_POS_X 0
-# define CAM_POS_Y 0
-# define CAM_POS_Z 0
+# define CAM_POS_X 0.00
+# define CAM_POS_Y 0.00
+# define CAM_POS_Z -150.00
 # define CAM_ROT_X 0
 # define CAM_ROT_Y 0
 # define CAM_ROT_Z 0

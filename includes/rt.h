@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 18:34:01 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:14:41 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void				bloc_multiplier(t_env *e, t_sdl *s);
 t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
 void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 t_obj				*realloc_obj(t_env *e);
-t_cam				init_cam(int x, int y, int z);
+t_cam				init_cam(void);
 void				mouv(long key, t_env *e, t_sdl *s);
 void				init_is_neg(t_env *e);
 void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
