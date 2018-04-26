@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 16:37:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 20:46:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_obj	realloc_sphere(t_env *e, int i)
 	ret.rot = normalize_vec(ret.rot);
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	if (ret.material == 2)
 	{
 		ret.name = ft_strdup(e->obj[i].name);
@@ -53,6 +54,7 @@ t_obj	realloc_plan(t_env *e, int i)
 	ret.num = e->obj[i].num;
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
@@ -73,6 +75,7 @@ t_obj	realloc_cone(t_env *e, int i)
 	ret.num = e->obj[i].num;
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
@@ -93,6 +96,7 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	ret.type = 2;
 	ret.num = e->obj[i].num;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
