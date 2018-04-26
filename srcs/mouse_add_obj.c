@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:21:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 21:18:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						e->obj[e->nb - 1].num = e->nb - 1;
 						e->obj[e->nb - 1].reflex = 0;
 						s->hud1.tok.obj_select = e->nb - 1;
+						e->obj[e->nb-1].transp = 0;
+						s->hud1.add_obj = 0;
+						s->hud1.bouton[16].i = 1;
 						init_is_neg(e);
 						raytracing(e, s);
 					}
@@ -105,19 +108,6 @@ void	mouse_add_obj(int x, int y, t_sdl *s, t_env *e)
 			if (x >= s->hud1.text_box[i].x &&
 				x <= s->hud1.text_box[i].x + s->hud1.text_box[i].w)
 				s->hud1.box_picked = i;
-		}
-	}
-	if (y >= s->hud1.ok.rect.y && y <= s->hud1.ok.rect.y + s->hud1.ok.rect.h)
-	{
-		if (x >= s->hud1.ok.rect.x &&
-			x <= s->hud1.ok.rect.x + s->hud1.ok.rect.w)
-		{
-			s->hud1.ok.i = 18;
-			display(s, e);
-			s->hud1.add_obj = 0;
-			s->hud1.ok.i = 17;
-			s->hud1.bouton[16].i = 1;
-			s->hud1.box_picked = 42;
 		}
 	}
 	display(s, e);

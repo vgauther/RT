@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 00:55:44 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:14:47 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 20:56:44 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_hud_var(t_sdl *s)
 	s->hud1.shape_img.i = 0;
 	s->hud1.add_obj = 0;
 	s->hud1.box_picked = 42;
-	s->hud1.ok.i = 17;
 	s->hud1.tok.obj_select = -1;
 	s->hud1.tok.change_color_obj = 0;
 	s->hud1.color = 0;

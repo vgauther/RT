@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 11:52:45 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 20:56:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ typedef struct		s_hud
 	SDL_Rect		text_box[6];
 	t_tex_rec		add_obj_data[6];
 	int				box_picked;
-	t_bouton		ok;
 	t_tex_rec		workspace_text;
 	t_token			tok;
 	t_amibiant_lux	lux;
