@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 13:25:30 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:28:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+t_inter				get_closest_test(t_env *e, t_vec dir, t_vec ori, int t);
+Uint32				trans(t_env *e, t_inter pt, Uint32 color, t_vec ori);
 SDL_Surface			*load_texture(char *texture);
 Uint32				get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj);
 Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
