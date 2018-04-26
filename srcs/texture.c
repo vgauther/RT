@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 12:26:07 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/25 14:01:19 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 13:26:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Uint32		get_texture_pixel_sphere(t_env *e, t_inter pt, t_obj obj)
 	return (v.color);
 }
 
-Uint32	get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj)
+Uint32		get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj)
 {
 	t_texture_calc	v;
 	int				xpair;
