@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 15:28:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:33:12 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,11 @@ void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
 void				display_credits(t_sdl *s);
 void				display_cam(t_sdl *s);
 void				display_multi_text(t_sdl *s);
+void				display_light(t_sdl *s, t_env *e);
+void				display_pipette(t_sdl *s);
+void				display_all_bouton(t_sdl *s);
+void				display_work_space(t_sdl *s, t_env *e);
+void				display_hud(t_sdl *s, t_env *e);
 
 /*
 ** lux light lumiere
@@ -272,6 +277,8 @@ void				recup_cam_to_print(t_sdl *s, t_env *e);
 void				init_add_obj_selection_rect(t_sdl *s);
 void				init_add_obj_text_box(t_sdl *s);
 void				init_info_messages(t_sdl *s);
+void				init_color_selector(t_sdl *s);
+void				init_color_text(t_sdl *s);
 
 /*
 ** ft_put_pixel
