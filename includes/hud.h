@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 22:30:03 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 11:52:45 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct		s_hud
 	t_token			tok;
 	t_amibiant_lux	lux;
 	int				color;
+	t_tex_rec		color_text;
 }					t_hud;
 
 #endif
