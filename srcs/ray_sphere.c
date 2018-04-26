@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/18 12:55:18 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:53:28 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_vec		sphere_normal_at(t_inter t, t_obj obj)
 {
-	return (normalize_vec(vector_init(t.pos.x - obj.pos.x,
-		t.pos.y - obj.pos.y,
-		t.pos.z - obj.pos.z)));
+	t_vec norm;
+	norm = normalize_vec(sub_vec(t.pos, obj.pos));
+	return (norm);
 }
 
 void		resolve_poly(t_polynome *p, t_inter *t, t_vec v, t_vec ori)

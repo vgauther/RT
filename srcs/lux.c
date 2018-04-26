@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 15:20:37 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:05:25 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse)
+double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse, t_cam c)
 {
 	t_vec	r;
 	t_vec	v;
@@ -23,11 +23,8 @@ double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse)
 	tmp = 0;
 	if (difuse > 0)
 	{
-		tmp = 2 * dot(pt.normal, l);
-		r = vector_init(pt.normal.x * tmp, pt.normal.y * tmp,
-			pt.normal.z * tmp);
-		r = vector_init(r.x - l.x, r.y - l.y, r.z - l.z);
-		v = normalize_vec(vector_init(-pt.pos.x, -pt.pos.y, -pt.pos.z));
+		r = sub_vec(vector_init(-l.x, -l.y, -l.z), v_scale(2 * dot(vector_init(-l.x, -l.y, -l.z), pt.normal), &pt.normal));
+		v = normalize_vec(sub_vec(c.pos ,pt.pos));
 		tmp = dot(r, v) > 0 ? dot(r, v) : 0;
 		tmp = powf(tmp, 10);
 	}
@@ -77,7 +74,7 @@ double		lux(t_env *e, t_inter pt)
 		e->obj[pt.nb].reflex)
 		{
 			l = normalize_vec(sub_vec(e->spot[difspec.i].pos, pt.pos));
-			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse);
+			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse, e->ca);
 			get_color_final(e, pt, difspec, &colorfin);
 		}
 		difspec.i += 1;
