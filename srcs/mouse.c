@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:22:04 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 13:25:20 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ void	mouse_color_obj(int x, int y, t_sdl *s, t_env *e)
 		}
 	}
 	(void)e;
-
 }
 
 void	mouse_color_obj_change(int x, int y, t_sdl *s, t_env *e)
@@ -179,5 +178,4 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 		mouse_add_obj_activate(mouse_x, mouse_y, s, e);
 		save_bouton(mouse_x, mouse_y, s, e);
 	}
-	printf("test3\n");
 }
