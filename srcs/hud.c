@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:03:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:05:46 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	call_blocs(t_env *e, t_sdl *s)
 
 void	init_color_selector(t_sdl *s)
 {
-	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2) - 128, 256, 256);
+	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2)
+	- 128, 256, 256);
 	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/selector.bmp");
 }
 
