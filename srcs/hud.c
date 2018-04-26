@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:05:46 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:02:47 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	bloc_work_space(t_env *e, t_sdl *s)
 
 void	bloc_lux(t_sdl *s, t_env *e)
 {
-	char *str;
-	char *str2;
+	char	*str;
+	char	*str2;
 	t_vec	p1;
 	t_vec	p2;
 
@@ -57,19 +57,13 @@ void	bloc_lux(t_sdl *s, t_env *e)
 	p2 = init_point_2_coord(SIZE_X - 90, SIZE_Y / 8);
 	vertical_trait(p1, p2, CONTRAST, e);
 	s->hud1.lux.title.rect = init_sdl_rect(SIZE_X - 40, 7, 70, 12);
-	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 70, LINE / 2 - 6, 60, 12);
+	s->hud1.lux.percento.rect = init_sdl_rect(SIZE_X - 70, LINE / 2 - 6,
+		60, 12);
 	str = ft_itoa(e->amb * 100);
 	str2 = ft_strjoin(str, " %");
 	free(str);
 	print_text(str2, s->font.color[1], s, &s->hud1.lux.percento);
 	print_text(ft_strdup("Light"), s->font.color[4], s, &s->hud1.lux.title);
-}
-
-void	init_color_text(t_sdl *s)
-{
-	print_text(ft_strdup("Color"), s->font.color[1], s, &s->hud1.color_text);
-	s->hud1.color_text.rect = init_sdl_rect(SIZE_X + COL4 + 80, WIN_Y / 2 +
-		LINE + 100 + 10, 100, 20);
 }
 
 void	call_blocs(t_env *e, t_sdl *s)
@@ -81,13 +75,6 @@ void	call_blocs(t_env *e, t_sdl *s)
 	bloc_credits(e, s);
 	bloc_multiplier(e, s);
 	bloc_work_space(e, s);
-}
-
-void	init_color_selector(t_sdl *s)
-{
-	s->hud1.color_selector = init_sdl_rect((WIN_X / 2) - 128 , (WIN_Y / 2)
-	- 128, 256, 256);
-	s->hud1.color_selector_surf = SDL_LoadBMP("./img_srcs/selector.bmp");
 }
 
 void	hud_init(t_sdl *s, t_env *e)

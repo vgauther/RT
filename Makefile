@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/25 18:32:07 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/26 14:20:25 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,61 +42,70 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC_NAME = rt.h
 
-SRC_NAME = 	lux.c \
-			hud.c  \
+SRC_NAME = 	lux.c  \
 			main.c  \
-			mouse.c  \
-			error.c   \
-			parser.c   \
-			ray_cone.c  \
-			tools_tab.c  \
-			pars_spot.c   \
-			raytracer.c    \
-			pars_cone.c     \
-			ray_sphere.c     \
-			pars_check.c      \
-			pars_sphere.c      \
-			tools_color.c       \
-			open_texture.c       \
-			tools_vector.c        \
-			ray_cylindre.c         \
-			pars_cylindre.c         \
-			ft_put_pixels.c          \
-			tools_geometric.c         \
-			print_text.c               \
-			rotate.c					\
-			texture.c					 \
-			filter.c \
-			check_define.c \
-			ray_plan.c \
-			pars_plan.c \
+			trait.c  \
+			mouse.c   \
+			error.c    \
+			rotate.c    \
+			filter.c     \
+			parser.c      \
+			ft_wait.c      \
+			reflect.c       \
+			texture.c	     \
+			loading.c 	      \
+			print_text.c       \
+			open_texture.c      \
+			check_define.c       \
+			ft_put_pixels.c       \
+			ft_realloc_obj.c       \
+			user_key_interaction.c  \
+			\
+			text_box_add_obj.c \
+			text_box_del_char.c \
+			\
+			raytracer.c \
+			ray_plan.c   \
+			ray_cone.c    \
+			ray_sphere.c   \
+			ray_cylindre.c  \
+			\
+			pars_spot.c \
+			pars_cone.c  \
+			pars_plan.c   \
+			pars_check.c   \
+			pars_sphere.c   \
+			pars_cylindre.c  \
+			\
 			mouse_camera.c \
 			mouse_pipette.c \
-			mouse_add_obj.c \
-			ft_wait.c \
-			tools_key.c \
-			tools_sdl.c \
-			hud_bloc_multiplier.c \
-			trait.c \
-			mouse_selector.c \
-			ft_realloc_obj.c \
-			display_credits.c \
-			tools_cam.c \
-			user_key_interaction.c \
-			display.c \
-			text_box_add_obj.c \
-			tools_color2.c \
-			hud_draw.c \
-			hud_bloc_credits_save_logo_cam.c \
-			display_add_obj_menu.c \
-			text_box_del_char.c \
+			mouse_add_obj.c  \
+			mouse_selector.c  \
+			\
+			tools_tab.c \
+			tools_key.c  \
+			tools_cam.c   \
+			tools_sdl.c    \
+			tools_color.c   \
+			tools_color2.c 	 \
+			tools_vector.c    \
+			tools_vector_2.c   \
+			tools_geometric.c   \
+			\
+			display.c            \
+			display_hud.c         \
+			display_credits.c      \
+			display_add_obj_menu.c  \
 			display_cam_multi_text.c \
-			hud_init_add_obj_menu.c \
-			hud_init_info_mess.c \
-			tools_vector_2.c \
-			hud_create_bouton.c \
-			reflect.c \
-			loading.c
+			\
+			hud.c                     \
+			hud_draw.c                 \
+			hud_color_select.c          \
+			hud_create_bouton.c          \
+			hud_init_info_mess.c          \
+			hud_bloc_multiplier.c          \
+			hud_init_add_obj_menu.c         \
+			hud_bloc_credits_save_logo_cam.c \
 
 all: $(NAME)
 
