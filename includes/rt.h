@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 15:33:12 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 17:03:26 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct		s_obj
 	double			rayon_2;
 	int				material;
 	int				type;
-	int				color;
+	Uint32				color;
 	t_color			color_rgb;
 	t_vec			rot;
 	double			angle;
@@ -76,6 +76,7 @@ typedef struct		s_obj
 	SDL_Surface		*tex;
 	int				is_neg[6];
 	char			*name;
+	int				transp;
 }					t_obj;
 
 typedef struct		s_env
@@ -131,6 +132,7 @@ typedef struct		s_spec_dif
 	int				i;
 	double			specular;
 	double			difuse;
+	Uint32			col;
 }					t_spec_dif;
 
 typedef struct		s_thread_st
@@ -140,6 +142,7 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
+t_color				color_pix(t_env *e, t_inter pt);
 t_inter				get_closest_test(t_env *e, t_vec dir, t_vec ori, int t);
 Uint32				trans(t_env *e, t_inter pt, Uint32 color, t_vec ori);
 SDL_Surface			*load_texture(char *texture);
@@ -225,7 +228,7 @@ void				display_hud(t_sdl *s, t_env *e);
 */
 
 double				lux(t_env *e, t_inter pt);
-int					ray_shadow(t_env *e, t_inter ori, t_obj spot, int nb);
+int					ray_shadow(t_env *e, t_inter ori, t_obj spot, Uint32 *col);
 
 /*
 ** tools

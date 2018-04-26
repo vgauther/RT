@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/26 15:33:02 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/04/26 15:40:37 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRC_NAME = 	lux.c  \
 			ft_put_pixels.c       \
 			ft_realloc_obj.c       \
 			user_key_interaction.c  \
+			transparence.c \
 			\
 			text_box_add_obj.c \
 			text_box_del_char.c \

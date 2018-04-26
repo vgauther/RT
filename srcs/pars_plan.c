@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:31:27 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/24 13:02:08 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:35:54 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_param(char **sp)
 	int			ret;
 
 	ret = 1;
-	if (ft_tablen((void **)sp) != 10)
+	if (ft_tablen((void **)sp) != 11)
 		ret = 0;
 	return (ret);
 }
@@ -40,6 +40,7 @@ void		add_plan(t_env *e, char **sp)
 	e->obj[e->nb].num = e->nb;
 	e->obj[e->nb].material = ft_atoi(sp[8]);
 	e->obj[e->nb].reflex = ft_atoi(sp[9]);
+	e->obj[e->nb].transp = ft_atoi(sp[10]);
 	e->obj[e->nb].rot_to_print = vector_init(ft_atoi(sp[5]), ft_atoi(sp[6]),
 	ft_atoi(sp[7]));
 	free(new);

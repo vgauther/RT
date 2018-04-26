@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 18:39:24 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 15:18:25 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 16:09:07 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ Uint32		proces_color(t_env *e, t_sdl *s, t_inter pt)
 	depth = 0;
 	color = lux(e, pt);
 	if (e->obj[pt.nb].reflex)
+		color = get_reflect(e, pt, &depth, color);
+ 	if (e->obj[pt.nb].transp)
 		color = trans(e, pt, color, e->ca.pos);
-		//color = get_reflect(e, pt, &depth, color);
 	color = filtre(s, color);
 	return (color);
 }

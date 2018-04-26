@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 14:05:25 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 17:11:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void		get_color_final(t_env *e, t_inter pt,
 {
 	t_color spot_color;
 
-	spot_color = normalize_color(split_color(e->spot[difspec.i].color));
+	(void)e;
+	spot_color = normalize_color(split_color(difspec.col));
 	colorfin->r += 1 * difspec.difuse * (pt.color_rgb.r * spot_color.r);
 	colorfin->g += 1 * difspec.difuse * (pt.color_rgb.g * spot_color.g);
 	colorfin->b += 1 * difspec.difuse * (pt.color_rgb.b * spot_color.b);
@@ -70,11 +71,13 @@ double		lux(t_env *e, t_inter pt)
 	pt.color_rgb = normalize_color(pt.color_rgb);
 	while (difspec.i < e->nb_spot)
 	{
-		if (!(ray_shadow(e, pt, e->spot[difspec.i], pt.nb)) ||
-		e->obj[pt.nb].reflex)
+		difspec.col = e->spot[difspec.i].color;
+		if (!(ray_shadow(e, pt, e->spot[difspec.i], &difspec.col))
+		|| e->obj[pt.nb].reflex)
 		{
 			l = normalize_vec(sub_vec(e->spot[difspec.i].pos, pt.pos));
-			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse, e->ca);
+			difspec.specular = get_specular_and_difuse(l, pt, &difspec.difuse,
+			e->ca);
 			get_color_final(e, pt, difspec, &colorfin);
 		}
 		difspec.i += 1;

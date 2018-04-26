@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 14:30:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 14:00:16 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 15:38:05 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_param(char **sp)
 	int			ret;
 
 	ret = 1;
-	if (ft_tablen((void **)sp) != 11)
+	if (ft_tablen((void **)sp) != 12)
 		ret = 0;
 	else if (!check_value(sp[5]))
 		ret = 0;
@@ -42,4 +42,5 @@ void		add_cylindre(t_env *e, char **sp)
 	e->obj[e->nb].type = 2;
 	e->obj[e->nb].num = e->nb;
 	e->obj[e->nb].reflex = ft_atoi(sp[10]);
+	e->obj[e->nb].transp = ft_atoi(sp[11]);
 }

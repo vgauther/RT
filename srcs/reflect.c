@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:21:13 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/26 14:50:36 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/26 16:15:08 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ Uint32		get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
 			color_2 = mult_color(color_2, normalize_color(
 				split_color(get_reflect(e, tmp, depth, rgb_to_int(color_2)))));
 		}
+		if (e->obj[tmp.nb].transp)
+			color_2 = mult_color(color_2, normalize_color(split_color(trans(e,
+				tmp, rgb_to_int(color_2), pt.pos))));
 		color_rgb = mult_color(color_rgb, color_2);
 	}
 	return (rgb_to_int(color_rgb));

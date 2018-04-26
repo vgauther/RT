@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/26 12:22:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 17:14:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,15 @@ void		raytracing(t_env *e, t_sdl *s)
 	display(s, e);
 }
 
-int			ray_shadow(t_env *e, t_inter pt, t_obj spot, int nb)
+int			ray_shadow(t_env *e, t_inter pt, t_obj spot, Uint32 *color)
 {
 	int		j;
 	t_vec	dir;
 	t_inter tmp;
 	double	dist;
 
+
 	j = 0;
-	(void)nb;
 	dir = vector_init(pt.pos.x - spot.pos.x,
 	pt.pos.y - spot.pos.y, pt.pos.z - spot.pos.z);
 	dist = sqrt(dir.x * dir.x + dir.y * dir.y + dir.z * dir.z);
@@ -127,8 +127,14 @@ int			ray_shadow(t_env *e, t_inter pt, t_obj spot, int nb)
 	while (j < e->nb)
 	{
 		tmp = shape_redirection(e, dir, spot.pos, j);
+		tmp.nb = j;
 		if (dist - 1 > tmp.dist && tmp.dist > 0)
-			return (1);
+		{
+			if (!e->obj[j].transp)
+				return (1);
+			else
+				*color = rgb_to_int(mult_color(normalize_color(split_color(*color)), normalize_color(color_pix(e, tmp))));
+		}
 		j++;
 	}
 	return (0);
