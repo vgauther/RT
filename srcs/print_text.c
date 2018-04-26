@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:22:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:43:52 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 11:49:48 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			creat_sdl_color(t_sdl *s)
 
 void			open_font(t_sdl *s)
 {
-	if (!(s->font.bebas = TTF_OpenFont("src_font/bebas.ttf", 100)))
+	if (!(s->font.bebas = TTF_OpenFont("src_font/1.ttf", 100)))
 		ft_error("font error");
 }
 

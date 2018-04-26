@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 21:44:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 12:03:37 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ void	bloc_lux(t_sdl *s, t_env *e)
 	print_text(ft_strdup("Light"), s->font.color[4], s, &s->hud1.lux.title);
 }
 
+void	init_color_text(t_sdl *s)
+{
+	print_text(ft_strdup("Color"), s->font.color[1], s, &s->hud1.color_text);
+	s->hud1.color_text.rect = init_sdl_rect(SIZE_X + COL4 + 80, WIN_Y / 2 +
+		LINE + 100 + 10, 100, 20);
+}
+
 void	call_blocs(t_env *e, t_sdl *s)
 {
 	bloc_logo(s);
@@ -89,6 +96,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	t_vec	p2;
 
 	init_font(s);
+	init_color_text(s);
 	create_bouton_cam(s);
 	init_info_messages(s);
 	create_bouton_tool_bar(s);
