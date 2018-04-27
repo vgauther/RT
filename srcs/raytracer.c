@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/26 17:14:24 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 12:48:47 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int			ray_shadow(t_env *e, t_inter pt, t_obj spot, Uint32 *color)
 	t_inter tmp;
 	double	dist;
 
-
 	j = 0;
 	dir = vector_init(pt.pos.x - spot.pos.x,
 	pt.pos.y - spot.pos.y, pt.pos.z - spot.pos.z);
@@ -133,7 +132,8 @@ int			ray_shadow(t_env *e, t_inter pt, t_obj spot, Uint32 *color)
 			if (!e->obj[j].transp)
 				return (1);
 			else
-				*color = rgb_to_int(mult_color(normalize_color(split_color(*color)), normalize_color(color_pix(e, tmp))));
+				*color = rgb_to_int(mult_color(normalize_color(split_color(
+				*color)), normalize_color(color_pix(e, tmp))));
 		}
 		j++;
 	}

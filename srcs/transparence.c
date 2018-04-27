@@ -6,13 +6,13 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:28:07 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/26 16:21:13 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:16:46 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-Uint32	 trans(t_env *e, t_inter pt, Uint32 color, t_vec ori)
+Uint32	transp(t_env *e, t_inter pt, Uint32 color, t_vec ori)
 {
 	t_color		color_rgb;
 	t_color		color_2;
@@ -28,7 +28,7 @@ Uint32	 trans(t_env *e, t_inter pt, Uint32 color, t_vec ori)
 	{
 		color_2 = normalize_color(split_color(lux(e, tmp)));
 		if (e->obj[tmp.nb].transp)
-			color_2 = mult_color(color_2, normalize_color(split_color(trans(e,
+			color_2 = mult_color(color_2, normalize_color(split_color(transp(e,
 				tmp, rgb_to_int(color_2), pt.pos))));
 		if (e->obj[tmp.nb].reflex)
 		{

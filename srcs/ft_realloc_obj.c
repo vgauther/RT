@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 16:37:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:21:20 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_obj	realloc_sphere(t_env *e, int i)
 	ret.rot = normalize_vec(ret.rot);
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	if (ret.material == 2)
 	{
 		ret.name = ft_strdup(e->obj[i].name);
@@ -47,6 +48,7 @@ t_obj	realloc_plan(t_env *e, int i)
 	ret.color = e->obj[i].color;
 	ret.rot.x = e->obj[i].rot.x;
 	ret.rot.y = e->obj[i].rot.y;
+	ret.transp = e->obj[i].transp;
 	ret.rot.z = e->obj[i].rot.z;
 	ret.material = e->obj[i].material;
 	ret.type = 4;
@@ -65,6 +67,7 @@ t_obj	realloc_cone(t_env *e, int i)
 	ret.angletan = e->obj[i].angletan;
 	ret.rot.x = e->obj[i].rot.x;
 	ret.rot.y = e->obj[i].rot.y;
+	ret.transp = e->obj[i].transp;
 	ret.rot.z = e->obj[i].rot.z;
 	ret.rot = normalize_vec(ret.rot);
 	ret.material = e->obj[i].material;
@@ -85,6 +88,7 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	ret.rayon_2 = e->obj[i].rayon_2;
 	ret.rot.x = e->obj[i].rot.x;
 	ret.rot.y = e->obj[i].rot.y;
+	ret.transp = e->obj[i].transp;
 	ret.rot.z = e->obj[i].rot.z;
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.rot = normalize_vec(ret.rot);

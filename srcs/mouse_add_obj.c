@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:21:07 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:22:51 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						e->obj[e->nb - 1].angle = 20;
 						e->obj[e->nb - 1].angletan =
 						tan((e->obj[e->nb - 1].angle / 2) * RAD);
+						e->obj[e->nb - 1].transp = 0;
 						e->obj[e->nb - 1].num = e->nb - 1;
 						e->obj[e->nb - 1].reflex = 0;
 						s->hud1.tok.obj_select = e->nb - 1;
