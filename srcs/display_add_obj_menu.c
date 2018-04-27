@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:02:06 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 21:10:48 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ void			add_obj_menu(t_sdl *s, t_env *e, int nb)
 	add_obj_print_text(s, e, nb);
 	display_add_obj_menu_bloc(s, e, nb);
 	display_add_obj_menu_data(s, e, nb);
-	SDL_RenderCopy(s->renderer, s->tex[s->hud1.ok.i], NULL, &s->hud1.ok.rect);
 }

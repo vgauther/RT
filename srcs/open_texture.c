@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 21:50:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/26 23:04:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ static SDL_Surface		**open_texture3(SDL_Surface **surfac)
 	surfac[24] = SDL_LoadBMP("./img_srcs/load50.bmp");
 	surfac[25] = SDL_LoadBMP("./img_srcs/load75.bmp");
 	surfac[26] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	surfac[27] = SDL_LoadBMP("./img_srcs/30sticky.bmp");
+	surfac[28] = SDL_LoadBMP("./img_srcs/50sticky.bmp");
+	surfac[29] = SDL_LoadBMP("./img_srcs/80sticky.bmp");
+	surfac[30] = SDL_LoadBMP("./img_srcs/100sticky.bmp");
+/*	surfac[27] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	surfac[28] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	surfac[29] = SDL_LoadBMP("./img_srcs/load100.bmp");
+	surfac[30] = SDL_LoadBMP("./img_srcs/load100.bmp");*/
 	return (surfac);
 }
 
@@ -32,7 +40,7 @@ static SDL_Surface		**open_texture2(void)
 {
 	SDL_Surface **surfac;
 
-	if (!(surfac = malloc(sizeof(SDL_Surface *) * 27)))
+	if (!(surfac = malloc(sizeof(SDL_Surface *) * 31)))
 		ft_error("\n MALLOC ERROR : open_texture2\n\n");
 	surfac[0] = SDL_LoadBMP("./img_srcs/-.bmp");
 	surfac[1] = SDL_LoadBMP("./img_srcs/+.bmp");
@@ -61,7 +69,7 @@ void					open_texture(t_sdl *s)
 
 	i = -1;
 	surfac = open_texture2();
-	while (++i < 27)
+	while (++i < 31)
 	{
 		if (!(s->tex[i] = SDL_CreateTextureFromSurface(s->renderer, surfac[i])))
 			ft_sdl_error("Texture error : ", SDL_GetError());

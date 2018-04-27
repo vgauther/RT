@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 13:21:20 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 13:30:28 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_obj	realloc_plan(t_env *e, int i)
 	ret.num = e->obj[i].num;
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
@@ -76,6 +77,7 @@ t_obj	realloc_cone(t_env *e, int i)
 	ret.num = e->obj[i].num;
 	ret.rot_to_print = e->obj[i].rot_to_print;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
@@ -97,6 +99,7 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	ret.type = 2;
 	ret.num = e->obj[i].num;
 	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
 	return (ret);
 }
 
