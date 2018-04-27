@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 13:30:03 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 14:51:08 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
 t_vec				sub_vec(t_vec v1, t_vec v2);
 
+t_vec				add_vec(t_vec v1, t_vec v2);
 t_vec				init_point(double x, double y, double z);
 t_vec				init_point_2_coord(int x, int y);
 void				intersection_point(t_inter *pt, t_vec ca, t_vec v);
