@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/26 15:40:37 by fde-souz         ###   ########.fr        #
+#    Updated: 2018/04/27 17:11:01 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ SRC_NAME = 	lux.c  \
 			ray_cone.c    \
 			ray_sphere.c   \
 			ray_cylindre.c  \
+			ray_disque.c  \
 			\
 			pars_spot.c \
 			pars_cone.c  \
@@ -77,6 +78,7 @@ SRC_NAME = 	lux.c  \
 			pars_check.c   \
 			pars_sphere.c   \
 			pars_cylindre.c  \
+			pars_disque.c  \
 			\
 			mouse_camera.c \
 			mouse_pipette.c \

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 14:51:08 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:03:29 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,11 +300,13 @@ t_inter				ray_sphere(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_cylindre(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_cone(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
+t_inter				ray_disque(t_env *e, t_vec v, t_vec ori, int nbr);
 
 /*
 ** shapes's normal
 */
 
+t_vec				disque_normal_at(t_inter t, t_obj obj, t_vec ori);
 t_vec				cone_normal_at(t_inter t, t_obj obj, t_vec ori);
 t_vec				cylindre_normal_at(t_inter t, t_obj obj, t_vec ori);
 t_vec				sphere_normal_at(t_inter t, t_obj obj);
@@ -324,6 +326,7 @@ void				add_sphere(t_env *e, char **sp);
 void				add_spot(t_env *e, char **sp);
 void				add_cylindre(t_env *e, char **sp);
 void				add_cone(t_env *e, char **sp);
+void				add_disque(t_env *e, char **sp);
 void				add_plan(t_env *e, char **sp);
 void				count_spot(char *str, t_env *e);
 void				select_add_spot(char *str, t_env *e);
