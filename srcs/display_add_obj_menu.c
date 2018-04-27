@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 21:10:48 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/27 23:10:46 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ static void		display_add_obj_menu_data(t_sdl *s, t_env *e, int nb)
 	}
 	if ((SDL_RenderCopy(s->renderer, s->hud1.color_text.tex, NULL,
 		&s->hud1.color_text.rect)) < 0)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((SDL_RenderCopy(s->renderer, s->hud1.reflex_text.tex, NULL,
+		&s->hud1.reflex_text.rect)) < 0)
+		ft_sdl_error("Texture error : ", SDL_GetError());
+	if ((SDL_RenderCopy(s->renderer, s->hud1.transpa_text.tex, NULL,
+		&s->hud1.transpa_text.rect)) < 0)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 }
 

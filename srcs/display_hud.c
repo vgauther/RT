@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:50:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 13:57:09 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/27 23:30:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	display_hud(t_sdl *s, t_env *e)
 	{
 		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 100, 40, 40);
 		print_rect(r1, e, 1, e->obj[s->hud1.tok.obj_select].color);
+		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 160, 40, 40);
+		print_rect(r1, e, 1, 0xFFFFFF);
+		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 220, 40, 40);
+		print_rect(r1, e, 1, 0xFFFFFF);
 		actualize_background(s, e);
 	}
 	SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);
@@ -40,4 +44,11 @@ void	display_hud(t_sdl *s, t_env *e)
 	SDL_RenderCopy(s->renderer, s->hud1.workspace_text.tex, NULL,
 		&s->hud1.workspace_text.rect);
 	call_display_hud_function(s, e);
+	if (s->hud1.tok.obj_select != -1)
+	{
+		if (e->obj[s->hud1.tok.obj_select].reflex == 1)
+			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[0].i], NULL, &s->hud1.option[0].rect);
+		if (e->obj[s->hud1.tok.obj_select].transp == 1)
+			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[1].i], NULL, &s->hud1.option[1].rect);
+	}
 }

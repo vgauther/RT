@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:04:56 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 20:56:11 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/27 23:14:38 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ typedef struct		s_hud
 	t_amibiant_lux	lux;
 	int				color;
 	t_tex_rec		color_text;
+	t_tex_rec		reflex_text;
+	t_tex_rec		transpa_text;
+	t_bouton		option[2];
 }					t_hud;
 
 #endif
