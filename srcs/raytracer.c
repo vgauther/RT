@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/27 13:31:10 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:24:43 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_inter		shape_redirection(t_env *e, t_vec dir, t_vec ori, int nbr)
 		tmp = ray_cylindre(e, dir, ori, nbr);
 	else if (e->obj[nbr].type == 4)
 		tmp = ray_plan(e, dir, ori, nbr);
+	else if (e->obj[nbr].type == 5)
+		tmp = ray_disque(e, dir, ori, nbr);
 	else
 		tmp = ray_cone(e, dir, ori, nbr);
 	return (tmp);
@@ -100,7 +102,6 @@ void		raytracing(t_env *e, t_sdl *s)
 	while (++i < NB_THREAD)
 		if ((ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i])))
 			ft_error("\nThread error.\n");
-	//loading_screen(5, s);
 	i = -1;
 	loading_screen(5, s);
 	while (++i < NB_THREAD)

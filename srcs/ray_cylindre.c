@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 16:06:54 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 16:35:57 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,3 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_vec ori, int nbr)
 	resolve_poly(&p, &pt, d, ori);
 	return (pt);
 }
-
-// t_inter		ray_cylindre(t_env *e, t_vec d, t_vec ori, int nbr)
-// {
-// 	t_inter		pt;
-// 	t_polynome	p;
-// 	t_vec		x;
-// 	double		taille;
-// 	t_vec		cap1;
-// 	t_vec		cap2
-//
-// 	taille = 10;
-// 	x = vector_init(ori.x - e->obj[nbr].pos.x, ori.y - e->obj[nbr].pos.y,
-// 		ori.z - e->obj[nbr].pos.z);
-// 	p.a = dot(d, d) - dot_2(d, e->obj[nbr].rot);
-// 	p.b = 2 * (dot(d, x) - dot(d, e->obj[nbr].rot) * dot(x, e->obj[nbr].rot));
-// 	p.c = dot(x, x) - dot_2(x, e->obj[nbr].rot) - e->obj[nbr].rayon_2;
-// 	p.delta = (p.b * p.b) - (4 * p.a * p.c);
-// 	resolve_poly(&p, &pt, d, ori);
-// 	return (pt);
-// }

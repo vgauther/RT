@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 14:54:51 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:15:14 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		add_obj(t_env *e, char *line)
 		add_cone(e, split);
 	else if (ft_strequ("plan", split[0]))
 		add_plan(e, split);
+	else if (ft_strequ("disque", split[0]))
+		add_disque(e, split);
 	else
 		ft_error("Error with scene file.");
 	(x == 0) ? e->nb = (e->nb + 1) : 0;

@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/24 17:15:06 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:16:21 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_vec		get_normal(t_env *e, t_inter pt, t_vec ori)
 		norm = cylindre_normal_at(pt, e->obj[pt.nb], ori);
 	else if (e->obj[pt.nb].type == 4)
 		norm = plan_normal_at(pt, e->obj[pt.nb], ori);
+	else if (e->obj[pt.nb].type == 5)
+		norm = disque_normal_at(pt, e->obj[pt.nb], ori);
 	else
 		norm = cone_normal_at(pt, e->obj[pt.nb], ori);
 	return (norm);
