@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 23:54:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 19:41:22 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,64 @@ void	mouse_color_obj_change(int x, int y, t_sdl *s, t_env *e)
 	raytracing(e, s);
 }
 
+void	mouse_rayon_modify(int i, t_sdl *s, t_env *e)
+{
+	if (e->obj[s->hud1.tok.obj_select].type == 1 || e->obj[s->hud1.tok.obj_select].type == 2)
+	{
+		if (i == 0)
+			e->obj[s->hud1.tok.obj_select].rayon++;
+		else
+			e->obj[s->hud1.tok.obj_select].rayon--;
+		(e->obj[s->hud1.tok.obj_select].rayon < 0) ? e->obj[s->hud1.tok.obj_select].rayon = 0 : 0;
+		e->obj[s->hud1.tok.obj_select].rayon_2 = e->obj[s->hud1.tok.obj_select].rayon * e->obj[s->hud1.tok.obj_select].rayon;
+	}
+}
+
+void	mouse_angle_modify(int i, t_sdl *s, t_env *e)
+{
+	if (e->obj[s->hud1.tok.obj_select].type == 3)
+	{
+		if (i == 0)
+			e->obj[s->hud1.tok.obj_select].angle++;
+		else
+			e->obj[s->hud1.tok.obj_select].angle--;
+		(e->obj[s->hud1.tok.obj_select].angle < 0) ? e->obj[s->hud1.tok.obj_select].angle = 0 : 0;
+		e->obj[s->hud1.tok.obj_select].angletan = tan((e->obj[s->hud1.tok.obj_select].angle / 2) * RAD);
+	}
+}
+
+void	mouse_modify_ray_angle(int x, int y, t_sdl *s, t_env *e)
+{
+	if (e->obj[s->hud1.tok.obj_select].type >= 1 ||
+		e->obj[s->hud1.tok.obj_select].type <= 3)
+	{
+		if (x >= s->hud1.plmor[1].rect.x && x <= s->hud1.plmor[1].rect.x + s->hud1.plmor[1].rect.w)
+		{
+			if (y >= s->hud1.plmor[1].rect.y && y <= s->hud1.plmor[1].rect.y + s->hud1.plmor[1].rect.h)
+			{
+				s->hud1.plmor[1].i = 3;
+				display(s, e);
+				s->hud1.plmor[1].i = 1;
+				mouse_rayon_modify(0, s, e);
+				mouse_angle_modify(0, s, e);
+				raytracing(e, s);
+			}
+		}
+		if (x >= s->hud1.plmor[2].rect.x && x <= s->hud1.plmor[2].rect.x + s->hud1.plmor[2].rect.w)
+		{
+			if (y >= s->hud1.plmor[2].rect.y && y <= s->hud1.plmor[2].rect.y + s->hud1.plmor[2].rect.h)
+			{
+				s->hud1.plmor[2].i = 2;
+				display(s, e);
+				s->hud1.plmor[2].i = 0;
+				mouse_rayon_modify(1, s, e);
+				mouse_angle_modify(1, s, e);
+				raytracing(e, s);
+			}
+		}
+	}
+}
+
 void	mouse_change_reflect_trans(int x, int y, t_sdl *s, t_env *e)
 {
 	if (x >= s->hud1.option[0].rect.x && x <= s->hud1.option[0].rect.x + s->hud1.option[0].rect.w)
@@ -160,6 +218,7 @@ void	mouse_change_reflect_trans(int x, int y, t_sdl *s, t_env *e)
 			raytracing(e, s);
 		}
 	}
+
 }
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
@@ -185,7 +244,10 @@ void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 		mouse_color_obj_change(mouse_x, mouse_y, s, e);
 	}
 	if (s->hud1.tok.obj_select != -1)
+	{
 		mouse_change_reflect_trans(mouse_x, mouse_y, s, e);
+		mouse_modify_ray_angle(mouse_x, mouse_y, s, e);
+	}
 	mouse_color_obj(mouse_x, mouse_y, s, e);
 	mouse_light(mouse_x, mouse_y, s, e);
 	if (mouse_x <= COL)
