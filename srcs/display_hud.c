@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:50:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 18:52:37 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 22:32:44 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	display_hud(t_sdl *s, t_env *e)
 		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 100, 40, 40);
 		print_rect(r1, e, 1, e->obj[s->hud1.tok.obj_select].color);
 		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 160, 40, 40);
-		print_rect(r1, e, 1, 0xFFFFFF);
+		print_rect(r1, e, 1, WHITE);
 		r1 = init_rect(SIZE_X + COL4 + 20, WIN_Y / 2 + LINE + 220, 40, 40);
-		print_rect(r1, e, 1, 0xFFFFFF);
+		print_rect(r1, e, 1, WHITE);
 		actualize_background(s, e);
 	}
 	SDL_RenderCopy(s->renderer, s->hud1.t_back, NULL, NULL);

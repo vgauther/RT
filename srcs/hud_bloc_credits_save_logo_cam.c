@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:10:36 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:12:45 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 22:34:56 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ void	bloc_save(t_env *e, t_sdl *s)
 
 	p1 = init_point_2_coord(COL + SIZE_X, 0);
 	p2 = init_point_2_coord(COL + SIZE_X, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);
+	vertical_trait(p1, p2, CONTRAST, e);
 	p1 = init_point_2_coord(COL4 + (SIZE_X / 6) * 5 - 5, 0);
 	p2 = init_point_2_coord(COL4 + (SIZE_X / 6) * 5 - 5, SIZE_Y / 8);
-	vertical_trait(p1, p2, WHITE, e);
+	vertical_trait(p1, p2, CONTRAST, e);
 	r1 = init_rect(COL4 + (SIZE_X / 6) * 5 + (SIZE_X / 6 + 10) / 6,
 	SIZE_Y / 17, (SIZE_X / 6 + 10) / 3 * 2, SIZE_Y / 50);
-	print_rect(r1, e, 1, WHITE);
+	print_rect(r1, e, 1, CONTRAST);
 	print_text(ft_strdup("Save"), s->font.color[4], s, &s->hud1.save);
 	s->hud1.save.rect = init_sdl_rect(COL4 + (SIZE_X / 6) * 5 +
 	(SIZE_X / 6 + 10) / 8, SIZE_Y / 80, ((SIZE_X / 6 + 10) / 4) * 3, 15);
-	ornement(s->hud1.save.rect, WHITE, 15, e);
+	ornement(s->hud1.save.rect, CONTRAST, 15, e);
 }
