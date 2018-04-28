@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:50:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 23:30:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 15:37:34 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,11 @@ void	display_hud(t_sdl *s, t_env *e)
 			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[0].i], NULL, &s->hud1.option[0].rect);
 		if (e->obj[s->hud1.tok.obj_select].transp == 1)
 			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[1].i], NULL, &s->hud1.option[1].rect);
+		if (e->obj[s->hud1.tok.obj_select].type == 1 || e->obj[s->hud1.tok.obj_select].type == 2 || e->obj[s->hud1.tok.obj_select].type == 3)
+		{
+			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[0].i], NULL, &s->hud1.plmor[0].rect);
+			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[1].i], NULL, &s->hud1.plmor[1].rect);
+			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[2].i], NULL, &s->hud1.plmor[2].rect);
+		}
 	}
 }

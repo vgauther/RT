@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 14:46:51 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 15:33:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,20 @@ void	some_traits(t_env *e)
 	vertical_trait(p1, p2, CONTRAST, e);
 }
 
+/*
+** plus / mois pour le rayon = plmor
+*/
+
+void	init_plmor(t_sdl *s)
+{
+	s->hud1.plmor[0].rect = init_sdl_rect(WIN_X - COL + 80, WIN_Y / 2 + 115, 50, 30);
+	s->hud1.plmor[1].rect = init_sdl_rect(WIN_X - COL + 140, WIN_Y / 2 + 115, 30, 30);
+	s->hud1.plmor[2].rect = init_sdl_rect(WIN_X - COL + 175, WIN_Y / 2 + 115, 30, 30);
+	s->hud1.plmor[0].i = 0;
+	s->hud1.plmor[1].i = 1;
+	s->hud1.plmor[2].i = 0;
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -105,6 +119,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	init_add_obj_text_box(s);
 	init_add_obj_selection_rect(s);
 	init_color_selector(s);
+	init_plmor(s);
 	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
 		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
 	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
