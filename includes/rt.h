@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 17:03:29 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/28 19:48:36 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ void				mouse_add_obj(int x, int y, t_sdl *s, t_env *e);
 void				main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e);
 void				mouse_obj_seletor(int x, int y, t_sdl *s, t_env *e);
 void				mouse_selector_activate(int x, int y, t_sdl *s, t_env *e);
+void				mouse_modify_ray_angle(int x, int y, t_sdl *s, t_env *e);
 
 /*
 ** display
