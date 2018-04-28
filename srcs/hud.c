@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 15:33:49 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 18:29:53 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	init_plmor(t_sdl *s)
 	s->hud1.plmor[0].i = 0;
 	s->hud1.plmor[1].i = 1;
 	s->hud1.plmor[2].i = 0;
+	s->hud1.add_obj_data[6].rect = init_sdl_rect(WIN_X - COL + 80, WIN_Y / 2 + 115, 50, 30);
 }
 
 void	hud_init(t_sdl *s, t_env *e)

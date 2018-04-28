@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:50:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 15:37:34 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 18:49:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@ void	display_hud(t_sdl *s, t_env *e)
 			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[0].i], NULL, &s->hud1.plmor[0].rect);
 			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[1].i], NULL, &s->hud1.plmor[1].rect);
 			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[2].i], NULL, &s->hud1.plmor[2].rect);
+		}
+		if (e->obj[s->hud1.tok.obj_select].type == 1 ||
+			e->obj[s->hud1.tok.obj_select].type == 2 ||
+			e->obj[s->hud1.tok.obj_select].type == 3)
+		{
+			if ((SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[6].tex, NULL,
+				&s->hud1.add_obj_data[6].rect)) < 0)
+				ft_sdl_error("Texture error : ", SDL_GetError());
+
 		}
 	}
 }
