@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 19:46:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 19:53:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 22:15:05 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void		mouse_angle_modify(int i, t_sdl *s, t_env *e)
 
 static void		plus(t_sdl *s, t_env *e)
 {
-	s->hud1.plmor[1].i = 3;
+	s->hud1.plmor[1].i = P2;
 	display(s, e);
-	s->hud1.plmor[1].i = 1;
+	s->hud1.plmor[1].i = P1;
 	mouse_rayon_modify(0, s, e);
 	mouse_angle_modify(0, s, e);
 	raytracing(e, s);
@@ -50,9 +50,9 @@ static void		plus(t_sdl *s, t_env *e)
 
 static void		meno(t_sdl *s, t_env *e)
 {
-	s->hud1.plmor[2].i = 2;
+	s->hud1.plmor[2].i = M2;
 	display(s, e);
-	s->hud1.plmor[2].i = 0;
+	s->hud1.plmor[2].i = M1;
 	mouse_rayon_modify(1, s, e);
 	mouse_angle_modify(1, s, e);
 	raytracing(e, s);

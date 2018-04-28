@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:41:08 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:10:13 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/28 22:14:21 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@
 # define CAM_ROT_X 0
 # define CAM_ROT_Y 0
 # define CAM_ROT_Z 0
+
+# define P1 1
+# define P2 3
+# define M1 0
+# define M2 2
 
 #endif

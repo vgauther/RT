@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 23:04:10 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 22:09:53 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ static SDL_Surface		**open_texture3(SDL_Surface **surfac)
 	surfac[28] = SDL_LoadBMP("./img_srcs/50sticky.bmp");
 	surfac[29] = SDL_LoadBMP("./img_srcs/80sticky.bmp");
 	surfac[30] = SDL_LoadBMP("./img_srcs/100sticky.bmp");
-/*	surfac[27] = SDL_LoadBMP("./img_srcs/load100.bmp");
-	surfac[28] = SDL_LoadBMP("./img_srcs/load100.bmp");
-	surfac[29] = SDL_LoadBMP("./img_srcs/load100.bmp");
-	surfac[30] = SDL_LoadBMP("./img_srcs/load100.bmp");*/
 	return (surfac);
 }
 
