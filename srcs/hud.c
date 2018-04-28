@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 23:00:02 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/28 14:46:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,25 @@ void	call_blocs(t_env *e, t_sdl *s)
 	bloc_work_space(e, s);
 }
 
+void	some_traits(t_env *e)
+{
+	t_vec	p1;
+	t_vec	p2;
+
+	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
+	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
+	vertical_trait(p1, p2, CONTRAST, e);
+	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, SIZE_Y);
+	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 9, WIN_Y);
+	vertical_trait(p1, p2, CONTRAST, e);
+	p1 = init_point_2_coord(SIZE_X / 1.45, 0);
+	p2 = init_point_2_coord(SIZE_X / 1.45, WIN_Y / 8);
+	vertical_trait(p1, p2, CONTRAST, e);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
-	t_vec	p1;
-	t_vec	p2;
 
 	init_font(s);
 	init_color_text(s);
@@ -100,12 +114,7 @@ void	hud_init(t_sdl *s, t_env *e)
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X + 20, SIZE_Y + 20);
 	print_rect(r1, e, 1, CONTRAST);
 	call_blocs(e, s);
-	p1 = init_point_2_coord(SIZE_X / 4 - 10, 0);
-	p2 = init_point_2_coord(SIZE_X / 4 - 10, SIZE_Y / 8);
-	vertical_trait(p1, p2, CONTRAST, e);
-	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, SIZE_Y);
-	p2 = init_point_2_coord(SIZE_X / 4 + SIZE_X + 10, WIN_Y);
-	vertical_trait(p1, p2, CONTRAST, e);
+	some_traits(e);
 	s->hud1.s_back->pixels = e->hud;
 	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
 		ft_sdl_error("Texture error : ", SDL_GetError());
