@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/29 17:03:08 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/29 17:17:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,22 @@ void	init_plmor(t_sdl *s)
 	s->hud1.add_obj_data[6].rect = init_sdl_rect(WIN_X - COL + 80, WIN_Y / 2 + 115, 50, 30);
 }
 
+/*
+** initialisation du tableau de travail et de la couleur du fond
+*/
+
+void	init_background(t_sdl *s, t_env *e)
+{
+	t_rect	r1;
+
+	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
+		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
+	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
+		ft_error("MALLOC ERROR");
+	r1 = init_rect(0, 0, WIN_X, WIN_Y);
+	print_rect(r1, e, 1, COLOR_BACK);
+}
+
 void	hud_init(t_sdl *s, t_env *e)
 {
 	t_rect	r1;
@@ -67,19 +83,12 @@ void	hud_init(t_sdl *s, t_env *e)
 	init_add_obj_selection_rect(s);
 	init_color_selector(s);
 	init_plmor(s);
-	s->hud1.shape_img.rect = init_sdl_rect(SIZE_X / 4 + SIZE_X +
-		(SIZE_X / 4 / 8), SIZE_Y / 8 + SIZE_Y / 16, SIZE_X / 5, SIZE_X / 5);
-	if (!(e->hud = (Uint32*)malloc(sizeof(Uint32) * WIN_X * WIN_Y)))
-		ft_error("MALLOC ERROR");
-	r1 = init_rect(0, 0, WIN_X, WIN_Y);
-	print_rect(r1, e, 1, COLOR_BACK);
+	init_background(s, e);
 	r1 = init_rect(SIZE_X / 4 - 10, SIZE_Y / 8 - 10, SIZE_X + 20, SIZE_Y + 20);
 	print_rect(r1, e, 1, CONTRAST);
 	call_blocs(e, s);
 	some_traits(e);
-	s->hud1.s_back->pixels = e->hud;
-	if ((s->hud1.t_back = SDL_CreateTextureFromSurface(s->renderer, s->hud1.s_back)) == NULL)
-		ft_sdl_error("Texture error : ", SDL_GetError());
+	actualize_background(s, e);
 	print_text(ft_strdup(s->hud1.mess[0]), s->font.color[4], s, &s->hud1.info);
 	s->hud1.info.rect = init_sdl_rect(COL4 + 28, (WIN_Y / 14) * 13.4 , 500, 25);
 }
