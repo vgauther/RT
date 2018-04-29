@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/28 19:49:44 by vgauther         ###   ########.fr        #
+#    Updated: 2018/04/29 17:06:49 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,9 @@ SRC_NAME = 	lux.c  \
 			hud_init_info_mess.c          \
 			hud_bloc_multiplier.c          \
 			hud_init_add_obj_menu.c         \
-			hud_bloc_credits_save_logo_cam.c \
+			hud_bloc_lux_workspace.c		 \
+			hud_recup_cam_to_print.c 		  \
+			hud_bloc_credits_save_logo_cam.c   \
 
 all: $(NAME)
 

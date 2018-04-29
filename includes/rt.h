@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 19:48:36 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/29 17:04:50 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ void				create_bouton_tool_bar(t_sdl *s);
 void				create_bouton_cam(t_sdl *s);
 void				actualize_background(t_sdl *s, t_env *e);
 void				loading_screen(int i, t_sdl *s);
+void				recup_cam_to_print(t_sdl *s, t_env *e);
 
 /*
 ** bloc hud
@@ -195,6 +196,8 @@ void				bloc_save(t_env *e, t_sdl *s);
 void				bloc_credits(t_env *e, t_sdl *s);
 void				bloc_logo(t_sdl *s);
 void				bloc_camera(t_env *e, t_sdl *s);
+void				bloc_lux(t_sdl *s, t_env *e);
+void				bloc_work_space(t_env *e, t_sdl *s);
 
 /*
 ** mouse functions
