@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/29 17:04:50 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/29 17:44:35 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,56 +142,63 @@ typedef struct		s_thread_st
 	int					x;
 }					t_thread_st;
 
-t_color				color_pix(t_env *e, t_inter pt);
-t_inter				get_closest_test(t_env *e, t_vec dir, t_vec ori, int t);
-Uint32				transp(t_env *e, t_inter pt, Uint32 color, t_vec ori);
-SDL_Surface			*load_texture(char *texture);
-Uint32				get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj);
-Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
-t_vec				calc_dir_vec(int x, int y, t_env *e);
-Uint32				get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color);
-void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
-t_vec				v_scale(double c, t_vec *v);
-double				toon(t_env *e, t_inter pt);
-int					check_value(char *nbr);
-void				display(t_sdl *s, t_env *e);
 int					ft_tablen(void **tab);
-void				ft_put_pixel(Uint32 *tab, int x, int y, int color);
-void				open_texture(t_sdl *s);
 void				print_info(t_sdl *s, t_env *e, int i);
 t_vec				ft_rotate(t_vec p, double rot_x, double rot_y,
 					double rot_z);
-Uint32				get_texture_pixel_sphere(t_env *e, t_inter pt, t_obj obj);
-t_inter				shape_redirection(t_env *e, t_vec dir,
-					t_vec ori, int nbr);
-t_vec				vec3_cross(t_vec va, t_vec vb);
 void				resolve_poly(t_polynome *p, t_inter *t,
 					t_vec v, t_vec ori);
 t_obj				*realloc_obj(t_env *e);
 void				ft_wait(void);
-void				bloc_multiplier(t_env *e, t_sdl *s);
-t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
-void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(void);
 void				mouv(long key, t_env *e, t_sdl *s);
-void				init_is_neg(t_env *e);
-void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
-void				ornement(SDL_Rect p, int color, int size, t_env *e);
-void				empty_rect(t_rect b, t_env *e, int t, int color);
-void				add_obj_menu(t_sdl *s, t_env *e, int nb);
-void				add_obj_selection_display(t_sdl *s);
-void				del_char(t_env *e, t_sdl *s, int n);
+
+/*
+** loading screen
+*/
+
+void				loading_screen(int i, t_sdl *s);
+
+/*
+** create bouton
+*/
+
 void				create_bouton_tool_bar(t_sdl *s);
 void				create_bouton_cam(t_sdl *s);
-void				actualize_background(t_sdl *s, t_env *e);
-void				loading_screen(int i, t_sdl *s);
-void				recup_cam_to_print(t_sdl *s, t_env *e);
+
+/*
+** number with keyboard
+*/
+
+void				init_is_neg(t_env *e);
+void				del_char(t_env *e, t_sdl *s, int n);
+void				remplir_text_box(int key, t_env *e, t_sdl *s, int n);
+
+/*
+** texture
+*/
+
+SDL_Surface			*load_texture(char *texture);
+Uint32				get_texture_chest_sphere(t_env *e, t_inter pt, t_obj obj);
+Uint32				get_texture_pixel_sphere(t_env *e, t_inter pt, t_obj obj);
+void				open_texture(t_sdl *s);
+t_color				color_pix(t_env *e, t_inter pt);
+
+/*
+** transpa & reflect
+*/
+
+Uint32				transp(t_env *e, t_inter pt, Uint32 color, t_vec ori);
+Uint32				get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color);
+t_inter				get_closest_test(t_env *e, t_vec dir, t_vec ori, int t);
+void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
 
 /*
 ** bloc hud
 */
 
+void				bloc_multiplier(t_env *e, t_sdl *s);
 void				bloc_save(t_env *e, t_sdl *s);
 void				bloc_credits(t_env *e, t_sdl *s);
 void				bloc_logo(t_sdl *s);
@@ -226,6 +233,7 @@ void				display_pipette(t_sdl *s);
 void				display_all_bouton(t_sdl *s);
 void				display_work_space(t_sdl *s, t_env *e);
 void				display_hud(t_sdl *s, t_env *e);
+void				display(t_sdl *s, t_env *e);
 
 /*
 ** lux light lumiere
@@ -243,6 +251,10 @@ double				dot_2(t_vec v1, t_vec v2);
 t_vec				vector_init(double x, double y, double z);
 t_vec				normalize_vec(t_vec ret);
 t_vec				sub_vec(t_vec v1, t_vec v2);
+t_vec				v_scale(double c, t_vec *v);
+t_vec				calc_dir_vec(int x, int y, t_env *e);
+t_vec				vec3_cross(t_vec va, t_vec vb);
+t_vec				get_normal(t_env *e, t_inter pt, t_vec ori);
 
 t_vec				add_vec(t_vec v1, t_vec v2);
 t_vec				init_point(double x, double y, double z);
@@ -256,6 +268,7 @@ int					ft_tablen(void **tab);
 
 SDL_Rect			init_sdl_rect(int x, int y, int w, int h);
 void				quit_sdl_proprely(t_sdl *s);
+void				actualize_background(t_sdl *s, t_env *e);
 
 int					nbr_touch(int key);
 int					do_we_need_to_rt(int t);
@@ -275,6 +288,7 @@ void				print_text(char *str, SDL_Color color, t_sdl *s,
 Uint32				blackwhite(Uint32 color);
 Uint32				sepia(Uint32 color);
 Uint32				filtre(t_sdl *s, Uint32 color);
+double				toon(t_env *e, t_inter pt);
 
 /*
 ** HUD
@@ -287,6 +301,12 @@ void				init_add_obj_text_box(t_sdl *s);
 void				init_info_messages(t_sdl *s);
 void				init_color_selector(t_sdl *s);
 void				init_color_text(t_sdl *s);
+void				ornement(SDL_Rect p, int color, int size, t_env *e);
+void				empty_rect(t_rect b, t_env *e, int t, int color);
+void				add_obj_menu(t_sdl *s, t_env *e, int nb);
+void				add_obj_selection_display(t_sdl *s);
+void				recup_cam_to_print(t_sdl *s, t_env *e);
+void				print_data_obj(t_sdl *s, t_env *e, int nbr);
 
 /*
 ** ft_put_pixel
@@ -305,6 +325,8 @@ t_inter				ray_cylindre(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_cone(t_env *e, t_vec dir, t_vec ori, int nbr);
 t_inter				ray_plan(t_env *e, t_vec v, t_vec ori, int nbr);
 t_inter				ray_disque(t_env *e, t_vec v, t_vec ori, int nbr);
+t_inter				shape_redirection(t_env *e, t_vec dir,
+					t_vec ori, int nbr);
 
 /*
 ** shapes's normal
@@ -334,6 +356,7 @@ void				add_disque(t_env *e, char **sp);
 void				add_plan(t_env *e, char **sp);
 void				count_spot(char *str, t_env *e);
 void				select_add_spot(char *str, t_env *e);
+int					check_value(char *nbr);
 
 /*
 ** color
@@ -345,6 +368,7 @@ int					ft_atoi_color(char *str);
 t_color				split_color(Uint32 full);
 Uint32				rgb_to_int(t_color color);
 t_color				color_init(double r, double g, double b);
+Uint32				proces_color(t_env *e, t_sdl *s, t_inter pt);
 
 /*
 ** error
