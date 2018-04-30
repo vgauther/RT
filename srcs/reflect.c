@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:21:13 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/27 12:27:23 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 13:08:09 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ Uint32		get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
 	color_rgb = normalize_color(split_color(color));
 	dir_ori = normalize_vec(sub_vec(pt.pos, e->ca.pos));
 	ref = sub_vec(dir_ori, v_scale(2 * dot(dir_ori, pt.normal), &pt.normal));
-	tmp = get_closest_test(e, ref, pt.pos, pt.nb);
+	pt.pos = add_vec(pt.pos, v_scale(0.01, &ref));
+	get_closest(e, &tmp, ref, pt.pos);
 	if (tmp.dist != MAX_DIST)
 	{
 		color_2 = normalize_color(split_color(lux(e, tmp)));

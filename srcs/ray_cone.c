@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 12:53:51 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 17:35:15 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 12:55:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@ t_vec		cone_normal_at(t_inter t, t_obj obj, t_vec ori)
 	double	m;
 
 	x = sub_vec(ori, obj.pos);
-	dir = sub_vec(t.pos, ori);
-	test = vector_init(obj.rot.x * t.dist,
-		obj.rot.y * t.dist, obj.rot.z * t.dist);
-	test = normalize_vec(test);
-	m = dot(dir, test) + dot(x, obj.rot);
-	x = vector_init(obj.pos.x + obj.rot.x * m,
-		obj.pos.y + obj.rot.y * m, obj.pos.z + obj.rot.z * m);
-	x = normalize_vec(vector_init(t.pos.x - x.x, t.pos.y - x.y, t.pos.z - x.z));
-	return (x);
+	dir = normalize_vec(sub_vec(t.pos, ori));
+	m = dot(dir, obj.rot) * t.dist + dot(x, obj.rot);
+	t.normal = v_scale(t.dist, &dir);
+	t.normal = add_vec(t.normal, x);
+	test = v_scale(m * (1 + obj.angletan), &obj.rot);
+	t.normal = normalize_vec(sub_vec(t.normal, test));
+	return (t.normal);
 }
 
 t_inter		ray_cone(t_env *e, t_vec d, t_vec ori, int nbr)

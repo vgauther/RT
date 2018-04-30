@@ -1,0 +1,5 @@
+plan 0 0 2000 0xFFFFFF 0 0 1 1 0 0
+sphere -10 0 0 0xffff00 15 1 0 ./img_srcs/map_test.bmp 1
+sphere 10 0 0 0x0ffff 15 1 0 ./img_srcs/map_test.bmp 1
+sphere 0 15 0 0xff00ff 15 1 0 ./img_srcs/selector.bmp 1
+spot 0 0  -100 0xffffff 0 0 0
