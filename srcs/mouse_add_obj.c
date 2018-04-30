@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 18:56:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:27:02 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,19 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 	int i;
 
 	i = -1;
-	if (x >= s->hud1.r_add_obj[0].x && x <=  s->hud1.r_add_obj[1].x + s->hud1.r_add_obj[1].w)
+	if (x >= s->hud1.r_add_obj[0].x && x <= s->hud1.r_add_obj[1].x
+		+ s->hud1.r_add_obj[1].w)
 	{
-		if(y >= s->hud1.r_add_obj[0].y && y <= s->hud1.r_add_obj[2].y + s->hud1.r_add_obj[2].h)
+		if(y >= s->hud1.r_add_obj[0].y && y <= s->hud1.r_add_obj[2].y
+			+ s->hud1.r_add_obj[2].h)
 		{
 			while (++i != 4)
 			{
-				if (y >= s->hud1.r_add_obj[i].y && y <= s->hud1.r_add_obj[i].y + s->hud1.r_add_obj[i].h)
+				if (y >= s->hud1.r_add_obj[i].y && y <= s->hud1.r_add_obj[i].y
+					+ s->hud1.r_add_obj[i].h)
 				{
-					if (x >= s->hud1.r_add_obj[i].x && x <= s->hud1.r_add_obj[i].x + s->hud1.r_add_obj[i].w)
+					if (x >= s->hud1.r_add_obj[i].x &&
+						x <= s->hud1.r_add_obj[i].x + s->hud1.r_add_obj[i].w)
 					{
 						e->obj = realloc_obj(e);
 						if (i == 0)

@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 11:44:39 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/27 17:16:21 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:34:49 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ t_vec		get_normal(t_env *e, t_inter pt, t_vec ori)
 	return (norm);
 }
 
+/*
+** addition of two vecteur (V1 + V2)
+*/
+
 t_vec		add_vec(t_vec v1, t_vec v2)
 {
 	return (vector_init(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z));
@@ -44,6 +48,10 @@ t_vec		calc_dir_vec(int x, int y, t_env *e)
 	return (dir);
 }
 
+/*
+** cross product of vector
+*/
+
 t_vec		vec3_cross(t_vec va, t_vec vb)
 {
 	t_vec	v;
@@ -53,6 +61,10 @@ t_vec		vec3_cross(t_vec va, t_vec vb)
 	v.z = va.x * vb.y - va.y * vb.x;
 	return (v);
 }
+
+/*
+** multiplication of each postion of the vector
+*/
 
 t_vec		v_scale(double c, t_vec *v)
 {

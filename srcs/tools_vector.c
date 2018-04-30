@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 13:05:50 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 11:45:43 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:31:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ t_vec	normalize_vec(t_vec ret)
 	ret.z /= norm;
 	return (ret);
 }
+
+/*
+** soustraction of two vector (V1 - V2)
+*/
 
 t_vec	sub_vec(t_vec v1, t_vec v2)
 {

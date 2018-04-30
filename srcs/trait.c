@@ -6,11 +6,15 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:18:41 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/20 00:18:46 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:31:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+/*
+** print a horizontal_trait
+*/
 
 void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e)
 {
@@ -22,6 +26,10 @@ void	horizontal_trait(t_vec p1, t_vec p2, int color, t_env *e)
 		p1.x++;
 	}
 }
+
+/*
+** print vertical_trait
+*/
 
 void	vertical_trait(t_vec p1, t_vec p2, int color, t_env *e)
 {

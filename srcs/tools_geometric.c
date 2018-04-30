@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 14:04:37 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/17 15:48:57 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:30:00 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void		intersection_point(t_inter *pt, t_vec ca, t_vec v)
 	pt->pos.z = ca.z + v.z * pt->dist;
 }
 
+/*
+** init struct t_rect used to print rect
+*/
+
 t_rect		init_rect(int x1, int x2, int x3, int x4)
 {
 	t_rect r;
@@ -60,6 +64,10 @@ t_rect		init_rect(int x1, int x2, int x3, int x4)
 	r.hei = x4;
 	return (r);
 }
+
+/*
+** draw a rect on choosed surface
+*/
 
 void		print_rect(t_rect b, t_env *e, int t, int color)
 {
