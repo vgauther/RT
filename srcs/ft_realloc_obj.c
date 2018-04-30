@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 13:30:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:08:41 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,28 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	return (ret);
 }
 
+t_obj	realloc_disque(t_env *e, int i)
+{
+	t_obj ret;
+
+	ret.pos = init_point(e->obj[i].pos.x, e->obj[i].pos.y, e->obj[i].pos.z);
+	ret.rayon = e->obj[i].rayon;
+	ret.rayon_2 = e->obj[i].rayon_2;
+	ret.rot.x = e->obj[i].rot.x;
+	ret.rot.y = e->obj[i].rot.y;
+	ret.transp = e->obj[i].transp;
+	ret.rot.z = e->obj[i].rot.z;
+	ret.rot_to_print = e->obj[i].rot_to_print;
+	ret.rot = normalize_vec(ret.rot);
+	ret.material = e->obj[i].material;
+	ret.color = e->obj[i].color;
+	ret.type = 5;
+	ret.num = e->obj[i].num;
+	ret.reflex = e->obj[i].reflex;
+	ret.transp = e->obj[i].transp;
+	return (ret);
+}
+
 t_obj	*realloc_obj(t_env *e)
 {
 	t_obj	*new;
@@ -122,6 +144,8 @@ t_obj	*realloc_obj(t_env *e)
 			new[i] = realloc_plan(e, i);
 		else if (e->obj[i].type == 1)
 			new[i] = realloc_sphere(e, i);
+		else if (e->obj[i].type == 5)
+			new[i] = realloc_disque(e, i);
 		else
 			ft_error("realloc error\n");
 		i++;

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 15:20:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 11:56:14 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 19:16:18 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void			print_data_obj(t_sdl *s, t_env *e, int nbr)
 		s->hud1.shape_img.i = 13;
 	if (e->obj[nbr].type == 4)
 		s->hud1.shape_img.i = 15;
+	if (e->obj[nbr].type == 5)
+		s->hud1.shape_img.i = 12;
 	display(s, e);
 }
 
