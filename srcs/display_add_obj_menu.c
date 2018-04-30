@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 18:48:42 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:45:11 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		add_obj_print_text(t_sdl *s, t_env *e, int nb)
 	if (e->obj[s->hud1.tok.obj_select].type == 1 || e->obj[s->hud1.tok.obj_select].type == 2)
 		print_text(ft_itoa(e->obj[nb].rayon), s->font.color[1], s, &s->hud1.add_obj_data[6]);
 	else if (e->obj[s->hud1.tok.obj_select].type == 3)
-		print_text(ft_itoa(e->obj[nb].rayon), s->font.color[1], s, &s->hud1.add_obj_data[6]);
+		print_text(ft_itoa(e->obj[nb].angle), s->font.color[1], s, &s->hud1.add_obj_data[6]);
 }
 
 static void		display_add_obj_menu_bloc(t_sdl *s, t_env *e, int nb)
