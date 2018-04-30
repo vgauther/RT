@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 18:20:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 23:02:57 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 15:01:38 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static int		ft_wait_first_loadscreen(int x, int i)
 {
 	(void)i;
-		ft_wait();
-		ft_wait();
-		ft_wait();
-		ft_wait();
-		ft_wait();
+	ft_wait();
+	ft_wait();
+	ft_wait();
+	ft_wait();
+	ft_wait();
 	return (x + 1);
 }
 
@@ -28,7 +28,6 @@ void			loading_screen(int i, t_sdl *s)
 	SDL_Rect		r;
 	static int		x = 0;
 	int				y;
-
 
 	y = (x < 3) ? 4 : 0;
 	if (i > 3)

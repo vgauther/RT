@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 12:30:47 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/24 13:52:44 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 14:36:18 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	check_param(char **sp)
 	ret = 1;
 	if (ft_tablen((void **)sp) != 8)
 		ret = 0;
-//else if (!check_value(sp[5]))
-//ret = 0;
 	return (ret);
 }
 

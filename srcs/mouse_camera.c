@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 22:00:24 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 14:59:40 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 			e->ca.rot.y += s->hud1.how_much;
 		else
 			e->ca.rot.z += s->hud1.how_much;
-		raytracing(e, s);	
+		raytracing(e, s);
 	}
 	else
 	{
