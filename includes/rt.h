@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/29 17:44:35 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/04/30 14:13:13 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,13 @@ typedef struct		s_thread_st
 	t_sdl				*s;
 	int					x;
 }					t_thread_st;
+
+typedef struct		s_thread_util
+{
+	t_thread_st thread_param;
+	pthread_t	thread;
+	int			ret;
+}					t_thread_util;
 
 int					ft_tablen(void **tab);
 void				print_info(t_sdl *s, t_env *e, int i);

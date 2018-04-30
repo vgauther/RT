@@ -6,13 +6,42 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 17:21:53 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 14:31:53 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse, t_cam c)
+int		ray_shadow(t_env *e, t_inter pt, t_obj spot, Uint32 *color)
+{
+	int		j;
+	t_vec	dir;
+	t_inter tmp;
+	double	dist;
+
+	j = 0;
+	dir = vector_init(pt.pos.x - spot.pos.x,
+	pt.pos.y - spot.pos.y, pt.pos.z - spot.pos.z);
+	dist = sqrt(dir.x * dir.x + dir.y * dir.y + dir.z * dir.z);
+	dir = normalize_vec(dir);
+	while (j < e->nb)
+	{
+		tmp = shape_redirection(e, dir, spot.pos, j);
+		tmp.nb = j;
+		if (dist - 1 > tmp.dist && tmp.dist > 0)
+		{
+			if (!e->obj[j].transp)
+				return (1);
+			else
+				*color = rgb_to_int(mult_color(normalize_color(split_color(
+				*color)), normalize_color(color_pix(e, tmp))));
+		}
+		j++;
+	}
+	return (0);
+}
+
+double	get_specular_and_difuse(t_vec l, t_inter pt, double *difuse, t_cam c)
 {
 	t_vec	r;
 	t_vec	v;
@@ -23,15 +52,16 @@ double		get_specular_and_difuse(t_vec l, t_inter pt, double *difuse, t_cam c)
 	tmp = 0;
 	if (difuse > 0)
 	{
-		r = sub_vec(vector_init(-l.x, -l.y, -l.z), v_scale(2 * dot(vector_init(-l.x, -l.y, -l.z), pt.normal), &pt.normal));
-		v = normalize_vec(sub_vec(c.pos ,pt.pos));
+		r = sub_vec(vector_init(-l.x, -l.y, -l.z),
+		v_scale(2 * dot(vector_init(-l.x, -l.y, -l.z), pt.normal), &pt.normal));
+		v = normalize_vec(sub_vec(c.pos, pt.pos));
 		tmp = dot(r, v) > 0 ? dot(r, v) : 0;
 		tmp = powf(tmp, 10);
 	}
 	return (tmp);
 }
 
-void		get_color_final(t_env *e, t_inter pt,
+void	get_color_final(t_env *e, t_inter pt,
 	t_spec_dif difspec, t_color *colorfin)
 {
 	t_color spot_color;
@@ -46,7 +76,7 @@ void		get_color_final(t_env *e, t_inter pt,
 	colorfin->b += 1 * difspec.specular * spot_color.b;
 }
 
-t_color		color_pix(t_env *e, t_inter pt)
+t_color	color_pix(t_env *e, t_inter pt)
 {
 	t_color color;
 
@@ -59,7 +89,7 @@ t_color		color_pix(t_env *e, t_inter pt)
 	return (color);
 }
 
-double		lux(t_env *e, t_inter pt)
+double	lux(t_env *e, t_inter pt)
 {
 	t_vec		l;
 	t_color		colorfin;

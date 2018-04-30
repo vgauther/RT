@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/27 17:24:43 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/04/30 14:31:59 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,62 +80,43 @@ void		*threadt(void *param)
 	return (NULL);
 }
 
+static void	init_util_thread(t_env *e, t_sdl *s, t_thread_util *util_th)
+{
+	int				x;
+	int				i;
+
+	i = 0;
+	x = 0;
+	while (i < NB_THREAD)
+	{
+		util_th[i].thread_param.x = x;
+		util_th[i].thread_param.e = e;
+		util_th[i].thread_param.s = s;
+		x += SIZE_X / NB_THREAD;
+		i++;
+	}
+}
+
 void		raytracing(t_env *e, t_sdl *s)
 {
-	t_thread_st var[NB_THREAD];
-	pthread_t	thread[NB_THREAD];
-	int			ret[NB_THREAD];
-	int			i;
-	int			x;
+	t_thread_util	*util_th;
+	int				i;
 
-	x = 0;
-	i = -1;
+	if (!(util_th = (t_thread_util*)malloc(sizeof(t_thread_util) * NB_THREAD)))
+		ft_error("\n Malloc error.\n");
 	loading_screen(4, s);
-	while (++i < NB_THREAD)
-	{
-		var[i].x = x;
-		var[i].e = e;
-		var[i].s = s;
-		x += SIZE_X / NB_THREAD;
-	}
+	init_util_thread(e, s, util_th);
 	i = -1;
 	while (++i < NB_THREAD)
-		if ((ret[i] = pthread_create(&thread[i], NULL, threadt, &var[i])))
+		if ((util_th[i].ret = pthread_create(&util_th[i].thread,
+			NULL, threadt, &util_th[i].thread_param)))
 			ft_error("\nThread error.\n");
 	i = -1;
 	loading_screen(5, s);
 	while (++i < NB_THREAD)
-		pthread_join(thread[i], NULL);
+		pthread_join(util_th[i].thread, NULL);
 	s->rendu->pixels = e->pixels;
 	loading_screen(7, s);
+	free(util_th);
 	display(s, e);
-}
-
-int			ray_shadow(t_env *e, t_inter pt, t_obj spot, Uint32 *color)
-{
-	int		j;
-	t_vec	dir;
-	t_inter tmp;
-	double	dist;
-
-	j = 0;
-	dir = vector_init(pt.pos.x - spot.pos.x,
-	pt.pos.y - spot.pos.y, pt.pos.z - spot.pos.z);
-	dist = sqrt(dir.x * dir.x + dir.y * dir.y + dir.z * dir.z);
-	dir = normalize_vec(dir);
-	while (j < e->nb)
-	{
-		tmp = shape_redirection(e, dir, spot.pos, j);
-		tmp.nb = j;
-		if (dist - 1 > tmp.dist && tmp.dist > 0)
-		{
-			if (!e->obj[j].transp)
-				return (1);
-			else
-				*color = rgb_to_int(mult_color(normalize_color(split_color(
-				*color)), normalize_color(color_pix(e, tmp))));
-		}
-		j++;
-	}
-	return (0);
 }
