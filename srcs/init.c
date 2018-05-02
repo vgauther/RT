@@ -6,18 +6,16 @@
 /*   By: ebertin <ebertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 16:28:43 by ebertin           #+#    #+#             */
-/*   Updated: 2018/05/02 17:02:01 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:13:01 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-static void	ft_init_sub(t_sdl *s, t_env *e, char *name)
+void		ft_init_sub(t_sdl *s, t_env *e, char *name)
 {
 	free(s->rendu->pixels);
 	free(s->hud1.s_back->pixels);
-	if (!(e->pixels = (Uint32*)malloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
-		ft_error("\nmalloc error\n");
 	parser(name, e);
 	init_is_neg(e);
 	hud_init(s, e);
@@ -46,5 +44,7 @@ void		ft_init(t_sdl *s, char *name, t_env *e)
 	if ((s->hud1.s_back = SDL_CreateRGBSurface(0, WIN_X, WIN_Y, 32, 0, 0, 0, 0))
 			== NULL)
 		ft_sdl_error("Surface error : ", SDL_GetError());
+	if (!(e->pixels = (Uint32*)ft_memalloc(sizeof(Uint32) * SIZE_X * SIZE_Y)))
+		ft_error("\nmalloc error\n");
 	ft_init_sub(s, e, name);
 }
