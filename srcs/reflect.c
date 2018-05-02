@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 15:21:13 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/04/30 16:10:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:53:37 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_inter		get_closest_test(t_env *e, t_vec dir, t_vec ori, int t)
 ** R -> New vec to the next direction from the hitted obj
 */
 
-Uint32		get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
+Uint32		get_reflect(t_reflect_transp *var, t_inter pt, Uint32 color)
 {
 	t_color		color_rgb;
 	t_color		color_2;
@@ -52,22 +52,22 @@ Uint32		get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color)
 	t_vec		ref;
 
 	color_rgb = normalize_color(split_color(color));
-	ref = normalize_vec(sub_vec(pt.pos, e->ca.pos));
+	ref = normalize_vec(sub_vec(pt.pos, var->e->ca.pos));
 	ref = sub_vec(ref, v_scale(2 * dot(ref, pt.normal), &pt.normal));
 	pt.pos = add_vec(pt.pos, v_scale(0.01, &ref));
-	tmp = get_closest_test(e, ref, pt.pos, pt.nb);
+	tmp = get_closest_test(var->e, ref, pt.pos, pt.nb);
 	if (tmp.dist != MAX_DIST)
 	{
-		color_2 = normalize_color(split_color(lux(e, tmp)));
-		if (e->obj[tmp.nb].reflex && *depth < 8)
+		color_2 = normalize_color(split_color(lux(var->e, tmp)));
+		if (var->e->obj[tmp.nb].reflex && *var->depth < 8)
 		{
-			*depth += 1;
+			*var->depth += 1;
 			color_2 = mult_color(color_2, normalize_color(
-				split_color(get_reflect(e, tmp, depth, rgb_to_int(color_2)))));
+				split_color(get_reflect(var, tmp, rgb_to_int(color_2)))));
 		}
-		if (e->obj[tmp.nb].transp)
-			color_2 = mult_color(color_2, normalize_color(split_color(transp(e,
-				tmp, rgb_to_int(color_2), pt.pos))));
+		if (var->e->obj[tmp.nb].transp)
+			color_2 = mult_color(color_2, normalize_color(split_color(transp(
+				var, tmp, rgb_to_int(color_2), pt.pos))));
 		color_rgb = mult_color(color_rgb, color_2);
 	}
 	return (rgb_to_int(color_rgb));

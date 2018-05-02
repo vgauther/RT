@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 17:49:24 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/05/02 18:37:03 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,16 @@ typedef struct		s_thread_st
 
 typedef struct		s_thread_util
 {
-	t_thread_st thread_param;
-	pthread_t	thread;
-	int			ret;
+	t_thread_st		thread_param;
+	pthread_t		thread;
+	int				ret;
 }					t_thread_util;
+
+typedef struct		s_reflect_transp
+{
+	t_env			*e;
+	int				*depth;
+}					t_reflect_transp;
 
 int					ft_tablen(void **tab);
 void				print_info(t_sdl *s, t_env *e, int i);
@@ -198,8 +204,10 @@ t_color				color_pix(t_env *e, t_inter pt);
 ** transpa & reflect
 */
 
-Uint32				transp(t_env *e, t_inter pt, Uint32 color, t_vec ori);
-Uint32				get_reflect(t_env *e, t_inter pt, int *depth, Uint32 color);
+Uint32				transp(t_reflect_transp	*var, t_inter pt,
+	Uint32 color, t_vec ori);
+Uint32				get_reflect(t_reflect_transp *var, t_inter pt,
+	Uint32 color);
 t_inter				get_closest_test(t_env *e, t_vec dir, t_vec ori, int t);
 void				get_closest(t_env *e, t_inter *pt, t_vec dir, t_vec ori);
 
