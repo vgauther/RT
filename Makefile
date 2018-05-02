@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/04/29 17:52:17 by vgauther         ###   ########.fr        #
+#    Updated: 2018/05/02 16:09:32 by ebertin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ SRC_NAME = 	lux.c  \
 			pars_cylindre.c  \
 			pars_disque.c  \
 			\
+			mouse_plus.c        \
 			mouse_camera.c       \
 			mouse_pipette.c       \
 			mouse_add_obj.c        \
