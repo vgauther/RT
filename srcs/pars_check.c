@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:57:20 by vgauther          #+#    #+#             */
-/*   Updated: 2018/03/28 13:31:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:41:23 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,6 @@ void	check_line1(char *line, t_env *e)
 		free(line);
 		e->nb++;
 	}
-}
-
-void	select_add_spot(char *str, t_env *e)
-{
-	if (ft_strncmp(str, "spot", 4) == 0)
-		add_obj(e, str);
-}
-
-void	count_spot(char *str, t_env *e)
-{
-	if (ft_strncmp(str, "spot", 4) == 0)
-		e->nb_spot++;
 }
 
 int		check_value(char *nbr)

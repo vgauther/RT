@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 11:51:45 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 19:46:44 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:49:30 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,8 @@ void	mouse_color_obj(int x, int y, t_sdl *s, t_env *e)
 	if (x >= SIZE_X + COL4 + 20 && x <= SIZE_X + COL4 + 60)
 	{
 		if (y >= WIN_Y / 2 + LINE + 100 && y <= WIN_Y / 2 + LINE + 140)
-		{
-			s->hud1.tok.change_color_obj = s->hud1.tok.change_color_obj == 1 ? 0 : 1;
-		}
+			s->hud1.tok.change_color_obj =
+			s->hud1.tok.change_color_obj == 1 ? 0 : 1;
 	}
 	(void)e;
 }
@@ -144,47 +143,42 @@ void	mouse_color_obj_change(int x, int y, t_sdl *s, t_env *e)
 
 void	mouse_change_reflect_trans(int x, int y, t_sdl *s, t_env *e)
 {
-	if (x >= s->hud1.option[0].rect.x && x <= s->hud1.option[0].rect.x + s->hud1.option[0].rect.w)
+	if (x >= s->hud1.option[0].rect.x && x <=
+		s->hud1.option[0].rect.x + s->hud1.option[0].rect.w)
 	{
-		if (y >= s->hud1.option[0].rect.y && y <= s->hud1.option[0].rect.y + s->hud1.option[0].rect.h)
+		if (y >= s->hud1.option[0].rect.y && y <=
+			s->hud1.option[0].rect.y + s->hud1.option[0].rect.h)
 		{
-			e->obj[s->hud1.tok.obj_select].reflex = e->obj[s->hud1.tok.obj_select].reflex == 1 ? 0 : 1;
+			e->obj[s->hud1.tok.obj_select].reflex =
+			e->obj[s->hud1.tok.obj_select].reflex == 1 ? 0 : 1;
 			raytracing(e, s);
 		}
 	}
-	if (x >= s->hud1.option[1].rect.x && x <= s->hud1.option[1].rect.x + s->hud1.option[1].rect.w)
+	if (x >= s->hud1.option[1].rect.x && x <=
+		s->hud1.option[1].rect.x + s->hud1.option[1].rect.w)
 	{
-		if (y >= s->hud1.option[1].rect.y && y <= s->hud1.option[1].rect.y + s->hud1.option[1].rect.h)
+		if (y >= s->hud1.option[1].rect.y && y <=
+			s->hud1.option[1].rect.y + s->hud1.option[1].rect.h)
 		{
-			e->obj[s->hud1.tok.obj_select].transp = e->obj[s->hud1.tok.obj_select].transp == 1 ? 0 : 1;
+			e->obj[s->hud1.tok.obj_select].transp =
+			e->obj[s->hud1.tok.obj_select].transp == 1 ? 0 : 1;
 			raytracing(e, s);
 		}
 	}
-
 }
 
 void	main_mouse(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
 {
 	if (s->hud1.add_obj == 1 || s->hud1.add_obj == 2)
-	{
 		mouse_add_obj_select(mouse_x, mouse_y, s, e);
-	}
 	if (s->hud1.add_obj == 2 || s->hud1.tok.obj_select != -1)
-	{
 		mouse_add_obj(mouse_x, mouse_y, s, e);
-	}
 	if (s->hud1.selectobj == 1 && s->hud1.add_obj != 1 && s->hud1.pipette != 1)
-	{
 		mouse_obj_seletor(mouse_x, mouse_y, s, e);
-	}
 	if (s->hud1.pipette == 1 && s->hud1.tok.change_color_obj != 1)
-	{
 		mouse_pipette_color(mouse_x, mouse_y, s, e);
-	}
 	else if (s->hud1.tok.change_color_obj == 1 && s->hud1.pipette == 1)
-	{
 		mouse_color_obj_change(mouse_x, mouse_y, s, e);
-	}
 	if (s->hud1.tok.obj_select != -1)
 	{
 		mouse_change_reflect_trans(mouse_x, mouse_y, s, e);

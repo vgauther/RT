@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:04:09 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/26 12:53:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 12:41:25 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_vec		sphere_normal_at(t_inter t, t_obj obj)
 {
 	t_vec norm;
+
 	norm = normalize_vec(sub_vec(t.pos, obj.pos));
 	return (norm);
 }

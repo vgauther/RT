@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 19:46:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 22:15:05 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:47:19 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static void		mouse_rayon_modify(int i, t_sdl *s, t_env *e)
 {
-	if (e->obj[s->hud1.tok.obj_select].type == 1 || e->obj[s->hud1.tok.obj_select].type == 2)
+	if (e->obj[s->hud1.tok.obj_select].type == 1 ||
+		e->obj[s->hud1.tok.obj_select].type == 2)
 	{
 		if (i == 0)
 			e->obj[s->hud1.tok.obj_select].rayon++;
 		else
 			e->obj[s->hud1.tok.obj_select].rayon--;
-		(e->obj[s->hud1.tok.obj_select].rayon < 0) ? e->obj[s->hud1.tok.obj_select].rayon = 0 : 0;
-		e->obj[s->hud1.tok.obj_select].rayon_2 = e->obj[s->hud1.tok.obj_select].rayon * e->obj[s->hud1.tok.obj_select].rayon;
+		(e->obj[s->hud1.tok.obj_select].rayon < 0) ?
+		e->obj[s->hud1.tok.obj_select].rayon = 0 : 0;
+		e->obj[s->hud1.tok.obj_select].rayon_2 =
+	e->obj[s->hud1.tok.obj_select].rayon * e->obj[s->hud1.tok.obj_select].rayon;
 	}
 }
 
@@ -33,8 +36,10 @@ static void		mouse_angle_modify(int i, t_sdl *s, t_env *e)
 			e->obj[s->hud1.tok.obj_select].angle++;
 		else
 			e->obj[s->hud1.tok.obj_select].angle--;
-		(e->obj[s->hud1.tok.obj_select].angle < 0) ? e->obj[s->hud1.tok.obj_select].angle = 0 : 0;
-		e->obj[s->hud1.tok.obj_select].angletan = tan((e->obj[s->hud1.tok.obj_select].angle / 2) * RAD);
+		(e->obj[s->hud1.tok.obj_select].angle < 0) ?
+		e->obj[s->hud1.tok.obj_select].angle = 0 : 0;
+		e->obj[s->hud1.tok.obj_select].angletan =
+		tan((e->obj[s->hud1.tok.obj_select].angle / 2) * RAD);
 	}
 }
 
