@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 13:53:12 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:23:49 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,35 @@ void	set_obj_as_default(int nb, t_env *e)
 	e->obj[nb].transp = 0;
 }
 
+void	mouse_check_obj(int i, t_env *e, t_sdl *s)
+{
+	e->obj = realloc_obj(e);
+	if (i == 0)
+		e->obj[e->nb - 1].type = 1;
+	if (i == 0)
+		s->hud1.shape_img.i = 12;
+	else if (i == 2)
+	{
+		e->obj[e->nb - 1].type = 2;
+		s->hud1.shape_img.i = 14;
+	}
+	else if (i == 1)
+	{
+		e->obj[e->nb - 1].type = 3;
+		s->hud1.shape_img.i = 13;
+	}
+	else if (i == 3)
+	{
+		e->obj[e->nb - 1].type = 4;
+		s->hud1.shape_img.i = 15;
+	}
+	s->hud1.add_obj = 2;
+	set_obj_as_default(e->nb - 1, e);
+	s->hud1.tok.obj_select = e->nb - 1;
+	s->hud1.add_obj = 0;
+	s->hud1.bouton[16].i = 1;
+}
+
 void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 {
 	int i;
@@ -67,32 +96,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 					if (x >= s->hud1.r_add_obj[i].x &&
 						x <= s->hud1.r_add_obj[i].x + s->hud1.r_add_obj[i].w)
 					{
-						e->obj = realloc_obj(e);
-						if (i == 0)
-						{
-							e->obj[e->nb - 1].type = 1;
-							s->hud1.shape_img.i = 12;
-						}
-						else if (i == 2)
-						{
-							e->obj[e->nb - 1].type = 2;
-							s->hud1.shape_img.i = 14;
-						}
-						else if (i == 1)
-						{
-							e->obj[e->nb - 1].type = 3;
-							s->hud1.shape_img.i = 13;
-						}
-						else if (i == 3)
-						{
-							e->obj[e->nb - 1].type = 4;
-							s->hud1.shape_img.i = 15;
-						}
-						s->hud1.add_obj = 2;
-						set_obj_as_default(e->nb - 1, e);
-						s->hud1.tok.obj_select = e->nb - 1;
-						s->hud1.add_obj = 0;
-						s->hud1.bouton[16].i = 1;
+						mouse_check_obj(i, e, s);
 						init_is_neg(e);
 						raytracing(e, s);
 					}
