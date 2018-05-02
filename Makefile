@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/05/02 16:09:32 by ebertin          ###   ########.fr        #
+#    Updated: 2018/05/02 16:42:19 by ebertin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,23 +44,24 @@ INC_NAME = rt.h
 
 SRC_NAME = 	lux.c  \
 			main.c  \
-			trait.c  \
-			mouse.c   \
-			error.c    \
-			rotate.c    \
-			filter.c     \
-			parser.c      \
-			ft_wait.c      \
-			reflect.c       \
-			texture.c	     \
-			loading.c 	      \
-			print_text.c       \
-			open_texture.c      \
-			check_define.c       \
-			ft_put_pixels.c       \
-			ft_realloc_obj.c       \
-			user_key_interaction.c  \
-			transparence.c \
+			init.c	 \
+			trait.c   \
+			mouse.c    \
+			error.c     \
+			rotate.c     \
+			filter.c      \
+			parser.c       \
+			ft_wait.c       \
+			reflect.c        \
+			texture.c	      \
+			loading.c 	       \
+			print_text.c        \
+			open_texture.c       \
+			check_define.c        \
+			ft_put_pixels.c        \
+			ft_realloc_obj.c        \
+			user_key_interaction.c   \
+			transparence.c 			  \
 			\
 			text_box_add_obj.c \
 			text_box_del_char.c \
