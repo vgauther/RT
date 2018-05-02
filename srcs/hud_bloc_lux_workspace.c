@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/29 17:02:36 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/29 17:03:15 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 15:52:41 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	bloc_work_space(t_env *e, t_sdl *s)
 	p1 = init_point_2_coord(SIZE_X / 4 + SIZE_X, SIZE_Y / 8);
 	p2 = init_point_2_coord(WIN_X, SIZE_Y / 8);
 	horizontal_trait(p1, p2, CONTRAST, e);
-	s->hud1.workspace_text.rect = init_sdl_rect(COL + SIZE_X + (COL4 / 18 * 2), (SIZE_Y - 10) /
+	s->hud1.workspace_text.rect = init_sdl_rect(COL + SIZE_X + (COL4 / 18 * 2),
+	(SIZE_Y - 10) /
 	16 - 10, COL / 9 * 7, 25);
 	print_text(ft_strdup("Workspace"), s->font.color[4], s,
 	&s->hud1.workspace_text);
