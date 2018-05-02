@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 11:19:57 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 22:09:53 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:09:55 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static SDL_Surface		**open_texture3(SDL_Surface **surfac)
 	surfac[28] = SDL_LoadBMP("./img_srcs/50sticky.bmp");
 	surfac[29] = SDL_LoadBMP("./img_srcs/80sticky.bmp");
 	surfac[30] = SDL_LoadBMP("./img_srcs/100sticky.bmp");
+	surfac[31] = SDL_LoadBMP("./img_srcs/grey.bmp");
+	surfac[32] = SDL_LoadBMP("./img_srcs/white.bmp");
 	return (surfac);
 }
 
@@ -36,7 +38,7 @@ static SDL_Surface		**open_texture2(void)
 {
 	SDL_Surface **surfac;
 
-	if (!(surfac = malloc(sizeof(SDL_Surface *) * 31)))
+	if (!(surfac = malloc(sizeof(SDL_Surface *) * 33)))
 		ft_error("\n MALLOC ERROR : open_texture2\n\n");
 	surfac[0] = SDL_LoadBMP("./img_srcs/-.bmp");
 	surfac[1] = SDL_LoadBMP("./img_srcs/+.bmp");
@@ -65,7 +67,7 @@ void					open_texture(t_sdl *s)
 
 	i = -1;
 	surfac = open_texture2();
-	while (++i < 31)
+	while (++i < 33)
 	{
 		if (!(s->tex[i] = SDL_CreateTextureFromSurface(s->renderer, surfac[i])))
 			ft_sdl_error("Texture error : ", SDL_GetError());

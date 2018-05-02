@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 13:47:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 17:51:59 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:16:08 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_plmor(t_sdl *s)
 		COL + 140, WIN_Y / 2 + 115, 30, 30);
 	s->hud1.plmor[2].rect = init_sdl_rect(WIN_X -
 		COL + 175, WIN_Y / 2 + 115, 30, 30);
-	s->hud1.plmor[0].i = 0;
+	s->hud1.plmor[0].i = 31;
 	s->hud1.plmor[1].i = 1;
 	s->hud1.plmor[2].i = 0;
 	s->hud1.add_obj_data[6].rect = init_sdl_rect(WIN_X -

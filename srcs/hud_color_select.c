@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 14:02:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 13:42:28 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:53:24 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_color_text(t_sdl *s)
 	s, &s->hud1.transpa_text);
 	s->hud1.transpa_text.rect = init_sdl_rect(SIZE_X + COL4 + 80, WIN_Y / 2 +
 		LINE + 220 + 10, 140, 20);
-	s->hud1.option[0].i = 0;
-	s->hud1.option[1].i = 0;
+	s->hud1.option[0].i = 31;
+	s->hud1.option[1].i = 31;
 	s->hud1.option[0].rect = init_sdl_rect(SIZE_X + COL4 + 25,
 		WIN_Y / 2 + LINE + 165, 30, 30);
 	s->hud1.option[1].rect = init_sdl_rect(SIZE_X + COL4 + 25,

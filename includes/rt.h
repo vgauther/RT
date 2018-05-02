@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 18:37:03 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:07:51 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	t_hud			hud1;
 	t_font			font;
-	SDL_Texture		*tex[31];
+	SDL_Texture		*tex[33];
 }					t_sdl;
 
 typedef struct		s_inter

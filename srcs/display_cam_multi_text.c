@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:34:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/23 19:35:38 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:42:17 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	display_multi_text(t_sdl *s)
 	if ((SDL_RenderCopy(s->renderer, s->hud1.multi_text[2].tex, NULL,
 		&s->hud1.multi_text[2].rect)) < 0)
 		ft_sdl_error("Texture error : ", SDL_GetError());
-	if ((SDL_RenderCopy(s->renderer, s->tex[0], NULL,
+	if ((SDL_RenderCopy(s->renderer, s->tex[31], NULL,
 		&s->hud1.multi_bouton[s->hud1.multi])) < 0)
 		ft_sdl_error("Texture error : ", SDL_GetError());
 }

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:23:48 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 19:25:28 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 21:14:13 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void		display_add_obj_menu_bloc(t_sdl *s, t_env *e, int nb)
 	stop = e->obj[nb].type == 1 ? 3 : 6;
 	while (i < stop)
 	{
-		if ((SDL_RenderCopy(s->renderer, s->tex[0], NULL,
+		if ((SDL_RenderCopy(s->renderer, s->tex[31], NULL,
 			&s->hud1.text_box[i])) < 0)
 			ft_sdl_error("Texture error : ", SDL_GetError());
 		i++;
