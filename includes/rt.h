@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 16:07:40 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/05/02 16:47:13 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void				ft_wait(void);
 t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(void);
 void				mouv(long key, t_env *e, t_sdl *s);
+void				ft_init(t_sdl *s, char *name, t_env *e);
 
 /*
 ** loading screen
@@ -317,6 +318,7 @@ void				add_obj_menu(t_sdl *s, t_env *e, int nb);
 void				add_obj_selection_display(t_sdl *s);
 void				recup_cam_to_print(t_sdl *s, t_env *e);
 void				print_data_obj(t_sdl *s, t_env *e, int nbr);
+void				init_hud_var(t_sdl *s);
 
 /*
 ** ft_put_pixel
