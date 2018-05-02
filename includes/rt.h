@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 17:17:09 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:43:37 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ t_obj				*realloc_obj(t_env *e);
 t_cam				init_cam(void);
 void				mouv(long key, t_env *e, t_sdl *s);
 void				ft_init(t_sdl *s, char *name, t_env *e);
+t_obj				realloc_sphere(t_env *e, int i);
 
 /*
 ** loading screen
