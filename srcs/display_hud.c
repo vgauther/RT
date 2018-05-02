@@ -6,13 +6,13 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:50:27 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/28 22:32:44 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 18:24:36 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	call_display_hud_function(t_sdl *s, t_env *e)
+void		call_display_hud_function(t_sdl *s, t_env *e)
 {
 	display_pipette(s);
 	display_work_space(s, e);
@@ -23,7 +23,36 @@ void	call_display_hud_function(t_sdl *s, t_env *e)
 	display_multi_text(s);
 }
 
-void	display_hud(t_sdl *s, t_env *e)
+static void	check_hud(t_sdl *s, t_env *e)
+{
+	if (e->obj[s->hud1.tok.obj_select].reflex == 1)
+		SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[0].i], NULL,
+			&s->hud1.option[0].rect);
+	if (e->obj[s->hud1.tok.obj_select].transp == 1)
+		SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[1].i], NULL,
+			&s->hud1.option[1].rect);
+	if (e->obj[s->hud1.tok.obj_select].type == 1 ||
+		e->obj[s->hud1.tok.obj_select].type == 2 ||
+		e->obj[s->hud1.tok.obj_select].type == 3)
+	{
+		SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[0].i], NULL,
+			&s->hud1.plmor[0].rect);
+		SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[1].i], NULL,
+			&s->hud1.plmor[1].rect);
+		SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[2].i], NULL,
+			&s->hud1.plmor[2].rect);
+	}
+	if (e->obj[s->hud1.tok.obj_select].type == 1 ||
+		e->obj[s->hud1.tok.obj_select].type == 2 ||
+		e->obj[s->hud1.tok.obj_select].type == 3)
+	{
+		if ((SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[6].tex, NULL,
+			&s->hud1.add_obj_data[6].rect)) < 0)
+			ft_sdl_error("Texture error : ", SDL_GetError());
+	}
+}
+
+void		display_hud(t_sdl *s, t_env *e)
 {
 	t_rect r1;
 
@@ -45,24 +74,5 @@ void	display_hud(t_sdl *s, t_env *e)
 		&s->hud1.workspace_text.rect);
 	call_display_hud_function(s, e);
 	if (s->hud1.tok.obj_select != -1)
-	{
-		if (e->obj[s->hud1.tok.obj_select].reflex == 1)
-			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[0].i], NULL, &s->hud1.option[0].rect);
-		if (e->obj[s->hud1.tok.obj_select].transp == 1)
-			SDL_RenderCopy(s->renderer, s->tex[s->hud1.option[1].i], NULL, &s->hud1.option[1].rect);
-		if (e->obj[s->hud1.tok.obj_select].type == 1 || e->obj[s->hud1.tok.obj_select].type == 2 || e->obj[s->hud1.tok.obj_select].type == 3)
-		{
-			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[0].i], NULL, &s->hud1.plmor[0].rect);
-			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[1].i], NULL, &s->hud1.plmor[1].rect);
-			SDL_RenderCopy(s->renderer, s->tex[s->hud1.plmor[2].i], NULL, &s->hud1.plmor[2].rect);
-		}
-		if (e->obj[s->hud1.tok.obj_select].type == 1 ||
-			e->obj[s->hud1.tok.obj_select].type == 2 ||
-			e->obj[s->hud1.tok.obj_select].type == 3)
-		{
-			if ((SDL_RenderCopy(s->renderer, s->hud1.add_obj_data[6].tex, NULL,
-				&s->hud1.add_obj_data[6].rect)) < 0)
-				ft_sdl_error("Texture error : ", SDL_GetError());
-		}
-	}
+		check_hud(s, e);
 }
