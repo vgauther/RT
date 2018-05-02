@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 14:38:52 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 15:43:12 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:52:20 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		create_bouton_cam(t_sdl *s)
 	}
 }
 
-void	create_bouton_tool_bar(t_sdl *s)
+void		create_bouton_tool_bar(t_sdl *s)
 {
 	s->hud1.bouton[12].i = 8;
 	s->hud1.bouton[12].rect = init_sdl_rect(SIZE_X / 2 + COL4,

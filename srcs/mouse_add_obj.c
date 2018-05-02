@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 19:27:02 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:53:12 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 	if (x >= s->hud1.r_add_obj[0].x && x <= s->hud1.r_add_obj[1].x
 		+ s->hud1.r_add_obj[1].w)
 	{
-		if(y >= s->hud1.r_add_obj[0].y && y <= s->hud1.r_add_obj[2].y
+		if (y >= s->hud1.r_add_obj[0].y && y <= s->hud1.r_add_obj[2].y
 			+ s->hud1.r_add_obj[2].h)
 		{
 			while (++i != 4)
@@ -90,7 +90,7 @@ void	mouse_add_obj_select(int x, int y, t_sdl *s, t_env *e)
 						}
 						s->hud1.add_obj = 2;
 						set_obj_as_default(e->nb - 1, e);
-						s->hud1.tok.obj_select = e->nb -1;
+						s->hud1.tok.obj_select = e->nb - 1;
 						s->hud1.add_obj = 0;
 						s->hud1.bouton[16].i = 1;
 						init_is_neg(e);

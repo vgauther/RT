@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:14 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 14:59:40 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:58:33 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void		mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 			e->ca.rot.y += s->hud1.how_much;
 		else
 			e->ca.rot.z += s->hud1.how_much;
-		raytracing(e, s);
 	}
 	else
 	{
@@ -38,8 +37,8 @@ static void		mouse_cam_rot2(int i, t_sdl *s, t_env *e)
 			e->ca.rot.y -= s->hud1.how_much;
 		else
 			e->ca.rot.z -= s->hud1.how_much;
-		raytracing(e, s);
 	}
+	raytracing(e, s);
 }
 
 static void		mouse_cam_rot(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
@@ -73,7 +72,6 @@ static void		mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 			e->ca.pos.y += s->hud1.how_much;
 		else
 			e->ca.pos.z += s->hud1.how_much;
-		raytracing(e, s);
 	}
 	else
 	{
@@ -86,8 +84,8 @@ static void		mouse_cam_trans2(int i, t_sdl *s, t_env *e)
 			e->ca.pos.y -= s->hud1.how_much;
 		else
 			e->ca.pos.z -= s->hud1.how_much;
-		raytracing(e, s);
 	}
+	raytracing(e, s);
 }
 
 static void		mouse_cam_trans(int mouse_x, int mouse_y, t_sdl *s, t_env *e)
