@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 14:13:13 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:39:32 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ typedef struct		s_obj
 {
 	t_vec			pos;
 	double			rayon;
+	double			taille;
 	double			rayon_2;
 	int				material;
 	int				type;
-	Uint32				color;
+	Uint32			color;
 	t_color			color_rgb;
 	t_vec			rot;
 	double			angle;
