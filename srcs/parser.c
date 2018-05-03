@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 12:13:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/27 17:15:14 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 12:54:05 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,17 @@ void		parser(char *name, t_env *e)
 {
 	int		fd;
 	char	*line;
+	int		ret;
 
 	fd = check_file(name);
 	e->nb = 0;
 	e->nb_spot = 0;
-	while (get_next_line(fd, &line))
+	while ((ret = get_next_line(fd, &line)))
+	{
+		ret < 0 ? free(line) : 0;
+		ret < 0 ? ft_error("Error reading scene file.") : 0;
 		check_line1(line, e);
+	}
 	if (!(e->obj = (t_obj*)malloc(sizeof(t_obj) * e->nb)))
 		ft_error("Error with object malloc.");
 	if (!(e->spot = (t_obj*)malloc(sizeof(t_obj) * e->nb_spot)))

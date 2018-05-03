@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:57:20 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 13:41:23 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 13:33:51 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,32 @@ int		check_value(char *nbr)
 	return (ret);
 }
 
+int		ft_check_end(char *argument, char *end)
+{
+	int a;
+	int b;
+
+	a = ft_strlen(argument);
+	b = ft_strlen(end);
+	a -= b;
+	b = 0;
+	while (argument[a])
+	{
+		if (argument[a] != end[b])
+			return (0);
+		a++;
+		b++;
+	}
+	return (1);
+}
+
 int		check_file(char *argument)
 {
-	DIR					*test;
 	int					fd;
 
-	if ((test = opendir(argument)))
-	{
-		closedir(test);
-		ft_error("Argument is a folder.");
-	}
-	if ((fd = open(argument, O_RDONLY)) == -1)
+	if (!(ft_check_end(argument, ".RT")))
+		ft_error("Wrong file extension");
+	if ((fd = open(argument, O_RDONLY)) == 1)
 		ft_error("Error reading scene file.");
 	return (fd);
 }
