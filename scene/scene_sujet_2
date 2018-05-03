@@ -1,0 +1,11 @@
+//sphere x y z color rayon mat reflect texture_file transp
+//cone x y z color angle rot_x rot_y rot_z mat reflect transp
+//cylindre x y z color rayon rot_x rot_y rot_z mat reflect transp
+//plan x y z color rot_x rot_y rot_z mat reflect transp
+//cam x y z rot_x rot_y rot_z
+//spot x y z color 0 0 0
+
+plan 0 100 0 0x7f7f7f 0 1 0 1 0 0
+spot -50 -300 -100 0xffffff 0 0 0
+spot 0 -300 -100 0xffffff 0 0 0
+spot 50 -300 -100 0xffffff 0 0 0
