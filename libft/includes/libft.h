@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 12:51:09 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/05/03 13:35:52 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 13:37:54 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,5 @@ long int		ft_strtol(char *line);
 int				ft_fill(char const *s, char **tab, int *tab1, char c);
 int				ft_pow(int val, unsigned int y);
 int				ft_check_end(char *argument, char *end);
-
 
 #endif
