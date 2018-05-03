@@ -6,6 +6,7 @@
 //spot x y z color 0 0 0
 
 plan 0 100 0 0x7f7f7f 0 1 0 1 0 0
+sphere 0 0 100 0xff0000 20 1 0 none 0
 spot -50 -300 -100 0xffffff 0 0 0
 spot 0 -300 -100 0xffffff 0 0 0
 spot 50 -300 -100 0xffffff 0 0 0
