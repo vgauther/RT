@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 01:10:11 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/03 12:55:23 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 13:40:55 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "hud.h"
 
 # include <fcntl.h>
-# include <time.h>
 # include <pthread.h>
 # include <stdlib.h>
 
