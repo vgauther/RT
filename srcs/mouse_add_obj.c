@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:20:59 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 18:23:49 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:38:23 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	mouse_add_obj_activate(int x, int y, t_sdl *s, t_env *e)
 				s->hud1.add_obj = 1;
 			s->hud1.bouton[14].i = 4;
 			s->hud1.shape_img.i = 0;
+			s->hud1.selectobj = 0;
 			display(s, e);
 		}
 	}
