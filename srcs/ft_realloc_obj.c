@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:25:55 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 17:43:13 by ebertin          ###   ########.fr       */
+/*   Updated: 2018/05/03 15:51:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ t_obj	realloc_cylindre(t_env *e, int i)
 	ret.num = e->obj[i].num;
 	ret.reflex = e->obj[i].reflex;
 	ret.transp = e->obj[i].transp;
+	ret.taille = e->obj[i].taille;
+	ret.fin = e->obj[i].fin;
 	return (ret);
 }
 
