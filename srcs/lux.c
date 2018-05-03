@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:30:16 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/30 14:31:53 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 11:56:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ double	get_specular_and_difuse(t_vec l, t_inter pt, double *difuse, t_cam c)
 		v_scale(2 * dot(vector_init(-l.x, -l.y, -l.z), pt.normal), &pt.normal));
 		v = normalize_vec(sub_vec(c.pos, pt.pos));
 		tmp = dot(r, v) > 0 ? dot(r, v) : 0;
-		tmp = powf(tmp, 10);
+		tmp = powf(tmp, 20);
 	}
 	return (tmp);
 }
