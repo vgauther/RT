@@ -6,7 +6,7 @@
 #    By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 20:24:21 by vgauther          #+#    #+#              #
-#    Updated: 2018/05/02 17:44:09 by ebertin          ###   ########.fr        #
+#    Updated: 2018/05/03 15:36:17 by fde-souz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ SRC_NAME = 	lux.c  \
 			ray_cone.c    \
 			ray_sphere.c   \
 			ray_cylindre.c  \
-			ray_disque.c  \
+			ray_disque.c  	 \
+			ray_cylindre_fin.c\
 			\
 			pars_spot.c \
 			pars_cone.c  \

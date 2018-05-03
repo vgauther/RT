@@ -1,6 +1,6 @@
 //sphere x y z color rayon mat reflect texture_file transp
 //cone x y z color angle rot_x rot_y rot_z mat reflect transp
-//cylindre x y z color rayon rot_x rot_y rot_z mat reflect transp
+//cylindre x y z color rayon rot_x rot_y rot_z mat reflect transp fin? taille
 //plan x y z color rot_x rot_y rot_z mat reflect transp
 //cam x y z rot_x rot_y rot_z
 //spot x y z color 0 0 0

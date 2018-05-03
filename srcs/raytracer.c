@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/04/30 14:31:59 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:39:08 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ t_inter		shape_redirection(t_env *e, t_vec dir, t_vec ori, int nbr)
 
 	if (e->obj[nbr].type == 1)
 		tmp = ray_sphere(e, dir, ori, nbr);
-	else if (e->obj[nbr].type == 2)
-		tmp = ray_cylindre(e, dir, ori, nbr);
+	else if (e->obj[nbr].type == 3)
+		tmp = ray_cone(e, dir, ori, nbr);
 	else if (e->obj[nbr].type == 4)
 		tmp = ray_plan(e, dir, ori, nbr);
 	else if (e->obj[nbr].type == 5)
 		tmp = ray_disque(e, dir, ori, nbr);
+	else if (e->obj[nbr].type == 2 && !e->obj[nbr].fin)
+		tmp = ray_cylindre(e, dir, ori, nbr);
 	else
-		tmp = ray_cone(e, dir, ori, nbr);
+		tmp = ray_cylindre_fin(e, dir, ori, nbr);
 	return (tmp);
 }
 

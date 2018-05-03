@@ -6,31 +6,13 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 14:58:09 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/05/02 15:47:20 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:41:33 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_vec		cylindre_normal_at(t_inter t, t_obj obj, t_vec ori)
-{
-	t_vec	x;
-	t_vec	dir;
-	t_vec	test;
-	double	m;
-
-	x = sub_vec(ori, obj.pos);
-	dir = sub_vec(t.pos, ori);
-	test = v_scale(t.dist, &obj.rot);
-	test = normalize_vec(test);
-	m = dot(dir, test) + dot(x, obj.rot);
-	x = vector_init(obj.pos.x + obj.rot.x * m,
-		obj.pos.y + obj.rot.y * m, obj.pos.z + obj.rot.z * m);
-	x = normalize_vec(vector_init(t.pos.x - x.x, t.pos.y - x.y, t.pos.z - x.z));
-	return (x);
-}
-
-void		resolve_poly_fin(t_polynome *p, t_inter *t, t_vec v, t_vec ori)
+static void		resolve_poly_fin(t_polynome *p, t_inter *t, t_vec v, t_vec ori)
 {
 	if (p->delta >= 0)
 	{
@@ -52,7 +34,7 @@ void		resolve_poly_fin(t_polynome *p, t_inter *t, t_vec v, t_vec ori)
 	t->delta = p->delta;
 }
 
-double		calc_hyp(t_inter *pt, t_obj obj)
+static double	calc_hyp(t_inter *pt, t_obj obj)
 {
 	double	hyp;
 
@@ -63,7 +45,7 @@ double		calc_hyp(t_inter *pt, t_obj obj)
 	return (hyp);
 }
 
-t_inter		ray_cylindre(t_env *e, t_vec d, t_vec ori, int nbr)
+t_inter			ray_cylindre_fin(t_env *e, t_vec d, t_vec ori, int nbr)
 {
 	t_inter		pt;
 	t_polynome	p;
@@ -80,11 +62,11 @@ t_inter		ray_cylindre(t_env *e, t_vec d, t_vec ori, int nbr)
 	if (pt.dist != MAX_DIST)
 	{
 		hyp = calc_hyp(&pt, e->obj[nbr]);
-		if (hyp > 90)
+		if (hyp > e->obj[nbr].taille / 2)
 		{
 			resolve_poly_fin(&p, &pt, d, ori);
 			hyp = calc_hyp(&pt, e->obj[nbr]);
-			if (hyp > 90)
+			if (hyp > e->obj[nbr].taille / 2)
 				pt.dist = MAX_DIST;
 		}
 	}
