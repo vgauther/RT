@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 19:55:02 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/24 12:11:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/03 11:33:43 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	init_info_messages(t_sdl *s)
 {
-	s->hud1.mess = malloc(sizeof(char *) * 12);
+	if (!(s->hud1.mess = malloc(sizeof(char *) * 12)))
+		ft_error("\nmalloc error\n");
 	s->hud1.mess[0] =
 	ft_strdup("Last   Info   :   RT   succesfully   launched.");
 	s->hud1.mess[1] =
@@ -25,10 +26,8 @@ void	init_info_messages(t_sdl *s)
 	ft_strdup("Last  Info  :  Camera  just  mooved  on  z  axis");
 	s->hud1.mess[4] =
 	ft_strdup("Last  Info  :  Your  work  has  been  saved.");
-	s->hud1.mess[5] =
-	ft_strdup("Last  Info  :  Sepia filter actived.");
-	s->hud1.mess[6] =
-	ft_strdup("Last  Info  :  Sepia filter disabled.");
+	s->hud1.mess[5] = ft_strdup("Last  Info  :  Sepia filter actived.");
+	s->hud1.mess[6] = ft_strdup("Last  Info  :  Sepia filter disabled.");
 	s->hud1.mess[7] =
 	ft_strdup("Last  Info  :  Black and white filter actived.");
 	s->hud1.mess[8] =
