@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 19:46:03 by vgauther          #+#    #+#             */
-/*   Updated: 2018/05/02 13:47:19 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:39:16 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void		mouse_angle_modify(int i, t_sdl *s, t_env *e)
 			e->obj[s->hud1.tok.obj_select].angle--;
 		(e->obj[s->hud1.tok.obj_select].angle < 0) ?
 		e->obj[s->hud1.tok.obj_select].angle = 0 : 0;
+		(e->obj[s->hud1.tok.obj_select].angle > 180) ?
+		e->obj[s->hud1.tok.obj_select].angle = 180 : 0;
 		e->obj[s->hud1.tok.obj_select].angletan =
 		tan((e->obj[s->hud1.tok.obj_select].angle / 2) * RAD);
 	}

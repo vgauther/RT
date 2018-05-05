@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 23:21:26 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/25 23:01:58 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:28:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	mouse_pipette_activate(int x, int y, t_sdl *s, t_env *e)
 		{
 			s->hud1.bouton[15].i = s->hud1.bouton[15].i == 11 ? 10 : 11;
 			s->hud1.pipette = s->hud1.pipette == 1 ? 0 : 1;
+			if (s->hud1.tok.obj_select != -1)
+				s->hud1.tok.change_color_obj = s->hud1.pipette == 1 ? 1 : 0;
 			display(s, e);
 		}
 	}

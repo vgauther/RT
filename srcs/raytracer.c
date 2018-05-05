@@ -6,7 +6,7 @@
 /*   By: ppetit <ppetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:34:11 by ppetit            #+#    #+#             */
-/*   Updated: 2018/05/03 15:39:08 by fde-souz         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:34:23 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,9 @@ static void	init_util_thread(t_env *e, t_sdl *s, t_thread_util *util_th)
 
 void		raytracing(t_env *e, t_sdl *s)
 {
-	t_thread_util	*util_th;
+	t_thread_util	util_th[NB_THREAD];
 	int				i;
 
-	if (!(util_th = (t_thread_util*)malloc(sizeof(t_thread_util) * NB_THREAD)))
-		ft_error("\n Malloc error.\n");
 	loading_screen(4, s);
 	init_util_thread(e, s, util_th);
 	i = -1;
@@ -119,6 +117,5 @@ void		raytracing(t_env *e, t_sdl *s)
 		pthread_join(util_th[i].thread, NULL);
 	s->rendu->pixels = e->pixels;
 	loading_screen(7, s);
-	free(util_th);
 	display(s, e);
 }

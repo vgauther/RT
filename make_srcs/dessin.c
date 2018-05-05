@@ -6,7 +6,7 @@
 /*   By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:57:02 by fde-souz          #+#    #+#             */
-/*   Updated: 2018/02/19 01:06:10 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:30:24 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		fstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '_' || str[i] == '\\' || str[i] == '|' || str[i] == '~' 
+		if (str[i] == '_' || str[i] == '\\' || str[i] == '|' || str[i] == '~'
 		|| str[i] == '/')
 			ft_putstr(_R);
 		if (str[i] == ':')

@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/29 17:01:06 by vgauther          #+#    #+#             */
-/*   Updated: 2018/04/29 17:08:32 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:51:07 by fde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,15 @@ void		recup_cam_to_print(t_sdl *s, t_env *e)
 	print_text(ft_itoa(e->ca.rot.y), s->font.color[1], s, &s->hud1.cam.rot_y);
 	s->hud1.cam.rot_z.rect = init_sdl_rect(200, 350, 17, 10);
 	print_text(ft_itoa(e->ca.rot.z), s->font.color[1], s, &s->hud1.cam.rot_z);
+}
+
+void		destroy_cam_tex(t_sdl *s)
+{
+	SDL_DestroyTexture(s->hud1.cam.title.tex);
+	SDL_DestroyTexture(s->hud1.cam.pos_x.tex);
+	SDL_DestroyTexture(s->hud1.cam.pos_y.tex);
+	SDL_DestroyTexture(s->hud1.cam.pos_z.tex);
+	SDL_DestroyTexture(s->hud1.cam.rot_x.tex);
+	SDL_DestroyTexture(s->hud1.cam.rot_y.tex);
+	SDL_DestroyTexture(s->hud1.cam.rot_z.tex);
 }

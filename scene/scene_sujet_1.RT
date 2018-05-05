@@ -5,11 +5,11 @@
 //cam x y z rot_x rot_y rot_z
 //spot x y z color 0 0 0
 
-sphere -110 58 130 0xff0dsadasdasdasdsadasdagdfvcxvcvb000 20 1 0 none 0
+sphere -110 58 130 0xff0000 20 1 0 none 0
 sphere 110 58 160 0x00ff00 20 1 0 none 0
 plan 0 0 200 0x0000FF 0 0 1 1 0 0
 plan 0 75 0 0x7f7f7f 0 1 0 1 0 0
 cone 50 50 160 0xFFFF00 30  9 10 0 1 0 0
-cylindre 0 0 160 0xff00B2 20 -9 10 0 1 0 0 1 50
+cylindre 0 0 160 0xff00B2 20 -9 10 0 1 0 0 0 50
 spot -300 -200 0 0xffffff 0 0 0
 spot 300 0 -200 0xffffff 0 0 0
